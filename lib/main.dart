@@ -116,7 +116,7 @@ class MyApp extends StatelessWidget {
             'verEvidenciaP2': (_) => const VerEvidenciaArchivosPage(),
             'verArchivoEvidencia': (_) => const VerArchivoEvidenciaPage(),
             'crearPDF': (_) => const CrearSolicitudPdfPage(),
-            // 'soporte': (_) => SoportePage(),
+            'soporte': (_) => const SoportePage(),
           },
           theme: ThemeData(primaryColor: Colors.deepPurple)),
     );

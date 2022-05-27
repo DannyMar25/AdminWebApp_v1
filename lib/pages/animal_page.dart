@@ -138,6 +138,7 @@ class _AnimalPageState extends State<AnimalPage> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();

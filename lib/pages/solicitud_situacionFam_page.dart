@@ -26,8 +26,8 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
   //final horariosProvider = new HorariosProvider();
   // final animalesProvider = new AnimalesProvider();
   final userProvider = new UsuarioProvider();
-  var idForm;
-  var idD;
+  //var idForm;
+  //var idD;
 
   @override
   void initState() {
@@ -178,6 +178,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();

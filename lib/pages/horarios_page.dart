@@ -114,6 +114,7 @@ class _HorariosPageState extends State<HorariosPage> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();

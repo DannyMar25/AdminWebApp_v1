@@ -56,18 +56,6 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
                       value: 2,
                     )
                   ]),
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
       ),
       drawer: const MenuWidget(),
@@ -119,6 +107,7 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();

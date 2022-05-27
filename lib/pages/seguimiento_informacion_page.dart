@@ -3,6 +3,7 @@ import 'dart:html';
 import 'package:admin_web_v1/models/animales_model.dart';
 import 'package:admin_web_v1/models/formulario_datosPersonales_model.dart';
 import 'package:admin_web_v1/models/formulario_principal_model.dart';
+import 'package:admin_web_v1/providers/usuario_provider.dart';
 import 'package:admin_web_v1/widgets/background.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class _InformacionSeguimientoPageState
   File? foto;
   DatosPersonalesModel datosA = new DatosPersonalesModel();
   FormulariosModel formularios = new FormulariosModel();
+  final userProvider = new UsuarioProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +34,31 @@ class _InformacionSeguimientoPageState
     print(datosA.id);
     formularios = arg['formulario'] as FormulariosModel;
     animal = arg['animal'] as AnimalModel;
+
     return Scaffold(
         backgroundColor: const Color.fromARGB(223, 245, 247, 240),
         appBar: AppBar(
           title: const Text('Segimiento de mascota adoptada'),
           backgroundColor: Colors.green,
+          actions: [
+            PopupMenuButton<int>(
+                onSelected: (item) => onSelected(context, item),
+                icon: const Icon(Icons.manage_accounts),
+                itemBuilder: (context) => [
+                      const PopupMenuItem<int>(
+                        child: Text("Informacion"),
+                        value: 0,
+                      ),
+                      const PopupMenuItem<int>(
+                        child: Text("Ayuda"),
+                        value: 1,
+                      ),
+                      const PopupMenuItem<int>(
+                        child: Text("Cerrar Sesion"),
+                        value: 2,
+                      )
+                    ]),
+          ],
         ),
         drawer: _menuWidget(),
         body: Stack(
@@ -209,6 +231,19 @@ class _InformacionSeguimientoPageState
             )
           ],
         ));
+  }
+
+  void onSelected(BuildContext context, int item) {
+    switch (item) {
+      case 0:
+        break;
+      case 1:
+        Navigator.pushNamed(context, 'soporte');
+        break;
+      case 2:
+        userProvider.signOut();
+        Navigator.pushNamed(context, 'login');
+    }
   }
 
   Widget _obtenerImagenes() {

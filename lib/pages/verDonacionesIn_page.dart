@@ -89,6 +89,7 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();
