@@ -18,16 +18,16 @@ class SeguimientoPrincipalPage extends StatefulWidget {
 
 class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
   final formKey = GlobalKey<FormState>();
-  FormulariosProvider formulariosProvider = new FormulariosProvider();
-  AnimalesProvider animalesProvider = new AnimalesProvider();
+  FormulariosProvider formulariosProvider = FormulariosProvider();
+  AnimalesProvider animalesProvider = AnimalesProvider();
 
   //List<Future<FormulariosModel>> formulario = [];
   List<FormulariosModel> formularios = [];
   List<Future<FormulariosModel>> listaF = [];
   FirebaseStorage storage = FirebaseStorage.instance;
-  AnimalModel animal = new AnimalModel();
-  DatosPersonalesModel datosC = new DatosPersonalesModel();
-  final userProvider = new UsuarioProvider();
+  AnimalModel animal = AnimalModel();
+  DatosPersonalesModel datosC = DatosPersonalesModel();
+  final userProvider = UsuarioProvider();
 
   @override
   void initState() {

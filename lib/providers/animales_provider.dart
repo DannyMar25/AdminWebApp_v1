@@ -81,6 +81,7 @@ class AnimalesProvider {
       var data = e.data() as Map<String, dynamic>;
       var animal = AnimalModel.fromJson({
         "id": e.id,
+        "especie": data["especie"],
         "nombre": data["nombre"],
         "sexo": data["sexo"],
         "edad": data["edad"],
@@ -105,12 +106,13 @@ class AnimalesProvider {
   }
 
   Future<AnimalModel> cargarAnimalId(String id) async {
-    AnimalModel animals = new AnimalModel();
+    AnimalModel animals = AnimalModel();
     final doc = await refAn.doc(id).get();
     var data = doc.data() as Map<String, dynamic>;
 
     animals = AnimalModel.fromJson({
       "id": doc.id,
+      "especie": data["especie"],
       "nombre": data["nombre"],
       "sexo": data["sexo"],
       "edad": data["edad"],

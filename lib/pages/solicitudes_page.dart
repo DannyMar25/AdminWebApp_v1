@@ -16,12 +16,12 @@ class SolicitudesPage extends StatefulWidget {
 class _SolicitudesPageState extends State<SolicitudesPage> {
   List<FormulariosModel> formularioA = [];
   List<Future<FormulariosModel>> formularioC = [];
-  DatosPersonalesModel datosC = new DatosPersonalesModel();
+  DatosPersonalesModel datosC = DatosPersonalesModel();
   final formKey = GlobalKey<FormState>();
-  final formulariosProvider = new FormulariosProvider();
+  final formulariosProvider = FormulariosProvider();
   //final horariosProvider = new HorariosProvider();
-  final animalesProvider = new AnimalesProvider();
-  final userProvider = new UsuarioProvider();
+  final animalesProvider = AnimalesProvider();
+  final userProvider = UsuarioProvider();
 
   @override
   void initState() {

@@ -5,7 +5,6 @@ import 'package:admin_web_v1/models/formulario_relacionAnimal_model.dart';
 import 'package:admin_web_v1/models/formulario_situacionFam_model.dart';
 import 'package:admin_web_v1/providers/formularios_provider.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
-import 'package:admin_web_v1/widgets/background.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -17,17 +16,17 @@ class DatosPersonalesPage extends StatefulWidget {
 }
 
 class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
-  FormulariosModel formularios = new FormulariosModel();
-  DatosPersonalesModel datosA = new DatosPersonalesModel();
-  SitFamiliarModel situacionF = new SitFamiliarModel();
-  DomicilioModel domicilio = new DomicilioModel();
-  RelacionAnimalesModel relacionAn = new RelacionAnimalesModel();
-  DatosPersonalesModel datosC = new DatosPersonalesModel();
+  FormulariosModel formularios = FormulariosModel();
+  DatosPersonalesModel datosA = DatosPersonalesModel();
+  SitFamiliarModel situacionF = SitFamiliarModel();
+  DomicilioModel domicilio = DomicilioModel();
+  RelacionAnimalesModel relacionAn = RelacionAnimalesModel();
+  DatosPersonalesModel datosC = DatosPersonalesModel();
   final formKey = GlobalKey<FormState>();
-  final formulariosProvider = new FormulariosProvider();
+  final formulariosProvider = FormulariosProvider();
   //final horariosProvider = new HorariosProvider();
   // final animalesProvider = new AnimalesProvider();
-  final userProvider = new UsuarioProvider();
+  final userProvider = UsuarioProvider();
   //var idForm;
   //var idD;
   Object? dat;

@@ -10,7 +10,7 @@ class VerFotoEvidenciaPage extends StatefulWidget {
 }
 
 class _VerFotoEvidenciaPageState extends State<VerFotoEvidenciaPage> {
-  EvidenciasModel evidenciaF = new EvidenciasModel();
+  EvidenciasModel evidenciaF = EvidenciasModel();
   @override
   Widget build(BuildContext context) {
     final Object? evidenciaData = ModalRoute.of(context)!.settings.arguments;

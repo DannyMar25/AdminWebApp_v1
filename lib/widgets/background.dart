@@ -16,6 +16,8 @@ class Background extends StatelessWidget {
           Color(0xff8CC63F)
         ]), //color rosa Color(0xff202333)
   );
+
+  const Background({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Stack(

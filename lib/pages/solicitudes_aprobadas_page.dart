@@ -18,16 +18,16 @@ class SolicitudesAprobadasPage extends StatefulWidget {
 
 class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
   final formKey = GlobalKey<FormState>();
-  FormulariosProvider formulariosProvider = new FormulariosProvider();
-  AnimalesProvider animalesProvider = new AnimalesProvider();
+  FormulariosProvider formulariosProvider = FormulariosProvider();
+  AnimalesProvider animalesProvider = AnimalesProvider();
 
   //List<Future<FormulariosModel>> formulario = [];
   List<FormulariosModel> formularios = [];
   List<Future<FormulariosModel>> listaF = [];
   FirebaseStorage storage = FirebaseStorage.instance;
-  AnimalModel animal = new AnimalModel();
-  DatosPersonalesModel datosC = new DatosPersonalesModel();
-  final userProvider = new UsuarioProvider();
+  AnimalModel animal = AnimalModel();
+  DatosPersonalesModel datosC = DatosPersonalesModel();
+  final userProvider = UsuarioProvider();
 
   @override
   void initState() {
@@ -83,7 +83,7 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
                 //   style: const TextStyle(
                 //       fontWeight: FontWeight.bold, fontSize: 20),
                 // ),
-                const Padding(padding: const EdgeInsets.only(bottom: 12.0)),
+                const Padding(padding: EdgeInsets.only(bottom: 12.0)),
                 _verListado()
               ],
             ),

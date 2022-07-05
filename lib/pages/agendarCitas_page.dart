@@ -23,29 +23,31 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
   final firestoreInstance = FirebaseFirestore.instance;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final userProvider = new UsuarioProvider();
-  CitasModel citas = new CitasModel();
-  TextEditingController nombre = new TextEditingController();
-  TextEditingController telefono = new TextEditingController();
-  TextEditingController correo = new TextEditingController();
+  final userProvider = UsuarioProvider();
+  CitasModel citas = CitasModel();
+  TextEditingController nombre = TextEditingController();
+  TextEditingController telefono = TextEditingController();
+  TextEditingController correo = TextEditingController();
   String _fecha = '';
   String _fechaCompleta = '';
-  TextEditingController _inputFieldDateController = new TextEditingController();
+  final TextEditingController _inputFieldDateController =
+      TextEditingController();
 
   //bool _guardando = false;
   //final formKey = GlobalKey<FormState>();
-  HorariosModel horarios = new HorariosModel();
-  final horariosProvider = new HorariosProvider();
-  final citasProvider = new CitasProvider();
+  HorariosModel horarios = HorariosModel();
+  final horariosProvider = HorariosProvider();
+  final citasProvider = CitasProvider();
   CollectionReference dbRefH =
       FirebaseFirestore.instance.collection('horarios');
 
-  AnimalModel animal = new AnimalModel();
+  AnimalModel animal = AnimalModel();
   @override
   Widget build(BuildContext context) {
     final Object? animData = ModalRoute.of(context)!.settings.arguments;
     if (animData != null) {
       animal = animData as AnimalModel;
+      // ignore: avoid_print
       print(animal.id);
     }
     return Scaffold(
@@ -141,7 +143,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
           ),
         ),
         onTap: () {
-          FocusScope.of(context).requestFocus(new FocusNode());
+          FocusScope.of(context).requestFocus(FocusNode());
           setState(() {
             _selectDate(context);
           });
@@ -151,9 +153,9 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
   _selectDate(BuildContext context) async {
     DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: new DateTime.now(),
-      firstDate: new DateTime.now(),
-      lastDate: new DateTime.now().add(const Duration(days: 7)),
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime.now().add(const Duration(days: 7)),
       locale: const Locale('es', 'ES'),
     );
 

@@ -2,7 +2,6 @@ import 'package:admin_web_v1/models/formulario_principal_model.dart';
 import 'package:admin_web_v1/models/formulario_relacionAnimal_model.dart';
 import 'package:admin_web_v1/providers/formularios_provider.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
-import 'package:admin_web_v1/widgets/background.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -14,14 +13,14 @@ class RelacionAnimalPage extends StatefulWidget {
 }
 
 class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
-  FormulariosModel formularios = new FormulariosModel();
+  FormulariosModel formularios = FormulariosModel();
   //DatosPersonalesModel datosA = new DatosPersonalesModel();
-  RelacionAnimalesModel relaciones = new RelacionAnimalesModel();
+  RelacionAnimalesModel relaciones = RelacionAnimalesModel();
   final formKey = GlobalKey<FormState>();
-  final formulariosProvider = new FormulariosProvider();
+  final formulariosProvider = FormulariosProvider();
   //final horariosProvider = new HorariosProvider();
   // final animalesProvider = new AnimalesProvider();
-  final userProvider = new UsuarioProvider();
+  final userProvider = UsuarioProvider();
   //var idForm;
   //var idD;
 

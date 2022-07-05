@@ -12,7 +12,7 @@ class VerArchivoEvidenciaPage extends StatefulWidget {
 
 class _VerArchivoEvidenciaPageState extends State<VerArchivoEvidenciaPage> {
   final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
-  EvidenciasModel evidenciaA = new EvidenciasModel();
+  EvidenciasModel evidenciaA = EvidenciasModel();
 
   @override
   void initState() {
@@ -24,6 +24,7 @@ class _VerArchivoEvidenciaPageState extends State<VerArchivoEvidenciaPage> {
     final Object? evidenciaData = ModalRoute.of(context)!.settings.arguments;
     if (evidenciaData != null) {
       evidenciaA = evidenciaData as EvidenciasModel;
+      // ignore: avoid_print
       print(evidenciaA.id);
     }
     return Scaffold(

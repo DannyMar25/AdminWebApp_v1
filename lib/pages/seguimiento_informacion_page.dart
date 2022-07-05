@@ -4,7 +4,6 @@ import 'package:admin_web_v1/models/animales_model.dart';
 import 'package:admin_web_v1/models/formulario_datosPersonales_model.dart';
 import 'package:admin_web_v1/models/formulario_principal_model.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
-import 'package:admin_web_v1/widgets/background.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
@@ -20,11 +19,11 @@ class _InformacionSeguimientoPageState
     extends State<InformacionSeguimientoPage> {
   final formKey = GlobalKey<FormState>();
   FirebaseStorage storage = FirebaseStorage.instance;
-  AnimalModel animal = new AnimalModel();
+  AnimalModel animal = AnimalModel();
   File? foto;
-  DatosPersonalesModel datosA = new DatosPersonalesModel();
-  FormulariosModel formularios = new FormulariosModel();
-  final userProvider = new UsuarioProvider();
+  DatosPersonalesModel datosA = DatosPersonalesModel();
+  FormulariosModel formularios = FormulariosModel();
+  final userProvider = UsuarioProvider();
 
   @override
   Widget build(BuildContext context) {

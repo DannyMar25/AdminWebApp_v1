@@ -14,9 +14,9 @@ class VerDonacionesInAddPage extends StatefulWidget {
 class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
   List<DonacionesModel> donacionA = [];
   List<Future<DonacionesModel>> listaD = [];
-  final donacionesProvider = new DonacionesProvider();
-  final userProvider = new UsuarioProvider();
-  DonacionesModel donaciones = new DonacionesModel();
+  final donacionesProvider = DonacionesProvider();
+  final userProvider = UsuarioProvider();
+  DonacionesModel donaciones = DonacionesModel();
   final List<String> _items =
       ['Alimento', 'Medicina', 'Insumos Higienicos', 'Otros'].toList();
   String? _selection;
@@ -100,11 +100,9 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
   }
 
   Widget _crearTipoDonacion() {
-    final dropdownMenuOptions = _items
-        .map((String item) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
-            new DropdownMenuItem<String>(value: item, child: new Text(item)))
-        .toList();
+    final dropdownMenuOptions = _items.map((String item) =>
+        //new DropdownMenuItem<String>(value: item, child: new Text(item)))
+        DropdownMenuItem<String>(value: item, child: Text(item))).toList();
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       //mainAxisSize: MainAxisSize.max,

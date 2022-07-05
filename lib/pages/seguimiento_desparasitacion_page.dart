@@ -4,7 +4,6 @@ import 'package:admin_web_v1/models/formulario_principal_model.dart';
 import 'package:admin_web_v1/models/registro_desparacitaciones_model.dart';
 import 'package:admin_web_v1/providers/formularios_provider.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
-import 'package:admin_web_v1/widgets/background.dart';
 import 'package:flutter/material.dart';
 
 class VerRegistroDespPage extends StatefulWidget {
@@ -16,14 +15,14 @@ class VerRegistroDespPage extends StatefulWidget {
 
 class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
   final formKey = GlobalKey<FormState>();
-  FormulariosProvider formulariosProvider = new FormulariosProvider();
-  AnimalModel animal = new AnimalModel();
-  FormulariosModel formularios = new FormulariosModel();
-  DatosPersonalesModel datosA = new DatosPersonalesModel();
+  FormulariosProvider formulariosProvider = FormulariosProvider();
+  AnimalModel animal = AnimalModel();
+  FormulariosModel formularios = FormulariosModel();
+  DatosPersonalesModel datosA = DatosPersonalesModel();
 
   List<RegistroDesparasitacionModel> desparasitaciones = [];
   List<Future<RegistroDesparasitacionModel>> listaD = [];
-  final userProvider = new UsuarioProvider();
+  final userProvider = UsuarioProvider();
 
   @override
   Widget build(BuildContext context) {

@@ -15,14 +15,14 @@ class VerRegistroVacunasPage extends StatefulWidget {
 
 class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
   final formKey = GlobalKey<FormState>();
-  FormulariosProvider formulariosProvider = new FormulariosProvider();
-  AnimalModel animal = new AnimalModel();
-  FormulariosModel formularios = new FormulariosModel();
-  DatosPersonalesModel datosA = new DatosPersonalesModel();
+  FormulariosProvider formulariosProvider = FormulariosProvider();
+  AnimalModel animal = AnimalModel();
+  FormulariosModel formularios = FormulariosModel();
+  DatosPersonalesModel datosA = DatosPersonalesModel();
 
   List<RegistroVacunasModel> vacunas = [];
   List<Future<RegistroVacunasModel>> listaV = [];
-  final userProvider = new UsuarioProvider();
+  final userProvider = UsuarioProvider();
 
   @override
   void initState() {
@@ -67,7 +67,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
           SingleChildScrollView(
               child: Container(
                   //color: Colors.lightGreenAccent,
-                  padding: new EdgeInsets.only(top: 10.0),
+                  padding: const EdgeInsets.only(top: 10.0),
                   child: Form(
                       key: formKey,
                       child: Column(

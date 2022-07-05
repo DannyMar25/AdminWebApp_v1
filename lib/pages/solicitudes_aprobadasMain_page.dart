@@ -20,11 +20,11 @@ class SolicitudAprobadaMainPage extends StatefulWidget {
 class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
   final formKey = GlobalKey<FormState>();
   FirebaseStorage storage = FirebaseStorage.instance;
-  AnimalModel animal = new AnimalModel();
+  AnimalModel animal = AnimalModel();
   File? foto;
-  DatosPersonalesModel datosA = new DatosPersonalesModel();
-  FormulariosModel formularios = new FormulariosModel();
-  final userProvider = new UsuarioProvider();
+  DatosPersonalesModel datosA = DatosPersonalesModel();
+  FormulariosModel formularios = FormulariosModel();
+  final userProvider = UsuarioProvider();
 
   @override
   Widget build(BuildContext context) {

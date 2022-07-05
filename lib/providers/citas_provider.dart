@@ -9,8 +9,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 class CitasProvider {
   CollectionReference refCit = FirebaseFirestore.instance.collection('citas');
   FirebaseStorage storage = FirebaseStorage.instance;
-  final horariosProvider = new HorariosProvider();
-  final animalesProvider = new AnimalesProvider();
+  final horariosProvider = HorariosProvider();
+  final animalesProvider = AnimalesProvider();
 
   Future<bool> crearCita(
     CitasModel cita,
@@ -33,8 +33,8 @@ class CitasProvider {
     var s = (documents.docs.map((e) async {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
-      HorariosModel h1 = new HorariosModel();
-      AnimalModel anim = new AnimalModel();
+      HorariosModel h1 = HorariosModel();
+      AnimalModel anim = AnimalModel();
       h1 = await horariosProvider.cargarHorarioId(e["idHorario"]);
       anim = await animalesProvider.cargarAnimalId(e["idAnimal"]);
       var cita = CitasModel.fromJson({
@@ -61,8 +61,8 @@ class CitasProvider {
     var s = (documents.docs.map((e) async {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
-      HorariosModel h1 = new HorariosModel();
-      AnimalModel anim = new AnimalModel();
+      HorariosModel h1 = HorariosModel();
+      AnimalModel anim = AnimalModel();
       h1 = await horariosProvider.cargarHorarioId(e["idHorario"]);
       anim = await animalesProvider.cargarAnimalId(e["idAnimal"]);
       var cita = CitasModel.fromJson({
@@ -92,8 +92,8 @@ class CitasProvider {
     var s = (documents.docs.map((e) async {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
-      HorariosModel h1 = new HorariosModel();
-      AnimalModel anim = new AnimalModel();
+      HorariosModel h1 = HorariosModel();
+      AnimalModel anim = AnimalModel();
       h1 = await horariosProvider.cargarHorarioId(e["idHorario"]);
       anim = await animalesProvider.cargarAnimalId(e["idAnimal"]);
       var cita = CitasModel.fromJson({

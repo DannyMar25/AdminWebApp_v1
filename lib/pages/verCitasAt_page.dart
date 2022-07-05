@@ -17,12 +17,13 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
   List<CitasModel> citasA = [];
   List<Future<CitasModel>> listaC = [];
   final formKey = GlobalKey<FormState>();
-  final citasProvider = new CitasProvider();
-  final horariosProvider = new HorariosProvider();
-  final animalesProvider = new AnimalesProvider();
-  final userProvider = new UsuarioProvider();
+  final citasProvider = CitasProvider();
+  final horariosProvider = HorariosProvider();
+  final animalesProvider = AnimalesProvider();
+  final userProvider = UsuarioProvider();
   String _fecha = '';
-  TextEditingController _inputFieldDateController = new TextEditingController();
+  final TextEditingController _inputFieldDateController =
+      TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -171,7 +172,7 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
           ),
         ),
         onTap: () {
-          FocusScope.of(context).requestFocus(new FocusNode());
+          FocusScope.of(context).requestFocus(FocusNode());
           setState(() {
             _selectDate(context);
           });
@@ -181,9 +182,9 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
   _selectDate(BuildContext context) async {
     DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: new DateTime.now(),
-      firstDate: new DateTime(2020),
-      lastDate: new DateTime(2025),
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2025),
       locale: const Locale('es', 'ES'),
     );
 

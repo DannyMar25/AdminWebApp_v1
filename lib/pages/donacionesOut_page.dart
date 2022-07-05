@@ -15,9 +15,9 @@ class IngresoDonacionesOutPage extends StatefulWidget {
 class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final donacionesProvider = new DonacionesProvider();
-  final userProvider = new UsuarioProvider();
-  DonacionesModel donaciones = new DonacionesModel();
+  final donacionesProvider = DonacionesProvider();
+  final userProvider = UsuarioProvider();
+  DonacionesModel donaciones = DonacionesModel();
   final List<String> _items =
       ['Alimento', 'Medicina', 'Insumos Higienicos', 'Otros'].toList();
   String? _selection;
@@ -32,6 +32,7 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
     final Object? donacData = ModalRoute.of(context)!.settings.arguments;
     if (donacData != null) {
       donaciones = donacData as DonacionesModel;
+      // ignore: avoid_print
       print(donaciones.id);
     }
 
@@ -126,11 +127,9 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
   }
 
   Widget _crearTipoDonacion() {
-    final dropdownMenuOptions = _items
-        .map((String item) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
-            new DropdownMenuItem<String>(value: item, child: new Text(item)))
-        .toList();
+    final dropdownMenuOptions = _items.map((String item) =>
+        //new DropdownMenuItem<String>(value: item, child: new Text(item)))
+        DropdownMenuItem<String>(value: item, child: Text(item))).toList();
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       //mainAxisSize: MainAxisSize.max,

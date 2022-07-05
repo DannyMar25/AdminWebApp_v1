@@ -21,11 +21,11 @@ class CrearSolicitudPdfPage extends StatefulWidget {
 }
 
 class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
-  FormulariosModel formularios = new FormulariosModel();
-  DatosPersonalesModel datosA = new DatosPersonalesModel();
-  SitFamiliarModel situacionF = new SitFamiliarModel();
-  DomicilioModel domicilio = new DomicilioModel();
-  RelacionAnimalesModel relacionAn = new RelacionAnimalesModel();
+  FormulariosModel formularios = FormulariosModel();
+  DatosPersonalesModel datosA = DatosPersonalesModel();
+  SitFamiliarModel situacionF = SitFamiliarModel();
+  DomicilioModel domicilio = DomicilioModel();
+  RelacionAnimalesModel relacionAn = RelacionAnimalesModel();
 
   @override
   Widget build(BuildContext context) {
@@ -1207,7 +1207,9 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
 
     final List<int> bytes = document.save();
 
+    // ignore: avoid_print
     print('cadena de bytes');
+    // ignore: avoid_print
     print(bytes);
 
     //Dispose the document

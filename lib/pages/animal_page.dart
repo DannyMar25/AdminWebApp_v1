@@ -21,13 +21,13 @@ class _AnimalPageState extends State<AnimalPage> {
   CollectionReference refAn = FirebaseFirestore.instance.collection('animales');
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final animalProvider = new AnimalesProvider();
-  final userProvider = new UsuarioProvider();
+  final animalProvider = AnimalesProvider();
+  final userProvider = UsuarioProvider();
   FirebaseStorage storage = FirebaseStorage.instance;
   FirebaseStorage fs = FirebaseStorage.instance;
   String archivoUrl = '';
   String nombreArchivo = '';
-  AnimalModel animal = new AnimalModel();
+  AnimalModel animal = AnimalModel();
   bool _guardando = false;
   File? foto;
   String? fotoUrl;
@@ -56,6 +56,7 @@ class _AnimalPageState extends State<AnimalPage> {
     final Object? animData = ModalRoute.of(context)!.settings.arguments;
     if (animData != null) {
       animal = animData as AnimalModel;
+      // ignore: avoid_print
       print(animal.id);
     }
 
@@ -153,11 +154,9 @@ class _AnimalPageState extends State<AnimalPage> {
   }
 
   Widget _crearSexo() {
-    final dropdownMenuOptions = _items1
-        .map((String item) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
-            new DropdownMenuItem<String>(value: item, child: new Text(item)))
-        .toList();
+    final dropdownMenuOptions = _items1.map((String item) =>
+        //new DropdownMenuItem<String>(value: item, child: new Text(item)))
+        DropdownMenuItem<String>(value: item, child: Text(item))).toList();
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       //mainAxisSize: MainAxisSize.max,
@@ -181,11 +180,9 @@ class _AnimalPageState extends State<AnimalPage> {
   }
 
   Widget _crearEdad() {
-    final dropdownMenuOptions = _items2
-        .map((String item) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
-            new DropdownMenuItem<String>(value: item, child: new Text(item)))
-        .toList();
+    final dropdownMenuOptions = _items2.map((String item) =>
+        //new DropdownMenuItem<String>(value: item, child: new Text(item)))
+        DropdownMenuItem<String>(value: item, child: Text(item))).toList();
     return Row(
       children: [
         const Text(
@@ -212,7 +209,7 @@ class _AnimalPageState extends State<AnimalPage> {
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
         labelText: 'Temperamento',
-        labelStyle: const TextStyle(fontSize: 16, color: Colors.black),
+        labelStyle: TextStyle(fontSize: 16, color: Colors.black),
       ),
       onSaved: (value) => animal.temperamento = value!,
       validator: (value) {
@@ -245,18 +242,16 @@ class _AnimalPageState extends State<AnimalPage> {
   }
 
   Widget _crearTamanio() {
-    final dropdownMenuOptions = _items
-        .map((String item) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
-            new DropdownMenuItem<String>(value: item, child: new Text(item)))
-        .toList();
+    final dropdownMenuOptions = _items.map((String item) =>
+        //new DropdownMenuItem<String>(value: item, child: new Text(item)))
+        DropdownMenuItem<String>(value: item, child: Text(item))).toList();
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       //mainAxisSize: MainAxisSize.max,
       children: [
         const Text(
           'Seleccione el tamaño: ',
-          style: const TextStyle(fontSize: 16, color: Colors.black),
+          style: TextStyle(fontSize: 16, color: Colors.black),
         ),
         DropdownButton<String>(
             hint: Text(animal.tamanio.toString()),
@@ -278,7 +273,7 @@ class _AnimalPageState extends State<AnimalPage> {
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
         labelText: 'Color',
-        labelStyle: const TextStyle(fontSize: 16, color: Colors.black),
+        labelStyle: TextStyle(fontSize: 16, color: Colors.black),
       ),
       onSaved: (value) => animal.color = value!,
       validator: (value) {
@@ -506,8 +501,8 @@ class _AnimalPageState extends State<AnimalPage> {
           return Colors.green;
         }),
       ),
-      label: Text('Eliminar'),
-      icon: Icon(Icons.delete),
+      label: const Text('Eliminar'),
+      icon: const Icon(Icons.delete),
       autofocus: true,
       onPressed: () {
         animalProvider.borrarAnimal(animal.id!);
@@ -524,7 +519,7 @@ class _AnimalPageState extends State<AnimalPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           _crearBoton(),
-          Padding(padding: EdgeInsets.only(right: 10.0)),
+          const Padding(padding: EdgeInsets.only(right: 10.0)),
           _crearBotonEliminar()
         ],
       );

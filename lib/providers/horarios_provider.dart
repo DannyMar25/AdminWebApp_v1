@@ -88,7 +88,7 @@ class HorariosProvider {
   }
 
   Future<HorariosModel> cargarHorarioId(String id) async {
-    HorariosModel horarios = new HorariosModel();
+    HorariosModel horarios = HorariosModel();
     //print("imprimire nmas bdk: " + id);
     final doc = await refAn.doc(id).get();
     print("sadhslkdhl: " + doc.id);

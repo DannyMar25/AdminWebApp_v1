@@ -18,13 +18,13 @@ class _IngresoDonacionesOutAddPageState
     extends State<IngresoDonacionesOutAddPage> {
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final donacionesProvider = new DonacionesProvider();
-  final userProvider = new UsuarioProvider();
-  DonacionesModel donaciones = new DonacionesModel();
+  final donacionesProvider = DonacionesProvider();
+  final userProvider = UsuarioProvider();
+  DonacionesModel donaciones = DonacionesModel();
   final List<String> _items =
       ['Alimento', 'Medicina', 'Insumos Higienicos', 'Otros'].toList();
   String? _selection;
-  TextEditingController cantidadOut = new TextEditingController();
+  TextEditingController cantidadOut = TextEditingController();
   @override
   void initState() {
     // _selection = _items.last;
@@ -36,6 +36,7 @@ class _IngresoDonacionesOutAddPageState
     final Object? donacData = ModalRoute.of(context)!.settings.arguments;
     if (donacData != null) {
       donaciones = donacData as DonacionesModel;
+      // ignore: avoid_print
       print(donaciones.id);
     }
 

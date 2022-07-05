@@ -4,12 +4,10 @@ import 'package:admin_web_v1/providers/usuario_provider.dart';
 import 'package:admin_web_v1/utils/utils.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/scheduler.dart';
-
 class RegistroPage extends StatelessWidget {
   //const RegistroPage({Key? key}) : super(key: key);
-  final usuarioProvider = new UsuarioProvider();
-  TextEditingController _nombreUs = new TextEditingController();
+  final usuarioProvider = UsuarioProvider();
+  TextEditingController _nombreUs = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

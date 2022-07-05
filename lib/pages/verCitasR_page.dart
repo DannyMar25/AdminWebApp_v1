@@ -14,10 +14,10 @@ class VerCitasRegistradas extends StatefulWidget {
 }
 
 class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
-  CitasModel citas = new CitasModel();
+  CitasModel citas = CitasModel();
 
-  final citasProvider = new CitasProvider();
-  final userProvider = new UsuarioProvider();
+  final citasProvider = CitasProvider();
+  final userProvider = UsuarioProvider();
   File? foto;
   final formKey = GlobalKey<FormState>();
   bool _checkbox = false;

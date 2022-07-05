@@ -15,9 +15,9 @@ class VerDonacionesIn1Page extends StatefulWidget {
 class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final donacionesProvider = new DonacionesProvider();
-  final userProvider = new UsuarioProvider();
-  DonacionesModel donaciones = new DonacionesModel();
+  final donacionesProvider = DonacionesProvider();
+  final userProvider = UsuarioProvider();
+  DonacionesModel donaciones = DonacionesModel();
   final List<String> _items =
       ['Alimento', 'Medicina', 'Insumos Higienicos', 'Otros'].toList();
   String? _selection;
@@ -142,7 +142,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           _crearBoton(),
-                          Padding(padding: EdgeInsets.only(right: 10)),
+                          const Padding(padding: EdgeInsets.only(right: 10)),
                           _crearBotonEliminar()
                         ],
                       )
@@ -170,11 +170,9 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
   }
 
   Widget _crearTipoDonacion() {
-    final dropdownMenuOptions = _items
-        .map((String item) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
-            new DropdownMenuItem<String>(value: item, child: new Text(item)))
-        .toList();
+    final dropdownMenuOptions = _items.map((String item) =>
+        //new DropdownMenuItem<String>(value: item, child: new Text(item)))
+        DropdownMenuItem<String>(value: item, child: Text(item))).toList();
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       //mainAxisSize: MainAxisSize.max,
@@ -404,8 +402,8 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
           return Colors.green;
         }),
       ),
-      label: Text('Eliminar'),
-      icon: Icon(Icons.delete),
+      label: const Text('Eliminar'),
+      icon: const Icon(Icons.delete),
       autofocus: true,
       onPressed: () {
         donacionesProvider.borrarDonacion(donaciones.id);

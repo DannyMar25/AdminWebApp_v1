@@ -4,7 +4,6 @@ import 'package:admin_web_v1/models/animales_model.dart';
 import 'package:admin_web_v1/models/formulario_datosPersonales_model.dart';
 import 'package:admin_web_v1/models/formulario_principal_model.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
-import 'package:admin_web_v1/widgets/background.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -21,11 +20,11 @@ class _SolicitudRechazadaMainPageState
     extends State<SolicitudRechazadaMainPage> {
   final formKey = GlobalKey<FormState>();
   FirebaseStorage storage = FirebaseStorage.instance;
-  AnimalModel animal = new AnimalModel();
+  AnimalModel animal = AnimalModel();
   File? foto;
-  DatosPersonalesModel datosA = new DatosPersonalesModel();
-  FormulariosModel formularios = new FormulariosModel();
-  final userProvider = new UsuarioProvider();
+  DatosPersonalesModel datosA = DatosPersonalesModel();
+  FormulariosModel formularios = FormulariosModel();
+  final userProvider = UsuarioProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +69,7 @@ class _SolicitudRechazadaMainPageState
             SingleChildScrollView(
               child: Container(
                 //color: Colors.lightGreenAccent,
-                padding: new EdgeInsets.only(top: 5.0),
+                padding: const EdgeInsets.only(top: 5.0),
                 child: Form(
                   key: formKey,
                   child: Column(

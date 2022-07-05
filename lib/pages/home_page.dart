@@ -1,7 +1,6 @@
 import 'package:admin_web_v1/models/animales_model.dart';
 import 'package:admin_web_v1/providers/animales_provider.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
-import 'package:admin_web_v1/utils/utils.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +9,7 @@ import 'package:flutter/material.dart';
 class HomePage extends StatelessWidget {
   //const HomePage({Key? key}) : super(key: key);
   final userProvider = UsuarioProvider();
-  final animalesProvider = new AnimalesProvider();
+  final animalesProvider = AnimalesProvider();
   @override
   Widget build(BuildContext context) {
     //final bloc = Provider.of(context);
@@ -140,7 +139,7 @@ class HomePage extends StatelessWidget {
               ), */
             );
           } else {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
         });
   }

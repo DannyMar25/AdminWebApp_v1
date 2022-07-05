@@ -1,13 +1,15 @@
 import 'package:admin_web_v1/blocs/login_bloc.dart';
 import 'package:admin_web_v1/blocs/provider.dart';
+import 'package:admin_web_v1/models/usuarios_model.dart';
 import 'package:admin_web_v1/pages/forgotPassword_page.dart';
+import 'package:admin_web_v1/preferencias_usuario/preferencias_usuario.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
 import 'package:admin_web_v1/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
   //const LoginPage({Key? key}) : super(key: key);
-  final usuarioProvider = new UsuarioProvider();
+  final usuarioProvider = UsuarioProvider();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,15 +68,10 @@ class LoginPage extends StatelessWidget {
               ],
             ),
           ),
-
+          //Text('Olvido la contrasena?'),
           _crearBotonPass(context),
-          // TextButton(
-          //   onPressed: () => Navigator.pushNamed(context, 'registro'),
-          //   child: Text('Crear una nueva cuenta'),
-          // ),
-          // SizedBox(
-          //   height: 100.0,
-          // )
+          //Padding(padding: EdgeInsets.only(bottom: .0)),
+          _crearBotonSoporte(context)
         ],
       ),
     );
@@ -132,7 +129,7 @@ class LoginPage extends StatelessWidget {
     //snapshot.hasData
     //true ? algo asi si true: algo asi si false
     return StreamBuilder(
-      stream: bloc.formValidStream2,
+      stream: bloc.formValidStreamL,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return RaisedButton(
           child: Container(
@@ -153,15 +150,19 @@ class LoginPage extends StatelessWidget {
   }
 
   _login(LoginBloc bloc, BuildContext context) async {
-    //print('=================');
-    //print('Email:${bloc.email}');
-    //print('Password: ${bloc.password}');
-    //print('=================');
+    final prefs = PreferenciasUsuario();
+    final usuario = UsuariosModel();
+
+    // prefs.initPrefs();
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+
     Map info = await usuarioProvider.login(bloc.email, bloc.password);
     if (info['ok']) {
-      Navigator.pushReplacementNamed(context, 'home');
+      final user = await usuarioProvider.obtenerUsuario(info['uid']);
+      prefs.setEmail(bloc.email);
+      prefs.setRol(user['rol']);
+      Navigator.pushReplacementNamed(context, 'bienvenida');
     } else {
-      //mostrarAlerta(context, info['mensaje']);
       mostrarAlerta(context, 'El correo o contraseña son incorrectos.');
     }
 
@@ -183,6 +184,18 @@ class LoginPage extends StatelessWidget {
     );
   }
 
+  Widget _crearBotonSoporte(BuildContext context) {
+    return TextButton(
+      onPressed: () {
+        Navigator.pushReplacementNamed(context, 'soporte');
+      },
+      child: const Text(
+        'Contactarse con soporte.',
+        style: TextStyle(color: Colors.green, fontSize: 20),
+      ),
+    );
+  }
+
   Widget _crearFondo(BuildContext context) {
     //final size = MediaQuery.of(context).size;
     final fondoMorado = Container(
@@ -190,8 +203,8 @@ class LoginPage extends StatelessWidget {
       width: double.infinity,
       decoration: const BoxDecoration(
         gradient: LinearGradient(colors: <Color>[
-          Color.fromARGB(196, 15, 206, 72),
-          Color.fromARGB(196, 12, 247, 51),
+          Color.fromARGB(255, 22, 175, 60),
+          Color.fromARGB(255, 30, 184, 63),
         ]),
       ),
     );
@@ -215,13 +228,10 @@ class LoginPage extends StatelessWidget {
           padding: const EdgeInsets.only(top: 80.0),
           child: Column(
             children: [
-              Image.asset('assets/pet-care.png', height: 190),
               //Icon(Icons.person_pin_circle, color: Colors.white, size: 100.0),
+              Image.asset('assets/pet-care.png', height: 190),
+
               const SizedBox(height: 10.0, width: double.infinity),
-              // Text(
-              //   'Bienvenid@',
-              //   style: TextStyle(color: Colors.white, fontSize: 25.0),
-              // ),
             ],
           ),
         ),

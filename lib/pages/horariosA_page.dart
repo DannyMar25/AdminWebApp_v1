@@ -12,8 +12,8 @@ class HorariosAgregados extends StatefulWidget {
 }
 
 class _HorariosAgregadosState extends State<HorariosAgregados> {
-  final horariosProvider = new HorariosProvider();
-  final userProvider = new UsuarioProvider();
+  final horariosProvider = HorariosProvider();
+  final userProvider = UsuarioProvider();
   final List<String> _items = [
     'Lunes',
     'Martes',
@@ -76,11 +76,9 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
   }
 
   Widget _crearDia() {
-    final dropdownMenuOptions = _items
-        .map((String item) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
-            new DropdownMenuItem<String>(value: item, child: new Text(item)))
-        .toList();
+    final dropdownMenuOptions = _items.map((String item) =>
+        //new DropdownMenuItem<String>(value: item, child: new Text(item)))
+        DropdownMenuItem<String>(value: item, child: Text(item))).toList();
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       //mainAxisSize: MainAxisSize.max,

@@ -15,9 +15,9 @@ class HorariosPage extends StatefulWidget {
 class _HorariosPageState extends State<HorariosPage> {
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final horariosProvider = new HorariosProvider();
-  final userProvider = new UsuarioProvider();
-  HorariosModel horarios = new HorariosModel();
+  final horariosProvider = HorariosProvider();
+  final userProvider = UsuarioProvider();
+  HorariosModel horarios = HorariosModel();
   bool _disponible = false;
   //lista dias
   final List<String> _items = [
@@ -137,11 +137,9 @@ class _HorariosPageState extends State<HorariosPage> {
   }
 
   Widget _crearDia() {
-    final dropdownMenuOptions = _items
-        .map((String item) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
-            new DropdownMenuItem<String>(value: item, child: new Text(item)))
-        .toList();
+    final dropdownMenuOptions = _items.map((String item) =>
+        //new DropdownMenuItem<String>(value: item, child: new Text(item)))
+        DropdownMenuItem<String>(value: item, child: Text(item))).toList();
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       //mainAxisSize: MainAxisSize.max,
@@ -167,11 +165,9 @@ class _HorariosPageState extends State<HorariosPage> {
   }
 
   Widget _crearHoraDia() {
-    final dropdownMenuOptions = _items1
-        .map((String item) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
-            new DropdownMenuItem<String>(value: item, child: new Text(item)))
-        .toList();
+    final dropdownMenuOptions = _items1.map((String item) =>
+        //new DropdownMenuItem<String>(value: item, child: new Text(item)))
+        DropdownMenuItem<String>(value: item, child: Text(item))).toList();
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       //mainAxisSize: MainAxisSize.max,

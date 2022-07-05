@@ -18,13 +18,13 @@ class SolicitudesMainPage extends StatefulWidget {
 }
 
 class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
-  FormulariosProvider formulariosProvider = new FormulariosProvider();
-  FormulariosModel formularios = new FormulariosModel();
-  DatosPersonalesModel datosC = new DatosPersonalesModel();
-  SitFamiliarModel situacionF = new SitFamiliarModel();
-  DomicilioModel domicilio = new DomicilioModel();
-  RelacionAnimalesModel relacionA = new RelacionAnimalesModel();
-  final userProvider = new UsuarioProvider();
+  FormulariosProvider formulariosProvider = FormulariosProvider();
+  FormulariosModel formularios = FormulariosModel();
+  DatosPersonalesModel datosC = DatosPersonalesModel();
+  SitFamiliarModel situacionF = SitFamiliarModel();
+  DomicilioModel domicilio = DomicilioModel();
+  RelacionAnimalesModel relacionA = RelacionAnimalesModel();
+  final userProvider = UsuarioProvider();
   File? foto;
   final formKey = GlobalKey<FormState>();
 

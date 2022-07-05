@@ -56,6 +56,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final prefs = new PreferenciasUsuario();
+    print(prefs.token);
+    final email = prefs.email;
+    final rol = prefs.rol;
     //print(prefs.token);
 
     return Provider(
@@ -71,7 +74,8 @@ class MyApp extends StatelessWidget {
             Locale('en', 'US'), // English, no country code
             Locale('es', 'ES'), // Spanish, no country code
           ],
-          initialRoute: 'login',
+          //initialRoute: 'login',
+          initialRoute: email == '' ? 'login' : 'home',
           routes: {
             'login': (_) => LoginPage(),
             'registro': (_) => RegistroPage(),

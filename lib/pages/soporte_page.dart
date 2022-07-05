@@ -1,4 +1,5 @@
 import 'package:admin_web_v1/models/soportes_model.dart';
+import 'package:admin_web_v1/preferencias_usuario/preferencias_usuario.dart';
 import 'package:admin_web_v1/providers/soportes_provider.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
@@ -13,12 +14,15 @@ class SoportePage extends StatefulWidget {
 
 class _SoportePageState extends State<SoportePage> {
   final formKey = GlobalKey<FormState>();
-  final userProvider = new UsuarioProvider();
-  SoportesProvider soportesProvider = new SoportesProvider();
-  SoportesModel soporte = new SoportesModel();
+  final userProvider = UsuarioProvider();
+  SoportesProvider soportesProvider = SoportesProvider();
+  SoportesModel soporte = SoportesModel();
+  final prefs = PreferenciasUsuario();
   @override
   Widget build(BuildContext context) {
+    final email = prefs.email;
     return Scaffold(
+      backgroundColor: const Color.fromARGB(223, 221, 248, 153),
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: const Text("Soporte"),
@@ -35,22 +39,27 @@ class _SoportePageState extends State<SoportePage> {
                       child: Text("Ayuda"),
                       value: 1,
                     ),
-                    const PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
-                      value: 2,
-                    )
+                    email != ''
+                        ? const PopupMenuItem<int>(
+                            child: Text("Cerrar Sesion"),
+                            value: 2,
+                          )
+                        : const PopupMenuItem<int>(
+                            child: Text("Iniciar Sesion"),
+                            value: 2,
+                          ),
                   ]),
         ],
       ),
       drawer: const MenuWidget(),
       body: SingleChildScrollView(
         child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/fondoanimales.jpg"),
-              fit: BoxFit.cover,
-            ),
-          ),
+          // decoration: BoxDecoration(
+          //   image: DecorationImage(
+          //     image: AssetImage("assets/fondoanimales.jpg"),
+          //     fit: BoxFit.cover,
+          //   ),
+          // ),
           padding: const EdgeInsets.all(15.0),
           child: Form(
             key: formKey,
@@ -66,6 +75,9 @@ class _SoportePageState extends State<SoportePage> {
                 _crearCorreo(),
                 _crearAsunto(),
                 _crearMensaje(),
+                const Divider(
+                  color: Colors.transparent,
+                ),
                 _crearBoton(),
                 const Padding(padding: EdgeInsets.only(bottom: 210.0))
                 // buildAbout(),
@@ -82,7 +94,6 @@ class _SoportePageState extends State<SoportePage> {
       case 0:
         break;
       case 1:
-        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();
@@ -96,6 +107,10 @@ class _SoportePageState extends State<SoportePage> {
       readOnly: false,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
+          icon: Icon(
+            Icons.person,
+            //color: Colors.green,
+          ),
           labelText: 'Nombre:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
@@ -112,6 +127,7 @@ class _SoportePageState extends State<SoportePage> {
       readOnly: false,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
+          icon: Icon(Icons.mail),
           labelText: 'Correo:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
@@ -128,6 +144,7 @@ class _SoportePageState extends State<SoportePage> {
       readOnly: false,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
+          icon: Icon(Icons.edit),
           labelText: 'Asunto:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
@@ -145,6 +162,7 @@ class _SoportePageState extends State<SoportePage> {
       maxLines: 10,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
+          icon: Icon(Icons.edit_note),
           labelText: 'Mensaje:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
@@ -165,7 +183,10 @@ class _SoportePageState extends State<SoportePage> {
               return Colors.green[500];
             }),
           ),
-          label: const Text('Enviar'),
+          label: const Text(
+            'Enviar',
+            style: TextStyle(fontSize: 16),
+          ),
           icon: const Icon(Icons.save),
           autofocus: true,
           onPressed: () {

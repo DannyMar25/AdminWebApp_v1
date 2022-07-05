@@ -34,7 +34,7 @@ class LoginBloc with Validators {
   Stream<bool> get formValidStream => Rx.combineLatest3(
       emailStream, passwordStream, nameStream, (e, p, n) => true);
 
-  Stream<bool> get formValidStream2 =>
+  Stream<bool> get formValidStreamL =>
       Rx.combineLatest2(emailStream, passwordStream, (a, b) => true);
 
   Stream<bool> get formValidStream1 => Rx.combineLatest4(emailStream,

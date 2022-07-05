@@ -17,7 +17,7 @@ import 'package:flutter/material.dart';
 class FormulariosProvider {
   CollectionReference refForm =
       FirebaseFirestore.instance.collection('formularios');
-  final animalesProvider = new AnimalesProvider();
+  final animalesProvider = AnimalesProvider();
 
   //late AnimalModel animal1;
 
@@ -54,7 +54,7 @@ class FormulariosProvider {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       //HorariosModel h1 = new HorariosModel();
-      AnimalModel anim = new AnimalModel();
+      AnimalModel anim = AnimalModel();
       //h1 = await horariosProvider.cargarHorarioId(e["idHorario"]);
       anim = await animalesProvider.cargarAnimalId(e["idAnimal"]);
       var formulario = FormulariosModel.fromJson({
@@ -111,7 +111,7 @@ class FormulariosProvider {
   }
 
   Future<DatosPersonalesModel> cargarDPId(String idf, String idD) async {
-    DatosPersonalesModel datos = new DatosPersonalesModel();
+    DatosPersonalesModel datos = DatosPersonalesModel();
     final doc =
         await refForm.doc(idf).collection('datosPersonales').doc(idD).get();
     var data = doc.data() as Map<String, dynamic>;
@@ -137,7 +137,7 @@ class FormulariosProvider {
   }
 
   Future<SitFamiliarModel> cargarSFId(String idf, String idS) async {
-    SitFamiliarModel situacionF = new SitFamiliarModel();
+    SitFamiliarModel situacionF = SitFamiliarModel();
     final doc =
         await refForm.doc(idf).collection('situacionFamiliar').doc(idS).get();
     var data = doc.data() as Map<String, dynamic>;
@@ -164,7 +164,7 @@ class FormulariosProvider {
   }
 
   Future<DomicilioModel> cargarDomId(String idf, String idDom) async {
-    DomicilioModel domicilio = new DomicilioModel();
+    DomicilioModel domicilio = DomicilioModel();
     final doc = await refForm.doc(idf).collection('domicilio').doc(idDom).get();
     var data = doc.data() as Map<String, dynamic>;
 
@@ -188,7 +188,7 @@ class FormulariosProvider {
   }
 
   Future<RelacionAnimalesModel> cargarRAId(String idf, String idRA) async {
-    RelacionAnimalesModel relaciones = new RelacionAnimalesModel();
+    RelacionAnimalesModel relaciones = RelacionAnimalesModel();
     final doc =
         await refForm.doc(idf).collection('relacionAnimal').doc(idRA).get();
     var data = doc.data() as Map<String, dynamic>;
@@ -240,7 +240,7 @@ class FormulariosProvider {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       //HorariosModel h1 = new HorariosModel();
-      AnimalModel anim = new AnimalModel();
+      AnimalModel anim = AnimalModel();
       //h1 = await horariosProvider.cargarHorarioId(e["idHorario"]);
       anim = await animalesProvider.cargarAnimalId(e["idAnimal"]);
       var formulario = FormulariosModel.fromJson({
@@ -276,7 +276,7 @@ class FormulariosProvider {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       //HorariosModel h1 = new HorariosModel();
-      AnimalModel anim = new AnimalModel();
+      AnimalModel anim = AnimalModel();
       //h1 = await horariosProvider.cargarHorarioId(e["idHorario"]);
       anim = await animalesProvider.cargarAnimalId(e["idAnimal"]);
       var formulario = FormulariosModel.fromJson({

@@ -14,9 +14,9 @@ class VerDonacionesOut1Page extends StatefulWidget {
 class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final donacionesProvider = new DonacionesProvider();
-  final userProvider = new UsuarioProvider();
-  DonacionesModel donaciones = new DonacionesModel();
+  final donacionesProvider = DonacionesProvider();
+  final userProvider = UsuarioProvider();
+  DonacionesModel donaciones = DonacionesModel();
   final List<String> _items =
       ['Alimento', 'Medicina', 'Insumos Higienicos', 'Otros'].toList();
   String? _selection;

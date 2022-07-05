@@ -16,16 +16,16 @@ class SituacionFamiliarPage extends StatefulWidget {
 }
 
 class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
-  FormulariosModel formularios = new FormulariosModel();
-  DatosPersonalesModel datosA = new DatosPersonalesModel();
-  SitFamiliarModel situacionF = new SitFamiliarModel();
-  DomicilioModel domicilio = new DomicilioModel();
-  RelacionAnimalesModel relacionAn = new RelacionAnimalesModel();
+  FormulariosModel formularios = FormulariosModel();
+  DatosPersonalesModel datosA = DatosPersonalesModel();
+  SitFamiliarModel situacionF = SitFamiliarModel();
+  DomicilioModel domicilio = DomicilioModel();
+  RelacionAnimalesModel relacionAn = RelacionAnimalesModel();
   final formKey = GlobalKey<FormState>();
-  final formulariosProvider = new FormulariosProvider();
+  final formulariosProvider = FormulariosProvider();
   //final horariosProvider = new HorariosProvider();
   // final animalesProvider = new AnimalesProvider();
-  final userProvider = new UsuarioProvider();
+  final userProvider = UsuarioProvider();
   //var idForm;
   //var idD;
 
