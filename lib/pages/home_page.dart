@@ -77,6 +77,48 @@ class HomePage extends StatelessWidget {
     }
   }
 
+  // Widget _crearListado() {
+  //   return FutureBuilder(
+  //       future: animalesProvider.cargarAnimal1(),
+  //       builder:
+  //           (BuildContext context, AsyncSnapshot<List<AnimalModel>> snapshot) {
+  //         if (snapshot.hasData) {
+  //           final animales = snapshot.data;
+  //           return ListView.builder(
+  //             itemCount: animales!.length,
+  //             itemBuilder: (context, i) => _crearItem(context, animales[i]),
+  //           );
+  //         } else {
+  //           return const Center(child: CircularProgressIndicator());
+  //         }
+  //       });
+  // }
+
+  // Widget _crearItem(BuildContext context, AnimalModel animal) {
+  //   return Card(
+  //     child: Column(
+  //       //estaba con Column
+  //       children: [
+  //         (animal.fotoUrl == "")
+  //             ? const Image(image: AssetImage('assets/no-image.png'))
+  //             : FadeInImage(
+  //                 image: NetworkImage(animal.fotoUrl),
+  //                 placeholder: const AssetImage('assets/jar-loading.gif'),
+  //                 height: 300.0,
+  //                 width: 300.0,
+  //                 //width: double.infinity,
+  //                 fit: BoxFit.cover,
+  //               ),
+  //         ListTile(
+  //           title: Text('${animal.nombre} - ${animal.edad}'),
+  //           subtitle:
+  //               Text('Color: ${animal.color} - Tamaño: ${animal.tamanio}'),
+  //           onTap: () =>
+  //               Navigator.pushNamed(context, 'animal', arguments: animal),
+  //         ),
+  //       ],
+  //     ),
+  //   );
   Widget _crearListado() {
     return FutureBuilder(
         future: animalesProvider.cargarAnimal1(),
@@ -84,56 +126,57 @@ class HomePage extends StatelessWidget {
             (BuildContext context, AsyncSnapshot<List<AnimalModel>> snapshot) {
           if (snapshot.hasData) {
             final animales = snapshot.data;
-            return ListView.builder(
-              itemCount: animales!.length,
-              itemBuilder: (context, i) => _crearItem(context, animales[i]),
+            return GridView.count(
+              childAspectRatio: 60 / 100,
+              shrinkWrap: true,
+              crossAxisCount: 5,
+              children: List.generate(animales!.length, (index) {
+                return _crearItem(context, animales[index]);
+              }),
+
+              /* ListView.builder(
+                itemCount: animales!.length,
+                itemBuilder: (context, i) => _crearItem(context, animales[i]),
+              ), */
             );
           } else {
-            return const Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator());
           }
         });
   }
 
   Widget _crearItem(BuildContext context, AnimalModel animal) {
-    return Dismissible(
-      key: UniqueKey(),
-      background: Container(
-        color: Colors.red,
-      ),
-      onDismissed: (direccion) {
-        mostrarAlertaBorrar(context, 'hola');
-        animalesProvider.borrarAnimal(animal.id!);
-      },
-      child: Card(
+    return Card(
         child: Column(
-          //estaba con Column
-          children: [
-            (animal.fotoUrl == "")
-                ? const Image(image: AssetImage('assets/no-image.png'))
-                : FadeInImage(
-                    image: NetworkImage(animal.fotoUrl),
-                    placeholder: const AssetImage('assets/jar-loading.gif'),
-                    height: 300.0,
-                    width: 300.0,
-                    //width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
-            ListTile(
-              title: Text('${animal.nombre} - ${animal.edad}'),
-              subtitle:
-                  Text('Color: ${animal.color} - Tamaño: ${animal.tamanio}'),
-              onTap: () =>
-                  Navigator.pushNamed(context, 'animal', arguments: animal),
-            ),
-          ],
+      //estaba con Column
+      children: [
+        (animal.fotoUrl == "")
+            ? const Image(image: AssetImage('assets/no-image.png'))
+            : FadeInImage(
+                image: NetworkImage(animal.fotoUrl),
+                placeholder: const AssetImage('assets/jar-loading.gif'),
+                height: 350.0,
+                //width: 250.0,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+        ListTile(
+          title: Text('${animal.nombre} - ${animal.edad}'),
+          subtitle: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                'Color: ${animal.color}',
+                textAlign: TextAlign.start,
+              ),
+              Text('Tamaño: ${animal.tamanio}'),
+            ],
+          ),
+          onTap: () =>
+              Navigator.pushNamed(context, 'animal', arguments: animal),
         ),
-      ),
-      // child: ListTile(
-      //   title: Text('${animal.nombre} - ${animal.edad} meses'),
-      //   subtitle: Text('${animal.color} - ${animal.id}'),
-      //   onTap: () => Navigator.pushNamed(context, 'animal', arguments: animal),
-      // ),
-    );
+      ],
+    ));
   }
 
   _crearBoton(BuildContext context) {

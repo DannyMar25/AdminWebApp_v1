@@ -30,7 +30,16 @@ void mostrarAlertaOk(BuildContext context, String mensaje, String ruta) {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Informacion correcta'),
+          title: Row(
+            children: const [
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 50,
+              ),
+              Text('Informacion correcta'),
+            ],
+          ),
           content: Text(mensaje),
           actions: [
             TextButton(

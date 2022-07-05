@@ -1,6 +1,7 @@
 import 'package:admin_web_v1/models/horarios_model.dart';
 import 'package:admin_web_v1/providers/horarios_provider.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
+import 'package:admin_web_v1/utils/utils.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -19,11 +20,20 @@ class _HorariosPageState extends State<HorariosPage> {
   HorariosModel horarios = new HorariosModel();
   bool _disponible = false;
   //lista dias
-  final List<String> _items =
-      ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'].toList();
+  final List<String> _items = [
+    'Lunes',
+    'Martes',
+    'Miercoles',
+    'Jueves',
+    'Viernes',
+    'Sabado',
+    'Domingo'
+  ].toList();
   final List<String> _items1 = [
-    '9:00 - 9:30',
-    '9:30 - 10:00',
+    '08:00 - 08:30',
+    '08:30 - 09:00',
+    '09:00 - 09:30',
+    '09:30 - 10:00',
     '10:00 - 10:30',
     '10:30 - 11:00',
     '11:00 - 11:30',
@@ -31,7 +41,11 @@ class _HorariosPageState extends State<HorariosPage> {
     '12:00 - 12:30',
     '12:30 - 13:00',
     '14:00 - 14:30',
-    '14:30 - 15:00'
+    '14:30 - 15:00',
+    '15:00 - 15:30',
+    '15:30 - 16:00',
+    '16:00 - 16:30',
+    '16:30 - 17:00',
   ].toList();
   String? _selection;
   String? _selection1;
@@ -52,7 +66,7 @@ class _HorariosPageState extends State<HorariosPage> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Agregar horarios de visita"),
+        title: const Text("Horario de visita"),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -98,8 +112,8 @@ class _HorariosPageState extends State<HorariosPage> {
               const Divider(),
               _crearDisponible(),
               const Divider(),
-              _crearBotonEliminar(),
-              const Divider(),
+              //_crearBotonEliminar(),
+              //const Divider(),
               _crearBoton(),
               const Divider(),
             ],
@@ -133,19 +147,21 @@ class _HorariosPageState extends State<HorariosPage> {
       //mainAxisSize: MainAxisSize.max,
       children: [
         const Text(
-          'Seleccione el dia:         ',
+          'Dia:         ',
           style: TextStyle(fontSize: 16, color: Colors.black),
         ),
         DropdownButton<String>(
-            hint: Text(horarios.dia.toString()),
-            value: _selection,
-            items: dropdownMenuOptions,
-            onChanged: (s) {
-              setState(() {
-                _selection = s;
-                horarios.dia = s!;
-              });
-            }),
+          hint: Text(horarios.dia.toString()),
+          value: _selection,
+          items: dropdownMenuOptions,
+          onChanged: null,
+          //  (s) {
+          //   setState(() {
+          //     _selection = s;
+          //     horarios.dia = s!;
+          //   });
+          // }
+        ),
       ],
     );
   }
@@ -161,19 +177,21 @@ class _HorariosPageState extends State<HorariosPage> {
       //mainAxisSize: MainAxisSize.max,
       children: [
         const Text(
-          'Seleccione el dia:         ',
+          'Hora:         ',
           style: TextStyle(fontSize: 16, color: Colors.black),
         ),
         DropdownButton<String>(
-            hint: Text(horarios.hora.toString()),
-            value: _selection1,
-            items: dropdownMenuOptions,
-            onChanged: (s) {
-              setState(() {
-                _selection1 = s;
-                horarios.hora = s!;
-              });
-            }),
+          hint: Text(horarios.hora.toString()),
+          value: _selection1,
+          items: dropdownMenuOptions,
+          onChanged: null,
+          // (s) {
+          //   setState(() {
+          //     _selection1 = s;
+          //     horarios.hora = s!;
+          //   });
+          // }
+        ),
       ],
     );
   }
@@ -224,11 +242,13 @@ class _HorariosPageState extends State<HorariosPage> {
   void _submit() async {
     if (horarios.id == "") {
       horariosProvider.crearHorario(horarios);
+      mostrarAlertaOk(context, 'Registro guardado con exito', 'horariosAdd');
     } else {
       horariosProvider.editarHorarios(horarios);
+      mostrarAlertaOk(context, 'Registro actualizado con exito', 'horariosAdd');
     }
     //mostrarSnackbar('Registro guardado');
-    Navigator.pushNamed(context, 'horariosAdd');
+    //Navigator.pushNamed(context, 'horariosAdd');
   }
 
   Widget _crearBotonEliminar() {

@@ -1,6 +1,7 @@
 import 'package:admin_web_v1/models/donaciones_model.dart';
 import 'package:admin_web_v1/providers/donaciones_provider.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
+import 'package:admin_web_v1/utils/utils.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -137,7 +138,14 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
                           ]),
                       const Padding(padding: EdgeInsets.only(bottom: 15.0)),
                       const Divider(),
-                      _crearBoton(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _crearBoton(),
+                          Padding(padding: EdgeInsets.only(right: 10)),
+                          _crearBotonEliminar()
+                        ],
+                      )
                       // _crearCantidad(),
                     ],
                   )),
@@ -386,5 +394,24 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
 
     //mostrarSnackbar('Registro guardado');
     Navigator.pushNamed(context, 'verDonacionesInAdd');
+  }
+
+  Widget _crearBotonEliminar() {
+    return ElevatedButton.icon(
+      style: ButtonStyle(
+        backgroundColor:
+            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+          return Colors.green;
+        }),
+      ),
+      label: Text('Eliminar'),
+      icon: Icon(Icons.delete),
+      autofocus: true,
+      onPressed: () {
+        donacionesProvider.borrarDonacion(donaciones.id);
+        mostrarAlertaOk(
+            context, 'Registro eliminado con exito', 'verDonacionesInAdd');
+      },
+    );
   }
 }

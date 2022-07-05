@@ -63,17 +63,19 @@ class _VerDonacionesOutAddPageState extends State<VerDonacionesOutAddPage> {
           // }),
         ],
       ),
-      body: Container(
-        padding: const EdgeInsets.all(15.0),
-        child: Form(
-          child: Column(
-            children: [
-              _crearTipoDonacion(),
-              const Divider(),
-              _verListado(),
-              const Divider(),
-              //_mostrarTotal()
-            ],
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(15.0),
+          child: Form(
+            child: Column(
+              children: [
+                _crearTipoDonacion(),
+                const Divider(),
+                _verListado(),
+                const Divider(),
+                //_mostrarTotal()
+              ],
+            ),
           ),
         ),
       ),
@@ -132,7 +134,7 @@ class _VerDonacionesOutAddPageState extends State<VerDonacionesOutAddPage> {
             return Column(
               children: [
                 SizedBox(
-                    height: 300,
+                    height: 600,
                     child: ListView.builder(
                         itemCount: donaciones!.length,
                         itemBuilder: (context, i) =>
@@ -159,9 +161,16 @@ class _VerDonacionesOutAddPageState extends State<VerDonacionesOutAddPage> {
             children: [
               ListTile(
                   title: Text(
-                      '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}'),
-                  subtitle: Text(
-                      '${donacion.descripcion} ${'- Peso:'}  ${donacion.peso} ${'Kg'}'),
+                    '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}',
+                    textAlign: TextAlign.center,
+                  ),
+                  subtitle: Column(
+                    children: [
+                      Text(
+                          '${donacion.descripcion} ${'- Peso:'}  ${donacion.peso} ${'Kg'}'),
+                      Text('${'Fecha de ingreso: '} ${donacion.fechaIngreso}'),
+                    ],
+                  ),
                   onTap: () {
                     Navigator.pushReplacementNamed(
                         context, 'verDonacionesOutAdd1',
@@ -181,8 +190,15 @@ class _VerDonacionesOutAddPageState extends State<VerDonacionesOutAddPage> {
             children: [
               ListTile(
                   title: Text(
-                      '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}'),
-                  subtitle: Text(donacion.descripcion),
+                    '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}',
+                    textAlign: TextAlign.center,
+                  ),
+                  subtitle: Column(
+                    children: [
+                      Text(donacion.descripcion),
+                      Text('${'Fecha de ingreso: '} ${donacion.fechaIngreso}'),
+                    ],
+                  ),
                   onTap: () {
                     Navigator.pushReplacementNamed(
                         context, 'verDonacionesOutAdd1',

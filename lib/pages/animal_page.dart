@@ -90,20 +90,6 @@ class _AnimalPageState extends State<AnimalPage> {
                       value: 2,
                     )
                   ]),
-          //cerrar sesion
-
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
       ),
       body: SingleChildScrollView(
@@ -124,7 +110,8 @@ class _AnimalPageState extends State<AnimalPage> {
                 _crearRaza(),
                 _crearCaracteristicas(),
                 // _crearDisponible(),
-                _crearBoton(),
+                //_crearBoton(),
+                _buildChild(),
               ],
             ),
           ),
@@ -283,22 +270,6 @@ class _AnimalPageState extends State<AnimalPage> {
             }),
       ],
     );
-
-    // return TextFormField(
-    //   initialValue: animal.tamanio.toString(),
-    //   textCapitalization: TextCapitalization.sentences,
-    //   decoration: InputDecoration(
-    //     labelText: 'Tamaño',
-    //   ),
-    //   onSaved: (value) => animal.tamanio = double.parse(value!),
-    //   validator: (value) {
-    //     if (utils.isNumeric(value!)) {
-    //       return null;
-    //     } else {
-    //       return 'Solo numeros';
-    //     }
-    //   },
-    // );
   }
 
   Widget _crearColor() {
@@ -414,6 +385,7 @@ class _AnimalPageState extends State<AnimalPage> {
           .update({"fotoUrl": fotoUrl, "id": animalAdd.id});
 
       //animalProvider.crearAnimal1(animal, fotoUrl!);
+      utils.mostrarAlertaOk(context, 'Registro guardado con exito', 'home');
     } else {
       await refAn.doc(animal.id).update(animal.toJson());
       String path;
@@ -427,15 +399,16 @@ class _AnimalPageState extends State<AnimalPage> {
         });
       });
       await refAn.doc(animal.id).update({"fotoUrl": fotoUrl});
+      utils.mostrarAlertaOk(context, 'Registro actualizado con exito', 'home');
       //animalProvider.editarAnimal(animal, fotoUrl!);
     }
     //setState(() {
     //  _guardando = false;
     // });
 
-    mostrarSnackbar('Registro guardado');
+    //mostrarSnackbar('Registro guardado');
 
-    Navigator.pushNamed(context, 'home');
+    //Navigator.pushNamed(context, 'home');
     // if (animal.id == null) {
     //   print("ssssss");
     // }
@@ -523,5 +496,38 @@ class _AnimalPageState extends State<AnimalPage> {
         // _mostrarFoto();
       });
     });
+  }
+
+  Widget _crearBotonEliminar() {
+    return ElevatedButton.icon(
+      style: ButtonStyle(
+        backgroundColor:
+            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+          return Colors.green;
+        }),
+      ),
+      label: Text('Eliminar'),
+      icon: Icon(Icons.delete),
+      autofocus: true,
+      onPressed: () {
+        animalProvider.borrarAnimal(animal.id!);
+        utils.mostrarAlertaOk(context, 'Registro eliminado con exito', 'home');
+      },
+    );
+  }
+
+  Widget _buildChild() {
+    if (animal.id == "") {
+      return _crearBoton();
+    } else {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _crearBoton(),
+          Padding(padding: EdgeInsets.only(right: 10.0)),
+          _crearBotonEliminar()
+        ],
+      );
+    }
   }
 }

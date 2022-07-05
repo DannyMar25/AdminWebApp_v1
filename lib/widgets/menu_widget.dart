@@ -45,15 +45,15 @@ class MenuWidget extends StatelessWidget {
           ExpansionTile(
             title: const Text('Citas'),
             children: [
-              ListTile(
-                leading: const Icon(
-                  Icons.add,
-                  color: Colors.green,
-                ),
-                title: const Text('Agregar horarios de visitas'),
-                onTap: () =>
-                    Navigator.pushReplacementNamed(context, 'citasAdd'),
-              ),
+              // ListTile(
+              //   leading: const Icon(
+              //     Icons.add,
+              //     color: Colors.green,
+              //   ),
+              //   title: const Text('Agregar horarios de visitas'),
+              //   onTap: () =>
+              //       Navigator.pushReplacementNamed(context, 'citasAdd'),
+              // ),
               ListTile(
                 leading: const Icon(
                   Icons.app_registration,
