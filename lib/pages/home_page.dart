@@ -176,18 +176,7 @@ class HomePage extends StatelessWidget {
               Navigator.pushNamed(context, 'animal', arguments: animal),
         ),
       ],
-<<<<<<< HEAD
     ));
-=======
-    )
-
-        // child: ListTile(
-        //   title: Text('${animal.nombre} - ${animal.edad} meses'),
-        //   subtitle: Text('${animal.color} - ${animal.id}'),
-        //   onTap: () => Navigator.pushNamed(context, 'animal', arguments: animal),
-        // ),
-        );
->>>>>>> 0692982eed3d6922da220118f9540b84c7151e14
   }
 
   _crearBoton(BuildContext context) {
