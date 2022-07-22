@@ -220,10 +220,10 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
   Widget _mostrarEdad() {
     return TextFormField(
       readOnly: true,
-      initialValue: datosA.edad.toString(),
+      initialValue: datosA.fechaNacimiento,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "Edad",
+        labelText: "Fecha de nacimiento",
         icon: Icon(
           Icons.person,
           color: Colors.purple,

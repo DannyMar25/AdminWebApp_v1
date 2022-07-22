@@ -1,12 +1,15 @@
 import 'package:admin_web_v1/blocs/login_bloc.dart';
 import 'package:admin_web_v1/blocs/provider.dart';
+import 'package:admin_web_v1/models/usuarios_model.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
+import 'package:admin_web_v1/utils/constants.dart';
 import 'package:admin_web_v1/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class RegistroPage extends StatelessWidget {
   //const RegistroPage({Key? key}) : super(key: key);
   final usuarioProvider = UsuarioProvider();
+  final usuario = UsuariosModel();
   TextEditingController _nombreUs = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -79,7 +82,10 @@ class RegistroPage extends StatelessWidget {
           //Text('Olvido la contrasena?'),
           TextButton(
             onPressed: () => Navigator.pushNamed(context, 'home'),
-            child: const Text('Cancelar registro.'),
+            child: const Text(
+              'Cancelar registro.',
+              style: TextStyle(color: Colors.green, fontSize: 20),
+            ),
           ),
           const SizedBox(
             height: 100.0,
@@ -178,12 +184,13 @@ class RegistroPage extends StatelessWidget {
     );
   }
 
+  //Crear nuevo text para confirmar la contasena
   Widget create_password_confirm(LoginBloc bloc) {
     return StreamBuilder(
       stream: bloc.passwordConfirmStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: TextField(
             obscureText: true,
             decoration: InputDecoration(
@@ -239,9 +246,13 @@ class RegistroPage extends StatelessWidget {
 
     if (info['ok']) {
       print(bloc.name);
+      usuario.id = info['uid'];
+      usuario.nombre = bloc.name;
+      usuario.email = bloc.email;
+      usuario.rol = Roles.administrador;
+      usuarioProvider.crearUsuario(usuario);
       Navigator.pushReplacementNamed(context, 'login');
     } else {
-      //mostrarAlerta(context, info['mensaje']);
       mostrarAlerta(context, info['mensaje']);
     }
 
@@ -255,8 +266,8 @@ class RegistroPage extends StatelessWidget {
       width: double.infinity,
       decoration: const BoxDecoration(
         gradient: LinearGradient(colors: <Color>[
-          Color.fromARGB(255, 45, 214, 73),
-          Color.fromARGB(255, 16, 206, 64),
+          Color.fromARGB(255, 22, 182, 62),
+          Color.fromARGB(255, 25, 184, 64),
         ]),
       ),
     );
@@ -283,10 +294,10 @@ class RegistroPage extends StatelessWidget {
               Image.asset('assets/pet-care.png', height: 190),
               //Icon(Icons.person_pin_circle, color: Colors.white, size: 100.0),
               const SizedBox(height: 10.0, width: double.infinity),
-              // Text(
-              //   'Bienvenid@',
-              //   style: TextStyle(color: Colors.white, fontSize: 25.0),
-              // ),
+              const Text(
+                'Bienvenid@',
+                style: TextStyle(color: Colors.white, fontSize: 25.0),
+              ),
             ],
           ),
         ),

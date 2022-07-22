@@ -5,7 +5,7 @@ import 'package:admin_web_v1/pages/donacionesIn_page.dart';
 import 'package:admin_web_v1/pages/donacionesOutAdd_page.dart';
 import 'package:admin_web_v1/pages/donacionesOut_page.dart';
 import 'package:admin_web_v1/pages/forgotPassword_page.dart';
-import 'package:admin_web_v1/pages/home_page.dart';
+import 'package:admin_web_v1/pages/galeriaMascotas_page.dart';
 import 'package:admin_web_v1/pages/horariosA_page.dart';
 import 'package:admin_web_v1/pages/horarios_page.dart';
 import 'package:admin_web_v1/pages/login_page.dart';
@@ -47,7 +47,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  final prefs = new PreferenciasUsuario();
+  final prefs = PreferenciasUsuario();
   await prefs.initPrefs();
   runApp(MyApp());
 }
@@ -55,7 +55,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final prefs = new PreferenciasUsuario();
+    final prefs = PreferenciasUsuario();
     print(prefs.token);
     final email = prefs.email;
     final rol = prefs.rol;
@@ -79,7 +79,7 @@ class MyApp extends StatelessWidget {
           routes: {
             'login': (_) => LoginPage(),
             'registro': (_) => RegistroPage(),
-            'home': (_) => HomePage(),
+            'home': (_) => GaleriaMascotasPage(),
             'animal': (_) => AnimalPage(),
             // 'bienvenida': (_) => BienvenidaPage(),
             // 'ubicacion': (_) => UbicacionPage(),

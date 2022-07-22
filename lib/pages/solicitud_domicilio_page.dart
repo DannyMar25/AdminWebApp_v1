@@ -23,8 +23,8 @@ class _DomicilioPageState extends State<DomicilioPage> {
   //final horariosProvider = new HorariosProvider();
   // final animalesProvider = new AnimalesProvider();
   final userProvider = UsuarioProvider();
-  //var idForm;
-  //var idD;
+  var idForm;
+  var idD;
 
   @override
   void initState() {
@@ -51,7 +51,7 @@ class _DomicilioPageState extends State<DomicilioPage> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(223, 221, 248, 153),
       appBar: AppBar(
-        title: const Text('Solicitudes'),
+        title: const Text('Domicilio'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -76,7 +76,7 @@ class _DomicilioPageState extends State<DomicilioPage> {
       drawer: const MenuWidget(),
       body: Stack(
         children: [
-          //Background(),
+          // Background(),
           SingleChildScrollView(
             child: Container(
               padding: const EdgeInsets.all(15.0),
@@ -145,12 +145,14 @@ class _DomicilioPageState extends State<DomicilioPage> {
                       sortColumnIndex: 2,
                       sortAscending: false,
                       columns: const [
+                        DataColumn(label: Text("Especie")),
                         DataColumn(label: Text("Sexo")),
                         DataColumn(label: Text("Edad "), numeric: true),
                         DataColumn(label: Text("Tamaño")),
                       ],
                       rows: [
                         DataRow(selected: true, cells: [
+                          DataCell(_mostrarEspecie()),
                           DataCell(_mostrarSexo()),
                           DataCell(_mostrarEdad()),
                           DataCell(_mostrarTamano()),
@@ -359,6 +361,14 @@ class _DomicilioPageState extends State<DomicilioPage> {
           color: Colors.purple,
         ),
       ),
+    );
+  }
+
+  Widget _mostrarEspecie() {
+    return TextFormField(
+      readOnly: true,
+      initialValue: domicilios.especieAd,
+      textCapitalization: TextCapitalization.sentences,
     );
   }
 

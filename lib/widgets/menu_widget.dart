@@ -1,10 +1,18 @@
+import 'package:admin_web_v1/preferencias_usuario/preferencias_usuario.dart';
 import 'package:flutter/material.dart';
 
-class MenuWidget extends StatelessWidget {
+class MenuWidget extends StatefulWidget {
   const MenuWidget({Key? key}) : super(key: key);
 
   @override
+  State<MenuWidget> createState() => _MenuWidgetState();
+}
+
+class _MenuWidgetState extends State<MenuWidget> {
+  final prefs = PreferenciasUsuario();
+  @override
   Widget build(BuildContext context) {
+    final rol = prefs.rol;
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -43,17 +51,9 @@ class MenuWidget extends StatelessWidget {
           const Divider(),
           //Creacion de un submenu dentro
           ExpansionTile(
+            //textColor: Colors.green,
             title: const Text('Citas'),
             children: [
-              // ListTile(
-              //   leading: const Icon(
-              //     Icons.add,
-              //     color: Colors.green,
-              //   ),
-              //   title: const Text('Agregar horarios de visitas'),
-              //   onTap: () =>
-              //       Navigator.pushReplacementNamed(context, 'citasAdd'),
-              // ),
               ListTile(
                 leading: const Icon(
                   Icons.app_registration,
@@ -146,6 +146,9 @@ class MenuWidget extends StatelessWidget {
             ),
           ),
           const Divider(),
+          // ExpansionTile(
+          //   title: Text('Seguimiento'),
+          //   children: [
           ListTile(
             leading: const Icon(
               Icons.assignment,
@@ -156,6 +159,12 @@ class MenuWidget extends StatelessWidget {
               Navigator.pushReplacementNamed(context, 'seguimientoPrincipal');
             },
           ),
+          //  ],
+          //   leading: Icon(
+          //     Icons.assignment,
+          //     color: Colors.green,
+          //   ),
+          // ),
 
           const Divider(),
           ExpansionTile(
@@ -209,30 +218,19 @@ class MenuWidget extends StatelessWidget {
             ),
           ),
           const Divider(),
-
-          // ListTile(
-          //   leading: Icon(
-          //     Icons.room,
-          //     color: Colors.green,
-          //   ),
-          //   title: Text('Ver ubicacion'),
-          //   onTap: () {
-          //     //Navigator.pop(context);
-          //     Navigator.pushReplacementNamed(context, 'ubicacion');
-          //   },
-          // ),
-          // Divider(),
-          ListTile(
-            leading: const Icon(
-              Icons.app_registration,
-              color: Colors.green,
-            ),
-            title: const Text('Registrar administrador'),
-            onTap: () {
-              //Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, 'registro');
-            },
-          ),
+          rol == 'SuperAdministrador'
+              ? ListTile(
+                  leading: const Icon(
+                    Icons.app_registration,
+                    color: Colors.green,
+                  ),
+                  title: const Text('Registrar administrador'),
+                  onTap: () {
+                    //Navigator.pop(context);
+                    Navigator.pushReplacementNamed(context, 'registro');
+                  },
+                )
+              : const SizedBox(),
           ListTile(
             leading: const Icon(
               Icons.app_registration,
@@ -241,7 +239,7 @@ class MenuWidget extends StatelessWidget {
             title: const Text('Inicio'),
             onTap: () {
               //Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, 'home');
+              Navigator.pushReplacementNamed(context, 'bienvenida');
             },
           ),
         ],

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 //import 'package:formvalidation/src/bloc/provider.dart';
 
-class HomePage extends StatelessWidget {
+class GaleriaMascotasPage extends StatelessWidget {
   //const HomePage({Key? key}) : super(key: key);
   final userProvider = UsuarioProvider();
   final animalesProvider = AnimalesProvider();
@@ -76,48 +76,6 @@ class HomePage extends StatelessWidget {
     }
   }
 
-  // Widget _crearListado() {
-  //   return FutureBuilder(
-  //       future: animalesProvider.cargarAnimal1(),
-  //       builder:
-  //           (BuildContext context, AsyncSnapshot<List<AnimalModel>> snapshot) {
-  //         if (snapshot.hasData) {
-  //           final animales = snapshot.data;
-  //           return ListView.builder(
-  //             itemCount: animales!.length,
-  //             itemBuilder: (context, i) => _crearItem(context, animales[i]),
-  //           );
-  //         } else {
-  //           return const Center(child: CircularProgressIndicator());
-  //         }
-  //       });
-  // }
-
-  // Widget _crearItem(BuildContext context, AnimalModel animal) {
-  //   return Card(
-  //     child: Column(
-  //       //estaba con Column
-  //       children: [
-  //         (animal.fotoUrl == "")
-  //             ? const Image(image: AssetImage('assets/no-image.png'))
-  //             : FadeInImage(
-  //                 image: NetworkImage(animal.fotoUrl),
-  //                 placeholder: const AssetImage('assets/jar-loading.gif'),
-  //                 height: 300.0,
-  //                 width: 300.0,
-  //                 //width: double.infinity,
-  //                 fit: BoxFit.cover,
-  //               ),
-  //         ListTile(
-  //           title: Text('${animal.nombre} - ${animal.edad}'),
-  //           subtitle:
-  //               Text('Color: ${animal.color} - Tamaño: ${animal.tamanio}'),
-  //           onTap: () =>
-  //               Navigator.pushNamed(context, 'animal', arguments: animal),
-  //         ),
-  //       ],
-  //     ),
-  //   );
   Widget _crearListado() {
     return FutureBuilder(
         future: animalesProvider.cargarAnimal1(),
@@ -153,14 +111,14 @@ class HomePage extends StatelessWidget {
             ? const Image(image: AssetImage('assets/no-image.png'))
             : FadeInImage(
                 image: NetworkImage(animal.fotoUrl),
-                placeholder: const AssetImage('assets/jar-loading.gif'),
+                placeholder: const AssetImage('assets/cat_1.gif'),
                 height: 350.0,
                 //width: 250.0,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
         ListTile(
-          title: Text('${animal.nombre} - ${animal.edad}'),
+          title: Text('${animal.nombre} - ${animal.etapaVida}'),
           subtitle: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [

@@ -2,10 +2,7 @@ import 'dart:html';
 import 'package:admin_web_v1/models/animales_model.dart';
 import 'package:admin_web_v1/providers/animales_provider.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
-//import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-//import 'package:image_picker/image_picker.dart';
-//import 'package:image_picker_web/image_picker_web.dart';
 import 'package:admin_web_v1/utils/utils.dart' as utils;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -36,14 +33,13 @@ class _AnimalPageState extends State<AnimalPage> {
   String? _selection;
   final List<String> _items1 = ['Macho', 'Hembra'].toList();
   String? _selection1;
-  final List<String> _items2 = [
-    'Cachorro (0 a 6 meses)',
-    'Joven (6 meses a 2 años)',
-    'Adulto (2 a 6 años)',
-    'Anciano (7 a 11 años)',
-    'Geriátrico (mayor a 12 años)'
-  ].toList();
+  final List<String> _items2 =
+      ['Cachorro', 'Joven', 'Adulto', 'Anciano', 'Geriátrico'].toList();
   String? _selection2;
+  final List<String> _items3 = ['Canina', 'Felina'].toList();
+  String? _selection3;
+  final List<String> _items4 = ['Si', 'No'].toList();
+  String? _selection4;
   int? edadN;
   @override
   void initState() {
@@ -101,6 +97,7 @@ class _AnimalPageState extends State<AnimalPage> {
             child: Column(
               children: [
                 _mostrarFoto(),
+                _crearEspecie(),
                 _crearNombre(),
                 _crearSexo(),
                 _crearEdad(),
@@ -109,6 +106,7 @@ class _AnimalPageState extends State<AnimalPage> {
                 _crearTamanio(),
                 _crearColor(),
                 _crearRaza(),
+                _crearEsterilizado(),
                 _crearCaracteristicas(),
                 // _crearDisponible(),
                 //_crearBoton(),
@@ -132,6 +130,32 @@ class _AnimalPageState extends State<AnimalPage> {
         userProvider.signOut();
         Navigator.pushNamed(context, 'login');
     }
+  }
+
+  Widget _crearEspecie() {
+    final dropdownMenuOptions = _items3.map((String item) =>
+        //new DropdownMenuItem<String>(value: item, child: new Text(item)))
+        DropdownMenuItem<String>(value: item, child: Text(item))).toList();
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      //mainAxisSize: MainAxisSize.max,
+      children: [
+        const Text(
+          'Especie: ',
+          style: TextStyle(fontSize: 16, color: Colors.black),
+        ),
+        DropdownButton<String>(
+            hint: Text(animal.especie.toString()),
+            value: _selection3,
+            items: dropdownMenuOptions,
+            onChanged: (s) {
+              setState(() {
+                _selection3 = s;
+                animal.especie = s!;
+              });
+            }),
+      ],
+    );
   }
 
   Widget _crearNombre() {
@@ -186,17 +210,17 @@ class _AnimalPageState extends State<AnimalPage> {
     return Row(
       children: [
         const Text(
-          'Edad: ',
+          'Etapa de vida: ',
           style: TextStyle(fontSize: 16, color: Colors.black),
         ),
         DropdownButton<String>(
-            hint: Text(animal.edad.toString()),
+            hint: Text(animal.etapaVida.toString()),
             value: _selection2,
             items: dropdownMenuOptions,
             onChanged: (s) {
               setState(() {
                 _selection2 = s;
-                animal.edad = s!;
+                animal.etapaVida = s!;
               });
             }),
       ],
@@ -305,6 +329,32 @@ class _AnimalPageState extends State<AnimalPage> {
     );
   }
 
+  Widget _crearEsterilizado() {
+    final dropdownMenuOptions = _items4.map((String item) =>
+        //new DropdownMenuItem<String>(value: item, child: new Text(item)))
+        DropdownMenuItem<String>(value: item, child: Text(item))).toList();
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      //mainAxisSize: MainAxisSize.max,
+      children: [
+        const Text(
+          'Esterilizado: ',
+          style: TextStyle(fontSize: 16, color: Colors.black),
+        ),
+        DropdownButton<String>(
+            hint: Text(animal.esterilizado.toString()),
+            value: _selection4,
+            items: dropdownMenuOptions,
+            onChanged: (s) {
+              setState(() {
+                _selection4 = s;
+                animal.esterilizado = s!;
+              });
+            }),
+      ],
+    );
+  }
+
   Widget _crearCaracteristicas() {
     return TextFormField(
       maxLines: 6,
@@ -324,17 +374,6 @@ class _AnimalPageState extends State<AnimalPage> {
       },
     );
   }
-
-  //Widget _crearDisponible() {
-  //return SwitchListTile(
-  //value: producto.disponible,
-  // title: Text('Disponible'),
-  //activeColor: Colors.deepPurple,
-  //onChanged: (value) => setState(() {
-  //producto.disponible = value;
-  // }),
-  //);
-  //}
 
   Widget _crearBoton() {
     return ElevatedButton.icon(
@@ -397,20 +436,6 @@ class _AnimalPageState extends State<AnimalPage> {
       utils.mostrarAlertaOk(context, 'Registro actualizado con exito', 'home');
       //animalProvider.editarAnimal(animal, fotoUrl!);
     }
-    //setState(() {
-    //  _guardando = false;
-    // });
-
-    //mostrarSnackbar('Registro guardado');
-
-    //Navigator.pushNamed(context, 'home');
-    // if (animal.id == null) {
-    //   print("ssssss");
-    // }
-    // if (animal.id == "") {
-    //   print("aaaaaa");
-    // }
-    // print(animal.id);
   }
 
   void mostrarSnackbar(String mensaje) {

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:admin_web_v1/models/usuarios_model.dart';
 import 'package:admin_web_v1/preferencias_usuario/preferencias_usuario.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -29,7 +30,11 @@ class UsuarioProvider {
     if (decodedResp.containsKey('idToken')) {
       _prefs.token = decodedResp['idToken'];
 
-      return {'ok': true, 'token': decodedResp['idToken']};
+      return {
+        'ok': true,
+        'token': decodedResp['idToken'],
+        'uid': decodedResp['localId']
+      };
     } else {
       return {'ok': false, 'mensaje': decodedResp['error']['message']};
     }
@@ -50,11 +55,15 @@ class UsuarioProvider {
         body: json.encode(authData));
 
     Map<String, dynamic> decodedResp = json.decode(resp.body);
-    //print(decodedResp);
+    print(decodedResp['localId']);
 
     if (decodedResp.containsKey('idToken')) {
       _prefs.token = decodedResp['idToken'];
-      return {'ok': true, 'token': decodedResp['idToken']};
+      return {
+        'ok': true,
+        'token': decodedResp['idToken'],
+        'uid': decodedResp['localId']
+      };
     } else {
       return {'ok': false, 'mensaje': decodedResp['error']['message']};
     }
@@ -71,10 +80,29 @@ class UsuarioProvider {
       user!.updateDisplayName(name); //added this line
       //return _user(user);
     } catch (e) {
-      // ignore: avoid_print
       print(e.toString());
       return null;
     }
+  }
+
+  Future<bool> crearUsuario(
+    UsuariosModel usuario,
+  ) async {
+    try {
+      // print("este esadkjljdkjadkjskadjlkjsdljasdljasdj");
+      await refUser.doc(usuario.id).set(usuario.toJson());
+      //await refUser.doc(usuariosAdd.id).update({"idUs": usuariosAdd.id});
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  //cerrar sesion
+  void signOut() async {
+    _prefs.removeEmail();
+    await _auth.signOut();
+    return;
   }
 
   Future<dynamic> obtenerUsuario(String uid) async {
@@ -84,11 +112,5 @@ class UsuarioProvider {
     } catch (e) {
       return false;
     }
-  }
-
-  //cerrar sesion
-  void signOut() async {
-    await _auth.signOut();
-    return;
   }
 }
