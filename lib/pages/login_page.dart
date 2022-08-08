@@ -35,8 +35,8 @@ class LoginPage extends StatelessWidget {
           ),
           Container(
             width: 390.0,
-            height: 275.00,
-            // width: 390.0,
+            //height: 275.00,
+            height: 310.0,
             margin: const EdgeInsets.symmetric(vertical: 10.0),
             padding: const EdgeInsets.symmetric(vertical: 20.0),
             decoration: BoxDecoration(
@@ -61,11 +61,11 @@ class LoginPage extends StatelessWidget {
                 ),
                 _crearEmail(bloc),
                 const SizedBox(
-                  height: 30.0,
+                  height: 10.0,
                 ),
                 _crearPassword(bloc),
                 const SizedBox(
-                  height: 20.0,
+                  height: 15.0,
                 ),
                 _crearBoton(bloc),
               ],
@@ -92,7 +92,7 @@ class LoginPage extends StatelessWidget {
               icon: const Icon(Icons.alternate_email, color: Colors.green),
               hintText: 'ejemplo@correo.com',
               labelText: 'Correo electronico',
-              counterText: snapshot.data,
+              //counterText: snapshot.data,
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
             ),
@@ -116,7 +116,7 @@ class LoginPage extends StatelessWidget {
               icon: const Icon(Icons.lock_outline, color: Colors.green),
               //hintText: 'ejemplo@correo.com',
               labelText: 'Contraseña',
-              counterText: snapshot.data,
+              //counterText: snapshot.data,
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
             ),
@@ -137,7 +137,7 @@ class LoginPage extends StatelessWidget {
         return RaisedButton(
           child: Container(
             padding:
-                const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+                const EdgeInsets.symmetric(horizontal: 70.0, vertical: 13.0),
             child: const Text('Ingresar'),
           ),
           shape: RoundedRectangleBorder(

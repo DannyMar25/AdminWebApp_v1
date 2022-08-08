@@ -130,7 +130,7 @@ class RegistroPage extends StatelessWidget {
               icon: const Icon(Icons.alternate_email, color: Colors.green),
               hintText: 'dany',
               labelText: 'Nombre de usuario:',
-              counterText: snapshot.data,
+              //counterText: snapshot.data,
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
             ),
@@ -173,7 +173,7 @@ class RegistroPage extends StatelessWidget {
               icon: const Icon(Icons.lock_outline, color: Colors.green),
               //hintText: 'ejemplo@correo.com',
               labelText: 'Contrasena',
-              counterText: snapshot.data,
+              //counterText: snapshot.data,
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
             ),
