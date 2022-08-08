@@ -1,6 +1,7 @@
 import 'package:admin_web_v1/blocs/provider.dart';
 import 'package:admin_web_v1/pages/agendarCitas_page.dart';
 import 'package:admin_web_v1/pages/animal_page.dart';
+import 'package:admin_web_v1/pages/busqueda_page.dart';
 import 'package:admin_web_v1/pages/donacionesIn_page.dart';
 import 'package:admin_web_v1/pages/donacionesOutAdd_page.dart';
 import 'package:admin_web_v1/pages/donacionesOut_page.dart';
@@ -10,6 +11,7 @@ import 'package:admin_web_v1/pages/horariosA_page.dart';
 import 'package:admin_web_v1/pages/horarios_page.dart';
 import 'package:admin_web_v1/pages/login_page.dart';
 import 'package:admin_web_v1/pages/registro_page.dart';
+import 'package:admin_web_v1/pages/resultados_busqueda_page.dart';
 import 'package:admin_web_v1/pages/seguimiento_archivos_page.dart';
 import 'package:admin_web_v1/pages/seguimiento_desparasitacion_page.dart';
 import 'package:admin_web_v1/pages/seguimiento_fotos_page.dart';
@@ -80,41 +82,41 @@ class MyApp extends StatelessWidget {
           initialRoute: email == '' ? 'login' : 'home',
           routes: {
             'login': (_) => LoginPage(),
-            'registro': (_) => RegistroPage(),
-            'home': (_) => GaleriaMascotasPage(),
-            'animal': (_) => AnimalPage(),
+            'registro': (_) => const RegistroPage(),
+            'home': (_) => const GaleriaMascotasPage(),
+            'animal': (_) => const AnimalPage(),
             // 'bienvenida': (_) => BienvenidaPage(),
             // 'ubicacion': (_) => UbicacionPage(),
             'citasAdd': (_) => const HorariosPage(),
             'horariosAdd': (_) => const HorariosAgregados(),
-            'verCitasAg': (_) => VerCitasPage(),
-            'verCitasR': (_) => VerCitasRegistradas(),
-            'agendarCita': (_) => AgendarCitasPage(),
-            'verCitasAt': (_) => VerCitasAtendidasPage(),
-            'donacionesInAdd': (_) => IngresoDonacionesInPage(),
+            'verCitasAg': (_) => const VerCitasPage(),
+            'verCitasR': (_) => const VerCitasRegistradas(),
+            'agendarCita': (_) => const AgendarCitasPage(),
+            'verCitasAt': (_) => const VerCitasAtendidasPage(),
+            'donacionesInAdd': (_) => const IngresoDonacionesInPage(),
             'verDonacionesInAdd': (_) => const VerDonacionesInAddPage(),
-            'verDonacionesIn1': (_) => VerDonacionesIn1Page(),
-            ForgotPassword.id: (context) => ForgotPassword(),
-            'donacionesOutAdd': (_) => IngresoDonacionesOutPage(),
+            'verDonacionesIn1': (_) => const VerDonacionesIn1Page(),
+            ForgotPassword.id: (context) => const ForgotPassword(),
+            'donacionesOutAdd': (_) => const IngresoDonacionesOutPage(),
             // //'enviarMail': (_) => EmailSender(),
             'enviarMail': (_) => const SoportePage(),
             // 'perfilUser': (_) => PerfilUsuarioPage(),
-            'DonacionesOutAdd1': (_) => IngresoDonacionesOutAddPage(),
+            'DonacionesOutAdd1': (_) => const IngresoDonacionesOutAddPage(),
             'verDonacionesOutAdd': (_) => const VerDonacionesOutAddPage(),
-            'verDonacionesOutAdd1': (_) => VerDonacionesOut1Page(),
+            'verDonacionesOutAdd1': (_) => const VerDonacionesOut1Page(),
             'seguimientoPrincipal': (_) => const SeguimientoPrincipalPage(),
             'solicitudes': (_) => const SolicitudesPage(),
             'verSolicitudesMain': (_) => const SolicitudesMainPage(),
             'solicitudesAprobadas': (_) => const SolicitudesAprobadasPage(),
-            'verSolicitudAprobada': (_) => SolicitudAprobadaMainPage(),
+            'verSolicitudAprobada': (_) => const SolicitudAprobadaMainPage(),
             'solicitudesRechazadas': (_) => const SolicitudesRechazadasPage(),
-            'verSolicitudRechazada': (_) => SolicitudRechazadaMainPage(),
+            'verSolicitudRechazada': (_) => const SolicitudRechazadaMainPage(),
             'datosPersonales': (_) => const DatosPersonalesPage(),
             'situacionFam': (_) => const SituacionFamiliarPage(),
             'domicilio': (_) => const DomicilioPage(),
             'relacionAnim': (_) => const RelacionAnimalPage(),
             'observacionSolicitud': (_) => const ObservacionFinalPage(),
-            'seguimientoInfo': (_) => InformacionSeguimientoPage(),
+            'seguimientoInfo': (_) => const InformacionSeguimientoPage(),
             'verRegistroVacunas': (_) => const VerRegistroVacunasPage(),
             'verRegistroDesp': (_) => const VerRegistroDespPage(),
             'verEvidenciaP1': (_) => const VerEvidenciaFotosPage(),
@@ -123,6 +125,8 @@ class MyApp extends StatelessWidget {
             'verArchivoEvidencia': (_) => const VerArchivoEvidenciaPage(),
             'crearPDF': (_) => const CrearSolicitudPdfPage(),
             'soporte': (_) => const SoportePage(),
+            'busqueda': (_) => const BusquedaPage(),
+            'resultadoBusqueda': (_) => const ResultadosBusquedaPage(),
           },
           theme: ThemeData(primaryColor: Colors.deepPurple)),
     );

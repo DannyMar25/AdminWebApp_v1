@@ -179,22 +179,27 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
 
   Widget _crearItem(BuildContext context, AnimalModel animal) {
     return Card(
-        child: Column(
-      //estaba con Column
-      children: [
-        (animal.fotoUrl == "")
-            ? const Image(image: AssetImage('assets/no-image.png'))
-            : FadeInImage(
-                image: NetworkImage(animal.fotoUrl),
-                placeholder: const AssetImage('assets/cat_1.gif'),
-                height: 350.0,
-                //width: 250.0,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-        _buildChild(animal, context)
-      ],
-    ));
+        margin: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 90.0),
+        child: InkWell(
+          onTap: () =>
+              Navigator.pushNamed(context, 'animal', arguments: animal),
+          child: Column(
+            //estaba con Column
+            children: [
+              (animal.fotoUrl == "")
+                  ? const Image(image: AssetImage('assets/no-image.png'))
+                  : FadeInImage(
+                      image: NetworkImage(animal.fotoUrl),
+                      placeholder: const AssetImage('assets/cat_1.gif'),
+                      height: 250.0, //350
+                      //width: 250.0,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+              _buildChild(animal, context)
+            ],
+          ),
+        ));
   }
 
   _crearBoton(BuildContext context) {
