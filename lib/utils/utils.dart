@@ -13,7 +13,7 @@ void mostrarAlerta(BuildContext context, String mensaje) {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Informacion incorrecta'),
+          title: const Text('Información incorrecta'),
           content: Text(mensaje),
           actions: [
             TextButton(
@@ -37,7 +37,7 @@ void mostrarAlertaOk(BuildContext context, String mensaje, String ruta) {
                 color: Colors.green,
                 size: 50,
               ),
-              Text('Informacion correcta'),
+              Text('Información correcta'),
             ],
           ),
           content: Text(mensaje),
@@ -56,7 +56,7 @@ void mostrarAlertaBorrar(BuildContext context, String mensaje) {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Esta seguro de borrar el registro'),
+          title: const Text('Esta seguro de borrar el registro?'),
           content: Text(mensaje),
           actions: [
             TextButton(
