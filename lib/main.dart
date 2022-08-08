@@ -49,14 +49,16 @@ void main() async {
   await Firebase.initializeApp();
   final prefs = PreferenciasUsuario();
   await prefs.initPrefs();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final prefs = PreferenciasUsuario();
-    print(prefs.token);
+    //print(prefs.token);
     final email = prefs.email;
     final rol = prefs.rol;
     //print(prefs.token);

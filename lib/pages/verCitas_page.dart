@@ -7,14 +7,14 @@ import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
 class VerCitasPage extends StatefulWidget {
-  VerCitasPage({Key? key}) : super(key: key);
+  const VerCitasPage({Key? key}) : super(key: key);
 
   @override
   _VerCitasPageState createState() => _VerCitasPageState();
 }
 
 class _VerCitasPageState extends State<VerCitasPage> {
-  TextEditingController _inputFieldDateController = TextEditingController();
+  final _inputFieldDateController = TextEditingController();
   List<CitasModel> citasA = [];
   List<Future<CitasModel>> listaC = [];
   final formKey = GlobalKey<FormState>();

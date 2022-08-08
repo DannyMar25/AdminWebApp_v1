@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 class ForgotPassword extends StatefulWidget {
   static String id = 'forgot-password';
 
+  const ForgotPassword({Key? key}) : super(key: key);
+
   @override
   _ForgotPasswordState createState() => _ForgotPasswordState();
 }

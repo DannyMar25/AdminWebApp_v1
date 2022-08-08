@@ -62,7 +62,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
             SingleChildScrollView(
                 child: Container(
                     //color: Colors.lightGreenAccent,
-                    padding: new EdgeInsets.only(top: 10.0),
+                    padding: const EdgeInsets.only(top: 10.0),
                     child: Form(
                         key: formKey,
                         child: Column(

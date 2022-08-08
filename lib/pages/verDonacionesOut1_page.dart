@@ -5,7 +5,7 @@ import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
 class VerDonacionesOut1Page extends StatefulWidget {
-  VerDonacionesOut1Page({Key? key}) : super(key: key);
+  const VerDonacionesOut1Page({Key? key}) : super(key: key);
 
   @override
   _VerDonacionesOut1PageState createState() => _VerDonacionesOut1PageState();

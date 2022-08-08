@@ -10,6 +10,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 class SolicitudAprobadaMainPage extends StatefulWidget {
+  const SolicitudAprobadaMainPage({Key? key}) : super(key: key);
+
   //const SeguimientoPage({Key? key}) : super(key: key);
 
   @override

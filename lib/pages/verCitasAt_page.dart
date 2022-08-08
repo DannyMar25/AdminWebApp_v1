@@ -7,7 +7,7 @@ import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
 class VerCitasAtendidasPage extends StatefulWidget {
-  VerCitasAtendidasPage({Key? key}) : super(key: key);
+  const VerCitasAtendidasPage({Key? key}) : super(key: key);
 
   @override
   _VerCitasAtendidasPageState createState() => _VerCitasAtendidasPageState();

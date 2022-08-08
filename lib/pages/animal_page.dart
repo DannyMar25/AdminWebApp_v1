@@ -8,6 +8,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class AnimalPage extends StatefulWidget {
+  const AnimalPage({Key? key}) : super(key: key);
+
   //const ProductoPage({Key? key}) : super(key: key);
 
   @override
@@ -394,7 +396,7 @@ class _AnimalPageState extends State<AnimalPage> {
     if (!formKey.currentState!.validate()) return;
     formKey.currentState!.save();
 
-    print('Todo OK!');
+    //s('Todo OK!');
 
     setState(() {
       _guardando = true;

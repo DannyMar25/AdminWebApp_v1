@@ -5,6 +5,7 @@ import 'package:admin_web_v1/models/formulario_domicilio_model.dart';
 import 'package:admin_web_v1/models/formulario_principal_model.dart';
 import 'package:admin_web_v1/models/formulario_relacionAnimal_model.dart';
 import 'package:admin_web_v1/models/formulario_situacionFam_model.dart';
+import 'package:admin_web_v1/providers/animales_provider.dart';
 import 'package:admin_web_v1/providers/formularios_provider.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
@@ -30,9 +31,11 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
   bool isChecked = false;
   bool isChecked1 = false;
   String estado = '';
+  String estadoAn = '';
   String fechaRespuesta = '';
   String observacion = '';
   bool _guardando = false;
+  final animalProvider = AnimalesProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -212,6 +215,8 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
           isChecked = value!;
           //domicilio.planMudanza = "Si";
           estado = "Aprobado";
+          estadoAn = "Adoptado";
+          animalProvider.editarEstado(formularios.animal!, estadoAn);
         });
       },
     );
@@ -239,6 +244,8 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
           isChecked1 = value!;
           //domicilio.planMudanza = "No";
           estado = "Negado";
+          estadoAn = "En Adopción";
+          animalProvider.editarEstado(formularios.animal!, estadoAn);
         });
       },
     );

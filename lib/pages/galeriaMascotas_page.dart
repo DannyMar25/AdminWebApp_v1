@@ -6,10 +6,34 @@ import 'package:flutter/material.dart';
 
 //import 'package:formvalidation/src/bloc/provider.dart';
 
-class GaleriaMascotasPage extends StatelessWidget {
+class GaleriaMascotasPage extends StatefulWidget {
+  const GaleriaMascotasPage({Key? key}) : super(key: key);
+
+  @override
+  State<GaleriaMascotasPage> createState() => _GaleriaMascotasPageState();
+}
+
+class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
   //const HomePage({Key? key}) : super(key: key);
   final userProvider = UsuarioProvider();
+
   final animalesProvider = AnimalesProvider();
+
+  bool busqueda = false;
+
+  final _textController = TextEditingController();
+
+  String? nombre;
+
+  String? nombreBusqueda;
+
+  final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+    //backgroundColor: Colors.green,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(4.0)),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     //final bloc = Provider.of(context);
@@ -36,29 +60,21 @@ class GaleriaMascotasPage extends StatelessWidget {
                       value: 2,
                     )
                   ]),
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
       ),
       drawer: const MenuWidget(),
-      body:
-          // GridView.count(
-          //     crossAxisCount: 2,
-          //     crossAxisSpacing: 15.0,
-          //     mainAxisSpacing: 15.0,
-          //     children: [_crearListado()]),
-
-          _crearListado(),
+      body: Column(
+        children: [
+          const Padding(padding: EdgeInsets.only(bottom: 10.0)),
+          _busqueda(),
+          const Padding(padding: EdgeInsets.only(bottom: 10.0)),
+          _botonBusqueda(context),
+          const Padding(padding: EdgeInsets.only(bottom: 10.0)),
+          //Expanded(child: _crearListado())
+          Expanded(child: _buildChildBusqueda(context))
+          //_crearListado(),
+        ],
+      ),
       floatingActionButton: _crearBoton(context),
     );
   }
@@ -76,6 +92,70 @@ class GaleriaMascotasPage extends StatelessWidget {
     }
   }
 
+  Widget _busqueda() {
+    return TextField(
+      controller: _textController,
+      autocorrect: false,
+      onChanged: (s) {
+        setState(() {
+          nombre = s;
+          nombreBusqueda = nombre![0].toUpperCase() + s.substring(1);
+          busqueda = true;
+          //print(nombreBusqueda);
+        });
+      },
+      decoration: InputDecoration(
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.green, width: 2.0),
+        ),
+        prefixIcon: const Icon(Icons.search),
+        suffixIcon: GestureDetector(
+          child: const Icon(Icons.clear),
+          onTap: _onClearTapped,
+        ),
+        border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.elliptical(10, 10))),
+        hintText: 'Ingresa el nombre de la mascota',
+      ),
+    );
+  }
+
+  void _onClearTapped() {
+    setState(() {
+      _textController.text = '';
+      busqueda = false;
+    });
+  }
+
+  Widget _crearListadoBusqueda() {
+    return FutureBuilder(
+        future: animalesProvider.cargarAnimalBusqueda(nombreBusqueda!),
+        builder:
+            (BuildContext context, AsyncSnapshot<List<AnimalModel>> snapshot) {
+          if (snapshot.hasData) {
+            final animales = snapshot.data;
+            return GridView.count(
+              childAspectRatio: 50 / 100,
+              shrinkWrap: true,
+              crossAxisCount: 2,
+              children: List.generate(animales!.length, (index) {
+                return _crearItem(context, animales[index]);
+              }),
+            );
+          } else {
+            return const Center(child: CircularProgressIndicator());
+          }
+        });
+  }
+
+  Widget _buildChildBusqueda(BuildContext context) {
+    if (busqueda == false) {
+      return _crearListado();
+    } else {
+      return _crearListadoBusqueda();
+    }
+  }
+
   Widget _crearListado() {
     return FutureBuilder(
         future: animalesProvider.cargarAnimal1(),
@@ -90,11 +170,6 @@ class GaleriaMascotasPage extends StatelessWidget {
               children: List.generate(animales!.length, (index) {
                 return _crearItem(context, animales[index]);
               }),
-
-              /* ListView.builder(
-                itemCount: animales!.length,
-                itemBuilder: (context, i) => _crearItem(context, animales[i]),
-              ), */
             );
           } else {
             return const Center(child: CircularProgressIndicator());
@@ -117,21 +192,7 @@ class GaleriaMascotasPage extends StatelessWidget {
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
-        ListTile(
-          title: Text('${animal.nombre} - ${animal.etapaVida}'),
-          subtitle: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(
-                'Color: ${animal.color}',
-                textAlign: TextAlign.start,
-              ),
-              Text('Tamaño: ${animal.tamanio}'),
-            ],
-          ),
-          onTap: () =>
-              Navigator.pushNamed(context, 'animal', arguments: animal),
-        ),
+        _buildChild(animal, context)
       ],
     ));
   }
@@ -142,5 +203,139 @@ class GaleriaMascotasPage extends StatelessWidget {
       backgroundColor: Colors.green,
       onPressed: () => Navigator.pushNamed(context, 'animal'),
     );
+  }
+
+  Widget _botonBusqueda(BuildContext context) {
+    return TextButton(
+      style: flatButtonStyle,
+      onPressed: () {
+        //cardB.currentState?.collapse();
+        Navigator.pushReplacementNamed(context, 'busqueda');
+      },
+      child: Column(
+        children: const <Widget>[
+          Icon(
+            Icons.search,
+            color: Colors.green,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 2.0),
+          ),
+          Text(
+            'Busqueda personalizada',
+            style: TextStyle(color: Colors.green),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildChild(AnimalModel animal, BuildContext context) {
+    if (animal.estado == 'En Adopción') {
+      return ListTile(
+        title: Text(
+          '${animal.nombre} - ${animal.etapaVida}',
+          textAlign: TextAlign.center,
+        ),
+        subtitle: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              'Color: ${animal.color}',
+              textAlign: TextAlign.start,
+            ),
+            Text(
+              'Tamaño: ${animal.tamanio}',
+            ),
+            SizedBox(
+              width: 200,
+              height: 35,
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 3.0),
+                  child: Text(
+                    animal.estado,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 17.0),
+                  ),
+                ),
+                color: Colors.green,
+              ),
+            )
+          ],
+        ),
+        onTap: () => Navigator.pushNamed(context, 'animal', arguments: animal),
+      );
+    } else if (animal.estado == 'Adoptado') {
+      return ListTile(
+        title: Text(
+          '${animal.nombre} - ${animal.etapaVida}',
+          textAlign: TextAlign.center,
+        ),
+        subtitle: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              'Color: ${animal.color}',
+              textAlign: TextAlign.start,
+            ),
+            Text(
+              'Tamaño: ${animal.tamanio}',
+            ),
+            SizedBox(
+              width: 200,
+              height: 35,
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 3.0),
+                  child: Text(
+                    animal.estado,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 17.0),
+                  ),
+                ),
+                color: Colors.blue,
+              ),
+            )
+          ],
+        ),
+        onTap: () => Navigator.pushNamed(context, 'animal', arguments: animal),
+      );
+    } else {
+      return ListTile(
+        title: Text(
+          '${animal.nombre} - ${animal.etapaVida}',
+          textAlign: TextAlign.center,
+        ),
+        subtitle: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              'Color: ${animal.color}',
+              textAlign: TextAlign.start,
+            ),
+            Text(
+              'Tamaño: ${animal.tamanio}',
+            ),
+            SizedBox(
+              width: 200,
+              height: 35,
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 3.0),
+                  child: Text(
+                    animal.estado,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 17.0),
+                  ),
+                ),
+                color: Colors.orange,
+              ),
+            )
+          ],
+        ),
+        onTap: () => Navigator.pushNamed(context, 'animal', arguments: animal),
+      );
+    }
   }
 }

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:number_inc_dec/number_inc_dec.dart';
 
 class IngresoDonacionesOutAddPage extends StatefulWidget {
-  IngresoDonacionesOutAddPage({Key? key}) : super(key: key);
+  const IngresoDonacionesOutAddPage({Key? key}) : super(key: key);
 
   @override
   _IngresoDonacionesOutAddPageState createState() =>

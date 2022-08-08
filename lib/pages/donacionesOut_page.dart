@@ -5,7 +5,7 @@ import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
 class IngresoDonacionesOutPage extends StatefulWidget {
-  IngresoDonacionesOutPage({Key? key}) : super(key: key);
+  const IngresoDonacionesOutPage({Key? key}) : super(key: key);
 
   @override
   _IngresoDonacionesOutPageState createState() =>

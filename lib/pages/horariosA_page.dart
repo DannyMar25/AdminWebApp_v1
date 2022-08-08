@@ -134,17 +134,42 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
   }
 
   Widget _crearItem(BuildContext context, HorariosModel horario) {
-    return Card(
-      color: Colors.lightGreen[200],
-      shadowColor: Colors.green,
-      child: Column(key: UniqueKey(), children: [
-        ListTile(
-          title: Text('${horario.dia} - ${horario.hora}'),
-          subtitle: Text(horario.disponible),
-          onTap: () =>
-              Navigator.pushNamed(context, 'citasAdd', arguments: horario),
-        )
-      ]),
-    );
+    return _buildChild(horario, context);
+  }
+
+  Widget _buildChild(HorariosModel horario, BuildContext context) {
+    if (horario.disponible == "Disponible") {
+      return Card(
+        color: Colors.lightGreen[200],
+        shadowColor: Colors.green,
+        child: Column(key: UniqueKey(), children: [
+          ListTile(
+            title: Text('${horario.dia} - ${horario.hora}'),
+            subtitle: Text(
+              horario.disponible,
+              style: const TextStyle(color: Colors.black),
+            ),
+            onTap: () =>
+                Navigator.pushNamed(context, 'citasAdd', arguments: horario),
+          )
+        ]),
+      );
+    } else {
+      return Card(
+        color: Colors.orangeAccent[200],
+        shadowColor: Colors.green,
+        child: Column(key: UniqueKey(), children: [
+          ListTile(
+            title: Text('${horario.dia} - ${horario.hora}'),
+            subtitle: Text(
+              horario.disponible,
+              style: const TextStyle(color: Colors.black),
+            ),
+            onTap: () =>
+                Navigator.pushNamed(context, 'citasAdd', arguments: horario),
+          )
+        ]),
+      );
+    }
   }
 }

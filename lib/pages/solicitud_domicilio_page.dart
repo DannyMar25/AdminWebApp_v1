@@ -40,13 +40,9 @@ class _DomicilioPageState extends State<DomicilioPage> {
     //   print(domicilios.id);
     // }
     final arg = ModalRoute.of(context)!.settings.arguments as Map;
-    //if (dat == arg['datosper']) {
     domicilios = arg['domicilio'] as DomicilioModel;
-    print(domicilios.id);
-    //print(formularios.idDatosPersonales);
     relacionAn = arg['relacionAn'] as RelacionAnimalesModel;
     formularios = arg['formulario'] as FormulariosModel;
-    print(formularios.id);
 
     return Scaffold(
       backgroundColor: const Color.fromARGB(223, 221, 248, 153),

@@ -10,6 +10,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AgendarCitasPage extends StatefulWidget {
+  const AgendarCitasPage({Key? key}) : super(key: key);
+
   //RegistroClienteCitas({Key? key}) : super(key: key);
 
   @override
@@ -72,18 +74,6 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
                       value: 2,
                     )
                   ]),
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
       ),
       drawer: const MenuWidget(),
@@ -259,6 +249,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
   Widget _crearTelefono() {
     return TextFormField(
       //initialValue: animal.nombre,
+      keyboardType: TextInputType.phone,
       controller: telefono,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
@@ -278,6 +269,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
   Widget _crearCorreo() {
     return TextFormField(
       //initialValue: animal.nombre,
+      keyboardType: TextInputType.emailAddress,
       controller: correo,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(

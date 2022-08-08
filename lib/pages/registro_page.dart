@@ -6,11 +6,21 @@ import 'package:admin_web_v1/utils/constants.dart';
 import 'package:admin_web_v1/utils/utils.dart';
 import 'package:flutter/material.dart';
 
-class RegistroPage extends StatelessWidget {
+class RegistroPage extends StatefulWidget {
+  const RegistroPage({Key? key}) : super(key: key);
+
+  @override
+  State<RegistroPage> createState() => _RegistroPageState();
+}
+
+class _RegistroPageState extends State<RegistroPage> {
   //const RegistroPage({Key? key}) : super(key: key);
   final usuarioProvider = UsuarioProvider();
+
   final usuario = UsuariosModel();
+
   TextEditingController _nombreUs = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

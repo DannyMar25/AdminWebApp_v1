@@ -60,7 +60,7 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
         drawer: _menuWidget(),
         body: Stack(
           children: [
-            Background(),
+            const Background(),
             SingleChildScrollView(
                 child: Container(
                     //color: Colors.lightGreenAccent,

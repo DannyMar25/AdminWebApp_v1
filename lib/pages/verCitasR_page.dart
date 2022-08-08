@@ -7,6 +7,8 @@ import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
 class VerCitasRegistradas extends StatefulWidget {
+  const VerCitasRegistradas({Key? key}) : super(key: key);
+
   //const VerCitasAtendidas({Key? key}) : super(key: key);
 
   @override

@@ -125,6 +125,7 @@ class _SoportePageState extends State<SoportePage> {
     return TextFormField(
       //initialValue: datoPersona.nombreCom,
       readOnly: false,
+      keyboardType: TextInputType.emailAddress,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
           icon: Icon(Icons.mail),
@@ -158,6 +159,7 @@ class _SoportePageState extends State<SoportePage> {
   Widget _crearMensaje() {
     return TextFormField(
       //initialValue: datoPersona.nombreCom,
+      keyboardType: TextInputType.multiline,
       readOnly: false,
       maxLines: 10,
       textCapitalization: TextCapitalization.sentences,

@@ -182,7 +182,7 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
         total1 += don.cantidad;
       });
     }
-    print(total1.toString());
+    //print(total1.toString());
   }
 
   Widget _verListado() {

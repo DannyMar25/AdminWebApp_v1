@@ -100,6 +100,70 @@ class AnimalesProvider {
     return animales;
   }
 
+  Future<List<AnimalModel>> cargarAnimalBusqueda(String nombre) async {
+    final List<AnimalModel> animales = <AnimalModel>[];
+    var documents =
+        await refAn.where('nombre', isGreaterThanOrEqualTo: nombre).get();
+    animales.addAll(documents.docs.map((e) {
+      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
+      var data = e.data() as Map<String, dynamic>;
+      var animal = AnimalModel.fromJson({
+        "id": e.id,
+        "especie": data["especie"],
+        "nombre": data["nombre"],
+        "sexo": data["sexo"],
+        "etapaVida": data["etapaVida"],
+        "temperamento": data["temperamento"],
+        "peso": data["peso"],
+        "tamanio": data["tamanio"],
+        "color": data["color"],
+        "raza": data["raza"],
+        "esterilizado": data["esterilizado"],
+        "estado": data["estado"],
+        "caracteristicas": data["caracteristicas"],
+        "fotoUrl": data["fotoUrl"]
+      });
+      return animal;
+    }).toList());
+    return animales;
+  }
+
+  Future<List<AnimalModel>> cargarBusqueda(String especie, String sexo,
+      String etapaVida, String tamanio, String estado) async {
+    final List<AnimalModel> animales = <AnimalModel>[];
+    var documents = await refAn
+        .where('especie', isEqualTo: especie)
+        .where('estado', isEqualTo: estado)
+        .where('sexo', isEqualTo: sexo)
+        .where('etapaVida', isEqualTo: etapaVida)
+        .where('tamanio', isEqualTo: tamanio)
+        .get();
+    //var s = (documents.docs.map((e) async {
+    animales.addAll(documents.docs.map((e) {
+      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
+      var data = e.data() as Map<String, dynamic>;
+      var animal = AnimalModel.fromJson({
+        "id": e.id,
+        "especie": data["especie"],
+        "nombre": data["nombre"],
+        "sexo": data["sexo"],
+        "etapaVida": data["etapaVida"],
+        "temperamento": data["temperamento"],
+        "peso": data["peso"],
+        "tamanio": data["tamanio"],
+        "color": data["color"],
+        "raza": data["raza"],
+        "esterilizado": data["esterilizado"],
+        "estado": data["estado"],
+        "caracteristicas": data["caracteristicas"],
+        "fotoUrl": data["fotoUrl"]
+      });
+      return animal;
+    }).toList());
+    //return s.toList();
+    return animales;
+  }
+
   Future<int> borrarAnimal(String id) async {
     await refAn.doc(id).delete();
 
@@ -129,5 +193,15 @@ class AnimalesProvider {
     });
 
     return animals;
+  }
+
+  Future<bool> editarEstado(AnimalModel animal, String estado) async {
+    try {
+      //String disp = "";
+      await refAn.doc(animal.id).update({"estado": estado});
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 }

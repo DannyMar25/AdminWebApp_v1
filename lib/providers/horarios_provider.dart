@@ -91,8 +91,8 @@ class HorariosProvider {
     HorariosModel horarios = HorariosModel();
     //print("imprimire nmas bdk: " + id);
     final doc = await refAn.doc(id).get();
-    print("sadhslkdhl: " + doc.id);
-    print("asdasddsaddd: " + doc.data().toString());
+    //print("sadhslkdhl: " + doc.id);
+    //print("asdasddsaddd: " + doc.data().toString());
     var data = doc.data() as Map<String, dynamic>;
     horarios = HorariosModel.fromJson({
       "id": doc.id,

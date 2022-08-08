@@ -9,6 +9,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 class SolicitudRechazadaMainPage extends StatefulWidget {
+  const SolicitudRechazadaMainPage({Key? key}) : super(key: key);
+
   //const SeguimientoPage({Key? key}) : super(key: key);
 
   @override

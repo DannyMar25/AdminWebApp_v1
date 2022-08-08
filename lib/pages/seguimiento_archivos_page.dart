@@ -61,7 +61,7 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
         drawer: _menuWidget(),
         body: Stack(
           children: [
-            Background(),
+            const Background(),
             SingleChildScrollView(
                 child: Container(
                     //color: Colors.lightGreenAccent,
