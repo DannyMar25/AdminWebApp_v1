@@ -24,37 +24,40 @@ class LoginPage extends StatelessWidget {
 
   Widget _loginForm(BuildContext context) {
     final bloc = Provider.of(context);
-
     return SingleChildScrollView(
       child: Column(
         children: [
           SafeArea(
             child: Container(
-              height: 230.0,
+              height: 250.0,
+              //height: 230.0,
             ),
           ),
           Container(
             width: 390.0,
-            margin: const EdgeInsets.symmetric(vertical: 30.0),
-            padding: const EdgeInsets.symmetric(vertical: 80.0),
+            height: 275.00,
+            // width: 390.0,
+            margin: const EdgeInsets.symmetric(vertical: 10.0),
+            padding: const EdgeInsets.symmetric(vertical: 20.0),
             decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(5.0),
+                borderRadius: BorderRadius.circular(20.0),
                 boxShadow: const <BoxShadow>[
                   BoxShadow(
                       color: Colors.black26,
-                      blurRadius: 3.0,
+                      blurRadius: 4.0,
                       offset: Offset(0.0, 5.0),
                       spreadRadius: 3.0)
                 ]),
             child: Column(
+              textBaseline: TextBaseline.ideographic,
               children: [
                 const Text(
-                  'Ingreso',
-                  style: TextStyle(fontSize: 20.0),
+                  'I N G R E S O',
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
-                  height: 60.0,
+                  height: 10.0,
                 ),
                 _crearEmail(bloc),
                 const SizedBox(
@@ -62,7 +65,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 _crearPassword(bloc),
                 const SizedBox(
-                  height: 30.0,
+                  height: 20.0,
                 ),
                 _crearBoton(bloc),
               ],
@@ -112,7 +115,7 @@ class LoginPage extends StatelessWidget {
             decoration: InputDecoration(
               icon: const Icon(Icons.lock_outline, color: Colors.green),
               //hintText: 'ejemplo@correo.com',
-              labelText: 'Contrasena',
+              labelText: 'Contraseña',
               counterText: snapshot.data,
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
