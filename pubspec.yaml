@@ -43,18 +43,18 @@ dependencies:
   http_parser: ^4.0.0
   shared_preferences: ^2.0.13
   number_inc_dec: ^0.8.0
-  photo_view: ^0.13.0
+  photo_view: ^0.14.0
   syncfusion_flutter_pdf: ^20.1.47-beta.1
   pdf: ^3.7.3
   path_provider: ^2.0.9
-  firebase_database: ^9.0.10
   firebase_storage: ^10.2.11
   cloud_firestore: ^3.1.11
   firebase_core: ^1.14.0
   firebase_auth: ^3.3.13
   image_picker_web: ^2.1.1
-  file_picker: ^4.5.1
+  file_picker: ^5.0.1
   syncfusion_flutter_pdfviewer: ^20.1.52-beta
+  firebase_database: ^9.1.0
 
 dev_dependencies:
   flutter_test:
@@ -65,7 +65,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^1.0.0
+  flutter_lints: ^2.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

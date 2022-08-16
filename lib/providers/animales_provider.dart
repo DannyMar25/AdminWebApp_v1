@@ -3,7 +3,7 @@ import 'dart:html' as h;
 import 'package:admin_web_v1/models/animales_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:http/http.dart' as http;
+//import 'package:http/http.dart' as http;
 
 class AnimalesProvider {
   CollectionReference refAn = FirebaseFirestore.instance.collection('animales');
@@ -38,18 +38,18 @@ class AnimalesProvider {
     }
   }
 
-  Future<bool> setCoordenada(int n, String id) async {
-    //final url = '$_url/animales/${animal.id}.json?auth=${_prefs.token}';
-    final url = '$_url/gps/Test/.json';
-    final values = {"GetDataGPS": n, "id": id};
+  // Future<bool> setCoordenada(int n, String id) async {
+  //   //final url = '$_url/animales/${animal.id}.json?auth=${_prefs.token}';
+  //   final url = '$_url/gps/Test/.json';
+  //   final values = {"GetDataGPS": n, "id": id};
 
-    final resp = await http.put(Uri.parse(url), body: values);
-    final decodedData = json.decode(resp.body);
+  //   final resp = await http.put(Uri.parse(url), body: values);
+  //   final decodedData = json.decode(resp.body);
 
-    print(decodedData);
+  //   print(decodedData);
 
-    return true;
-  }
+  //   return true;
+  // }
 
   Future<bool> editarAnimal(AnimalModel animal, String url) async {
     try {

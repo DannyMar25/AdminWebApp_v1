@@ -44,16 +44,16 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
                 icon: const Icon(Icons.manage_accounts),
                 itemBuilder: (context) => [
                       const PopupMenuItem<int>(
-                        child: Text("Informacion"),
                         value: 0,
+                        child: Text("Informacion"),
                       ),
                       const PopupMenuItem<int>(
-                        child: Text("Ayuda"),
                         value: 1,
+                        child: Text("Ayuda"),
                       ),
                       const PopupMenuItem<int>(
-                        child: Text("Cerrar Sesion"),
                         value: 2,
+                        child: Text("Cerrar Sesion"),
                       )
                     ]),
           ],
@@ -129,15 +129,15 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
   Widget _crearItem(BuildContext context, EvidenciasModel evidencia) {
     if (evidencia.nombreArchivo != "") {
       return Card(
+          elevation: 8,
+          shadowColor: Colors.green,
+          margin: const EdgeInsets.all(20.0),
           child: ListTile(
               title: Text(evidencia.nombreArchivo),
               onTap: () async {
                 Navigator.pushNamed(context, 'verArchivoEvidencia',
                     arguments: evidencia);
-              }),
-          elevation: 8,
-          shadowColor: Colors.green,
-          margin: const EdgeInsets.all(20.0));
+              }));
     } else {
       return const Divider(
         color: Colors.transparent,

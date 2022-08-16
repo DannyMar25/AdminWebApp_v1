@@ -43,16 +43,16 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
                 icon: const Icon(Icons.manage_accounts),
                 itemBuilder: (context) => [
                       const PopupMenuItem<int>(
-                        child: Text("Informacion"),
                         value: 0,
+                        child: Text("Informacion"),
                       ),
                       const PopupMenuItem<int>(
-                        child: Text("Ayuda"),
                         value: 1,
+                        child: Text("Ayuda"),
                       ),
                       const PopupMenuItem<int>(
-                        child: Text("Cerrar Sesion"),
                         value: 2,
+                        child: Text("Cerrar Sesion"),
                       )
                     ]),
           ],
@@ -127,6 +127,7 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
 
   Widget _crearItem(BuildContext context, EvidenciasModel evidencia) {
     return Card(
+      shadowColor: Colors.green,
       child: ListTile(
           title: Column(children: [
             (evidencia.fotoUrl == "")
@@ -146,8 +147,6 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
             Navigator.pushNamed(context, 'verFotoEvidencia',
                 arguments: evidencia);
           }),
-      //elevation: 8,
-      shadowColor: Colors.green,
       //margin: EdgeInsets.all(20.0)
     );
   }

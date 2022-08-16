@@ -48,16 +48,16 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
               icon: const Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
-                      child: Text("Informacion"),
                       value: 0,
+                      child: Text("Informacion"),
                     ),
                     const PopupMenuItem<int>(
-                      child: Text("Ayuda"),
                       value: 1,
+                      child: Text("Ayuda"),
                     ),
                     const PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
                       value: 2,
+                      child: Text("Cerrar Sesion"),
                     )
                   ]),
         ],
@@ -110,8 +110,8 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
         ),
         prefixIcon: const Icon(Icons.search),
         suffixIcon: GestureDetector(
-          child: const Icon(Icons.clear),
           onTap: _onClearTapped,
+          child: const Icon(Icons.clear),
         ),
         border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.elliptical(10, 10))),
@@ -204,9 +204,9 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
 
   _crearBoton(BuildContext context) {
     return FloatingActionButton(
-      child: const Icon(Icons.add),
       backgroundColor: Colors.green,
       onPressed: () => Navigator.pushNamed(context, 'animal'),
+      child: const Icon(Icons.add),
     );
   }
 
@@ -256,6 +256,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
               width: 200,
               height: 35,
               child: Card(
+                color: Colors.green,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 3.0),
                   child: Text(
@@ -264,7 +265,6 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
                     style: const TextStyle(fontSize: 17.0),
                   ),
                 ),
-                color: Colors.green,
               ),
             )
           ],
@@ -291,6 +291,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
               width: 200,
               height: 35,
               child: Card(
+                color: Colors.blue,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 3.0),
                   child: Text(
@@ -299,7 +300,6 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
                     style: const TextStyle(fontSize: 17.0),
                   ),
                 ),
-                color: Colors.blue,
               ),
             )
           ],
@@ -326,6 +326,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
               width: 200,
               height: 35,
               child: Card(
+                color: Colors.orange,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 3.0),
                   child: Text(
@@ -334,7 +335,6 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
                     style: const TextStyle(fontSize: 17.0),
                   ),
                 ),
-                color: Colors.orange,
               ),
             )
           ],

@@ -41,16 +41,16 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
               icon: const Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
-                      child: Text("Informacion"),
                       value: 0,
+                      child: Text("Informacion"),
                     ),
                     const PopupMenuItem<int>(
-                      child: Text("Ayuda"),
                       value: 1,
+                      child: Text("Ayuda"),
                     ),
                     const PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
                       value: 2,
+                      child: Text("Cerrar Sesion"),
                     )
                   ]),
         ],
@@ -119,6 +119,8 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
         children: [
           //Divider(color: Colors.purple),
           Card(
+            elevation: 8,
+            margin: const EdgeInsets.all(10),
             child: Container(
               height: 170,
               color: Colors.white,
@@ -128,15 +130,16 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
                     child: Padding(
                       padding: const EdgeInsets.only(right: 0.1),
                       child: Expanded(
+                        flex: 5,
                         child: Image.asset(
                           "assets/pet.jpg",
                           height: 130,
                         ),
-                        flex: 5,
                       ),
                     ),
                   ),
                   Expanded(
+                    flex: 8,
                     child: Container(
                       alignment: Alignment.topLeft,
                       child: Column(
@@ -145,16 +148,16 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
                             flex: 20,
                             child: ListTile(
                               title:
-                                  Text("Cliente: " + formulario.nombreClient),
+                                  Text("Cliente: ${formulario.nombreClient}"),
                               subtitle: Column(
                                 children: [
-                                  Text("Fecha de solicitud:" +
-                                      formulario.fechaIngreso),
+                                  Text(
+                                      "Fecha de solicitud:${formulario.fechaIngreso}"),
 
                                   // Text("Identificacion: " +
                                   //     '${formulario.identificacion}'),
-                                  Text("Posible adoptante para: " +
-                                      formulario.animal!.nombre),
+                                  Text(
+                                      "Posible adoptante para: ${formulario.animal!.nombre}"),
                                 ],
                               ),
                             ),
@@ -180,13 +183,10 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
                         ],
                       ),
                     ),
-                    flex: 8,
                   ),
                 ],
               ),
             ),
-            elevation: 8,
-            margin: const EdgeInsets.all(10),
           ),
           // Divider(color: Colors.purple)
         ],

@@ -47,16 +47,16 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
               icon: const Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
-                      child: Text("Informacion"),
                       value: 0,
+                      child: Text("Informacion"),
                     ),
                     const PopupMenuItem<int>(
-                      child: Text("Ayuda"),
                       value: 1,
+                      child: Text("Ayuda"),
                     ),
                     const PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
                       value: 2,
+                      child: Text("Cerrar Sesion"),
                     )
                   ]),
         ],
@@ -136,6 +136,8 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
         children: [
           //Divider(color: Colors.purple),
           Card(
+            elevation: 8,
+            margin: const EdgeInsets.all(10),
             child: Container(
               height: 100,
               color: Colors.white,
@@ -145,12 +147,13 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
                     child: Padding(
                       padding: const EdgeInsets.all(10),
                       child: Expanded(
-                        child: Image.asset("assets/pet.jpg"),
                         flex: 2,
+                        child: Image.asset("assets/pet.jpg"),
                       ),
                     ),
                   ),
                   Expanded(
+                    flex: 8,
                     child: Container(
                       alignment: Alignment.topLeft,
                       child: Column(
@@ -160,7 +163,7 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
                             child: ListTile(
                               title: Text(formulario.animal!.nombre),
                               subtitle:
-                                  Text("Adoptante: " + formulario.nombreClient),
+                                  Text("Adoptante: ${formulario.nombreClient}"),
                             ),
                           ),
                           Expanded(
@@ -196,13 +199,10 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
                         ],
                       ),
                     ),
-                    flex: 8,
                   ),
                 ],
               ),
             ),
-            elevation: 8,
-            margin: const EdgeInsets.all(10),
           ),
           // Divider(color: Colors.purple)
         ],

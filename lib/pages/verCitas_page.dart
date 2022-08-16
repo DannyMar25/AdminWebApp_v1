@@ -43,16 +43,16 @@ class _VerCitasPageState extends State<VerCitasPage> {
               icon: const Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
-                      child: Text("Informacion"),
                       value: 0,
+                      child: Text("Informacion"),
                     ),
                     const PopupMenuItem<int>(
-                      child: Text("Ayuda"),
                       value: 1,
+                      child: Text("Ayuda"),
                     ),
                     const PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
                       value: 2,
+                      child: Text("Cerrar Sesion"),
                     )
                   ]),
           // Builder(builder: (BuildContext context) {
@@ -153,11 +153,11 @@ class _VerCitasPageState extends State<VerCitasPage> {
             ListTile(
               title: Column(
                 children: [
-                  Text("Fecha:" + cita.fechaCita),
-                  Text("Nombre del cliente: " + cita.nombreClient),
+                  Text("Fecha:${cita.fechaCita}"),
+                  Text("Nombre del cliente: ${cita.nombreClient}"),
                   // Text("Posible a doptante para: " '${cita.animal!.nombre}'),
-                  Text("Dia de la cita: " + fecha),
-                  Text("Hora de la cita: " + hora),
+                  Text("Dia de la cita: $fecha"),
+                  Text("Hora de la cita: $hora"),
                 ],
               ),
               //subtitle: Text('${horario}'),

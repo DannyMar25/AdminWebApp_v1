@@ -42,16 +42,16 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
               icon: const Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
-                      child: Text("Informacion"),
                       value: 0,
+                      child: Text("Informacion"),
                     ),
                     const PopupMenuItem<int>(
-                      child: Text("Ayuda"),
                       value: 1,
+                      child: Text("Ayuda"),
                     ),
                     const PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
                       value: 2,
+                      child: Text("Cerrar Sesion"),
                     )
                   ]),
           // Builder(builder: (BuildContext context) {
@@ -142,10 +142,10 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
             ListTile(
               title: Column(
                 children: [
-                  Text("Nombre del cliente: " + cita.nombreClient),
+                  Text("Nombre del cliente: ${cita.nombreClient}"),
                   // Text("Posible a doptante para: " '${cita.animal!.nombre}'),
                   Text("Fecha de la cita: " + fecha + ' - ' + cita.fechaCita),
-                  Text("Hora de la cita: " + hora),
+                  Text("Hora de la cita: $hora"),
                 ],
               ),
               //subtitle: Text('${horario}'),
@@ -190,11 +190,7 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
 
     if (picked != null) {
       setState(() {
-        _fecha = picked.year.toString() +
-            '-' +
-            picked.month.toString() +
-            '-' +
-            picked.day.toString();
+        _fecha = '${picked.year}-${picked.month}-${picked.day}';
         //_fechaCompleta = picked.toString();
 
         //_fecha = DateFormat('EEEE').format(picked);

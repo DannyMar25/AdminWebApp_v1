@@ -41,16 +41,16 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                 icon: const Icon(Icons.manage_accounts),
                 itemBuilder: (context) => [
                       const PopupMenuItem<int>(
-                        child: Text("Informacion"),
                         value: 0,
+                        child: Text("Informacion"),
                       ),
                       const PopupMenuItem<int>(
-                        child: Text("Ayuda"),
                         value: 1,
+                        child: Text("Ayuda"),
                       ),
                       const PopupMenuItem<int>(
-                        child: Text("Cerrar Sesion"),
                         value: 2,
+                        child: Text("Cerrar Sesion"),
                       )
                     ]),
           ],
@@ -148,13 +148,13 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
               rows: [
                 DataRow(selected: true, cells: [
                   DataCell(SizedBox(
-                    child: Text(desparasitacion.fecha),
                     width: 137,
+                    child: Text(desparasitacion.fecha),
                   )),
                   //DataCell(_crearPesoActual()),
                   DataCell(SizedBox(
-                    child: Text(desparasitacion.nombreProducto),
                     width: 137,
+                    child: Text(desparasitacion.nombreProducto),
                   )),
                 ]),
               ],
@@ -178,12 +178,12 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
               rows: [
                 DataRow(selected: true, cells: [
                   DataCell(SizedBox(
-                    child: Text('${desparasitacion.pesoActual}'),
                     width: 100,
+                    child: Text('${desparasitacion.pesoActual}'),
                   )),
                   DataCell(SizedBox(
-                    child: Text(desparasitacion.fechaProxDesparasitacion),
                     width: 100,
+                    child: Text(desparasitacion.fechaProxDesparasitacion),
                   )),
                 ]),
               ],

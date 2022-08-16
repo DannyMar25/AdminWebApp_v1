@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final relacionAnimalesModel = relacionAnimalesModelFromJson(jsonString);
-
 import 'dart:convert';
 
 RelacionAnimalesModel relacionAnimalesModelFromJson(String str) =>

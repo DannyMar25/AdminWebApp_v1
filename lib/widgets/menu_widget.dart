@@ -53,6 +53,10 @@ class _MenuWidgetState extends State<MenuWidget> {
           ExpansionTile(
             //textColor: Colors.green,
             title: const Text('Citas'),
+            leading: const Icon(
+              Icons.meeting_room,
+              color: Colors.green,
+            ),
             children: [
               ListTile(
                 leading: const Icon(
@@ -96,15 +100,15 @@ class _MenuWidgetState extends State<MenuWidget> {
                 },
               ),
             ],
-            leading: const Icon(
-              Icons.meeting_room,
-              color: Colors.green,
-            ),
           ),
           //aqui termina el nuevo codigo
           const Divider(),
           ExpansionTile(
             title: const Text('Solicitudes de adopcion'),
+            leading: const Icon(
+              Icons.assignment,
+              color: Colors.green,
+            ),
             children: [
               ListTile(
                 leading: const Icon(
@@ -140,10 +144,6 @@ class _MenuWidgetState extends State<MenuWidget> {
                 },
               ),
             ],
-            leading: const Icon(
-              Icons.assignment,
-              color: Colors.green,
-            ),
           ),
           const Divider(),
           // ExpansionTile(
@@ -169,6 +169,10 @@ class _MenuWidgetState extends State<MenuWidget> {
           const Divider(),
           ExpansionTile(
             title: const Text('Donaciones'),
+            leading: const Icon(
+              Icons.assignment,
+              color: Colors.green,
+            ),
             children: [
               ListTile(
                 leading: const Icon(
@@ -212,10 +216,6 @@ class _MenuWidgetState extends State<MenuWidget> {
                 },
               ),
             ],
-            leading: const Icon(
-              Icons.assignment,
-              color: Colors.green,
-            ),
           ),
           const Divider(),
           rol == 'SuperAdministrador'

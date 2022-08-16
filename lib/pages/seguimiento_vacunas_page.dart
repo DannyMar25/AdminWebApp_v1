@@ -47,16 +47,16 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
                 icon: const Icon(Icons.manage_accounts),
                 itemBuilder: (context) => [
                       const PopupMenuItem<int>(
-                        child: Text("Informacion"),
                         value: 0,
+                        child: Text("Informacion"),
                       ),
                       const PopupMenuItem<int>(
-                        child: Text("Ayuda"),
                         value: 1,
+                        child: Text("Ayuda"),
                       ),
                       const PopupMenuItem<int>(
-                        child: Text("Cerrar Sesion"),
                         value: 2,
+                        child: Text("Cerrar Sesion"),
                       )
                     ]),
           ],
@@ -151,16 +151,16 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
               rows: [
                 DataRow(selected: true, cells: [
                   DataCell(SizedBox(
-                    child: Text(vacuna.fechaConsulta),
                     width: 110,
+                    child: Text(vacuna.fechaConsulta),
                   )),
                   DataCell(SizedBox(
-                    child: Text('${vacuna.pesoActual}'),
                     width: 50,
+                    child: Text('${vacuna.pesoActual}'),
                   )),
                   DataCell(SizedBox(
-                    child: Text(vacuna.fechaProximaVacuna),
                     width: 105,
+                    child: Text(vacuna.fechaProximaVacuna),
                   )),
                 ]),
               ],
@@ -182,12 +182,12 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
               rows: [
                 DataRow(selected: true, cells: [
                   DataCell(SizedBox(
-                    child: Text(vacuna.tipoVacuna),
                     width: 170,
+                    child: Text(vacuna.tipoVacuna),
                   )),
                   DataCell(SizedBox(
-                    child: Text(vacuna.veterinarioResp),
                     width: 170,
+                    child: Text(vacuna.veterinarioResp),
                   )),
                 ]),
               ],
