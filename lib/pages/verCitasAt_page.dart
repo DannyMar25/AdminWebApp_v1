@@ -43,7 +43,7 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -51,7 +51,7 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
           // Builder(builder: (BuildContext context) {
@@ -102,6 +102,7 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
   }
 
   showCitas() async {
+    //se anadio un clear()
     citasA.clear();
     listaC = await citasProvider
         .cargarCitasAtendidas(_inputFieldDateController.text);
@@ -130,7 +131,6 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
   Widget _crearItem(BuildContext context, CitasModel cita) {
     String fecha = cita.horario!.dia;
     String hora = cita.horario!.hora;
-
     return Card(
       color: Colors.lightGreen[200],
       shadowColor: Colors.green,
@@ -160,8 +160,6 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
         controller: _inputFieldDateController,
         decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          //counter: Text('Letras ${_nombre.length}'),
-          //hintText: 'Ingrese fecha de agendamiento de cita',
           labelText: 'Fecha de la cita',
           //helperText: 'Solo es el nombre',
           suffixIcon:

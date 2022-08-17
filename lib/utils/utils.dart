@@ -1,3 +1,4 @@
+import 'package:admin_web_v1/providers/animales_provider.dart';
 import 'package:flutter/material.dart';
 
 bool isNumeric(String s) {
@@ -51,7 +52,8 @@ void mostrarAlertaOk(BuildContext context, String mensaje, String ruta) {
       });
 }
 
-void mostrarAlertaBorrar(BuildContext context, String mensaje) {
+void mostrarAlertaBorrar(BuildContext context, String mensaje, String id) {
+  final animalProvider = AnimalesProvider();
   showDialog(
       context: context,
       builder: (context) {
@@ -61,12 +63,47 @@ void mostrarAlertaBorrar(BuildContext context, String mensaje) {
           actions: [
             TextButton(
               child: const Text('Ok'),
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                animalProvider.borrarAnimal(id);
+                mostrarAlertaOk(
+                    context, 'El registro a sido eliminado.', 'home');
+                //Navigator.pushNamed(context, 'home');
+              },
+              //onPressed: () => Navigator.of(context).pop(),
             ),
             TextButton(
               child: const Text('Cancel'),
-              onPressed: () {},
+              //onPressed: () {},
+              onPressed: () => Navigator.of(context).pop(),
             ),
+          ],
+        );
+      });
+}
+
+String? validarEmail(String? value) {
+  String pattern =
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+  RegExp regex = RegExp(pattern);
+  if (value == null || value.isEmpty || !regex.hasMatch(value)) {
+    return 'Ingrese una dirección de correo valida.';
+  } else {
+    return null;
+  }
+}
+
+void mostrarAlertaAuth(BuildContext context, String mensaje, String ruta) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Correo inválido'),
+          content: Text(mensaje),
+          actions: [
+            TextButton(
+                child: const Text('Ok'),
+                //onPressed: () => Navigator.of(context).pop(),
+                onPressed: () => Navigator.pushNamed(context, ruta)),
           ],
         );
       });

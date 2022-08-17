@@ -1,3 +1,4 @@
+import 'package:admin_web_v1/models/animales_model.dart';
 import 'package:admin_web_v1/models/formulario_datosPersonales_model.dart';
 import 'package:admin_web_v1/models/formulario_principal_model.dart';
 import 'package:admin_web_v1/providers/animales_provider.dart';
@@ -17,6 +18,7 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
   List<FormulariosModel> formularioA = [];
   List<Future<FormulariosModel>> formularioC = [];
   DatosPersonalesModel datosC = DatosPersonalesModel();
+  AnimalModel animal = AnimalModel();
   final formKey = GlobalKey<FormState>();
   final formulariosProvider = FormulariosProvider();
   //final horariosProvider = new HorariosProvider();
@@ -42,7 +44,7 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -50,7 +52,7 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
         ],
@@ -113,7 +115,6 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
   Widget _crearItem(BuildContext context, FormulariosModel formulario) {
     //String fecha = cita.horario!.dia;
     //String hora = cita.horario!.hora;
-
     return ListTile(
       title: Column(
         children: [
@@ -151,13 +152,13 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
                                   Text("Cliente: ${formulario.nombreClient}"),
                               subtitle: Column(
                                 children: [
-                                  Text(
-                                      "Fecha de solicitud:${formulario.fechaIngreso}"),
+                                  Text("Fecha de solicitud:"
+                                      '${formulario.fechaIngreso}'),
 
                                   // Text("Identificacion: " +
                                   //     '${formulario.identificacion}'),
-                                  Text(
-                                      "Posible adoptante para: ${formulario.animal!.nombre}"),
+                                  Text("Posible adoptante para: "
+                                      '${formulario.animal!.nombre}'),
                                 ],
                               ),
                             ),

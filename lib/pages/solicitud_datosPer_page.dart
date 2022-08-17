@@ -27,8 +27,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
   //final horariosProvider = new HorariosProvider();
   // final animalesProvider = new AnimalesProvider();
   final userProvider = UsuarioProvider();
-  //var idForm;
-  //var idD;
+
   Object? dat;
   @override
   void initState() {
@@ -44,7 +43,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
     final arg = ModalRoute.of(context)!.settings.arguments as Map;
     //if (dat == arg['datosper']) {
     datosA = arg['datosper'] as DatosPersonalesModel;
-    print(datosA.id);
+    //print(datosA.id);
     //print(formularios.idDatosPersonales);
     situacionF = arg['sitfam'] as SitFamiliarModel;
     domicilio = arg['domicilio'] as DomicilioModel;
@@ -55,9 +54,9 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
 
     //var nombre1 = datosA.nombreCom;
     return Scaffold(
-      backgroundColor: const Color.fromARGB(223, 221, 248, 153),
+      backgroundColor: const Color.fromARGB(223, 248, 248, 245),
       appBar: AppBar(
-        title: const Text('Solicitudes'),
+        title: const Text('Datos personales'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -66,7 +65,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -74,7 +73,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
         ],
@@ -92,7 +91,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
                   children: [
                     Text('Datos personales',
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 33,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
                             ..strokeWidth = 2
@@ -102,13 +101,13 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
                     _mostrarNombreCom(),
                     _mostrarCI(),
                     _mostrarDireccion(),
-                    _mostrarEdad(),
+                    _mostrarFechaNacimiento(),
                     _mostrarOcupacion(),
                     _mostrarEmail(),
                     const Divider(),
-                    Text('Instruccion',
+                    Text('Instrucción',
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 33,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
                             ..strokeWidth = 2
@@ -117,9 +116,9 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
                     const Divider(),
                     _mostrarNivelInstruccion(),
                     const Divider(),
-                    Text('Telefonos de contacto',
+                    Text('Teléfonos de contacto',
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 33,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
                             ..strokeWidth = 2
@@ -132,7 +131,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
                     const Divider(),
                     Text('Referencias personales',
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 33,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
                             ..strokeWidth = 2
@@ -142,6 +141,9 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
                     _mostrarNombreRef(),
                     _mostrarParentesco(),
                     _mostrarTelfRef(),
+                    const Divider(
+                      color: Colors.transparent,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -164,7 +166,6 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
       case 0:
         break;
       case 1:
-        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();
@@ -181,7 +182,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
         labelText: "Nombre Completo",
         icon: Icon(
           Icons.person,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -193,10 +194,10 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
       initialValue: datosA.cedula,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "Cedula",
+        labelText: "Cédula",
         icon: Icon(
           Icons.assignment_ind,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -208,16 +209,16 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
       initialValue: datosA.direccion,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "Direccion exacta donde estara la mascota",
+        labelText: "Dirección exacta donde estará la mascota",
         icon: Icon(
           Icons.place,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
   }
 
-  Widget _mostrarEdad() {
+  Widget _mostrarFechaNacimiento() {
     return TextFormField(
       readOnly: true,
       initialValue: datosA.fechaNacimiento,
@@ -226,7 +227,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
         labelText: "Fecha de nacimiento",
         icon: Icon(
           Icons.person,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -238,10 +239,10 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
       initialValue: datosA.ocupacion,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "Ocupacion",
+        labelText: "Ocupación",
         icon: Icon(
           Icons.work,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -256,7 +257,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
         labelText: "E-mail",
         icon: Icon(
           Icons.mail,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -268,10 +269,10 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
       initialValue: datosA.nivelInst,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "Nivel de instruccion",
+        labelText: "Nivel de instrucción",
         icon: Icon(
           Icons.school,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -286,7 +287,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
         labelText: "Celular",
         icon: Icon(
           Icons.phone_android,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -301,7 +302,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
         labelText: "Domicilio",
         icon: Icon(
           Icons.phone,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -316,7 +317,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
         labelText: "Trabajo",
         icon: Icon(
           Icons.phone,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -331,7 +332,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
         labelText: "Nombre",
         icon: Icon(
           Icons.person,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -346,7 +347,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
         labelText: "Parentesco",
         icon: Icon(
           Icons.person,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -358,10 +359,10 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
       initialValue: datosA.telfRef,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "Telefono",
+        labelText: "Teléfono",
         icon: Icon(
           Icons.phone,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -371,8 +372,9 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
     return Ink(
         padding: const EdgeInsets.only(left: 50.0),
         decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+            //borderRadius: BorderRadius.all(Radius.circular(8)),
             shape: BoxShape.rectangle,
+            //color: Color.fromARGB(223, 221, 248, 153),
             color: Colors.transparent,
             boxShadow: [
               BoxShadow(
@@ -388,7 +390,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
             Icons.arrow_right_sharp,
           ),
           iconSize: 100,
-          color: Colors.lightBlue[300],
+          color: Colors.green[400],
           onPressed: () async {
             Navigator.pushNamed(context, 'situacionFam', arguments: {
               'datosper': datosA,
@@ -405,8 +407,9 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
     return Ink(
         padding: const EdgeInsets.only(left: 50.0),
         decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+            //borderRadius: BorderRadius.all(Radius.circular(8)),
             shape: BoxShape.rectangle,
+            //color: Color.fromARGB(223, 221, 248, 153),
             color: Colors.transparent,
             boxShadow: [
               BoxShadow(
@@ -420,7 +423,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
           //tooltip: 'Siguiente',
           icon: const Icon(Icons.arrow_left_sharp),
           iconSize: 100,
-          color: Colors.lightBlue[300],
+          color: Colors.green[400],
           onPressed: () async {
             Navigator.pushNamed(context, 'verSolicitudesMain',
                 arguments: formularios);

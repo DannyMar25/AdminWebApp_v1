@@ -5,7 +5,6 @@ import 'package:admin_web_v1/models/formulario_principal_model.dart';
 import 'package:admin_web_v1/models/registro_desparacitaciones_model.dart';
 import 'package:admin_web_v1/providers/formularios_provider.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
-import 'package:admin_web_v1/widgets/background.dart';
 import 'package:flutter/material.dart';
 
 class VerEvidenciaArchivosPage extends StatefulWidget {
@@ -35,6 +34,7 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
     formularios = arg['formulario'] as FormulariosModel;
     animal = arg['animal'] as AnimalModel;
     return Scaffold(
+        backgroundColor: const Color.fromARGB(255, 239, 243, 243),
         appBar: AppBar(
           title: const Text('Evidencias'),
           backgroundColor: Colors.green,
@@ -45,7 +45,7 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
                 itemBuilder: (context) => [
                       const PopupMenuItem<int>(
                         value: 0,
-                        child: Text("Informacion"),
+                        child: Text("Información"),
                       ),
                       const PopupMenuItem<int>(
                         value: 1,
@@ -53,7 +53,7 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
                       ),
                       const PopupMenuItem<int>(
                         value: 2,
-                        child: Text("Cerrar Sesion"),
+                        child: Text("Cerrar Sesión"),
                       )
                     ]),
           ],
@@ -61,7 +61,7 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
         drawer: _menuWidget(),
         body: Stack(
           children: [
-            const Background(),
+            //Background(),
             SingleChildScrollView(
                 child: Container(
                     //color: Colors.lightGreenAccent,
@@ -78,7 +78,7 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
                                 foreground: Paint()
                                   ..style = PaintingStyle.stroke
                                   ..strokeWidth = 3
-                                  ..color = Colors.orange[100]!,
+                                  ..color = Colors.blueGrey,
                               ),
                               textAlign: TextAlign.start,
                             ),
@@ -112,7 +112,7 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
             return Column(
               children: [
                 SizedBox(
-                  height: 700,
+                  height: 660,
                   child: ListView.builder(
                     itemCount: evidF!.length,
                     itemBuilder: (context, i) => _crearItem(context, evidF[i]),
@@ -131,7 +131,7 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
       return Card(
           elevation: 8,
           shadowColor: Colors.green,
-          margin: const EdgeInsets.all(20.0),
+          margin: const EdgeInsets.all(15.0),
           child: ListTile(
               title: Text(evidencia.nombreArchivo),
               onTap: () async {
@@ -139,9 +139,13 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
                     arguments: evidencia);
               }));
     } else {
-      return const Divider(
-        color: Colors.transparent,
+      return const SizedBox(
+        height: 1.0,
+        width: 1.0,
       );
+      // return Divider(
+      //   color: Colors.transparent,
+      // );
     }
   }
 
@@ -188,7 +192,7 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
           ),
           ListTile(
             leading: const Icon(Icons.check, color: Colors.green),
-            title: const Text('Ver Registro Desparasitacion'),
+            title: const Text('Ver Registro Desparasitación'),
             onTap: () {
               //Navigator.pop(context);
               Navigator.pushReplacementNamed(context, 'verRegistroDesp',

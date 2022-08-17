@@ -38,7 +38,8 @@ class _SolicitudesRechazadasPageState extends State<SolicitudesRechazadasPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(223, 221, 248, 153),
+      //backgroundColor: Color.fromARGB(223, 221, 248, 153),
+      backgroundColor: const Color.fromARGB(255, 239, 243, 243),
       appBar: AppBar(
         title: const Text('SOLICITUDES RECHAZADAS'),
         backgroundColor: Colors.green,
@@ -49,7 +50,7 @@ class _SolicitudesRechazadasPageState extends State<SolicitudesRechazadasPage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -57,7 +58,7 @@ class _SolicitudesRechazadasPageState extends State<SolicitudesRechazadasPage> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
         ],
@@ -65,23 +66,12 @@ class _SolicitudesRechazadasPageState extends State<SolicitudesRechazadasPage> {
       drawer: const MenuWidget(),
       body: SingleChildScrollView(
         child: Container(
-          // decoration: BoxDecoration(
-          //   image: DecorationImage(
-          //     image: AssetImage("assets/fondoanimales.jpg"),
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
           padding: const EdgeInsets.all(15.0),
           child: Form(
             key: formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Text(
-                //   "SOLICITUDES RECHAZADAS",
-                //   style: const TextStyle(
-                //       fontWeight: FontWeight.bold, fontSize: 20),
-                // ),
                 const Padding(padding: EdgeInsets.only(bottom: 12.0)),
                 _verListado()
               ],
@@ -161,8 +151,8 @@ class _SolicitudesRechazadasPageState extends State<SolicitudesRechazadasPage> {
                             flex: 5,
                             child: ListTile(
                               title: Text(formulario.animal!.nombre),
-                              subtitle:
-                                  Text("Adoptante: ${formulario.nombreClient}"),
+                              subtitle: Text(
+                                  "Adoptante: " '${formulario.nombreClient}'),
                             ),
                           ),
                           Expanded(
@@ -179,7 +169,6 @@ class _SolicitudesRechazadasPageState extends State<SolicitudesRechazadasPage> {
                                             formulario.idDatosPersonales);
                                     animal = await animalesProvider
                                         .cargarAnimalId(formulario.idAnimal);
-
                                     Navigator.pushReplacementNamed(
                                         context, 'verSolicitudRechazada',
                                         arguments: {

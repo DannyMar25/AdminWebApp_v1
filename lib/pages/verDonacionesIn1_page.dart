@@ -19,7 +19,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
   final userProvider = UsuarioProvider();
   DonacionesModel donaciones = DonacionesModel();
   final List<String> _items =
-      ['Alimento', 'Medicina', 'Insumos Higienicos', 'Otros'].toList();
+      ['Alimento', 'Medicina', 'Insumos Higiénicos', 'Otros'].toList();
   String? _selection;
   bool isChecked = false;
   bool isChecked1 = false;
@@ -35,7 +35,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
     final Object? donacData = ModalRoute.of(context)!.settings.arguments;
     if (donacData != null) {
       donaciones = donacData as DonacionesModel;
-      print(donaciones.id);
+      //print(donaciones.id);
     }
 
     return Scaffold(
@@ -49,7 +49,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -57,21 +57,9 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
       ),
       drawer: const MenuWidget(),
@@ -110,7 +98,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
                       _mostrarDisponibilidad(),
                       const Divider(),
                       Text(
-                        'Cambiar disponibilidad de la donacion',
+                        'Cambiar disponibilidad de la donación',
                         style: TextStyle(
                           fontSize: 18,
                           foreground: Paint()
@@ -146,6 +134,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
                           _crearBotonEliminar()
                         ],
                       )
+                      //_crearBoton(),
                       // _crearCantidad(),
                     ],
                   )),
@@ -177,22 +166,26 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       mainAxisAlignment: MainAxisAlignment.start,
       //mainAxisSize: MainAxisSize.max,
       children: [
-        const Text(
-          'Seleccione el tipo de donacion:  ',
-          style: TextStyle(fontSize: 16, color: Colors.black),
+        const Expanded(
+          child: Text(
+            'Seleccione el tipo de donación:  ',
+            style: TextStyle(fontSize: 16, color: Colors.black),
+          ),
         ),
-        DropdownButton<String>(
-          hint: Text(donaciones.tipo.toString()),
-          value: _selection,
-          items: dropdownMenuOptions,
-          onChanged: (s) {
-            setState(() {
-              _selection = s;
+        Expanded(
+          child: DropdownButton<String>(
+            hint: Text(donaciones.tipo.toString()),
+            value: _selection,
+            items: dropdownMenuOptions,
+            onChanged: (s) {
+              setState(() {
+                _selection = s;
 
-              donaciones.tipo = s!;
-              //animal.tamanio = s!;
-            });
-          },
+                donaciones.tipo = s!;
+                //animal.tamanio = s!;
+              });
+            },
+          ),
         ),
       ],
     );
@@ -224,14 +217,6 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
           donaciones.peso = double.parse(s);
         });
       },
-      // onSaved: (value) => donaciones.peso = double.parse(value!),
-      // validator: (value) {
-      //   if (utils.isNumeric(value!)) {
-      //     return null;
-      //   } else {
-      //     return 'Solo numeros';
-      //   }
-      // },
     );
     //}
   }
@@ -241,21 +226,13 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       initialValue: donaciones.descripcion,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-          labelText: 'Descripcion:',
+          labelText: 'Descripción:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
         setState(() {
           donaciones.descripcion = s;
         });
       },
-      // onSaved: (value) => donaciones.descripcion = value!,
-      // validator: (value) {
-      //   if (value!.length < 3) {
-      //     return 'Ingrese la descripcion';
-      //   } else {
-      //     return null;
-      //   }
-      // },
     );
   }
 
@@ -265,7 +242,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       initialValue: donaciones.disponibilidad,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: 'Dsiponibilidad de la donacion:',
+        labelText: 'Dsiponibilidad de la donación:',
         //labelStyle: ,
         //border: BorderRadius(BorderRadius.circular(2.0)),
         icon: Icon(
@@ -331,16 +308,16 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
     );
   }
 
-  Widget _crearDonacion() {
-    return TextFormField(
-      // initialValue: ,
-      readOnly: false,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: const InputDecoration(
-          labelText: 'Ingrese el tipo de donacion:',
-          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
-    );
-  }
+  // Widget _crearDonacion() {
+  //   return TextFormField(
+  //     // initialValue: ,
+  //     readOnly: false,
+  //     textCapitalization: TextCapitalization.sentences,
+  //     decoration: InputDecoration(
+  //         labelText: 'Ingrese el tipo de donación:',
+  //         labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+  //   );
+  // }
 
   Widget _crearUnidades() {
     return TextFormField(
@@ -356,14 +333,6 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
           donaciones.cantidad = int.parse(s);
         });
       },
-      // onSaved: (value) => donaciones.cantidad = int.parse(value!),
-      // validator: (value) {
-      //   if (utils.isNumeric(value!)) {
-      //     return null;
-      //   } else {
-      //     return 'Solo numeros';
-      //   }
-      // },
     );
   }
 
@@ -389,9 +358,10 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
     // donaciones.estadoDonacion = 'Entrante';
     //onacionesProvider.editarDisponibilidad(donaciones, disponibilidad);
     donacionesProvider.editarDonacion(donaciones);
-
+    mostrarAlertaOk(
+        context, 'Registro actualizado con éxito', 'verDonacionesInAdd');
     //mostrarSnackbar('Registro guardado');
-    Navigator.pushNamed(context, 'verDonacionesInAdd');
+    //Navigator.pushNamed(context, 'verDonacionesInAdd');
   }
 
   Widget _crearBotonEliminar() {
@@ -408,7 +378,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       onPressed: () {
         donacionesProvider.borrarDonacion(donaciones.id);
         mostrarAlertaOk(
-            context, 'Registro eliminado con exito', 'verDonacionesInAdd');
+            context, 'Registro eliminado con éxito', 'verDonacionesInAdd');
       },
     );
   }

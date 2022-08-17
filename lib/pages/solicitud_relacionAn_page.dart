@@ -21,8 +21,8 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
   //final horariosProvider = new HorariosProvider();
   // final animalesProvider = new AnimalesProvider();
   final userProvider = UsuarioProvider();
-  //var idForm;
-  //var idD;
+  var idForm;
+  var idD;
 
   @override
   void initState() {
@@ -41,13 +41,13 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
     //if (dat == arg['datosper']) {
     //print(formularios.idDatosPersonales);
     relaciones = arg['relacionAn'] as RelacionAnimalesModel;
-    print(relaciones.id);
+    //print(relaciones.id);
     formularios = arg['formulario'] as FormulariosModel;
-    print(formularios.id);
+    //print(formularios.id);
     return Scaffold(
-      backgroundColor: const Color.fromARGB(223, 221, 248, 153),
+      backgroundColor: const Color.fromARGB(223, 248, 248, 245),
       appBar: AppBar(
-        title: const Text('Solicitudes'),
+        title: const Text('Relación con los animales'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -56,7 +56,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -64,7 +64,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
         ],
@@ -72,160 +72,300 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
       drawer: const MenuWidget(),
       body: Stack(
         children: [
-          // Background(),
+          //Background(),
           SingleChildScrollView(
-            child: Container(
-              padding: const EdgeInsets.all(15.0),
-              child: Form(
-                key: formKey,
-                child: Column(
-                  children: [
-                    Text(
-                      'Liste sus dos ultimas mascotas',
-                      style: TextStyle(
-                        fontSize: 22,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 2
-                          ..color = Colors.blueGrey,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const Divider(),
-                    DataTable(
-                      sortColumnIndex: 2,
-                      sortAscending: false,
-                      columns: const [
-                        DataColumn(label: Text("Tipo")),
-                        DataColumn(label: Text("Nombre")),
-                        DataColumn(label: Text("Sexo")),
-                        DataColumn(label: Text("Esterilizado")),
-                      ],
-                      rows: [
-                        DataRow(selected: true, cells: [
-                          DataCell(_mostrarTipo1()),
-                          DataCell(_mostrarNombre1()),
-                          DataCell(_mostrarSexo1()),
-                          DataCell(_mostrarEsteriliza1())
-                        ]),
-                        DataRow(cells: [
-                          DataCell(_mostrarTipo2()),
-                          DataCell(_mostrarNombre2()),
-                          DataCell(_mostrarSexo2()),
-                          DataCell(_mostrarEsteriliza2())
-                        ]),
-                      ],
-                    ),
-                    const Divider(),
-                    //Ingresar pregunta
-
-                    Text(
-                        '¿Donde está ahora? Si fallecio, perdió o esta en otro lugar, indique la causa.',
-                        style: TextStyle(
-                          fontSize: 18,
-                          foreground: Paint()
-                            ..style = PaintingStyle.stroke
-                            ..strokeWidth = 1.5
-                            ..color = Colors.blueGrey,
-                        )),
-                    //Divider(),
-                    _mostrarUbicMascota(),
-                    // Divider(),
-                    Text('¿Por qué desea adptar una mascota?',
-                        style: TextStyle(
-                            fontSize: 18,
+            child: Flexible(
+              fit: FlexFit.loose,
+              child: Container(
+                padding: const EdgeInsets.all(15.0),
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Text(
+                          'Liste sus dos últimas mascotas',
+                          style: TextStyle(
+                            fontSize: 22,
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
-                              ..strokeWidth = 1.5
-                              ..color = Colors.blueGrey)),
-                    //Divider(),
+                              ..strokeWidth = 2
+                              ..color = Colors.blueGrey,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
 
-                    _mostrarDeseaAdop(),
-                    Text(
-                        'Si por algún motivo tuviera que cambiar de domicilio, ¿Qué pasaría con u mascota?',
+                      const Divider(),
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: DataTable(
+                          sortColumnIndex: 2,
+                          columnSpacing: 25,
+                          sortAscending: false,
+                          columns: const [
+                            DataColumn(label: Text("Tipo")),
+                            DataColumn(label: Text("Nombre")),
+                            DataColumn(label: Text("Sexo")),
+                            DataColumn(label: Text("Esterilizado")),
+                          ],
+                          rows: [
+                            DataRow(selected: true, cells: [
+                              DataCell(_mostrarTipo1()),
+                              DataCell(_mostrarNombre1()),
+                              DataCell(_mostrarSexo1()),
+                              DataCell(_mostrarEsteriliza1())
+                            ]),
+                            DataRow(cells: [
+                              DataCell(_mostrarTipo2()),
+                              DataCell(_mostrarNombre2()),
+                              DataCell(_mostrarSexo2()),
+                              DataCell(_mostrarEsteriliza2())
+                            ]),
+                          ],
+                        ),
+                      ),
+                      const Divider(),
+                      const Divider(color: Colors.transparent),
+
+                      const Text(
+                        '¿Dónde está ahora? Si fallecio, perdió o esta en otro lugar, indique la causa.',
                         style: TextStyle(
-                          fontSize: 18,
-                          foreground: Paint()
-                            ..style = PaintingStyle.stroke
-                            ..strokeWidth = 1.5
-                            ..color = Colors.blueGrey,
-                        )),
-                    _mostrarCambioDomi(),
-                    Text(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarUbicMascota(),
+                      const Divider(color: Colors.transparent),
+
+                      const Text(
+                        '¿Por qué desea adptar una mascota?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarDeseaAdop(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        'Si por algún motivo tuviera que cambiar de domicilio, ¿Qué pasaría con su mascota?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarCambioDomi(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
                         'Con relación a la anterior pregunta ¿Qué pasaría si los dueños de la nueva casa no aceptacen mascotas?',
                         style: TextStyle(
-                          fontSize: 18,
-                          foreground: Paint()
-                            ..style = PaintingStyle.stroke
-                            ..strokeWidth = 1.5
-                            ..color = Colors.blueGrey,
-                        )),
-                    _mostrarRelNuevaCasa(),
-                    _mostrarViajeMasc(),
-                    _mostrarTiempoSola(),
-                    _mostrarDiaNoche(),
-                    _mostrarDondeDormir(),
-                    _mostrarDondeNecesidad(),
-                    _mostrarComidaMas(),
-                    _mostrarPromedioVida(),
-                    _mostrarMascotaEnferma(),
-                    _mostrarResponsableMas(),
-                    _mostrarDineroGasto(),
-                    Text(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarRelNuevaCasa(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        'Si Ud. debe salir de viaje más de un día, la mascota:',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarViajeMasc(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿Cuánto tiempo en el día pasará sola la mascota?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarTiempoSola(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿Dónde pasará durante el día y la noche?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarDiaNoche(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿Dónde dormirá la mascota?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarDondeDormir(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿Dónde hará sus necesidades?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarDondeNecesidad(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿Qué comerá habitualmente la mascota?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarComidaMas(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿Cuántos años cree que vive un perro promedio?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarPromedioVida(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        'Si su mascota se enferma usted:',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarMascotaEnferma(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿Quién será el responsable y se hará cargo de cubrir los gastos de la mascota?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarResponsableMas(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        'Estime cuánto dinero podría gastar en su mascota mensualmente',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarDineroGasto(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
                         '¿Cuenta con los recursos para cubrir los gastos veterinarios del animal de compañía?',
                         style: TextStyle(
-                          fontSize: 18,
-                          foreground: Paint()
-                            ..style = PaintingStyle.stroke
-                            ..strokeWidth = 1.5
-                            ..color = Colors.blueGrey,
-                        )),
-                    _mostrarRecursosVet(),
-                    const Divider(),
-                    Text(
-                      '¿Esta de acuerdo en que se haga una visita periódica a su domicilio para ver como se encuentra el adoptado?',
-                      style: TextStyle(
-                        fontSize: 22,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 2
-                          ..color = Colors.blueGrey,
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const Divider(),
-                    _mostrarVisitaDomicilio(),
-                    _mostrarJustificacion1(),
-                    const Divider(),
-                    Text(
-                      '¿Está de acuerdo en que la  mascota sea esterilizada?',
-                      style: TextStyle(
-                        fontSize: 22,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 2
-                          ..color = Colors.blueGrey,
+                      _mostrarRecursosVet(),
+                      const Divider(color: Colors.transparent),
+                      const Divider(),
+                      const Text(
+                        '¿Está de acuerdo en que se haga una visita periódica a su domicilio para ver como se encuentra el adoptado?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        textAlign: TextAlign.justify,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const Divider(),
-                    _mostrarAcuerdoEst(),
-                    _mostrarJustificacion2(),
-                    const Divider(),
-                    _mostrarBeneficios(),
-                    _mostrarTenencia(),
-                    //pregunta de ordenanza
-                    _mostrarOrdenMuni(),
-                    _mostrarAdopcionFam(),
-                    _mostrarFamilia(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _botonAtras(),
-                        _botonSiguiente(),
-                      ],
-                    )
-                  ],
+                      const Divider(),
+                      _mostrarVisitaDomicilio(),
+                      _mostrarJustificacion1(),
+                      const Divider(),
+                      const Text(
+                        '¿Está de acuerdo en que la  mascota sea esterilizada?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        textAlign: TextAlign.justify,
+                      ),
+                      const Divider(),
+                      _mostrarAcuerdoEst(),
+                      _mostrarJustificacion2(),
+                      const Divider(),
+                      const Text(
+                        '¿Conoce usted los beneficios de la esterilización?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarBeneficios(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿Según usted que es tenecia responsable?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarTenencia(),
+                      const Divider(color: Colors.transparent),
+                      //pregunta de ordenanza
+                      const Text(
+                        '¿Está Ud. informado y conciente sobre la ordenanza municipal sobre la tenencia responsable de mascotas?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarOrdenMuni(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿La adopción fue compartida con su familia?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarAdopcionFam(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        'Su familia esta:',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarFamilia(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _botonAtras(),
+                          _botonSiguiente(),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -321,7 +461,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
         //labelText: "Algun familiar espera un bebe?",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -337,7 +477,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
         //labelText: "Algun familiar espera un bebe?",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -353,7 +493,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
         //labelText: "Algun familiar espera un bebe?",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -369,7 +509,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
         //labelText: "Si usted debe salir de viaje mas de un dia, la mascota:",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -381,10 +521,10 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
       initialValue: relaciones.viajeMascota,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "Si usted debe salir de viaje mas de un dia, la mascota:",
+        //labelText: "Si usted debe salir de viaje mas de un dia, la mascota:",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -396,10 +536,10 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
       initialValue: relaciones.tiempoSolaMas,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "¿Cuánto tiempo en el dia pasará sola la mascota?",
+        //labelText: "¿Cuánto tiempo en el dia pasará sola la mascota?",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -411,10 +551,10 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
       initialValue: relaciones.diaNocheMas,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "¿Dónde pasará durante el día y la noche?",
+        //labelText: "¿Dónde pasará durante el día y la noche?",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -426,10 +566,10 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
       initialValue: relaciones.duermeMas,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "¿Dónde dormirá la mascota?",
+        //labelText: "¿Dónde dormirá la mascota?",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -441,10 +581,10 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
       initialValue: relaciones.necesidadMas,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "¿Dónde hará sus necesidades?",
+        //labelText: "¿Dónde hará sus necesidades?",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -456,10 +596,10 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
       initialValue: relaciones.comidaMas,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "¿Qué comerá habitualmente la mascota?",
+        //labelText: "¿Qué comerá habitualmente la mascota?",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -471,10 +611,10 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
       initialValue: relaciones.promedVida,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "¿Cuantos años cree que vive un perro promedio?",
+        //labelText: "¿Cuantos años cree que vive un perro promedio?",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -486,10 +626,10 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
       initialValue: relaciones.enfermedadMas,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "Si su mascota se enferma usted:",
+        //labelText: "Si su mascota se enferma usted:",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -504,7 +644,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
         //labelText: "¿Dónde hará sus necesidades?",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -516,11 +656,9 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
       initialValue: relaciones.dineroMas,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText:
-            "Estime cuánto dinero podría gastar en su mascota mensualmente:",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -535,7 +673,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
         //labelText: "¿Dónde hará sus necesidades?",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -550,7 +688,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
         //labelText: "¿Dónde hará sus necesidades?",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -565,7 +703,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
         labelText: "¿Por qué?",
         icon: Icon(
           Icons.check,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -580,7 +718,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
         //labelText: "¿Dónde hará sus necesidades?",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -595,7 +733,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
         labelText: "¿Por qué?",
         icon: Icon(
           Icons.check,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -607,10 +745,10 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
       initialValue: relaciones.benefEst,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "¿Conoce usted los beneficios de la esterilización?",
+        //labelText: "¿Conoce usted los beneficios de la esterilización?",
         icon: Icon(
           Icons.check,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -622,10 +760,10 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
       initialValue: relaciones.tenenciaResp,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "¿Según usted que es tenecia responsable?",
+        //labelText: "¿Según usted que es tenecia responsable?",
         icon: Icon(
           Icons.check,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -640,7 +778,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
         //labelText: "¿Conoce usted los beneficios de la esterilización?",
         icon: Icon(
           Icons.check,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -652,10 +790,10 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
       initialValue: relaciones.adCompart,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "¿La adopción fue compartida con su familia?",
+        //labelText: "¿La adopción fue compartida con su familia?",
         icon: Icon(
           Icons.check,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -667,10 +805,10 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
       initialValue: relaciones.famAcuerdo,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "Su familia esta:",
+        //labelText: "Su familia esta:",
         icon: Icon(
           Icons.check,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -695,7 +833,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
             Icons.arrow_right_sharp,
           ),
           iconSize: 100,
-          color: Colors.lightBlue[300],
+          color: Colors.green[400],
           onPressed: () async {
             Navigator.pushNamed(context, 'observacionSolicitud',
                 arguments: formularios);
@@ -722,7 +860,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
           //tooltip: 'Siguiente',
           icon: const Icon(Icons.arrow_left_sharp),
           iconSize: 100,
-          color: Colors.lightBlue[300],
+          color: Colors.green[400],
           onPressed: () async {
             Navigator.pop(context);
           },

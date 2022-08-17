@@ -19,10 +19,10 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
   AnimalModel animal = AnimalModel();
   FormulariosModel formularios = FormulariosModel();
   DatosPersonalesModel datosA = DatosPersonalesModel();
+  final userProvider = UsuarioProvider();
 
   List<RegistroVacunasModel> vacunas = [];
   List<Future<RegistroVacunasModel>> listaV = [];
-  final userProvider = UsuarioProvider();
 
   @override
   void initState() {
@@ -48,7 +48,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
                 itemBuilder: (context) => [
                       const PopupMenuItem<int>(
                         value: 0,
-                        child: Text("Informacion"),
+                        child: Text("Información"),
                       ),
                       const PopupMenuItem<int>(
                         value: 1,
@@ -56,7 +56,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
                       ),
                       const PopupMenuItem<int>(
                         value: 2,
-                        child: Text("Cerrar Sesion"),
+                        child: Text("Cerrar Sesión"),
                       )
                     ]),
           ],
@@ -113,7 +113,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
             return Column(
               children: [
                 SizedBox(
-                  height: 700,
+                  height: 650,
                   child: ListView.builder(
                     itemCount: vacunas!.length,
                     itemBuilder: (context, i) =>
@@ -134,6 +134,9 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
           children: [
             const Divider(color: Colors.transparent),
             DataTable(
+              //dataRowHeight: 30,
+              //headingRowHeight: 50,
+              columnSpacing: 25,
               headingRowColor: MaterialStateColor.resolveWith(
                 (states) => const Color.fromARGB(255, 120, 110, 148),
               ),
@@ -146,26 +149,27 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
               columns: const [
                 DataColumn(label: Text("Fecha")),
                 DataColumn(label: Text("Peso(Kg)")),
-                DataColumn(label: Text("Proxima vacuna")),
+                DataColumn(label: Text("Próxima vacuna")),
               ],
               rows: [
                 DataRow(selected: true, cells: [
-                  DataCell(SizedBox(
-                    width: 110,
+                  DataCell(Container(
+                    width: 95,
                     child: Text(vacuna.fechaConsulta),
                   )),
-                  DataCell(SizedBox(
-                    width: 50,
+                  DataCell(Container(
+                    width: 60,
                     child: Text('${vacuna.pesoActual}'),
                   )),
-                  DataCell(SizedBox(
-                    width: 105,
+                  DataCell(Container(
+                    width: 95,
                     child: Text(vacuna.fechaProximaVacuna),
                   )),
                 ]),
               ],
             ),
             DataTable(
+              columnSpacing: 22,
               headingRowColor: MaterialStateColor.resolveWith(
                 (states) => const Color.fromARGB(255, 120, 111, 143),
               ),
@@ -177,15 +181,15 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
               ),
               columns: const [
                 DataColumn(label: Text("Vacuna Laboratorio")),
-                DataColumn(label: Text("Veterinario ")),
+                DataColumn(label: Text("Veterinario")),
               ],
               rows: [
                 DataRow(selected: true, cells: [
-                  DataCell(SizedBox(
+                  DataCell(Container(
                     width: 170,
                     child: Text(vacuna.tipoVacuna),
                   )),
-                  DataCell(SizedBox(
+                  DataCell(Container(
                     width: 170,
                     child: Text(vacuna.veterinarioResp),
                   )),
@@ -196,17 +200,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
           ],
         ),
         //subtitle: Text('${horario}'),
-        onTap: () async {
-          // datosA = await formulariosProvider.cargarDPId(
-          //     formulario.id, formulario.idDatosPersonales);
-          // animal = await animalesProvider.cargarAnimalId(formulario.idAnimal);
-
-          // Navigator.pushNamed(context, 'seguimientoMain', arguments: {
-          //   'datosper': datosA,
-          //   'formulario': formulario,
-          //   'animal': animal
-          // });
-        });
+        onTap: () async {});
   }
 
   Widget _menuWidget() {
@@ -252,7 +246,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
           ),
           ListTile(
             leading: const Icon(Icons.check, color: Colors.green),
-            title: const Text('Ver Registro Desparasitacion'),
+            title: const Text('Ver Registro Desparasitación'),
             onTap: () {
               //Navigator.pop(context);
               Navigator.pushReplacementNamed(context, 'verRegistroDesp',

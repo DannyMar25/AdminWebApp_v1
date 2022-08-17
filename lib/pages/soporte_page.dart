@@ -2,6 +2,7 @@ import 'package:admin_web_v1/models/soportes_model.dart';
 import 'package:admin_web_v1/preferencias_usuario/preferencias_usuario.dart';
 import 'package:admin_web_v1/providers/soportes_provider.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
+import 'package:admin_web_v1/utils/utils.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,8 @@ class _SoportePageState extends State<SoportePage> {
   SoportesProvider soportesProvider = SoportesProvider();
   SoportesModel soporte = SoportesModel();
   final prefs = PreferenciasUsuario();
+  String campoVacio = 'Por favor, llena este campo';
+
   @override
   Widget build(BuildContext context) {
     final email = prefs.email;
@@ -33,7 +36,7 @@ class _SoportePageState extends State<SoportePage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -42,24 +45,18 @@ class _SoportePageState extends State<SoportePage> {
                     email != ''
                         ? const PopupMenuItem<int>(
                             value: 2,
-                            child: Text("Cerrar Sesion"),
+                            child: Text("Cerrar Sesión"),
                           )
                         : const PopupMenuItem<int>(
                             value: 2,
-                            child: Text("Iniciar Sesion"),
+                            child: Text("Iniciar Sesión"),
                           ),
                   ]),
         ],
       ),
-      drawer: const MenuWidget(),
+      drawer: email != '' ? const MenuWidget() : const SizedBox(),
       body: SingleChildScrollView(
         child: Container(
-          // decoration: BoxDecoration(
-          //   image: DecorationImage(
-          //     image: AssetImage("assets/fondoanimales.jpg"),
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
           padding: const EdgeInsets.all(15.0),
           child: Form(
             key: formKey,
@@ -113,6 +110,15 @@ class _SoportePageState extends State<SoportePage> {
           ),
           labelText: 'Nombre:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+      validator: (value) {
+        if (value!.length < 3 && value.length > 0) {
+          return 'Ingrese el nombre';
+        } else if (value.isEmpty) {
+          return campoVacio;
+        } else {
+          return null;
+        }
+      },
       onChanged: (s) {
         setState(() {
           soporte.nombre = s;
@@ -131,6 +137,7 @@ class _SoportePageState extends State<SoportePage> {
           icon: Icon(Icons.mail),
           labelText: 'Correo:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+      validator: (value) => validarEmail(value),
       onChanged: (s) {
         setState(() {
           soporte.correo = s;
@@ -148,6 +155,15 @@ class _SoportePageState extends State<SoportePage> {
           icon: Icon(Icons.edit),
           labelText: 'Asunto:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+      validator: (value) {
+        if (value!.length < 3 && value.length > 0) {
+          return 'Ingrese el asunto';
+        } else if (value.isEmpty) {
+          return campoVacio;
+        } else {
+          return null;
+        }
+      },
       onChanged: (s) {
         setState(() {
           soporte.asunto = s;
@@ -159,14 +175,23 @@ class _SoportePageState extends State<SoportePage> {
   Widget _crearMensaje() {
     return TextFormField(
       //initialValue: datoPersona.nombreCom,
-      keyboardType: TextInputType.multiline,
       readOnly: false,
       maxLines: 10,
+      keyboardType: TextInputType.multiline,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
           icon: Icon(Icons.edit_note),
           labelText: 'Mensaje:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+      validator: (value) {
+        if (value!.length < 3 && value.length > 0) {
+          return 'Ingrese un mensaje';
+        } else if (value.isEmpty) {
+          return campoVacio;
+        } else {
+          return null;
+        }
+      },
       onChanged: (s) {
         setState(() {
           soporte.mensaje = s;
@@ -176,6 +201,7 @@ class _SoportePageState extends State<SoportePage> {
   }
 
   Widget _crearBoton() {
+    final email = prefs.email;
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       ElevatedButton.icon(
           style: ButtonStyle(
@@ -192,9 +218,23 @@ class _SoportePageState extends State<SoportePage> {
           icon: const Icon(Icons.save),
           autofocus: true,
           onPressed: () {
-            soportesProvider.crearSoportes(soporte);
+            if (formKey.currentState!.validate()) {
+              // Si el formulario es válido, queremos mostrar un Snackbar
+              const SnackBar(
+                content: Text('Información ingresada correctamente'),
+              );
+              soportesProvider.crearSoportes(soporte);
+              email != ''
+                  ? mostrarAlertaOk(
+                      context, 'Tu mensaje a sido enviado', 'home')
+                  : mostrarAlertaOk(
+                      context, 'Tu mensaje a sido enviado', 'login');
 
-            Navigator.pushReplacementNamed(context, 'home');
+              //Navigator.pushReplacementNamed(context, 'home');
+            } else {
+              mostrarAlerta(
+                  context, 'Asegurate de que todos los campos esten llenos.');
+            }
           }),
     ]);
   }

@@ -40,12 +40,16 @@ class _DomicilioPageState extends State<DomicilioPage> {
     //   print(domicilios.id);
     // }
     final arg = ModalRoute.of(context)!.settings.arguments as Map;
+    //if (dat == arg['datosper']) {
     domicilios = arg['domicilio'] as DomicilioModel;
+    //print(domicilios.id);
+    //print(formularios.idDatosPersonales);
     relacionAn = arg['relacionAn'] as RelacionAnimalesModel;
     formularios = arg['formulario'] as FormulariosModel;
+    //print(formularios.id);
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(223, 221, 248, 153),
+      backgroundColor: const Color.fromARGB(223, 248, 248, 245),
       appBar: AppBar(
         title: const Text('Domicilio'),
         backgroundColor: Colors.green,
@@ -56,7 +60,7 @@ class _DomicilioPageState extends State<DomicilioPage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -64,7 +68,7 @@ class _DomicilioPageState extends State<DomicilioPage> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
         ],
@@ -74,96 +78,100 @@ class _DomicilioPageState extends State<DomicilioPage> {
         children: [
           // Background(),
           SingleChildScrollView(
-            child: Container(
-              padding: const EdgeInsets.all(15.0),
-              child: Form(
-                key: formKey,
-                child: Column(
-                  children: [
-                    Text(
-                      'Que tipo de inmueble posee?',
-                      style: TextStyle(
-                        fontSize: 22,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 2
-                          ..color = Colors.blueGrey,
+            child: Flexible(
+              fit: FlexFit.loose,
+              child: Container(
+                padding: const EdgeInsets.all(15.0),
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      Text(
+                        '¿Qué tipo de inmueble posee?',
+                        style: TextStyle(
+                          fontSize: 26,
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 2
+                            ..color = Colors.blueGrey,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const Divider(),
-                    _mostrarTipoInmueble(),
-                    _mostrarM2(),
-                    const Divider(),
-                    _mostrarInmueble(),
-                    const Divider(),
-                    Text(
-                      'Planea mudarse proximamente?',
-                      style: TextStyle(
-                        fontSize: 22,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 2
-                          ..color = Colors.blueGrey,
+                      const Divider(),
+                      _mostrarTipoInmueble(),
+                      _mostrarM2(),
+                      const Divider(),
+                      _mostrarInmueble(),
+                      const Divider(),
+                      Text(
+                        '¿Planea mudarse próximamente?',
+                        style: TextStyle(
+                          fontSize: 26,
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 2
+                            ..color = Colors.blueGrey,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const Divider(),
-                    _mostrarPlanMudanza(),
-                    const Divider(),
-                    Text(
-                      'El lugar donde pasara la mascota, tiene cerramiento?',
-                      style: TextStyle(
-                        fontSize: 22,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 2
-                          ..color = Colors.blueGrey,
+                      const Divider(),
+                      _mostrarPlanMudanza(),
+                      const Divider(),
+                      Text(
+                        'El lugar donde pasará la mascota, ¿Tiene cerramiento?',
+                        style: TextStyle(
+                          fontSize: 26,
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 2
+                            ..color = Colors.blueGrey,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const Divider(),
-                    _mostrarCerramiento(),
-                    const Divider(),
-                    Text(
-                      'Cual piensa que es la mascota mas adecuada para Ud.?',
-                      style: TextStyle(
-                        fontSize: 22,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 2
-                          ..color = Colors.blueGrey,
+                      const Divider(),
+                      _mostrarCerramiento(),
+                      const Divider(),
+                      Text(
+                        '¿Cuál piensa que es la mascota más adecuada para Ud.?',
+                        style: TextStyle(
+                          fontSize: 26,
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 2
+                            ..color = Colors.blueGrey,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const Divider(),
-                    DataTable(
-                      sortColumnIndex: 2,
-                      sortAscending: false,
-                      columns: const [
-                        DataColumn(label: Text("Especie")),
-                        DataColumn(label: Text("Sexo")),
-                        DataColumn(label: Text("Edad "), numeric: true),
-                        DataColumn(label: Text("Tamaño")),
-                      ],
-                      rows: [
-                        DataRow(selected: true, cells: [
-                          DataCell(_mostrarEspecie()),
-                          DataCell(_mostrarSexo()),
-                          DataCell(_mostrarEdad()),
-                          DataCell(_mostrarTamano()),
-                        ]),
-                      ],
-                    ),
-                    const Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _botonAtras(),
-                        _botonSiguiente(),
-                      ],
-                    )
-                  ],
+                      const Divider(),
+                      DataTable(
+                        sortColumnIndex: 2,
+                        sortAscending: false,
+                        columnSpacing: 30,
+                        columns: const [
+                          DataColumn(label: Text("Especie")),
+                          DataColumn(label: Text("Sexo")),
+                          DataColumn(label: Text("Edad ")),
+                          DataColumn(label: Text("Tamaño")),
+                        ],
+                        rows: [
+                          DataRow(selected: true, cells: [
+                            DataCell(_mostrarEspecie()),
+                            DataCell(_mostrarSexo()),
+                            DataCell(_mostrarEdad()),
+                            DataCell(_mostrarTamano()),
+                          ]),
+                        ],
+                      ),
+                      const Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _botonAtras(),
+                          _botonSiguiente(),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -192,10 +200,10 @@ class _DomicilioPageState extends State<DomicilioPage> {
       initialValue: domicilios.tipoInmueble.toString(),
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "Tipo de inmueble:",
+        labelText: "Tipo de inmueble",
         icon: Icon(
           Icons.house,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -207,10 +215,10 @@ class _DomicilioPageState extends State<DomicilioPage> {
       initialValue: domicilios.m2.toString(),
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "m^2:",
+        labelText: "Especifique metros (m2):",
         icon: Icon(
           Icons.yard,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -226,7 +234,7 @@ class _DomicilioPageState extends State<DomicilioPage> {
           labelText: "El inmueble es:",
           icon: Icon(
             Icons.house,
-            color: Colors.purple,
+            color: Colors.green,
           ),
         ),
       );
@@ -241,7 +249,7 @@ class _DomicilioPageState extends State<DomicilioPage> {
               labelText: "El inmueble es:",
               icon: Icon(
                 Icons.house,
-                color: Colors.purple,
+                color: Colors.green,
               ),
             ),
           ),
@@ -261,7 +269,7 @@ class _DomicilioPageState extends State<DomicilioPage> {
         labelText: "Nombre:",
         icon: Icon(
           Icons.person,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -273,10 +281,10 @@ class _DomicilioPageState extends State<DomicilioPage> {
       initialValue: domicilios.telfD,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: "Telefono:",
+        labelText: "Teléfono:",
         icon: Icon(
           Icons.person,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -290,7 +298,7 @@ class _DomicilioPageState extends State<DomicilioPage> {
       decoration: const InputDecoration(
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -305,7 +313,7 @@ class _DomicilioPageState extends State<DomicilioPage> {
         decoration: const InputDecoration(
           icon: Icon(
             Icons.question_answer,
-            color: Colors.purple,
+            color: Colors.green,
           ),
         ),
       );
@@ -319,7 +327,7 @@ class _DomicilioPageState extends State<DomicilioPage> {
             decoration: const InputDecoration(
               icon: Icon(
                 Icons.question_answer,
-                color: Colors.purple,
+                color: Colors.green,
               ),
             ),
           ),
@@ -336,10 +344,10 @@ class _DomicilioPageState extends State<DomicilioPage> {
       initialValue: domicilios.alturaC.toString(),
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        label: Text('Altura en m2:'),
+        label: Text('Altura en m'),
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -351,10 +359,10 @@ class _DomicilioPageState extends State<DomicilioPage> {
       initialValue: domicilios.materialC,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        label: Text('Material:'),
+        label: Text('Material'),
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -411,7 +419,7 @@ class _DomicilioPageState extends State<DomicilioPage> {
             Icons.arrow_right_sharp,
           ),
           iconSize: 100,
-          color: Colors.lightBlue[300],
+          color: Colors.green[400],
           onPressed: () async {
             Navigator.pushNamed(context, 'relacionAnim', arguments: {
               'relacionAn': relacionAn,
@@ -440,7 +448,7 @@ class _DomicilioPageState extends State<DomicilioPage> {
           //tooltip: 'Siguiente',
           icon: const Icon(Icons.arrow_left_sharp),
           iconSize: 100,
-          color: Colors.lightBlue[300],
+          color: Colors.green[400],
           onPressed: () async {
             Navigator.pop(context);
           },

@@ -1,3 +1,4 @@
+import 'package:admin_web_v1/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -14,7 +15,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   final _auth = FirebaseAuth.instance;
 
   String? _email;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +32,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
   Widget _loginForm(BuildContext context) {
     //final bloc = Provider.of(context);
-
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -58,7 +57,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             child: Column(
               children: [
                 const Text(
-                  'Recuperacion de contraseña',
+                  'Recuperación de contraseña',
                   style: TextStyle(fontSize: 20.0),
                 ),
                 const SizedBox(
@@ -99,6 +98,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 const SizedBox(
                   height: 30.0,
                 ),
+
                 ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.green),
@@ -107,8 +107,14 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     'Enviar',
                     style: TextStyle(fontSize: 16),
                   ),
-                  onPressed: () {
-                    _auth.sendPasswordResetEmail(email: _email!);
+                  onPressed: () async {
+                    try {
+                      _auth.sendPasswordResetEmail(email: _email!);
+                    } on FirebaseAuthException catch (e) {
+                      //print(exception.code);
+                      print(e.message);
+                      mostrarAlertaAuth(context, 'adasdasd', 'soporte');
+                    }
                   },
                 ),
                 // _crearPassword(bloc),
@@ -133,7 +139,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         );
       },
       child: const Text(
-        'Iniciar sesion',
+        'Iniciar sesión',
         style: TextStyle(color: Colors.green, fontSize: 20),
       ),
     );

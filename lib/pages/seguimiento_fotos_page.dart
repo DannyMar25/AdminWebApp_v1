@@ -5,7 +5,6 @@ import 'package:admin_web_v1/models/formulario_principal_model.dart';
 import 'package:admin_web_v1/models/registro_desparacitaciones_model.dart';
 import 'package:admin_web_v1/providers/formularios_provider.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
-import 'package:admin_web_v1/widgets/background.dart';
 import 'package:flutter/material.dart';
 
 class VerEvidenciaFotosPage extends StatefulWidget {
@@ -34,6 +33,7 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
     formularios = arg['formulario'] as FormulariosModel;
     animal = arg['animal'] as AnimalModel;
     return Scaffold(
+        backgroundColor: const Color.fromARGB(255, 239, 243, 243),
         appBar: AppBar(
           title: const Text('Evidencias'),
           backgroundColor: Colors.green,
@@ -44,7 +44,7 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
                 itemBuilder: (context) => [
                       const PopupMenuItem<int>(
                         value: 0,
-                        child: Text("Informacion"),
+                        child: Text("Información"),
                       ),
                       const PopupMenuItem<int>(
                         value: 1,
@@ -52,7 +52,7 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
                       ),
                       const PopupMenuItem<int>(
                         value: 2,
-                        child: Text("Cerrar Sesion"),
+                        child: Text("Cerrar Sesión"),
                       )
                     ]),
           ],
@@ -60,7 +60,7 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
         drawer: _menuWidget(),
         body: Stack(
           children: [
-            const Background(),
+            //Background(),
             SingleChildScrollView(
                 child: Container(
                     //color: Colors.lightGreenAccent,
@@ -77,7 +77,7 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
                                 foreground: Paint()
                                   ..style = PaintingStyle.stroke
                                   ..strokeWidth = 3
-                                  ..color = Colors.orange[100]!,
+                                  ..color = Colors.blueGrey,
                               ),
                               textAlign: TextAlign.start,
                             ),
@@ -111,7 +111,7 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
             return Column(
               children: [
                 SizedBox(
-                  height: 700,
+                  height: 660,
                   child: ListView.builder(
                     itemCount: evidF!.length,
                     itemBuilder: (context, i) => _crearItem(context, evidF[i]),
@@ -194,7 +194,7 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
           ),
           ListTile(
             leading: const Icon(Icons.check, color: Colors.green),
-            title: const Text('Ver Registro Desparasitacion'),
+            title: const Text('Ver Registro Desparasitación'),
             onTap: () {
               //Navigator.pop(context);
               Navigator.pushReplacementNamed(context, 'verRegistroDesp',

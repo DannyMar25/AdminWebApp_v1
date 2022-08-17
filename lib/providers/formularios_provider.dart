@@ -121,7 +121,7 @@ class FormulariosProvider {
       "nombreCom": data["nombreCom"],
       "cedula": data["cedula"],
       "direccion": data["direccion"],
-      "edad": data["edad"],
+      "fechaNacimiento": data["fechaNacimiento"],
       "ocupacion": data["ocupacion"],
       "email": data["email"],
       "nivelInst": data["nivelInst"],

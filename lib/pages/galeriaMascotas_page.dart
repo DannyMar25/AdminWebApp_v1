@@ -49,7 +49,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -57,7 +57,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
         ],

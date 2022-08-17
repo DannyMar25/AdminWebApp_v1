@@ -12,8 +12,6 @@ import 'package:flutter/material.dart';
 class AgendarCitasPage extends StatefulWidget {
   const AgendarCitasPage({Key? key}) : super(key: key);
 
-  //RegistroClienteCitas({Key? key}) : super(key: key);
-
   @override
   _AgendarCitasPageState createState() => _AgendarCitasPageState();
 }
@@ -27,9 +25,9 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final userProvider = UsuarioProvider();
   CitasModel citas = CitasModel();
-  TextEditingController nombre = TextEditingController();
-  TextEditingController telefono = TextEditingController();
-  TextEditingController correo = TextEditingController();
+  String nombre = '';
+  String telefono = '';
+  String correo = '';
   String _fecha = '';
   String _fechaCompleta = '';
   final TextEditingController _inputFieldDateController =
@@ -44,6 +42,8 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
       FirebaseFirestore.instance.collection('horarios');
 
   AnimalModel animal = AnimalModel();
+
+  String campoVacio = 'Por favor, llena este campo';
   @override
   Widget build(BuildContext context) {
     final Object? animData = ModalRoute.of(context)!.settings.arguments;
@@ -63,7 +63,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -71,7 +71,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
         ],
@@ -119,10 +119,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
         controller: _inputFieldDateController,
         decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          //counter: Text('Letras ${_nombre.length}'),
-          //hintText: 'Ingrese fecha de agendamiento de cita',
           labelText: 'Fecha de la cita',
-          //helperText: 'Solo es el nombre',
           suffixIcon: const Icon(
             Icons.perm_contact_calendar,
             color: Colors.green,
@@ -132,6 +129,14 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
             color: Colors.green,
           ),
         ),
+        validator: (value) {
+          if (value!.isEmpty) {
+            String fecha = 'Por favor selecciona una fecha';
+            return fecha;
+          } else {
+            return null;
+          }
+        },
         onTap: () {
           FocusScope.of(context).requestFocus(FocusNode());
           setState(() {
@@ -230,15 +235,21 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
   Widget _crearNombre() {
     return TextFormField(
       //initialValue: animal.nombre,
-      controller: nombre,
+      //controller: nombre,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
         labelText: 'Nombre',
       ),
-      onSaved: (value) => nombre = value as TextEditingController,
+      onChanged: (s) {
+        setState(() {
+          nombre = s;
+        });
+      },
       validator: (value) {
-        if (value!.length < 3) {
+        if (value!.length < 3 && value.length > 0) {
           return 'Ingrese su nombre';
+        } else if (value.isEmpty) {
+          return campoVacio;
         } else {
           return null;
         }
@@ -250,15 +261,22 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
     return TextFormField(
       //initialValue: animal.nombre,
       keyboardType: TextInputType.phone,
-      controller: telefono,
+      //controller: telefono,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: 'Telefono',
+        labelText: 'Teléfono',
       ),
-      onSaved: (value) => telefono = value as TextEditingController,
+      //onSaved: (value) => telefono = value as TextEditingController,
+      onChanged: (s) {
+        setState(() {
+          telefono = s;
+        });
+      },
       validator: (value) {
-        if (value!.length < 3) {
-          return 'Ingrese su numero de telefono';
+        if (value!.length < 10 || value.length > 10 && value.length > 0) {
+          return 'Ingrese un número de teléfono válido';
+        } else if (value.isEmpty) {
+          return campoVacio;
         } else {
           return null;
         }
@@ -270,19 +288,17 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
     return TextFormField(
       //initialValue: animal.nombre,
       keyboardType: TextInputType.emailAddress,
-      controller: correo,
+      //controller: correo,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
         labelText: 'Correo',
       ),
-      onSaved: (value) => correo = value as TextEditingController,
-      validator: (value) {
-        if (value!.length < 3) {
-          return 'Ingrese su correo electronico';
-        } else {
-          return null;
-        }
+      onChanged: (s) {
+        setState(() {
+          correo = s;
+        });
       },
+      validator: (value) => validarEmail(value),
     );
   }
 
@@ -298,19 +314,24 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
         icon: const Icon(Icons.save),
         autofocus: true,
         onPressed: () {
-          _submit();
-        }
-        // onPressed: () {
-        //   print(animal.id);
-        // },
-        );
+          if (formKey.currentState!.validate()) {
+            // Si el formulario es válido, queremos mostrar un Snackbar
+            const SnackBar(
+              content: Text('Información ingresada correctamente'),
+            );
+            _submit();
+          } else {
+            mostrarAlerta(
+                context, 'Asegurate de que todos los campos esten llenos.');
+          }
+        });
   }
 
   void _submit() async {
     //Guardar datos en base
-    citas.nombreClient = nombre.text;
-    citas.telfClient = telefono.text;
-    citas.correoClient = correo.text;
+    citas.nombreClient = nombre;
+    citas.telfClient = telefono;
+    citas.correoClient = correo;
     citas.fechaCita = _fechaCompleta;
     citas.estado = 'Pendiente';
     if (animal.id == '') {

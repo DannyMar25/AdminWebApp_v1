@@ -119,4 +119,14 @@ class HorariosProvider {
 
     return 1;
   }
+
+  Future<bool> editarDisponibleCita(HorariosModel horario) async {
+    try {
+      String disp = "Disponible";
+      await refAn.doc(horario.id).update({"disponible": disp});
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 }

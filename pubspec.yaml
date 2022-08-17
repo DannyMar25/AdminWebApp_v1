@@ -49,12 +49,14 @@ dependencies:
   path_provider: ^2.0.9
   firebase_storage: ^10.2.11
   cloud_firestore: ^3.1.11
-  firebase_core: ^1.14.0
   firebase_auth: ^3.3.13
   image_picker_web: ^2.1.1
   file_picker: ^5.0.1
   syncfusion_flutter_pdfviewer: ^20.1.52-beta
   firebase_database: ^9.1.0
+  firebase_core: ^1.20.1
+
+
 
 dev_dependencies:
   flutter_test:

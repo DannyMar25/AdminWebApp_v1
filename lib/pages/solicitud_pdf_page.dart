@@ -555,6 +555,8 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
     row36.cells[0].value = '';
     row36.cells[1].value =
         '¿Cual piensa que es la mascota más adecuada para Ud.?';
+    PdfGridRow row70 = grid4.rows.add();
+    row70.cells[0].value = 'Especie:';
     PdfGridRow row37 = grid4.rows.add();
     row37.cells[0].value = 'Sexo:';
     row37.cells[1].value = domicilio.sexoAd;
@@ -642,6 +644,12 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
       font: PdfStandardFont(PdfFontFamily.helvetica, 9),
       textPen: PdfPens.black,
     );
+    row70.cells[0].style = PdfGridCellStyle(
+      backgroundBrush: PdfBrushes.lightSteelBlue,
+      cellPadding: PdfPaddings(left: 2, right: 0, top: 2, bottom: 0),
+      font: PdfStandardFont(PdfFontFamily.helvetica, 9),
+      textPen: PdfPens.black,
+    );
     row28.cells[0].style = PdfGridCellStyle(
       backgroundBrush: PdfBrushes.lightSteelBlue,
       cellPadding: PdfPaddings(left: 3, right: 0, top: 2, bottom: 0),
@@ -678,6 +686,9 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
       cellPadding: PdfPaddings(left: 3, right: 0, top: 2, bottom: 0),
     );
     row39.cells[1].style = PdfGridCellStyle(
+      cellPadding: PdfPaddings(left: 3, right: 0, top: 2, bottom: 0),
+    );
+    row70.cells[1].style = PdfGridCellStyle(
       cellPadding: PdfPaddings(left: 3, right: 0, top: 2, bottom: 0),
     );
 
@@ -1205,7 +1216,7 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
         page: page2,
         bounds: Rect.fromLTWH(0, layoutResult2.bounds.bottom + 5, 0, 0));
 
-    final List<int> bytes = document.save() as List<int>;
+    final List<int> bytes = document.saveSync();
 
     // ignore: avoid_print
     print('cadena de bytes');

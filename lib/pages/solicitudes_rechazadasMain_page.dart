@@ -33,13 +33,14 @@ class _SolicitudRechazadaMainPageState
     final arg = ModalRoute.of(context)!.settings.arguments as Map;
     //if (dat == arg['datosper']) {
     datosA = arg['datosper'] as DatosPersonalesModel;
-    print(datosA.id);
+    //print(datosA.id);
     formularios = arg['formulario'] as FormulariosModel;
     animal = arg['animal'] as AnimalModel;
     return Scaffold(
-        backgroundColor: const Color.fromARGB(223, 221, 248, 153),
+        //backgroundColor: Color.fromARGB(223, 221, 248, 153),
+        backgroundColor: const Color.fromARGB(223, 245, 247, 240),
         appBar: AppBar(
-          title: const Text('Datos de mascota y adoptante rechazado'),
+          title: const Text('Datos adoptante rechazado'),
           backgroundColor: Colors.green,
           actions: [
             PopupMenuButton<int>(
@@ -48,7 +49,7 @@ class _SolicitudRechazadaMainPageState
                 itemBuilder: (context) => [
                       const PopupMenuItem<int>(
                         value: 0,
-                        child: Text("Informacion"),
+                        child: Text("Información"),
                       ),
                       const PopupMenuItem<int>(
                         value: 1,
@@ -56,7 +57,7 @@ class _SolicitudRechazadaMainPageState
                       ),
                       const PopupMenuItem<int>(
                         value: 2,
-                        child: Text("Cerrar Sesion"),
+                        child: Text("Cerrar Sesión"),
                       )
                     ]),
           ],
@@ -65,9 +66,6 @@ class _SolicitudRechazadaMainPageState
         body: Stack(
           alignment: Alignment.center,
           children: [
-            // Background(),
-            //_verGaleria(context),
-            //Text('Hola'),
             SingleChildScrollView(
               child: Container(
                 //color: Colors.lightGreenAccent,
@@ -81,7 +79,7 @@ class _SolicitudRechazadaMainPageState
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            'Informacion de la mascota',
+                            'Información de la mascota',
                             style: TextStyle(
                               fontSize: 28,
                               foreground: Paint()
@@ -91,13 +89,13 @@ class _SolicitudRechazadaMainPageState
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          const Divider(),
+                          const Divider(color: Colors.transparent),
                           _mostrarFoto(),
                           const Divider(
-                            color: Colors.white,
+                            color: Colors.transparent,
                           ),
                           const Text(
-                            'Observacion: ',
+                            'Observación: ',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           const Divider(),
@@ -110,29 +108,44 @@ class _SolicitudRechazadaMainPageState
                           const Divider(),
                           Row(
                             children: [
-                              const Text(
-                                'Nombre: ',
-                                textAlign: TextAlign.left,
+                              const Expanded(
+                                child: Text(
+                                  'Nombre: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                '${animal.nombre}                                ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  '${animal.nombre}                ',
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
-                              const Text(
-                                'Edad: ',
-                                textAlign: TextAlign.left,
+                              const Expanded(
+                                child: Text(
+                                  'Etapa de vida: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                '${animal.etapaVida}      ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  '${animal.etapaVida}      ',
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
-                              const Text(
-                                'Raza: ',
-                                textAlign: TextAlign.left,
+                              const Expanded(
+                                child: Text(
+                                  'Raza: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                animal.raza,
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  animal.raza,
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
                             ],
                           ),
@@ -141,29 +154,44 @@ class _SolicitudRechazadaMainPageState
                             //crossAxisAlignment: CrossAxisAlignment.end,
                             //mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              const Text(
-                                'Color: ',
-                                textAlign: TextAlign.left,
+                              const Expanded(
+                                child: Text(
+                                  'Color: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                '${animal.color}               ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  '${animal.color}               ',
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
-                              const Text(
-                                'Tamaño: ',
-                                textAlign: TextAlign.left,
+                              const Expanded(
+                                child: Text(
+                                  'Tamaño: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                '${animal.tamanio}      ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  '${animal.tamanio}      ',
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
-                              const Text(
-                                'Sexo: ',
-                                textAlign: TextAlign.left,
+                              const Expanded(
+                                child: Text(
+                                  'Sexo: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                animal.sexo,
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  animal.sexo,
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
                             ],
                           ),
@@ -172,7 +200,7 @@ class _SolicitudRechazadaMainPageState
                             color: Colors.white,
                           ),
                           Text(
-                            'Informacion del adoptante',
+                            'Información del posible adoptante',
                             style: TextStyle(
                               fontSize: 28,
                               foreground: Paint()
@@ -191,6 +219,7 @@ class _SolicitudRechazadaMainPageState
                               const Text(
                                 'Nombre: ',
                                 textAlign: TextAlign.center,
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 '${datosA.nombreCom}  ',
@@ -202,8 +231,9 @@ class _SolicitudRechazadaMainPageState
                           Row(
                             children: [
                               const Text(
-                                'Direccion: ',
+                                'Dirección: ',
                                 textAlign: TextAlign.center,
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 datosA.direccion,
@@ -215,8 +245,9 @@ class _SolicitudRechazadaMainPageState
                           Row(
                             children: [
                               const Text(
-                                'Telefono: ',
+                                'Teléfono: ',
                                 textAlign: TextAlign.center,
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 datosA.telfCel,
@@ -230,6 +261,7 @@ class _SolicitudRechazadaMainPageState
                               const Text(
                                 'Correo: ',
                                 textAlign: TextAlign.center,
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 datosA.email,
@@ -272,13 +304,13 @@ class _SolicitudRechazadaMainPageState
         fit: BoxFit.contain,
       );
     } else {
-      // if (foto != null) {
-      //   return Image.file(
-      //     foto!,
-      //     fit: BoxFit.cover,
-      //     height: 300.0,
-      //   );
-      // }
+      if (foto != null) {
+        // return Image.file(
+        //   foto!,
+        //   fit: BoxFit.cover,
+        //   height: 300.0,
+        // );
+      }
       return Image.asset('assets/no-image.png');
     }
   }

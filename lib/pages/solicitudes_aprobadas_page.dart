@@ -38,6 +38,7 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 239, 243, 243),
       appBar: AppBar(
         title: const Text('SOLICITUDES APROBADAS'),
         backgroundColor: Colors.green,
@@ -48,7 +49,7 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -56,7 +57,7 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
         ],
@@ -64,25 +65,12 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
       drawer: const MenuWidget(),
       body: SingleChildScrollView(
         child: Container(
-          // decoration: BoxDecoration(
-          //   image: DecorationImage(
-          //     image: AssetImage("assets/fondoanimales.jpg"),
-          //     // colorFilter: new ColorFilter.mode(
-          //     //   Colors.black.withOpacity(0.9), BlendMode.dstATop),
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
           padding: const EdgeInsets.all(15.0),
           child: Form(
             key: formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Text(
-                //   "SOLICITUDES APROBADAS",
-                //   style: const TextStyle(
-                //       fontWeight: FontWeight.bold, fontSize: 20),
-                // ),
                 const Padding(padding: EdgeInsets.only(bottom: 12.0)),
                 _verListado()
               ],

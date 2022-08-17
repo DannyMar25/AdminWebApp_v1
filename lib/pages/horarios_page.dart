@@ -62,7 +62,7 @@ class _HorariosPageState extends State<HorariosPage> {
     final Object? horarioData = ModalRoute.of(context)!.settings.arguments;
     if (horarioData != null) {
       horarios = horarioData as HorariosModel;
-      print(horarios.id);
+      //print(horarios.id);
     }
     return Scaffold(
       appBar: AppBar(
@@ -75,7 +75,7 @@ class _HorariosPageState extends State<HorariosPage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -83,21 +83,9 @@ class _HorariosPageState extends State<HorariosPage> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
       ),
       drawer: const MenuWidget(),
@@ -112,10 +100,10 @@ class _HorariosPageState extends State<HorariosPage> {
               const Divider(),
               _crearDisponible(),
               const Divider(),
-              //_crearBotonEliminar(),
-              //const Divider(),
+              // _buildChild(),
+              // Divider(),
               _crearBoton(),
-              const Divider(),
+              // Divider(),
             ],
           ),
         ),
@@ -153,7 +141,7 @@ class _HorariosPageState extends State<HorariosPage> {
           value: _selection,
           items: dropdownMenuOptions,
           onChanged: null,
-          //  (s) {
+          // (s) {
           //   setState(() {
           //     _selection = s;
           //     horarios.dia = s!;
@@ -181,12 +169,6 @@ class _HorariosPageState extends State<HorariosPage> {
           value: _selection1,
           items: dropdownMenuOptions,
           onChanged: null,
-          // (s) {
-          //   setState(() {
-          //     _selection1 = s;
-          //     horarios.hora = s!;
-          //   });
-          // }
         ),
       ],
     );
@@ -238,31 +220,12 @@ class _HorariosPageState extends State<HorariosPage> {
   void _submit() async {
     if (horarios.id == "") {
       horariosProvider.crearHorario(horarios);
-      mostrarAlertaOk(context, 'Registro guardado con exito', 'horariosAdd');
+      mostrarAlertaOk(context, 'Registro guardado con éxito', 'horariosAdd');
     } else {
       horariosProvider.editarHorarios(horarios);
-      mostrarAlertaOk(context, 'Registro actualizado con exito', 'horariosAdd');
+      mostrarAlertaOk(context, 'Registro actualizado con éxito', 'horariosAdd');
     }
     //mostrarSnackbar('Registro guardado');
     //Navigator.pushNamed(context, 'horariosAdd');
-  }
-
-  Widget _crearBotonEliminar() {
-    return ElevatedButton.icon(
-      style: ButtonStyle(
-        backgroundColor:
-            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          return Colors.green;
-        }),
-      ),
-      label: const Text('Eliminar registro'),
-      icon: const Icon(Icons.delete),
-      autofocus: true,
-      //onPressed: (_guardando) ? null : _submit,
-      onPressed: () {
-        horariosProvider.borrarHorario(horarios.id);
-        Navigator.pushNamed(context, 'horariosAdd');
-      },
-    );
   }
 }

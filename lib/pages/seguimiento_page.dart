@@ -38,6 +38,7 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: Color.fromARGB(223, 221, 248, 153),
       appBar: AppBar(
         title: const Text('LISTA DE ADOPCIONES'),
         backgroundColor: Colors.green,
@@ -48,7 +49,7 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -56,7 +57,7 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
         ],
@@ -78,7 +79,10 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
               children: [
                 const Text(
                   "SEGUIMIENTO DE ADOPCIONES",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.blueGrey),
                 ),
                 const Padding(padding: EdgeInsets.only(bottom: 12.0)),
                 _verListado()
@@ -160,7 +164,7 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
                               child: ListTile(
                                 title: Text(formulario.animal!.nombre),
                                 subtitle: Text(
-                                    "Adoptante: " + formulario.nombreClient),
+                                    "Adoptante: ${formulario.nombreClient}"),
                               ),
                             ),
                             Expanded(

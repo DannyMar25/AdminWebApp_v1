@@ -14,7 +14,8 @@ class VerCitasPage extends StatefulWidget {
 }
 
 class _VerCitasPageState extends State<VerCitasPage> {
-  final _inputFieldDateController = TextEditingController();
+  final TextEditingController _inputFieldDateController =
+      TextEditingController();
   List<CitasModel> citasA = [];
   List<Future<CitasModel>> listaC = [];
   final formKey = GlobalKey<FormState>();
@@ -44,7 +45,7 @@ class _VerCitasPageState extends State<VerCitasPage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -52,21 +53,9 @@ class _VerCitasPageState extends State<VerCitasPage> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
       ),
       drawer: const MenuWidget(),
@@ -107,11 +96,6 @@ class _VerCitasPageState extends State<VerCitasPage> {
         await citasProvider.cargarCitasFecha(_inputFieldDateController.text);
     for (var yy in listaC) {
       CitasModel cit = await yy;
-      // print("Datos: " + cit.id);
-      // print("Datos: " + cit.idHorario);
-      // print("Datos: " + cit.animal!.nombre);
-      // print("Datos: " + cit.horario!.dia);
-      // print("Datos: " + cit.nombreClient);
       setState(() {
         citasA.add(cit);
       });
@@ -141,7 +125,6 @@ class _VerCitasPageState extends State<VerCitasPage> {
     //     "-" +
     //     fecha1.day.toString();
     String hora = cita.horario!.hora;
-
     return Card(
       color: Colors.lightGreen[200],
       shadowColor: Colors.green,
@@ -156,7 +139,7 @@ class _VerCitasPageState extends State<VerCitasPage> {
                   Text("Fecha:${cita.fechaCita}"),
                   Text("Nombre del cliente: ${cita.nombreClient}"),
                   // Text("Posible a doptante para: " '${cita.animal!.nombre}'),
-                  Text("Dia de la cita: $fecha"),
+                  Text("Día de la cita: $fecha"),
                   Text("Hora de la cita: $hora"),
                 ],
               ),
@@ -173,14 +156,10 @@ class _VerCitasPageState extends State<VerCitasPage> {
         controller: _inputFieldDateController,
         decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          //counter: Text('Letras ${_nombre.length}'),
-          //hintText: 'Ingrese fecha de agendamiento de cita',
           labelText: 'Fecha de la cita',
           //helperText: 'Solo es el nombre',
-          suffixIcon: const Icon(
-            Icons.perm_contact_calendar,
-            color: Colors.green,
-          ),
+          suffixIcon:
+              const Icon(Icons.perm_contact_calendar, color: Colors.green),
           icon: const Icon(
             Icons.calendar_today,
             color: Colors.green,
@@ -218,18 +197,4 @@ class _VerCitasPageState extends State<VerCitasPage> {
       });
     }
   }
-
-  // Widget _buildChild() {
-  //   _crearFecha(context);
-
-  //   if (_fecha == _fecha) {
-  //     showCitas();
-  //     return _verListado();
-  //   } //else {
-  //   //   if (_selection == 'Otros') {
-  //   //     return _crearDonacion();
-  //   //   }
-  //   // }
-  //   return Text('');
-  // }
 }

@@ -1,4 +1,5 @@
 import 'package:admin_web_v1/models/animales_model.dart';
+import 'package:admin_web_v1/providers/usuario_provider.dart';
 import 'package:admin_web_v1/utils/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -34,6 +35,8 @@ class _BusquedaPageState extends State<BusquedaPage> {
       ['Pendiente', 'En Adopción', 'Adoptado'].toList();
   String? _selection4;
 
+  final userProvider = UsuarioProvider();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +48,25 @@ class _BusquedaPageState extends State<BusquedaPage> {
           },
         ),
         backgroundColor: Colors.green,
+        actions: [
+          PopupMenuButton<int>(
+              onSelected: (item) => onSelected(context, item),
+              icon: const Icon(Icons.manage_accounts),
+              itemBuilder: (context) => [
+                    const PopupMenuItem<int>(
+                      value: 0,
+                      child: Text("Información"),
+                    ),
+                    const PopupMenuItem<int>(
+                      value: 1,
+                      child: Text("Ayuda"),
+                    ),
+                    const PopupMenuItem<int>(
+                      value: 2,
+                      child: Text("Cerrar Sesión"),
+                    )
+                  ]),
+        ],
         title: const Text('Busqueda de mascotas'),
       ),
       body: Stack(
@@ -176,6 +198,19 @@ class _BusquedaPageState extends State<BusquedaPage> {
         ],
       ),
     );
+  }
+
+  void onSelected(BuildContext context, int item) {
+    switch (item) {
+      case 0:
+        break;
+      case 1:
+        Navigator.pushNamed(context, 'soporte');
+        break;
+      case 2:
+        userProvider.signOut();
+        Navigator.pushNamed(context, 'login');
+    }
   }
 
   Widget _seleccionarEspecie() {

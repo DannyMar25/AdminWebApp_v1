@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:admin_web_v1/models/citas_model.dart';
 import 'package:admin_web_v1/providers/citas_provider.dart';
+import 'package:admin_web_v1/providers/horarios_provider.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
   CitasModel citas = CitasModel();
 
   final citasProvider = CitasProvider();
+  final horariosProvider = HorariosProvider();
   final userProvider = UsuarioProvider();
   File? foto;
   final formKey = GlobalKey<FormState>();
@@ -29,7 +31,7 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
     final Object? citasData = ModalRoute.of(context)!.settings.arguments;
     if (citasData != null) {
       citas = citasData as CitasModel;
-      print(citas.id);
+      //print(citas.id);
     }
     return Scaffold(
       appBar: AppBar(
@@ -42,7 +44,7 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -50,21 +52,9 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
       ),
       drawer: const MenuWidget(),
@@ -138,7 +128,7 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
       initialValue: citas.telfClient,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-          labelText: 'Telefono',
+          labelText: 'Teléfono',
           icon: Icon(
             Icons.call,
             color: Colors.green,
@@ -173,6 +163,13 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
         fit: BoxFit.contain,
       );
     } else {
+      if (foto != null) {
+        // return Image.file(
+        //   foto!,
+        //   fit: BoxFit.cover,
+        //   height: 300.0,
+        // );
+      }
       return Image.asset('assets/no-image.png');
     }
   }
@@ -204,7 +201,8 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
         icon: const Icon(Icons.save),
         autofocus: true,
         onPressed: () {
-          Navigator.pushNamed(context, 'home');
+          horariosProvider.editarDisponibleCita(citas.horario!);
+          Navigator.pushNamed(context, 'bienvenida');
         }
         // onPressed: () {
         //   print(animal.id);

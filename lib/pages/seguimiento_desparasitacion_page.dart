@@ -33,7 +33,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
     return Scaffold(
         backgroundColor: const Color.fromARGB(223, 211, 212, 207),
         appBar: AppBar(
-          title: const Text('Registros de desparasitacion'),
+          title: const Text('Registros de desparasitación'),
           backgroundColor: Colors.green,
           actions: [
             PopupMenuButton<int>(
@@ -42,7 +42,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                 itemBuilder: (context) => [
                       const PopupMenuItem<int>(
                         value: 0,
-                        child: Text("Informacion"),
+                        child: Text("Información"),
                       ),
                       const PopupMenuItem<int>(
                         value: 1,
@@ -50,7 +50,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                       ),
                       const PopupMenuItem<int>(
                         value: 2,
-                        child: Text("Cerrar Sesion"),
+                        child: Text("Cerrar Sesión"),
                       )
                     ]),
           ],
@@ -58,7 +58,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
         drawer: _menuWidget(),
         body: Stack(
           children: [
-            // Background(),
+            //Background(),
             SingleChildScrollView(
                 child: Container(
                     //color: Colors.lightGreenAccent,
@@ -69,7 +69,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                           // mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Registro de desparasitacion',
+                              'Registro de desparasitación',
                               style: TextStyle(
                                 fontSize: 28,
                                 foreground: Paint()
@@ -109,7 +109,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
             return Column(
               children: [
                 SizedBox(
-                  height: 700,
+                  height: 650,
                   child: ListView.builder(
                     itemCount: desp!.length,
                     itemBuilder: (context, i) => _crearItem(context, desp[i]),
@@ -130,6 +130,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
           children: [
             const Divider(color: Colors.transparent),
             DataTable(
+              columnSpacing: 25,
               headingRowColor: MaterialStateColor.resolveWith(
                 (states) => const Color.fromARGB(255, 120, 110, 148),
               ),
@@ -147,12 +148,11 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
               ],
               rows: [
                 DataRow(selected: true, cells: [
-                  DataCell(SizedBox(
+                  DataCell(Container(
                     width: 137,
                     child: Text(desparasitacion.fecha),
                   )),
-                  //DataCell(_crearPesoActual()),
-                  DataCell(SizedBox(
+                  DataCell(Container(
                     width: 137,
                     child: Text(desparasitacion.nombreProducto),
                   )),
@@ -160,6 +160,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
               ],
             ),
             DataTable(
+              //columnSpacing: 50,
               headingRowColor: MaterialStateColor.resolveWith(
                 (states) => const Color.fromARGB(255, 120, 111, 143),
               ),
@@ -169,21 +170,22 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                 color: Colors.blueGrey,
                 border: Border.all(width: 1, color: Colors.white),
               ),
-              sortColumnIndex: 1,
-              sortAscending: false,
+              //sortColumnIndex: 1,
+              //sortAscending: false,
               columns: const [
+                //DataColumn(label: Text("Peso(Kg)"), numeric: true),
                 DataColumn(label: Text("Peso(Kg)")),
-                DataColumn(label: Text("Proxima desparacitacion")),
+                DataColumn(label: Text("Proxima desparacitación")),
               ],
               rows: [
                 DataRow(selected: true, cells: [
-                  DataCell(SizedBox(
-                    width: 100,
+                  DataCell(Container(
+                    width: 85,
                     child: Text('${desparasitacion.pesoActual}'),
                   )),
-                  DataCell(SizedBox(
-                    width: 100,
-                    child: Text(desparasitacion.fechaProxDesparasitacion),
+                  DataCell(Container(
+                    width: 90,
+                    child: Text('${desparasitacion.fechaProxDesparasitacion}'),
                   )),
                 ]),
               ],
@@ -191,18 +193,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
             const Divider(color: Colors.transparent)
           ],
         ),
-        //subtitle: Text('${horario}'),
-        onTap: () async {
-          // datosA = await formulariosProvider.cargarDPId(
-          //     formulario.id, formulario.idDatosPersonales);
-          // animal = await animalesProvider.cargarAnimalId(formulario.idAnimal);
-
-          // Navigator.pushNamed(context, 'seguimientoMain', arguments: {
-          //   'datosper': datosA,
-          //   'formulario': formulario,
-          //   'animal': animal
-          // });
-        });
+        onTap: () async {});
   }
 
   Widget _menuWidget() {
@@ -225,7 +216,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
               Icons.pages,
               color: Colors.green,
             ),
-            title: const Text('Ir a  Seguimiento Principal'),
+            title: const Text('Ir a Seguimiento Principal'),
             onTap: () => Navigator.pushReplacementNamed(
                 context, 'seguimientoInfo', arguments: {
               'datosper': datosA,
@@ -248,7 +239,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
           ),
           ListTile(
             leading: const Icon(Icons.check, color: Colors.green),
-            title: const Text('Ver Registro Desparasitacion'),
+            title: const Text('Ver Registro Desparasitación'),
             onTap: () {
               //Navigator.pop(context);
               Navigator.pushReplacementNamed(context, 'verRegistroDesp',

@@ -26,8 +26,8 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
   //final horariosProvider = new HorariosProvider();
   // final animalesProvider = new AnimalesProvider();
   final userProvider = UsuarioProvider();
-  //var idForm;
-  //var idD;
+  // var idForm;
+  // var idD;
 
   @override
   void initState() {
@@ -46,7 +46,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
     final arg = ModalRoute.of(context)!.settings.arguments as Map;
     //if (dat == arg['datosper']) {
     situacionF = arg['situacionF'] as SitFamiliarModel;
-    print(situacionF.id);
+    //print(situacionF.id);
     //print(formularios.idDatosPersonales);
     domicilio = arg['domicilio'] as DomicilioModel;
     formularios = arg['formulario'] as FormulariosModel;
@@ -54,9 +54,9 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
     datosA = arg['datosper'] as DatosPersonalesModel;
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(223, 221, 248, 153),
+      backgroundColor: const Color.fromARGB(223, 248, 248, 245),
       appBar: AppBar(
-        title: const Text('Solicitudes'),
+        title: const Text('Situación familiar'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -65,7 +65,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -73,7 +73,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
         ],
@@ -82,89 +82,95 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
       body: Stack(children: [
         //Background(),
         SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.all(15.0),
-            child: Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  Text(
-                    'Mencione las personas con las que vive',
-                    style: TextStyle(
-                      fontSize: 22,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 2
-                        ..color = Colors.blueGrey,
+          child: Flexible(
+            fit: FlexFit.loose,
+            child: Container(
+              padding: const EdgeInsets.all(15.0),
+              child: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    Text(
+                      'Mencione las personas con las que vive',
+                      style: TextStyle(
+                        fontSize: 24,
+                        foreground: Paint()
+                          ..style = PaintingStyle.stroke
+                          ..strokeWidth = 2
+                          ..color = Colors.blueGrey,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const Divider(),
-                  DataTable(
-                    sortColumnIndex: 2,
-                    sortAscending: false,
-                    columns: const [
-                      DataColumn(label: Text("Nombre")),
-                      DataColumn(label: Text("Edad "), numeric: true),
-                      DataColumn(label: Text("Parentesco")),
-                    ],
-                    rows: [
-                      DataRow(selected: true, cells: [
-                        DataCell(_mostrarNombreF1()),
-                        DataCell(_mostrarEdadF1()),
-                        DataCell(_mostrarParentesco1()),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(_mostrarNombreF2()),
-                        DataCell(_mostrarEdadF2()),
-                        DataCell(_mostrarParentesco2()),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(_mostrarNombreF3()),
-                        DataCell(_mostrarEdadF3()),
-                        DataCell(_mostrarParentesco3()),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(_mostrarNombreF4()),
-                        DataCell(_mostrarEdadF4()),
-                        DataCell(_mostrarParentesco4()),
-                      ])
-                    ],
-                  ),
-                  const Divider(),
-                  Text(
-                    'Algun familiar espera un bebe?',
-                    style: TextStyle(
-                      fontSize: 22,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 2
-                        ..color = Colors.blueGrey,
+                    const Divider(),
+                    DataTable(
+                      sortColumnIndex: 2,
+                      sortAscending: false,
+                      columnSpacing: 30,
+                      columns: const [
+                        DataColumn(label: Text("Nombre")),
+                        DataColumn(label: Text("Edad ")),
+                        DataColumn(label: Text("Parentesco")),
+                      ],
+                      rows: [
+                        DataRow(selected: true, cells: [
+                          DataCell(_mostrarNombreF1()),
+                          DataCell(_mostrarEdadF1()),
+                          DataCell(_mostrarParentesco1()),
+                        ]),
+                        DataRow(cells: [
+                          DataCell(_mostrarNombreF2()),
+                          DataCell(_mostrarEdadF2()),
+                          DataCell(_mostrarParentesco2()),
+                        ]),
+                        DataRow(cells: [
+                          DataCell(_mostrarNombreF3()),
+                          DataCell(_mostrarEdadF3()),
+                          DataCell(_mostrarParentesco3()),
+                        ]),
+                        DataRow(cells: [
+                          DataCell(_mostrarNombreF4()),
+                          DataCell(_mostrarEdadF4()),
+                          DataCell(_mostrarParentesco4()),
+                        ])
+                      ],
                     ),
-                  ),
-                  const Divider(),
-                  _mostrarEsperabebe(),
-                  Text(
-                    'Alguien que viva con usted es alergico a los animales o sufre de asma?',
-                    style: TextStyle(
-                      fontSize: 22,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 2
-                        ..color = Colors.blueGrey,
+                    const Divider(),
+                    Text(
+                      'Algun familiar espera un bebe?',
+                      style: TextStyle(
+                        fontSize: 24,
+                        foreground: Paint()
+                          ..style = PaintingStyle.stroke
+                          ..strokeWidth = 2
+                          ..color = Colors.blueGrey,
+                      ),
                     ),
-                  ),
-                  const Divider(),
-                  _mostrarAlergia(),
-                  const Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _botonAtras(),
-                      _botonSiguiente(),
-                    ],
-                  )
-                ],
+                    const Divider(),
+                    _mostrarEsperabebe(),
+                    Text(
+                      'Alguien que viva con usted es alérgico a los animales o sufre de asma?',
+                      style: TextStyle(
+                        fontSize: 24,
+                        foreground: Paint()
+                          ..style = PaintingStyle.stroke
+                          ..strokeWidth = 2
+                          ..color = Colors.blueGrey,
+                      ),
+                    ),
+                    const Divider(),
+                    _mostrarAlergia(),
+                    const Divider(
+                      color: Colors.transparent,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _botonAtras(),
+                        _botonSiguiente(),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),
@@ -291,7 +297,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
         //labelText: "Algun familiar espera un bebe?",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -306,7 +312,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
         //labelText: "Alguien que viva con usted es alergico a los animales ?",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -331,7 +337,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
             Icons.arrow_right_sharp,
           ),
           iconSize: 100,
-          color: Colors.lightBlue[300],
+          color: Colors.green[400],
           onPressed: () async {
             Navigator.pushNamed(context, 'domicilio', arguments: {
               'domicilio': domicilio,
@@ -361,7 +367,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
           //tooltip: 'Siguiente',
           icon: const Icon(Icons.arrow_left_sharp),
           iconSize: 100,
-          color: Colors.lightBlue[300],
+          color: Colors.green[400],
           onPressed: () async {
             Navigator.pop(context);
           },

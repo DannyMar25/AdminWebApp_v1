@@ -17,7 +17,7 @@ class _VerDonacionesOutAddPageState extends State<VerDonacionesOutAddPage> {
   final userProvider = UsuarioProvider();
   DonacionesModel donaciones = DonacionesModel();
   final List<String> _items =
-      ['Alimento', 'Medicina', 'Insumos Higienicos', 'Otros'].toList();
+      ['Alimento', 'Medicina', 'Insumos Higiénicos', 'Otros'].toList();
   String? _selection;
   @override
   void initState() {
@@ -38,7 +38,7 @@ class _VerDonacionesOutAddPageState extends State<VerDonacionesOutAddPage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -46,36 +46,22 @@ class _VerDonacionesOutAddPageState extends State<VerDonacionesOutAddPage> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(15.0),
-          child: Form(
-            child: Column(
-              children: [
-                _crearTipoDonacion(),
-                const Divider(),
-                _verListado(),
-                const Divider(),
-                //_mostrarTotal()
-              ],
-            ),
+      body: Container(
+        padding: const EdgeInsets.all(15.0),
+        child: Form(
+          child: Column(
+            children: [
+              _crearTipoDonacion(),
+              const Divider(),
+              _verListado(),
+              const Divider(),
+              //_mostrarTotal()
+            ],
           ),
         ),
       ),
@@ -104,20 +90,24 @@ class _VerDonacionesOutAddPageState extends State<VerDonacionesOutAddPage> {
       mainAxisAlignment: MainAxisAlignment.start,
       //mainAxisSize: MainAxisSize.max,
       children: [
-        const Text(
-          'Seleccione el tipo de donacion:  ',
-          style: TextStyle(fontSize: 16, color: Colors.black),
+        const Expanded(
+          child: Text(
+            'Seleccione el tipo de donación:',
+            style: TextStyle(fontSize: 16, color: Colors.black),
+          ),
         ),
-        DropdownButton<String>(
-            hint: Text(donaciones.tipo.toString()),
-            value: _selection,
-            items: dropdownMenuOptions,
-            onChanged: (s) {
-              setState(() {
-                _selection = s;
-                // horarios.dia = s!;
-              });
-            }),
+        Expanded(
+          child: DropdownButton<String>(
+              hint: Text(donaciones.tipo.toString()),
+              value: _selection,
+              items: dropdownMenuOptions,
+              onChanged: (s) {
+                setState(() {
+                  _selection = s;
+                  // horarios.dia = s!;
+                });
+              }),
+        ),
       ],
     );
   }
@@ -208,16 +198,5 @@ class _VerDonacionesOutAddPageState extends State<VerDonacionesOutAddPage> {
     }
 
     //return _mostrarTotal(context);
-  }
-
-  Widget _mostrarTotal(BuildContext context) {
-    return TextFormField(
-      //initialValue: donacionesProvider.sumarDonaciones1().toString(),
-      readOnly: true,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: const InputDecoration(
-          labelText: 'Total:',
-          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
-    );
   }
 }

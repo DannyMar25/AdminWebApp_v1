@@ -26,6 +26,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
   DomicilioModel domicilio = DomicilioModel();
   RelacionAnimalesModel relacionA = RelacionAnimalesModel();
   final userProvider = UsuarioProvider();
+  final animalProvider = AnimalesProvider();
   File? foto;
   final formKey = GlobalKey<FormState>();
   bool isChecked = false;
@@ -35,17 +36,16 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
   String fechaRespuesta = '';
   String observacion = '';
   bool _guardando = false;
-  final animalProvider = AnimalesProvider();
 
   @override
   Widget build(BuildContext context) {
     final Object? formulariosData = ModalRoute.of(context)!.settings.arguments;
     if (formulariosData != null) {
       formularios = formulariosData as FormulariosModel;
-      print(formularios.id);
+      //print(formularios.id);
     }
     return Scaffold(
-      backgroundColor: const Color.fromARGB(223, 221, 248, 153),
+      backgroundColor: const Color.fromARGB(223, 248, 248, 245),
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: const Text("Respuesta y observaciones"),
@@ -56,7 +56,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -64,7 +64,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
         ],
@@ -72,12 +72,12 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       drawer: const MenuWidget(),
       body: SingleChildScrollView(
         child: Container(
-          // decoration: const BoxDecoration(
+          // decoration: BoxDecoration(
           //   image: DecorationImage(
           //     image: AssetImage("assets/fondoanimales.jpg"),
           //     fit: BoxFit.cover,
           //   ),
-          // ),
+          //),
           padding: const EdgeInsets.all(20.0),
           child: Form(
             key: formKey,
@@ -91,8 +91,8 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
                   fontSize: 18,
                   foreground: Paint()
                     ..style = PaintingStyle.stroke
-                    ..strokeWidth = 1.5
-                    ..color = Colors.orange,
+                    ..strokeWidth = 2
+                    ..color = Colors.blueGrey,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -135,7 +135,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
     return TextFormField(
         maxLines: 4,
         readOnly: false,
-        initialValue: formularios.observacion,
+        //initialValue: formularios.observacion,
         textCapitalization: TextCapitalization.sentences,
         decoration: const InputDecoration(
           labelText: 'Observaciones:',
@@ -143,9 +143,18 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
           //border: BorderRadius(BorderRadius.circular(2.0)),
           icon: Icon(
             Icons.edit_outlined,
-            color: Colors.purple,
+            color: Colors.green,
           ),
         ),
+        validator: (value) {
+          if (value!.length < 3 && value.length > 0) {
+            return 'Ingrese la raza de la mascota';
+          } else if (value.isEmpty) {
+            return 'Llena este campo por favor';
+          } else {
+            return null;
+          }
+        },
         onChanged: (s) {
           setState(() {
             //formularios.observacion = s;
@@ -166,7 +175,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
           //border: BorderRadius(BorderRadius.circular(2.0)),
           icon: Icon(
             Icons.date_range_outlined,
-            color: Colors.purple,
+            color: Colors.green,
           ),
         ),
         onChanged: (s) {
@@ -187,7 +196,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
         //border: BorderRadius(BorderRadius.circular(2.0)),
         icon: Icon(
           Icons.info,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -203,7 +212,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       if (states.any(interactiveStates.contains)) {
         return Colors.blue;
       }
-      return Colors.blue;
+      return Colors.blueGrey;
     }
 
     return Checkbox(
@@ -232,7 +241,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       if (states.any(interactiveStates.contains)) {
         return Colors.blue;
       }
-      return Colors.blue;
+      return Colors.blueGrey;
     }
 
     return Checkbox(
@@ -272,18 +281,9 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
     setState(() {
       _guardando = true;
     });
-//Sentencia If agregada recientemente
-    //if (idFormu != null) {
-
     formulariosProvider.editarEstado(formularios, estado);
     formulariosProvider.editarObservacion(formularios, observacion);
     formulariosProvider.editarFechaRespuesta(formularios, fechaRespuesta);
-
     Navigator.pushReplacementNamed(context, 'solicitudes');
-    // } else {
-    //animalProvider.editarAnimal(animal, foto!);
-    //print(idFormu);
-    // print("Debe llenar la parte 1 para poder continuar");
-    //}
   }
 }

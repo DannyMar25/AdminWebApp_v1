@@ -19,7 +19,7 @@ class _RegistroPageState extends State<RegistroPage> {
 
   final usuario = UsuariosModel();
 
-  TextEditingController _nombreUs = TextEditingController();
+  //TextEditingController _nombreUs = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -116,8 +116,8 @@ class _RegistroPageState extends State<RegistroPage> {
             decoration: InputDecoration(
               icon: const Icon(Icons.alternate_email, color: Colors.green),
               hintText: 'ejemplo@correo.com',
-              labelText: 'Correo electronico',
-              counterText: snapshot.data,
+              labelText: 'Correo electrónico',
+              //counterText: snapshot.data,
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
             ),
@@ -147,25 +147,6 @@ class _RegistroPageState extends State<RegistroPage> {
             onChanged: bloc.changeName,
           ),
         );
-      },
-    );
-  }
-
-  Widget _crearNombre() {
-    return TextFormField(
-      //initialValue: animal.nombre,
-      controller: _nombreUs,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: const InputDecoration(
-        labelText: 'Nombre',
-      ),
-      onSaved: (value) => _nombreUs = value as TextEditingController,
-      validator: (value) {
-        if (value!.length < 3) {
-          return 'Ingrese su nombre';
-        } else {
-          return null;
-        }
       },
     );
   }
@@ -206,7 +187,7 @@ class _RegistroPageState extends State<RegistroPage> {
             decoration: InputDecoration(
               icon: const Icon(Icons.lock, color: Colors.green),
               labelText: 'Confirmar contraseña',
-              counterText: snapshot.data,
+              //counterText: snapshot.data,
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
             ),
@@ -224,18 +205,19 @@ class _RegistroPageState extends State<RegistroPage> {
     return StreamBuilder(
       stream: bloc.formValidStream1,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return RaisedButton(
+        return ElevatedButton(
           child: Container(
             padding:
                 const EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-            child: const Text('Ingresar'),
+            child: const Text('Registrar'),
           ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5.0),
-          ),
-          elevation: 0.0,
-          color: Colors.green,
-          textColor: Colors.white,
+          style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+              elevation: 0.0,
+              primary: Colors.green,
+              textStyle: const TextStyle(color: Colors.white)),
           onPressed: snapshot.hasData ? () => _register(bloc, context) : null,
         );
       },
@@ -243,19 +225,10 @@ class _RegistroPageState extends State<RegistroPage> {
   }
 
   _register(LoginBloc bloc, BuildContext context) async {
-    //print('=================');
-    //print('Email:${bloc.email}');
-    //print('Password: ${bloc.password}');
-    //print('=================');
-
     final info = await usuarioProvider.nuevoUsuario(
         bloc.email, bloc.password, bloc.name);
-
-    // final info = await usuarioProvider.registerWithEmailAndPassword(
-    //     bloc.email, bloc.password, bloc.name);
-
     if (info['ok']) {
-      print(bloc.name);
+      //print(bloc.name);
       usuario.id = info['uid'];
       usuario.nombre = bloc.name;
       usuario.email = bloc.email;

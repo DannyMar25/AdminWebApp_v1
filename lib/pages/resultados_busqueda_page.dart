@@ -58,46 +58,23 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
           title: const Text('Resultados de busqueda'),
           backgroundColor: Colors.green,
           actions: [
-            Builder(builder: (BuildContext context) {
-              return Row(
-                children: [
-                  email == ''
-                      ? TextButton(
-                          style: ButtonStyle(
-                            foregroundColor:
-                                MaterialStateProperty.all<Color>(Colors.white),
-                          ),
-                          onPressed: () async {
-                            Navigator.pushNamed(context, 'login');
-                          },
-                          child: const Text('Iniciar sesión'),
-                        )
-                      : TextButton(
-                          style: ButtonStyle(
-                            foregroundColor:
-                                MaterialStateProperty.all<Color>(Colors.white),
-                          ),
-                          onPressed: () async {
-                            userProvider.signOut();
-                            Navigator.pushNamed(context, 'home');
-                          },
-                          child: const Text('Cerrar sesión'),
-                        ),
-                  email == ''
-                      ? TextButton(
-                          style: ButtonStyle(
-                            foregroundColor:
-                                MaterialStateProperty.all<Color>(Colors.white),
-                          ),
-                          onPressed: () async {
-                            Navigator.pushNamed(context, 'registro');
-                          },
-                          child: const Text('Registrarse'),
-                        )
-                      : const SizedBox(),
-                ],
-              );
-            }),
+            PopupMenuButton<int>(
+                onSelected: (item) => onSelected(context, item),
+                icon: const Icon(Icons.manage_accounts),
+                itemBuilder: (context) => [
+                      const PopupMenuItem<int>(
+                        value: 0,
+                        child: Text("Información"),
+                      ),
+                      const PopupMenuItem<int>(
+                        value: 1,
+                        child: Text("Ayuda"),
+                      ),
+                      const PopupMenuItem<int>(
+                        value: 2,
+                        child: Text("Cerrar Sesión"),
+                      )
+                    ]),
           ],
         ),
         drawer: const MenuWidget(),
@@ -115,6 +92,19 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
 
         //floatingActionButton: _crearBoton(context),
         );
+  }
+
+  void onSelected(BuildContext context, int item) {
+    switch (item) {
+      case 0:
+        break;
+      case 1:
+        Navigator.pushNamed(context, 'soporte');
+        break;
+      case 2:
+        userProvider.signOut();
+        Navigator.pushNamed(context, 'login');
+    }
   }
 
   Widget _crearListadoBusqueda() {
@@ -172,6 +162,31 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
           }
         });
   }
+
+  // Widget _crearItem2(BuildContext context, AnimalModel animal) {
+  //   return Expanded(
+  //     child: Container(
+  //       height: 100.0,
+  //       width: 200.0,
+  //       child: Card(
+  //         color: const Color.fromARGB(248, 202, 241, 170),
+  //         elevation: 4.0,
+  //         margin: const EdgeInsets.only(bottom: 90.0, left: 5.0, right: 5.0),
+  //         child: Flexible(
+  //           fit: FlexFit.loose,
+  //           child: InkWell(
+  //             onTap: () => Navigator.pushNamed(context, 'home'),
+  //             child: Column(
+  //               children: [
+  //                 const Text('No se ha encontrado ningun resultado.....!!!!'),
+  //               ],
+  //             ),
+  //           ),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Widget _crearItem1(BuildContext context, AnimalModel animal) {
     return Expanded(

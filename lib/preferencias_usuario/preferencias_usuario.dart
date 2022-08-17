@@ -11,7 +11,7 @@ class PreferenciasUsuario {
   SharedPreferences? _prefs;
 
   initPrefs() async {
-    this._prefs = await SharedPreferences.getInstance();
+    _prefs = await SharedPreferences.getInstance();
   }
 
   // GET y SET del nombre

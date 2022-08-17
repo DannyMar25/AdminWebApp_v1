@@ -286,6 +286,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
           onPressed: () async {
             // Navigator.pushNamed(context, 'datosPersonales',
             //     arguments: [idForm, idD]);
+
             datosC = await formulariosProvider.cargarDPId(
                 formularios.id, formularios.idDatosPersonales);
             situacionF = await formulariosProvider.cargarSFId(
@@ -294,6 +295,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
                 formularios.id, formularios.idDomicilio);
             relacionA = await formulariosProvider.cargarRAId(
                 formularios.id, formularios.idRelacionAn);
+
             Navigator.pushNamed(context, 'datosPersonales', arguments: {
               'datosper': datosC,
               'sitfam': situacionF,
@@ -541,5 +543,15 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
         //   print(animal.id);
         // },
         );
+  }
+
+  void botonDatosPersonales(BuildContext context) {
+    Navigator.pushNamed(context, 'datosPersonales', arguments: {
+      'datosper': datosC,
+      'sitfam': situacionF,
+      'domicilio': domicilio,
+      'formulario': formularios,
+      'relacionAn': relacionA
+    });
   }
 }

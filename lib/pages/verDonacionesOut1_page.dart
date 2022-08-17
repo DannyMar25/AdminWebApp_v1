@@ -17,9 +17,9 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
   final donacionesProvider = DonacionesProvider();
   final userProvider = UsuarioProvider();
   DonacionesModel donaciones = DonacionesModel();
-  final List<String> _items =
-      ['Alimento', 'Medicina', 'Insumos Higienicos', 'Otros'].toList();
-  String? _selection;
+  final List<String> items =
+      ['Alimento', 'Medicina', 'Insumos Higiénicos', 'Otros'].toList();
+  String? selection;
   @override
   void initState() {
     // _selection = _items.last;
@@ -31,7 +31,7 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
     final Object? donacData = ModalRoute.of(context)!.settings.arguments;
     if (donacData != null) {
       donaciones = donacData as DonacionesModel;
-      print(donaciones.id);
+      //print(donaciones.id);
     }
 
     return Scaffold(
@@ -45,7 +45,7 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -53,7 +53,7 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
         ],
@@ -121,7 +121,7 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
       readOnly: true,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-          labelText: 'Tipo de Donacion:',
+          labelText: 'Tipo de Donación:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
     );
   }
@@ -130,10 +130,6 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
     if (donaciones.tipo == 'Alimento') {
       return _crearPeso();
     } //else {
-    //   if (_selection == 'Otros') {
-    //     return _crearDonacion();
-    //   }
-    // }
     return const Text('');
   }
 
@@ -157,21 +153,13 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
       initialValue: donaciones.descripcion,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-          labelText: 'Descripcion:',
+          labelText: 'Descripción:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
         setState(() {
           donaciones.descripcion = s;
         });
       },
-      // onSaved: (value) => donaciones.descripcion = value!,
-      // validator: (value) {
-      //   if (value!.length < 3) {
-      //     return 'Ingrese la descripcion';
-      //   } else {
-      //     return null;
-      //   }
-      // },
     );
   }
 
@@ -190,35 +178,5 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
         });
       },
     );
-  }
-
-  Widget _crearBoton() {
-    return ElevatedButton.icon(
-      style: ButtonStyle(
-        backgroundColor:
-            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          return Colors.green;
-        }),
-      ),
-      label: const Text('Guardar'),
-      icon: const Icon(Icons.save),
-      autofocus: true,
-      //onPressed: (_guardando) ? null : _submit,
-      onPressed: () {
-        _submit();
-      },
-    );
-  }
-
-  void _submit() async {
-    if (donaciones.id == "") {
-      donaciones.estadoDonacion = 'Entrante';
-      donacionesProvider.crearDonacion(donaciones);
-    } else {
-      donaciones.estadoDonacion = 'Entrante';
-      donacionesProvider.editarDonacion(donaciones);
-    }
-    //mostrarSnackbar('Registro guardado');
-    Navigator.pushNamed(context, 'verDonacionesInAdd');
   }
 }

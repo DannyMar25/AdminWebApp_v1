@@ -43,7 +43,7 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -51,7 +51,7 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
         ],
@@ -60,12 +60,13 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
         child: Container(
           padding: const EdgeInsets.all(15.0),
           child: Form(
+            //key: formKey,
             child: Column(
               children: [
                 _crearDia(),
                 const Divider(),
                 _verListado(),
-                //const Divider(),
+                const Divider(),
               ],
             ),
           ),
@@ -84,7 +85,7 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
       //mainAxisSize: MainAxisSize.max,
       children: [
         const Text(
-          'Seleccione el dia:         ',
+          'Seleccione el día:         ',
           style: TextStyle(fontSize: 16, color: Colors.black),
         ),
         DropdownButton<String>(
