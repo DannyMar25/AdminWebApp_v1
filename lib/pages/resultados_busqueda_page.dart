@@ -55,7 +55,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Resultados de busqueda'),
+          title: const Text('Resultados de búsqueda'),
           backgroundColor: Colors.green,
           actions: [
             PopupMenuButton<int>(

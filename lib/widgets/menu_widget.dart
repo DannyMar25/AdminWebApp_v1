@@ -27,25 +27,34 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ),
           ),
-          ListTile(
+          ExpansionTile(
+            title: const Text('Mascotas'),
             leading: const Icon(
-              Icons.pages,
+              Icons.pets,
               color: Colors.green,
             ),
-            title: const Text('Ver mascotas registradas'),
-            onTap: () => Navigator.pushReplacementNamed(context, 'home'),
-          ),
-          const Divider(),
-          ListTile(
-            leading: const Icon(
-              Icons.app_registration,
-              color: Colors.green,
-            ),
-            title: const Text('Registrar nueva mascota'),
-            onTap: () {
-              //Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, 'animal');
-            },
+            children: [
+              ListTile(
+                leading: const Icon(
+                  Icons.pages,
+                  color: Colors.green,
+                ),
+                title: const Text('Ver mascotas registradas'),
+                onTap: () => Navigator.pushNamed(context, 'home'),
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(
+                  Icons.app_registration,
+                  color: Colors.green,
+                ),
+                title: const Text('Registrar nueva mascota'),
+                onTap: () {
+                  //Navigator.pop(context);
+                  Navigator.pushNamed(context, 'animal');
+                },
+              ),
+            ],
           ),
 
           const Divider(),
@@ -66,7 +75,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 title: const Text('Horarios registrados'),
                 onTap: () {
                   //Navigator.pop(context);
-                  Navigator.pushReplacementNamed(context, 'horariosAdd');
+                  Navigator.pushNamed(context, 'horariosAdd');
                 },
               ),
               ListTile(
@@ -76,7 +85,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 ),
                 title: const Text('Agendar citas'),
                 onTap: () {
-                  Navigator.pushReplacementNamed(context, 'agendarCita');
+                  Navigator.pushNamed(context, 'agendarCita');
                 },
               ),
               ListTile(
@@ -86,7 +95,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 ),
                 title: const Text('Ver citas pendientes'),
                 onTap: () {
-                  Navigator.pushReplacementNamed(context, 'verCitasAg');
+                  Navigator.pushNamed(context, 'verCitasAg');
                 },
               ),
               ListTile(
@@ -96,7 +105,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 ),
                 title: const Text('Ver citas atendidas'),
                 onTap: () {
-                  Navigator.pushReplacementNamed(context, 'verCitasAt');
+                  Navigator.pushNamed(context, 'verCitasAt');
                 },
               ),
             ],
@@ -104,7 +113,7 @@ class _MenuWidgetState extends State<MenuWidget> {
           //aqui termina el nuevo codigo
           const Divider(),
           ExpansionTile(
-            title: const Text('Solicitudes de adopcion'),
+            title: const Text('Solicitudes de adopción'),
             leading: const Icon(
               Icons.assignment,
               color: Colors.green,
@@ -118,7 +127,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 title: const Text('Solicitudes Pendientes'),
                 onTap: () {
                   // Navigator.pushReplacementNamed(context, 'enviarMail');
-                  Navigator.pushReplacementNamed(context, 'solicitudes');
+                  Navigator.pushNamed(context, 'solicitudes');
                 },
               ),
               ListTile(
@@ -128,8 +137,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 ),
                 title: const Text('Solicitudes Aprobadas'),
                 onTap: () {
-                  Navigator.pushReplacementNamed(
-                      context, 'solicitudesAprobadas');
+                  Navigator.pushNamed(context, 'solicitudesAprobadas');
                 },
               ),
               ListTile(
@@ -139,8 +147,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 ),
                 title: const Text('Solicitudes Rechazadas'),
                 onTap: () {
-                  Navigator.pushReplacementNamed(
-                      context, 'solicitudesRechazadas');
+                  Navigator.pushNamed(context, 'solicitudesRechazadas');
                 },
               ),
             ],
@@ -156,7 +163,7 @@ class _MenuWidgetState extends State<MenuWidget> {
             ),
             title: const Text('Seguimiento'),
             onTap: () {
-              Navigator.pushReplacementNamed(context, 'seguimientoPrincipal');
+              Navigator.pushNamed(context, 'seguimientoPrincipal');
             },
           ),
           //  ],
@@ -181,7 +188,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 ),
                 title: const Text('Registrar donaciones recibidas'),
                 onTap: () {
-                  Navigator.pushReplacementNamed(context, 'donacionesInAdd');
+                  Navigator.pushNamed(context, 'donacionesInAdd');
                 },
               ),
               ListTile(
@@ -191,7 +198,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 ),
                 title: const Text('Ver donaciones recibidas'),
                 onTap: () {
-                  Navigator.pushReplacementNamed(context, 'verDonacionesInAdd');
+                  Navigator.pushNamed(context, 'verDonacionesInAdd');
                 },
               ),
               ListTile(
@@ -201,7 +208,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 ),
                 title: const Text('Registrar donaciones salientes'),
                 onTap: () {
-                  Navigator.pushReplacementNamed(context, 'donacionesOutAdd');
+                  Navigator.pushNamed(context, 'donacionesOutAdd');
                 },
               ),
               ListTile(
@@ -211,8 +218,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 ),
                 title: const Text('Ver donaciones salientes'),
                 onTap: () {
-                  Navigator.pushReplacementNamed(
-                      context, 'verDonacionesOutAdd');
+                  Navigator.pushNamed(context, 'verDonacionesOutAdd');
                 },
               ),
             ],
@@ -227,7 +233,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                   title: const Text('Registrar administrador'),
                   onTap: () {
                     //Navigator.pop(context);
-                    Navigator.pushReplacementNamed(context, 'registro');
+                    Navigator.pushNamed(context, 'registro');
                   },
                 )
               : const SizedBox(),
@@ -239,7 +245,7 @@ class _MenuWidgetState extends State<MenuWidget> {
             title: const Text('Inicio'),
             onTap: () {
               //Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, 'bienvenida');
+              Navigator.pushNamed(context, 'bienvenida');
             },
           ),
         ],

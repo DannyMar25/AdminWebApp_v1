@@ -35,7 +35,7 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Solicitudes'),
+        title: const Text('Solicitudes pendientes'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(

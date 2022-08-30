@@ -28,7 +28,7 @@ class BienvenidaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pagina principal'),
+        title: const Text('Página principal'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(

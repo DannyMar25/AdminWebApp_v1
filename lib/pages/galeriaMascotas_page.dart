@@ -40,7 +40,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mascotas Registradas'),
+        title: const Text('Mascotas registradas'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
