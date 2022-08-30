@@ -100,7 +100,7 @@ class HorariosProvider {
       "hora": data["hora"],
       "disponible": data["disponible"],
     });
-    print(horarios.dia);
+    //print(horarios.dia);
     return horarios;
   }
 

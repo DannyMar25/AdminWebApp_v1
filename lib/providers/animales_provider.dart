@@ -17,18 +17,6 @@ class AnimalesProvider {
     try {
       // print("este esadkjljdkjadkjskadjlkjsdljasdljasdj");
       var animalAdd = await refAn.add(animal.toJson());
-
-      // String url;
-      // String path;
-      // String fec = DateTime.now().toString();
-      // path = '/animales/${animalAdd.id}/${animalAdd.id + fec}.jpg';
-      // //Reference ref = storage.ref().child(path + DateTime.now().toString());
-      // Reference ref = storage.ref().child(path);
-      // UploadTask uploadTask = ref.putBlob(file1);
-      // uploadTask.whenComplete(() async {
-      //   url = await ref.getDownloadURL();
-      //guardarBase(url);
-      //actualizarCampoUrl(url, animal);
       await refAn
           .doc(animalAdd.id)
           .update({"fotoUrl": url, "id": animalAdd.id});
@@ -38,33 +26,9 @@ class AnimalesProvider {
     }
   }
 
-  // Future<bool> setCoordenada(int n, String id) async {
-  //   //final url = '$_url/animales/${animal.id}.json?auth=${_prefs.token}';
-  //   final url = '$_url/gps/Test/.json';
-  //   final values = {"GetDataGPS": n, "id": id};
-
-  //   final resp = await http.put(Uri.parse(url), body: values);
-  //   final decodedData = json.decode(resp.body);
-
-  //   print(decodedData);
-
-  //   return true;
-  // }
-
   Future<bool> editarAnimal(AnimalModel animal, String url) async {
     try {
       await refAn.doc(animal.id).update(animal.toJson());
-      //var animalUp = await refAn.doc(animal.id).update(animal.toJson());
-      // String url;
-      // String path;
-      // String fec = DateTime.now().toString();
-      // path = '/animales/${animal.id}/${animal.id! + fec}.jpg';
-      // //Reference ref = storage.ref().child(path + DateTime.now().toString());
-      // Reference ref = storage.ref().child(path);
-      // UploadTask uploadTask = ref.putBlob(_image1);
-      // uploadTask.whenComplete(() async {
-      //   url = await ref.getDownloadURL();
-
       await refAn.doc(animal.id).update({"fotoUrl": url});
 
       return true;

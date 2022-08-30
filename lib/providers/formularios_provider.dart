@@ -47,12 +47,12 @@ class FormulariosProvider {
   }
 
   Future<List<Future<FormulariosModel>>> cargarFormularios() async {
-    final List<FormulariosModel> formularios = <FormulariosModel>[];
+    //final List<FormulariosModel> formularios = <FormulariosModel>[];
     var documents = await refForm.where('estado', isEqualTo: 'Pendiente').get();
     //citas.addAll
     var s = (documents.docs.map((e) async {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
-      var data = e.data() as Map<String, dynamic>;
+      //var data = e.data() as Map<String, dynamic>;
       //HorariosModel h1 = new HorariosModel();
       AnimalModel anim = AnimalModel();
       //h1 = await horariosProvider.cargarHorarioId(e["idHorario"]);
@@ -234,12 +234,12 @@ class FormulariosProvider {
   }
 
   Future<List<Future<FormulariosModel>>> cargarInfo() async {
-    final List<FormulariosModel> formularios = <FormulariosModel>[];
+    //final List<FormulariosModel> formularios = <FormulariosModel>[];
     var documents = await refForm.where('estado', isEqualTo: 'Aprobado').get();
     //citas.addAll
     var s = (documents.docs.map((e) async {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
-      var data = e.data() as Map<String, dynamic>;
+      //var data = e.data() as Map<String, dynamic>;
       //HorariosModel h1 = new HorariosModel();
       AnimalModel anim = AnimalModel();
       //h1 = await horariosProvider.cargarHorarioId(e["idHorario"]);
@@ -270,12 +270,12 @@ class FormulariosProvider {
   }
 
   Future<List<Future<FormulariosModel>>> cargarInfoR() async {
-    final List<FormulariosModel> formularios = <FormulariosModel>[];
+    //final List<FormulariosModel> formularios = <FormulariosModel>[];
     var documents = await refForm.where('estado', isEqualTo: 'Negado').get();
     //citas.addAll
     var s = (documents.docs.map((e) async {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
-      var data = e.data() as Map<String, dynamic>;
+      //var data = e.data() as Map<String, dynamic>;
       //HorariosModel h1 = new HorariosModel();
       AnimalModel anim = AnimalModel();
       //h1 = await horariosProvider.cargarHorarioId(e["idHorario"]);
@@ -314,7 +314,7 @@ class FormulariosProvider {
         .get();
     vacunas.addAll(documents.docs.map((e) {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
-      var data = e.data() as Map<String, dynamic>;
+      //var data = e.data() as Map<String, dynamic>;
       var vacuna = RegistroVacunasModel.fromJson({
         "id": e.id,
         "fechaConsulta": e["fechaConsulta"],
@@ -338,7 +338,7 @@ class FormulariosProvider {
         .orderBy('fecha')
         .get();
     desparasitaciones.addAll(documents.docs.map((e) {
-      var data = e.data() as Map<String, dynamic>;
+      //var data = e.data() as Map<String, dynamic>;
       var desparasitacion = RegistroDesparasitacionModel.fromJson({
         "id": e.id,
         "fecha": e["fecha"],
@@ -355,7 +355,7 @@ class FormulariosProvider {
     final List<EvidenciasModel> evidenciaF = <EvidenciasModel>[];
     var documents = await refForm.doc(idForm).collection('evidencias').get();
     evidenciaF.addAll(documents.docs.map((e) {
-      var data = e.data() as Map<String, dynamic>;
+      //var data = e.data() as Map<String, dynamic>;
       var evidencia = EvidenciasModel.fromJson({
         "id": e.id,
         "fecha": e["fecha"],
@@ -376,7 +376,7 @@ class FormulariosProvider {
         // .where("nombreArchivo", "", )
         .get();
     evidenciaF.addAll(documents.docs.map((e) {
-      var data = e.data() as Map<String, dynamic>;
+      //var data = e.data() as Map<String, dynamic>;
       var evidencia = EvidenciasModel.fromJson({
         "id": e.id,
         "fecha": e["fecha"],

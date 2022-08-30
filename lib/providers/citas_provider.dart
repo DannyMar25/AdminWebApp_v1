@@ -27,12 +27,12 @@ class CitasProvider {
   }
 
   Future<List<Future<CitasModel>>> cargarCitas() async {
-    final List<CitasModel> citas = <CitasModel>[];
+    //final List<CitasModel> citas = <CitasModel>[];
     var documents = await refCit.where('estado', isEqualTo: 'Pendiente').get();
     //citas.addAll
     var s = (documents.docs.map((e) async {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
-      var data = e.data() as Map<String, dynamic>;
+      //var data = e.data() as Map<String, dynamic>;
       HorariosModel h1 = HorariosModel();
       AnimalModel anim = AnimalModel();
       h1 = await horariosProvider.cargarHorarioId(e["idHorario"]);
@@ -60,7 +60,7 @@ class CitasProvider {
     //citas.addAll
     var s = (documents.docs.map((e) async {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
-      var data = e.data() as Map<String, dynamic>;
+      //var data = e.data() as Map<String, dynamic>;
       HorariosModel h1 = HorariosModel();
       AnimalModel anim = AnimalModel();
       h1 = await horariosProvider.cargarHorarioId(e["idHorario"]);
@@ -91,7 +91,7 @@ class CitasProvider {
     //citas.addAll
     var s = (documents.docs.map((e) async {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
-      var data = e.data() as Map<String, dynamic>;
+      //var data = e.data() as Map<String, dynamic>;
       HorariosModel h1 = HorariosModel();
       AnimalModel anim = AnimalModel();
       h1 = await horariosProvider.cargarHorarioId(e["idHorario"]);

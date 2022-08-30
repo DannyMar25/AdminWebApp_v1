@@ -31,7 +31,7 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
   Widget build(BuildContext context) {
     final arg = ModalRoute.of(context)!.settings.arguments as Map;
     datosA = arg['datosper'] as DatosPersonalesModel;
-    print(datosA.id);
+    //print(datosA.id);
     situacionF = arg['sitfam'] as SitFamiliarModel;
     domicilio = arg['domicilio'] as DomicilioModel;
     relacionAn = arg['relacionAn'] as RelacionAnimalesModel;

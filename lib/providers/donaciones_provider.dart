@@ -89,7 +89,7 @@ class DonacionesProvider {
     }
     //donaciones.clear();
     //totalA = total1.toString();
-    print(total1);
+    //print(total1);
     return donaciones;
   }
 
@@ -149,7 +149,7 @@ class DonacionesProvider {
     for (var documents in donaciones) {
       total1 += documents.cantidad;
     }
-    print(total1);
+    //print(total1);
     return donaciones;
   }
 
@@ -187,7 +187,7 @@ class DonacionesProvider {
 
   Future<List<Future<DonacionesModel>>> cargarDonacionesIn11_P(
       String tipo) async {
-    final List<DonacionesModel> donaciones = <DonacionesModel>[];
+    //final List<DonacionesModel> donaciones = <DonacionesModel>[];
     var documents = await refDon
         .where('estadoDonacion', isEqualTo: 'Entrante')
         .where('tipo', isEqualTo: tipo)

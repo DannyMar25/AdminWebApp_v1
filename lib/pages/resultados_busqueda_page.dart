@@ -64,14 +64,10 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
                 itemBuilder: (context) => [
                       const PopupMenuItem<int>(
                         value: 0,
-                        child: Text("Información"),
+                        child: Text("Soporte"),
                       ),
                       const PopupMenuItem<int>(
                         value: 1,
-                        child: Text("Ayuda"),
-                      ),
-                      const PopupMenuItem<int>(
-                        value: 2,
                         child: Text("Cerrar Sesión"),
                       )
                     ]),
@@ -97,11 +93,9 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
   void onSelected(BuildContext context, int item) {
     switch (item) {
       case 0:
-        break;
-      case 1:
         Navigator.pushNamed(context, 'soporte');
         break;
-      case 2:
+      case 1:
         userProvider.signOut();
         Navigator.pushNamed(context, 'login');
     }
@@ -150,9 +144,9 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
               ]);
             }
             return GridView.count(
-              childAspectRatio: 50 / 100,
+              childAspectRatio: 60 / 100,
               shrinkWrap: true,
-              crossAxisCount: 2,
+              crossAxisCount: 5,
               children: List.generate(animales.length, (index) {
                 return _crearItem1(context, animales[index]);
               }),

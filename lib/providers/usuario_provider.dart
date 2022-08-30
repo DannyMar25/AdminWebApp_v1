@@ -55,7 +55,7 @@ class UsuarioProvider {
         body: json.encode(authData));
 
     Map<String, dynamic> decodedResp = json.decode(resp.body);
-    print(decodedResp['localId']);
+    //print(decodedResp['localId']);
 
     if (decodedResp.containsKey('idToken')) {
       _prefs.token = decodedResp['idToken'];

@@ -36,19 +36,15 @@ class _SoportePageState extends State<SoportePage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Información"),
-                    ),
-                    const PopupMenuItem<int>(
-                      value: 1,
-                      child: Text("Ayuda"),
+                      child: Text("Soporte"),
                     ),
                     email != ''
                         ? const PopupMenuItem<int>(
-                            value: 2,
+                            value: 1,
                             child: Text("Cerrar Sesión"),
                           )
                         : const PopupMenuItem<int>(
-                            value: 2,
+                            value: 1,
                             child: Text("Iniciar Sesión"),
                           ),
                   ]),
@@ -89,10 +85,9 @@ class _SoportePageState extends State<SoportePage> {
   void onSelected(BuildContext context, int item) {
     switch (item) {
       case 0:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 1:
-        break;
-      case 2:
         userProvider.signOut();
         Navigator.pushNamed(context, 'login');
     }

@@ -56,14 +56,10 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Información"),
+                      child: Text("Soporte"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
-                      child: Text("Ayuda"),
-                    ),
-                    const PopupMenuItem<int>(
-                      value: 2,
                       child: Text("Cerrar Sesión"),
                     )
                   ]),
@@ -121,11 +117,9 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
   void onSelected(BuildContext context, int item) {
     switch (item) {
       case 0:
-        break;
-      case 1:
         Navigator.pushNamed(context, 'soporte');
         break;
-      case 2:
+      case 1:
         userProvider.signOut();
         Navigator.pushNamed(context, 'login');
     }

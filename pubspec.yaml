@@ -55,6 +55,7 @@ dependencies:
   syncfusion_flutter_pdfviewer: ^20.1.52-beta
   firebase_database: ^9.1.0
   firebase_core: ^1.20.1
+  accordion: ^2.5.1
 
 
 

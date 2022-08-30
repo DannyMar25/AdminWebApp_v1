@@ -112,7 +112,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       _auth.sendPasswordResetEmail(email: _email!);
                     } on FirebaseAuthException catch (e) {
                       //print(exception.code);
-                      print(e.message);
+                      //print(e.message);
                       mostrarAlertaAuth(context, 'adasdasd', 'soporte');
                     }
                   },
