@@ -229,7 +229,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
     return TextButton(
       onPressed: () {
         //cardB.currentState?.collapse();
-        Navigator.pushReplacementNamed(context, 'home');
+        Navigator.pushNamed(context, 'home');
       },
       child: Column(
         children: const <Widget>[

@@ -93,7 +93,7 @@ class LoginPage extends StatelessWidget {
             decoration: InputDecoration(
               icon: const Icon(Icons.alternate_email, color: Colors.green),
               hintText: 'ejemplo@correo.com',
-              labelText: 'Correo electronico',
+              labelText: 'Correo electrónico',
               //counterText: snapshot.data,
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
@@ -167,7 +167,7 @@ class LoginPage extends StatelessWidget {
       final user = await usuarioProvider.obtenerUsuario(info['uid']);
       prefs.setEmail(bloc.email);
       prefs.setRol(user['rol']);
-      Navigator.pushReplacementNamed(context, 'home');
+      Navigator.pushNamed(context, 'home');
     } else {
       mostrarAlerta(context, 'El correo o contraseña son incorrectos.');
     }
@@ -184,7 +184,7 @@ class LoginPage extends StatelessWidget {
         );
       },
       child: const Text(
-        'Olvido la contraseña?',
+        '¿Olvidó la contraseña?',
         style: TextStyle(color: Colors.green, fontSize: 20),
       ),
     );
@@ -193,7 +193,7 @@ class LoginPage extends StatelessWidget {
   Widget _crearBotonSoporte(BuildContext context) {
     return TextButton(
       onPressed: () {
-        Navigator.pushReplacementNamed(context, 'soporte');
+        Navigator.pushNamed(context, 'soporte');
       },
       child: const Text(
         'Contactarse con soporte.',

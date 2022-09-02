@@ -163,7 +163,7 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
                                     animal = await animalesProvider
                                         .cargarAnimalId(formulario.idAnimal);
 
-                                    Navigator.pushReplacementNamed(
+                                    Navigator.pushNamed(
                                         context, 'verSolicitudAprobada',
                                         arguments: {
                                           'datosper': datosC,

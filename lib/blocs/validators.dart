@@ -9,7 +9,7 @@ class Validators {
     if (regExp.hasMatch(email)) {
       sink.add(email);
     } else {
-      sink.addError('Email no es correcto');
+      sink.addError('Correo no es correcto');
     }
   });
 

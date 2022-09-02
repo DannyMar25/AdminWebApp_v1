@@ -359,7 +359,7 @@ class BienvenidaPage extends StatelessWidget {
                             TextButton(
                               style: flatButtonStyle,
                               onPressed: () {
-                                Navigator.pushReplacementNamed(
+                                Navigator.pushNamed(
                                     context, 'seguimientoPrincipal');
                               },
                               child: Column(

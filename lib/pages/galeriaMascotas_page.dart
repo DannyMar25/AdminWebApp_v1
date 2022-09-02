@@ -209,7 +209,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
       style: flatButtonStyle,
       onPressed: () {
         //cardB.currentState?.collapse();
-        Navigator.pushReplacementNamed(context, 'busqueda');
+        Navigator.pushNamed(context, 'busqueda');
       },
       child: Column(
         children: const <Widget>[

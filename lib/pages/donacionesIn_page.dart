@@ -218,7 +218,7 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
       textCapitalization: TextCapitalization.sentences,
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       decoration: const InputDecoration(
-          labelText: 'Ingrese la cantidad:',
+          labelText: 'Ingrese la cantidad (Unidades):',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
         setState(() {

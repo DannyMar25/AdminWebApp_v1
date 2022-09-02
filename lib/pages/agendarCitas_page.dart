@@ -335,8 +335,16 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
     //citas.idHorario = horarios.id;
 
     if (citas.id == "") {
-      citasProvider.crearCita(citas);
-      mostrarAlertaOk(context, 'La cita ha sido registrada con exito', 'home');
+      final estadoCita = await citasProvider.verificar(correo);
+      if (estadoCita.isEmpty) {
+        //print('Puede');
+        citasProvider.crearCita(citas);
+        mostrarAlertaOk1(context, 'La cita ha sido registrada con éxito.',
+            'home', 'Información correcta');
+      } else {
+        //print('no puede');
+        mostrarAlerta(context, 'Al momento ya cuenta con una cita registrada.');
+      }
     }
 
     //Navigator.pushNamed(context, 'bienvenida');

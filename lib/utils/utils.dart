@@ -14,7 +14,7 @@ void mostrarAlerta(BuildContext context, String mensaje) {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Informacion incorrecta'),
+          title: const Text('Información'),
           content: Text(mensaje),
           actions: [
             TextButton(
@@ -38,9 +38,70 @@ void mostrarAlertaOk(BuildContext context, String mensaje, String ruta) {
                 color: Colors.green,
                 size: 50,
               ),
-              Text('Informacion correcta'),
+              Text('Información correcta'),
             ],
           ),
+          content: Text(mensaje),
+          actions: [
+            TextButton(
+                child: const Text('Ok'),
+                //onPressed: () => Navigator.of(context).pop(),
+                onPressed: () => Navigator.pushNamed(context, ruta)),
+          ],
+        );
+      });
+}
+
+void mostrarAlertaOk1(
+    BuildContext context, String mensaje, String ruta, String titulo) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Row(
+            children: [
+              const Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 50,
+              ),
+              Text(titulo),
+            ],
+          ),
+          content: Text(mensaje),
+          actions: [
+            TextButton(
+                child: const Text('Ok'),
+                //onPressed: () => Navigator.of(context).pop(),
+                onPressed: () => Navigator.pushNamed(context, ruta)),
+          ],
+        );
+      });
+}
+
+void mostrarMensaje(BuildContext context, String mensaje) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Información correcta'),
+          content: Text(mensaje),
+          actions: [
+            TextButton(
+                child: const Text('Ok'),
+                //onPressed: () => Navigator.of(context).pop(),
+                onPressed: () => Navigator.of(context).pop()),
+          ],
+        );
+      });
+}
+
+void mostrarAlertaAuth(BuildContext context, String mensaje, String ruta) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Correo inválido'),
           content: Text(mensaje),
           actions: [
             TextButton(
@@ -90,21 +151,4 @@ String? validarEmail(String? value) {
   } else {
     return null;
   }
-}
-
-void mostrarAlertaAuth(BuildContext context, String mensaje, String ruta) {
-  showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text('Correo inválido'),
-          content: Text(mensaje),
-          actions: [
-            TextButton(
-                child: const Text('Ok'),
-                //onPressed: () => Navigator.of(context).pop(),
-                onPressed: () => Navigator.pushNamed(context, ruta)),
-          ],
-        );
-      });
 }

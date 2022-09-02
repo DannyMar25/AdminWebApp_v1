@@ -176,7 +176,7 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
                                       animal = await animalesProvider
                                           .cargarAnimalId(formulario.idAnimal);
 
-                                      Navigator.pushReplacementNamed(
+                                      Navigator.pushNamed(
                                           context, 'seguimientoInfo',
                                           arguments: {
                                             'datosper': datosC,

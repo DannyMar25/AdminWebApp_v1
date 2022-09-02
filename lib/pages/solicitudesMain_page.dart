@@ -246,7 +246,8 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
       return FadeInImage(
         image: NetworkImage(formularios.animal!.fotoUrl),
         placeholder: const AssetImage('assets/jar-loading.gif'),
-        height: 300,
+        height: 270.0, //300
+        width: 270.0,
         fit: BoxFit.contain,
       );
     } else {
@@ -275,7 +276,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
           icon: const Icon(
             Icons.person,
           ),
-          iconSize: 100,
+          iconSize: 80,
           color: Colors.purple[300],
           onPressed: () async {
             // Navigator.pushNamed(context, 'datosPersonales',
@@ -318,7 +319,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
           icon: const Icon(
             Icons.people,
           ),
-          iconSize: 100,
+          iconSize: 80,
           color: Colors.orange[300],
           onPressed: () async {
             situacionF = await formulariosProvider.cargarSFId(
@@ -356,7 +357,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
           icon: const Icon(
             Icons.house,
           ),
-          iconSize: 100,
+          iconSize: 80,
           color: Colors.blueGrey[700],
           onPressed: () async {
             domicilio = await formulariosProvider.cargarDomId(
@@ -390,7 +391,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
           icon: const Icon(
             Icons.pets,
           ),
-          iconSize: 100,
+          iconSize: 80,
           color: Colors.blueAccent,
           onPressed: () async {
             relacionA = await formulariosProvider.cargarRAId(
@@ -404,7 +405,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
         ));
   }
 
-  Widget _botonPDF() {
+  Widget botonPDF() {
     return Ink(
         decoration: BoxDecoration(
             //backgroundBlendMode: ,

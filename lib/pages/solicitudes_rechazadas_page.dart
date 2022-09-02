@@ -163,7 +163,7 @@ class _SolicitudesRechazadasPageState extends State<SolicitudesRechazadasPage> {
                                             formulario.idDatosPersonales);
                                     animal = await animalesProvider
                                         .cargarAnimalId(formulario.idAnimal);
-                                    Navigator.pushReplacementNamed(
+                                    Navigator.pushNamed(
                                         context, 'verSolicitudRechazada',
                                         arguments: {
                                           'datosper': datosC,

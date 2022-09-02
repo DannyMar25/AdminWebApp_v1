@@ -8,6 +8,7 @@ import 'package:admin_web_v1/models/formulario_situacionFam_model.dart';
 import 'package:admin_web_v1/providers/animales_provider.dart';
 import 'package:admin_web_v1/providers/formularios_provider.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
+import 'package:admin_web_v1/utils/utils.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -142,7 +143,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
         ),
         validator: (value) {
           if (value!.length < 3 && value.length > 0) {
-            return 'Ingrese la raza de la mascota';
+            return 'Ingrese observación';
           } else if (value.isEmpty) {
             return 'Llena este campo por favor';
           } else {
@@ -214,13 +215,17 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       fillColor: MaterialStateProperty.resolveWith(getColor),
       value: isChecked,
       onChanged: (bool? value) {
-        setState(() {
-          isChecked = value!;
-          //domicilio.planMudanza = "Si";
-          estado = "Aprobado";
-          estadoAn = "Adoptado";
-          animalProvider.editarEstado(formularios.animal!, estadoAn);
-        });
+        if (isChecked1 == true) {
+          return null;
+        } else {
+          setState(() {
+            isChecked = value!;
+            //domicilio.planMudanza = "Si";
+            estado = "Aprobado";
+            estadoAn = "Adoptado";
+            animalProvider.editarEstado(formularios.animal!, estadoAn);
+          });
+        }
       },
     );
   }
@@ -243,13 +248,16 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       fillColor: MaterialStateProperty.resolveWith(getColor),
       value: isChecked1,
       onChanged: (bool? value) {
-        setState(() {
-          isChecked1 = value!;
-          //domicilio.planMudanza = "No";
-          estado = "Negado";
-          estadoAn = "En Adopción";
-          animalProvider.editarEstado(formularios.animal!, estadoAn);
-        });
+        if (isChecked == true) {
+          return null;
+        } else {
+          setState(() {
+            isChecked1 = value!;
+            estado = "Negado";
+            estadoAn = "En Adopción";
+            animalProvider.editarEstado(formularios.animal!, estadoAn);
+          });
+        }
       },
     );
   }
@@ -265,11 +273,27 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       label: const Text('Guardar'),
       icon: const Icon(Icons.save),
       autofocus: true,
-      onPressed: (_guardando) ? null : _submit,
+      //onPressed: (_guardando) ? null : _submit,
+      onPressed: () {
+        if (isChecked == false && isChecked1 == false) {
+          mostrarAlerta(context,
+              'Debe seleccionar una de las opciones de Aprobado o Negado');
+        } else {
+          const SnackBar(
+            content: Text('Información ingresada correctamente'),
+          );
+
+          _submit();
+          mostrarAlertaOk(
+              context, 'Información actualizada con éxito.', 'solicitudes');
+        }
+      },
     );
   }
 
   void _submit() async {
+    var fechaResp =
+        '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}';
     if (!formKey.currentState!.validate()) return;
     formKey.currentState!.save();
     setState(() {
@@ -277,7 +301,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
     });
     formulariosProvider.editarEstado(formularios, estado);
     formulariosProvider.editarObservacion(formularios, observacion);
-    formulariosProvider.editarFechaRespuesta(formularios, fechaRespuesta);
-    Navigator.pushReplacementNamed(context, 'solicitudes');
+    formulariosProvider.editarFechaRespuesta(formularios, fechaResp);
+    Navigator.pushNamed(context, 'solicitudes');
   }
 }

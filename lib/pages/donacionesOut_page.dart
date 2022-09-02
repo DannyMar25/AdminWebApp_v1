@@ -174,13 +174,12 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
         shadowColor: Colors.green,
         child: ListTile(
           title: Text(
-            '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}',
+            '${'Cantidad:'} ${donacion.cantidad} ${'- Peso:'}  ${donacion.peso} ${'Kg'}',
             textAlign: TextAlign.center,
           ),
           subtitle: Column(
             children: [
-              Text(
-                  '${donacion.descripcion} ${'- Peso:'}  ${donacion.peso} ${'Kg'}'),
+              Text(donacion.descripcion),
               Text('${'Fecha de ingreso: '} ${donacion.fechaIngreso}'),
             ],
           ),
@@ -194,7 +193,7 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
         shadowColor: Colors.green,
         child: ListTile(
           title: Text(
-            '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}',
+            '${'Cantidad:'} ${donacion.cantidad}',
             textAlign: TextAlign.center,
           ),
           subtitle: Column(

@@ -44,7 +44,7 @@ class _BusquedaPageState extends State<BusquedaPage> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pushReplacementNamed(context, 'home');
+            Navigator.pushNamed(context, 'home');
           },
         ),
         backgroundColor: Colors.green,
