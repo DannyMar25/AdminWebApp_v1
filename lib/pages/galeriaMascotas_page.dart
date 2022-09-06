@@ -37,42 +37,90 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
   @override
   Widget build(BuildContext context) {
     //final bloc = Provider.of(context);
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Mascotas registradas'),
-        backgroundColor: Colors.green,
-        actions: [
-          PopupMenuButton<int>(
-              onSelected: (item) => onSelected(context, item),
-              icon: const Icon(Icons.manage_accounts),
-              itemBuilder: (context) => [
-                    const PopupMenuItem<int>(
-                      value: 0,
-                      child: Text("Soporte"),
-                    ),
-                    const PopupMenuItem<int>(
-                      value: 1,
-                      child: Text("Cerrar Sesión"),
-                    )
-                  ]),
-        ],
+    return RefreshIndicator(
+      displacement: 250,
+      backgroundColor: Colors.green,
+      color: Colors.white,
+      strokeWidth: 3,
+      triggerMode: RefreshIndicatorTriggerMode.onEdge,
+      onRefresh: () async {
+        await Future.delayed(const Duration(milliseconds: 1500));
+        setState(() {
+          _buildChildBusqueda(context);
+        });
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Mascotas registradas'),
+          backgroundColor: Colors.green,
+          actions: [
+            PopupMenuButton<int>(
+                onSelected: (item) => onSelected(context, item),
+                icon: const Icon(Icons.manage_accounts),
+                itemBuilder: (context) => [
+                      const PopupMenuItem<int>(
+                        value: 0,
+                        child: Text("Soporte"),
+                      ),
+                      const PopupMenuItem<int>(
+                        value: 1,
+                        child: Text("Cerrar Sesión"),
+                      )
+                    ]),
+          ],
+        ),
+        drawer: const MenuWidget(),
+        body: Column(
+          children: [
+            const Padding(padding: EdgeInsets.only(bottom: 10.0)),
+            _busqueda(),
+            const Padding(padding: EdgeInsets.only(bottom: 10.0)),
+            _botonBusqueda(context),
+            const Padding(padding: EdgeInsets.only(bottom: 10.0)),
+            //Expanded(child: _crearListado())
+            Expanded(child: _buildChildBusqueda(context))
+            //_crearListado(),
+          ],
+        ),
+        floatingActionButton: _crearBoton(context),
       ),
-      drawer: const MenuWidget(),
-      body: Column(
-        children: [
-          const Padding(padding: EdgeInsets.only(bottom: 10.0)),
-          _busqueda(),
-          const Padding(padding: EdgeInsets.only(bottom: 10.0)),
-          _botonBusqueda(context),
-          const Padding(padding: EdgeInsets.only(bottom: 10.0)),
-          //Expanded(child: _crearListado())
-          Expanded(child: _buildChildBusqueda(context))
-          //_crearListado(),
-        ],
-      ),
-      floatingActionButton: _crearBoton(context),
     );
+
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     title: const Text('Mascotas registradas'),
+    //     backgroundColor: Colors.green,
+    //     actions: [
+    //       PopupMenuButton<int>(
+    //           onSelected: (item) => onSelected(context, item),
+    //           icon: const Icon(Icons.manage_accounts),
+    //           itemBuilder: (context) => [
+    //                 const PopupMenuItem<int>(
+    //                   value: 0,
+    //                   child: Text("Soporte"),
+    //                 ),
+    //                 const PopupMenuItem<int>(
+    //                   value: 1,
+    //                   child: Text("Cerrar Sesión"),
+    //                 )
+    //               ]),
+    //     ],
+    //   ),
+    //   drawer: const MenuWidget(),
+    //   body: Column(
+    //     children: [
+    //       const Padding(padding: EdgeInsets.only(bottom: 10.0)),
+    //       _busqueda(),
+    //       const Padding(padding: EdgeInsets.only(bottom: 10.0)),
+    //       _botonBusqueda(context),
+    //       const Padding(padding: EdgeInsets.only(bottom: 10.0)),
+    //       //Expanded(child: _crearListado())
+    //       Expanded(child: _buildChildBusqueda(context))
+    //       //_crearListado(),
+    //     ],
+    //   ),
+    //   floatingActionButton: _crearBoton(context),
+    // );
   }
 
   void onSelected(BuildContext context, int item) {

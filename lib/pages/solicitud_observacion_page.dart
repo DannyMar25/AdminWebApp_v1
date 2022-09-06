@@ -36,7 +36,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
   String estadoAn = '';
   String fechaRespuesta = '';
   String observacion = '';
-  bool _guardando = false;
+  //bool _guardando = false;
 
   @override
   Widget build(BuildContext context) {
@@ -163,6 +163,11 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
         maxLines: 1,
         readOnly: false,
         initialValue: DateTime.now().toString(),
+        // initialValue: DateTime.now().year.toString() +
+        //     '-' +
+        //     DateTime.now().month.toString() +
+        //     '-' +
+        //     DateTime.now().day.toString(),
         textCapitalization: TextCapitalization.sentences,
         decoration: const InputDecoration(
           labelText: 'Fecha de respuesta:',
@@ -275,17 +280,25 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       autofocus: true,
       //onPressed: (_guardando) ? null : _submit,
       onPressed: () {
-        if (isChecked == false && isChecked1 == false) {
-          mostrarAlerta(context,
-              'Debe seleccionar una de las opciones de Aprobado o Negado');
-        } else {
-          const SnackBar(
-            content: Text('Información ingresada correctamente'),
-          );
+        if (formKey.currentState!.validate()) {
+          if (isChecked == false && isChecked1 == false) {
+            mostrarAlerta(context,
+                'Debe seleccionar una de las opciones de Aprobado o Negado');
+          } else {
+            const SnackBar(
+              content: Text('Información ingresada correctamente'),
+            );
 
-          _submit();
-          mostrarAlertaOk(
-              context, 'Información actualizada con éxito.', 'solicitudes');
+            _submit();
+            mostrarAlertaOk(
+                context, 'Información actualizada con éxito.', 'solicitudes');
+          }
+          const SnackBar(
+            content: Text('Información ingresada correctamente.'),
+          );
+        } else {
+          mostrarAlerta(
+              context, 'Asegurate de que todos los campos esten llenos.');
         }
       },
     );
@@ -294,14 +307,9 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
   void _submit() async {
     var fechaResp =
         '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}';
-    if (!formKey.currentState!.validate()) return;
-    formKey.currentState!.save();
-    setState(() {
-      _guardando = true;
-    });
     formulariosProvider.editarEstado(formularios, estado);
     formulariosProvider.editarObservacion(formularios, observacion);
     formulariosProvider.editarFechaRespuesta(formularios, fechaResp);
-    Navigator.pushNamed(context, 'solicitudes');
+    //Navigator.pushNamed(context, 'solicitudes');
   }
 }

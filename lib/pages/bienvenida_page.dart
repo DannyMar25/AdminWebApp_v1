@@ -216,7 +216,7 @@ class BienvenidaPage extends StatelessWidget {
                             TextButton(
                               style: flatButtonStyle,
                               onPressed: () {
-                                Navigator.pushNamed(context, 'verCitasR');
+                                Navigator.pushNamed(context, 'verCitasAg');
                               },
                               child: Column(
                                 children: const <Widget>[

@@ -9,16 +9,16 @@ class Validators {
     if (regExp.hasMatch(email)) {
       sink.add(email);
     } else {
-      sink.addError('Correo no es correcto');
+      sink.addError('Correo no es correcto.');
     }
   });
 
   final validarPassword = StreamTransformer<String, String>.fromHandlers(
       handleData: (password, sink) {
-    if (password.length > 8) {
+    if (password.length >= 8) {
       sink.add(password);
     } else {
-      sink.addError('Más de 8 caracteres por favor');
+      sink.addError('Más de 8 caracteres por favor.');
     }
   });
 
@@ -27,7 +27,7 @@ class Validators {
     if (nombre.length >= 5) {
       sink.add(nombre);
     } else {
-      sink.addError('Más de 5 caracteres por favor');
+      sink.addError('Más de 5 caracteres por favor.');
     }
   });
 }
