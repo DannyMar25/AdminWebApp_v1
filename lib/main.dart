@@ -1,6 +1,7 @@
 import 'package:admin_web_v1/blocs/provider.dart';
 import 'package:admin_web_v1/pages/agendarCitas_page.dart';
 import 'package:admin_web_v1/pages/animal_page.dart';
+import 'package:admin_web_v1/pages/bienvenida_page.dart';
 import 'package:admin_web_v1/pages/busqueda_page.dart';
 import 'package:admin_web_v1/pages/donacionesIn_page.dart';
 import 'package:admin_web_v1/pages/donacionesOutAdd_page.dart';
@@ -82,13 +83,13 @@ class MyApp extends StatelessWidget {
             Locale('es', 'ES'), // Spanish, no country code
           ],
           //initialRoute: 'login',
-          initialRoute: email == '' ? 'login' : 'home',
+          initialRoute: email == '' ? 'login' : 'bienvenida',
           routes: {
             'login': (_) => LoginPage(),
             'registro': (_) => const RegistroPage(),
             'home': (_) => const GaleriaMascotasPage(),
             'animal': (_) => const AnimalPage(),
-            // 'bienvenida': (_) => BienvenidaPage(),
+            'bienvenida': (_) => BienvenidaPage(),
             // 'ubicacion': (_) => UbicacionPage(),
             'citasAdd': (_) => const HorariosPage(),
             'horariosAdd': (_) => const HorariosAgregados(),

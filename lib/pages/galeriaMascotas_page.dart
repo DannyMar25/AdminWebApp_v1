@@ -85,42 +85,6 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
         floatingActionButton: _crearBoton(context),
       ),
     );
-
-    // return Scaffold(
-    //   appBar: AppBar(
-    //     title: const Text('Mascotas registradas'),
-    //     backgroundColor: Colors.green,
-    //     actions: [
-    //       PopupMenuButton<int>(
-    //           onSelected: (item) => onSelected(context, item),
-    //           icon: const Icon(Icons.manage_accounts),
-    //           itemBuilder: (context) => [
-    //                 const PopupMenuItem<int>(
-    //                   value: 0,
-    //                   child: Text("Soporte"),
-    //                 ),
-    //                 const PopupMenuItem<int>(
-    //                   value: 1,
-    //                   child: Text("Cerrar Sesión"),
-    //                 )
-    //               ]),
-    //     ],
-    //   ),
-    //   drawer: const MenuWidget(),
-    //   body: Column(
-    //     children: [
-    //       const Padding(padding: EdgeInsets.only(bottom: 10.0)),
-    //       _busqueda(),
-    //       const Padding(padding: EdgeInsets.only(bottom: 10.0)),
-    //       _botonBusqueda(context),
-    //       const Padding(padding: EdgeInsets.only(bottom: 10.0)),
-    //       //Expanded(child: _crearListado())
-    //       Expanded(child: _buildChildBusqueda(context))
-    //       //_crearListado(),
-    //     ],
-    //   ),
-    //   floatingActionButton: _crearBoton(context),
-    // );
   }
 
   void onSelected(BuildContext context, int item) {

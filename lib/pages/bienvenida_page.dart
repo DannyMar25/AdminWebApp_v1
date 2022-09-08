@@ -3,20 +3,29 @@ import 'package:accordion/controllers.dart';
 import 'package:admin_web_v1/preferencias_usuario/preferencias_usuario.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
-class BienvenidaPage extends StatelessWidget {
+class BienvenidaPage extends StatefulWidget {
+  @override
+  State<BienvenidaPage> createState() => _BienvenidaPageState();
+}
+
+class _BienvenidaPageState extends State<BienvenidaPage> {
   final userProvider = UsuarioProvider();
+
   final prefs = PreferenciasUsuario();
+
   final _headerStyle = const TextStyle(
       color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold);
+
   final _contentStyle = const TextStyle(
       color: Color.fromARGB(255, 17, 17, 17),
       fontSize: 14,
       fontWeight: FontWeight.normal);
+
   final _loremIpsum =
       '''PoliPet es una app dedicada a difundir la adopción de mascotas, nuestro principal objetivo es mejorar la calidad de vida de animalitos que no tienen un hogar''';
+
   final ButtonStyle flatButtonStyle = TextButton.styleFrom(
     //backgroundColor: Colors.green,
     shape: const RoundedRectangleBorder(
@@ -73,7 +82,7 @@ class BienvenidaPage extends StatelessWidget {
                 //   height: 130,
                 // ),
                 SizedBox(
-                  height: 650,
+                  height: 500,
                   child: Accordion(
                     maxOpenSections: 1,
                     headerBackgroundColorOpened: Colors.black54,

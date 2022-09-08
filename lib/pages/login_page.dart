@@ -167,7 +167,7 @@ class LoginPage extends StatelessWidget {
       final user = await usuarioProvider.obtenerUsuario(info['uid']);
       prefs.setEmail(bloc.email);
       prefs.setRol(user['rol']);
-      Navigator.pushNamed(context, 'home');
+      Navigator.pushNamed(context, 'bienvenida');
     } else {
       mostrarAlerta(context, 'El correo o contraseña son incorrectos.');
     }

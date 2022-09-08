@@ -1,33 +1,33 @@
 import 'dart:html';
+import 'dart:typed_data';
+
 import 'package:admin_web_v1/models/animales_model.dart';
 import 'package:admin_web_v1/providers/animales_provider.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
-import 'package:flutter/material.dart';
 import 'package:admin_web_v1/utils/utils.dart' as utils;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
+
+import 'package:image_picker/image_picker.dart';
+//import 'package:firebase_core/firebase_core.dart';
 
 class AnimalPage extends StatefulWidget {
   const AnimalPage({Key? key}) : super(key: key);
-
-  //const ProductoPage({Key? key}) : super(key: key);
 
   @override
   _AnimalPageState createState() => _AnimalPageState();
 }
 
 class _AnimalPageState extends State<AnimalPage> {
-  CollectionReference refAn = FirebaseFirestore.instance.collection('animales');
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final animalProvider = AnimalesProvider();
   final userProvider = UsuarioProvider();
-  FirebaseStorage storage = FirebaseStorage.instance;
-  FirebaseStorage fs = FirebaseStorage.instance;
-  String archivoUrl = '';
-  String nombreArchivo = '';
+
   AnimalModel animal = AnimalModel();
+  // bool _guardando = false;
   File? foto;
+  late XFile image;
+  Uint8List webImage = Uint8List(8);
   String? fotoUrl;
   //variables usadas para desplegar opciones de tamaño
   final List<String> _items = ['Pequeño', 'Mediano', 'Grande'].toList();
@@ -42,6 +42,7 @@ class _AnimalPageState extends State<AnimalPage> {
   final List<String> _items4 = ['Si', 'No'].toList();
   String? _selection4;
   int? edadN;
+  bool isDisable = false;
   String campoVacio = 'Por favor, llena este campo';
   @override
   void initState() {
@@ -54,22 +55,22 @@ class _AnimalPageState extends State<AnimalPage> {
     final Object? animData = ModalRoute.of(context)!.settings.arguments;
     if (animData != null) {
       animal = animData as AnimalModel;
-      // ignore: avoid_print
-      print(animal.id);
+      //print(animal.id);
     }
 
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
+        automaticallyImplyLeading: true,
         title: const Text('Animal'),
         backgroundColor: Colors.green,
         actions: [
           IconButton(
             icon: const Icon(Icons.photo_size_select_actual),
-            onPressed: () => uploadImage1(),
+            onPressed: _seleccionarFoto,
           ),
           // IconButton(
-          //   icon: Icon(Icons.camera_alt),
+          //   icon: const Icon(Icons.camera_alt),
           //   onPressed: _tomarFoto,
           // ),
           PopupMenuButton<int>(
@@ -78,7 +79,7 @@ class _AnimalPageState extends State<AnimalPage> {
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("Soporte"),
+                      child: Text("Ayuda"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
@@ -95,11 +96,12 @@ class _AnimalPageState extends State<AnimalPage> {
             child: Column(
               children: [
                 _mostrarFoto(),
+
                 _crearEspecie(),
                 _crearNombre(),
                 _crearSexo(),
-                //_crearEdad(),
                 Row(children: [_crearEdad(), infoEtapa()]),
+                // _crearEdad(),
                 _crearTemperamento(),
                 _crearPeso(),
                 _crearTamanio(),
@@ -109,7 +111,7 @@ class _AnimalPageState extends State<AnimalPage> {
                 _crearCaracteristicas(),
                 // _crearDisponible(),
                 //_crearBoton(),
-                _buildChild(),
+                _buildChild()
               ],
             ),
           ),
@@ -259,6 +261,10 @@ class _AnimalPageState extends State<AnimalPage> {
           builder: (context) => const AlertDialog(
             content: Text(
               'Cachorro: 0 a 6 meses\nJoven: 7 meses a 2 años\nAdulto: 2 a 6 años\nAnciano: 7 a 11 años\nGeriátrico: mayor a 12 años',
+              // style: TextStyle(
+              //   fontWeight: FontWeight.w900,
+              //   fontSize: 12.0,
+              // ),
             ),
             title: Text('Etapas de vida'),
           ),
@@ -478,6 +484,7 @@ class _AnimalPageState extends State<AnimalPage> {
       label: const Text('Guardar'),
       icon: const Icon(Icons.save),
       autofocus: true,
+      //onPressed: (_guardando) ? null : _submit,
       onPressed: () {
         if (formKey.currentState!.validate() && foto != null) {
           // Si el formulario es válido, queremos mostrar un Snackbar
@@ -493,42 +500,33 @@ class _AnimalPageState extends State<AnimalPage> {
     );
   }
 
+  Widget _crearBotonEliminar() {
+    return ElevatedButton.icon(
+        style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+            return Colors.green;
+          }),
+        ),
+        label: const Text('Eliminar'),
+        icon: const Icon(Icons.delete),
+        autofocus: true,
+        onPressed: () {
+          utils.mostrarAlertaBorrar(context,
+              'Estas seguro de borrar el registro', animal.id.toString());
+        });
+  }
+
   void _submit() async {
     if (animal.id == "") {
       animal.estado = "En Adopción";
-      var animalAdd = await refAn.add(animal.toJson());
-      String path;
-      String fec = DateTime.now().toString();
-      path = '/animales/${animal.id}/${animal.id! + fec}.jpg';
-      uploadImage(onSelected: (file) async {
-        var snapshot = await fs.ref().child(path).putBlob(file);
-        String downloadUrl = await snapshot.ref.getDownloadURL();
-        setState(() {
-          fotoUrl = downloadUrl;
-        });
-      });
-
-      await refAn
-          .doc(animalAdd.id)
-          .update({"fotoUrl": fotoUrl, "id": animalAdd.id});
-
-      //animalProvider.crearAnimal1(animal, fotoUrl!);
+      animalProvider.crearAnimal1(animal, fotoUrl!);
       utils.mostrarAlertaOk(context, 'Registro guardado con éxito', 'home');
+      //mostrarSnackbar('Registro guardado');
     } else {
-      await refAn.doc(animal.id).update(animal.toJson());
-      String path;
-      String fec = DateTime.now().toString();
-      path = '/animales/${animal.id}/${animal.id! + fec}.jpg';
-      uploadImage(onSelected: (file) async {
-        var snapshot = await fs.ref().child(path).putBlob(file);
-        String downloadUrl = await snapshot.ref.getDownloadURL();
-        setState(() {
-          fotoUrl = downloadUrl;
-        });
-      });
-      await refAn.doc(animal.id).update({"fotoUrl": fotoUrl});
-      utils.mostrarAlertaOk(context, 'Registro actualizado con exito', 'home');
-      //animalProvider.editarAnimal(animal, fotoUrl!);
+      animalProvider.editarAnimal(animal, fotoUrl!);
+      //utils.mostrarMensaje(context, 'Registro actualizado');
+      utils.mostrarAlertaOk(context, 'Registro actualizado con éxito', 'home');
     }
   }
 
@@ -541,42 +539,6 @@ class _AnimalPageState extends State<AnimalPage> {
     ScaffoldMessenger.of(context).showSnackBar(snackbar);
   }
 
-  uploadToStorage() {
-    String path;
-    String fec = DateTime.now().toString();
-    path = '/animales/${animal.id}/${animal.id! + fec}.jpg';
-    FileUploadInputElement input = FileUploadInputElement()..accept = 'image/*';
-    FirebaseStorage fs = FirebaseStorage.instance;
-    input.click();
-    input.onChange.listen((event) {
-      final file = input.files!.first;
-      final reader = FileReader();
-      reader.readAsDataUrl(file);
-      reader.onLoadEnd.listen((event) async {
-        var snapshot = await fs.ref().child(path).putBlob(file);
-        String downloadUrl = await snapshot.ref.getDownloadURL();
-        setState(() {
-          fotoUrl = downloadUrl;
-        });
-      });
-    });
-  }
-
-  void uploadImage({required Function(File file) onSelected}) {
-    FileUploadInputElement uploadInput = FileUploadInputElement()
-      ..accept = 'image/*';
-    uploadInput.click();
-
-    uploadInput.onChange.listen((event) {
-      final file = uploadInput.files!.first;
-      final reader = FileReader();
-      reader.readAsDataUrl(file);
-      reader.onLoadEnd.listen((event) {
-        onSelected(file);
-      });
-    });
-  }
-
   Widget _mostrarFoto() {
     if (animal.fotoUrl != '') {
       return FadeInImage(
@@ -586,48 +548,30 @@ class _AnimalPageState extends State<AnimalPage> {
         fit: BoxFit.contain,
       );
     } else {
-      // if (foto != null) {
-      //   return Image.memory(
-      //     file!,
-      //     fit: BoxFit.cover,
-      //     height: 300.0,
-      //   );
-      // }
+      if (webImage.isNotEmpty) {
+        return Image.memory(
+          webImage,
+          fit: BoxFit.cover,
+          height: 300,
+        );
+      }
       return Image.asset('assets/no-image.png');
     }
   }
-  //}
 
-  uploadImage1() {
-    FileUploadInputElement input = FileUploadInputElement()..accept = 'image/*';
-    //FirebaseStorage fs = FirebaseStorage.instance;
-    input.click();
-    input.onChange.listen((event) {
-      final file = input.files!.first;
-      final reader = FileReader();
-      reader.readAsDataUrl(file);
-      reader.onLoadEnd.listen((event) {
-        // _mostrarFoto();
-      });
-    });
+  _seleccionarFoto() async {
+    _procesarImagen(ImageSource.gallery);
   }
 
-  Widget _crearBotonEliminar() {
-    return ElevatedButton.icon(
-      style: ButtonStyle(
-        backgroundColor:
-            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          return Colors.green;
-        }),
-      ),
-      label: const Text('Eliminar'),
-      icon: const Icon(Icons.delete),
-      autofocus: true,
-      onPressed: () {
-        utils.mostrarAlertaBorrar(context, 'Estas seguro de borrar el registro',
-            animal.id.toString());
-      },
-    );
+  _procesarImagen(ImageSource origen) async {
+    final ImagePicker picker = ImagePicker();
+    image = (await picker.pickImage(source: origen))!;
+    if (image != null) {
+      var f = await image.readAsBytes();
+      setState(() {
+        webImage = f;
+      });
+    }
   }
 
   Widget _buildChild() {
@@ -642,6 +586,18 @@ class _AnimalPageState extends State<AnimalPage> {
           _crearBotonEliminar()
         ],
       );
+    }
+  }
+
+  Widget _buildChild1() {
+    if (webImage.isNotEmpty) {
+      return Image.memory(
+        webImage,
+        fit: BoxFit.cover,
+        height: 300,
+      );
+    } else {
+      return _mostrarFoto();
     }
   }
 }
