@@ -126,71 +126,147 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
     return ListTile(
         title: Column(
           children: [
-            const Divider(color: Colors.transparent),
-            DataTable(
-              //dataRowHeight: 30,
-              //headingRowHeight: 50,
-              columnSpacing: 25,
-              headingRowColor: MaterialStateColor.resolveWith(
-                (states) => const Color.fromARGB(255, 120, 110, 148),
+            SizedBox(
+              height: 245.0,
+              width: 650.0,
+              child: Card(
+                color: const Color.fromARGB(255, 143, 233, 148),
+                elevation: 8,
+                shadowColor: Colors.green,
+                margin: const EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    const Padding(padding: EdgeInsets.all(1.0)),
+                    ColoredBox(
+                      color: const Color.fromARGB(255, 33, 168, 39),
+                      child: Row(
+                        children: const [
+                          Padding(padding: EdgeInsets.only(top: 15)),
+                          SizedBox(
+                              height: 50.0,
+                              width: 125.0,
+                              child: Center(
+                                child: Text(
+                                  'Fecha consulta',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )),
+                          SizedBox(
+                              height: 50.0,
+                              width: 70.0,
+                              child: Center(
+                                child: Text(
+                                  'Peso (Kg.)',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )),
+                          SizedBox(
+                              height: 50.0,
+                              width: 125.0,
+                              child: Center(
+                                child: Text(
+                                  'Próxima vacuna',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ))
+                        ],
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                            height: 50.0,
+                            width: 125.0,
+                            child: Center(
+                                child: Center(
+                                    child: Text(
+                              vacuna.fechaConsulta,
+                              textAlign: TextAlign.center,
+                            )))),
+                        SizedBox(
+                            height: 50.0,
+                            width: 70.0,
+                            child: Center(
+                              child: Text(
+                                vacuna.pesoActual.toString(),
+                                textAlign: TextAlign.center,
+                              ),
+                            )),
+                        SizedBox(
+                            height: 50.0,
+                            width: 125.0,
+                            child: Center(
+                                child: Text(
+                              vacuna.fechaProximaVacuna,
+                              textAlign: TextAlign.center,
+                            )))
+                      ],
+                    ),
+                    ColoredBox(
+                      color: const Color.fromARGB(255, 33, 168, 39),
+                      child: Row(
+                        children: const [
+                          SizedBox(
+                              height: 50.0,
+                              width: 160.0,
+                              child: Center(
+                                child: Text(
+                                  'Vacuna laboratorio',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )),
+                          SizedBox(
+                              height: 50.0,
+                              width: 160.0,
+                              child: Center(
+                                child: Text(
+                                  'Veterinario responsable',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ))
+                        ],
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                            height: 50.0,
+                            width: 160.0,
+                            child: Center(
+                                child: Text(
+                              vacuna.tipoVacuna,
+                              textAlign: TextAlign.center,
+                            ))),
+                        SizedBox(
+                            height: 50.0,
+                            width: 160.0,
+                            child: Center(
+                              child: Text(
+                                vacuna.veterinarioResp,
+                                textAlign: TextAlign.center,
+                              ),
+                            ))
+                      ],
+                    )
+                  ],
+                ),
               ),
-              dataRowColor: MaterialStateColor.resolveWith(
-                  (states) => const Color.fromARGB(255, 146, 155, 185)),
-              decoration: BoxDecoration(
-                color: Colors.blueGrey,
-                border: Border.all(width: 1, color: Colors.white),
-              ),
-              columns: const [
-                DataColumn(label: Text("Fecha")),
-                DataColumn(label: Text("Peso(Kg)")),
-                DataColumn(label: Text("Próxima vacuna")),
-              ],
-              rows: [
-                DataRow(selected: true, cells: [
-                  DataCell(Container(
-                    width: 95,
-                    child: Text(vacuna.fechaConsulta),
-                  )),
-                  DataCell(Container(
-                    width: 60,
-                    child: Text('${vacuna.pesoActual}'),
-                  )),
-                  DataCell(Container(
-                    width: 95,
-                    child: Text(vacuna.fechaProximaVacuna),
-                  )),
-                ]),
-              ],
             ),
-            DataTable(
-              columnSpacing: 22,
-              headingRowColor: MaterialStateColor.resolveWith(
-                (states) => const Color.fromARGB(255, 120, 111, 143),
-              ),
-              dataRowColor: MaterialStateColor.resolveWith(
-                  (states) => const Color.fromARGB(255, 146, 155, 185)),
-              decoration: BoxDecoration(
-                color: Colors.blueGrey,
-                border: Border.all(width: 1, color: Colors.white),
-              ),
-              columns: const [
-                DataColumn(label: Text("Vacuna Laboratorio")),
-                DataColumn(label: Text("Veterinario")),
-              ],
-              rows: [
-                DataRow(selected: true, cells: [
-                  DataCell(Container(
-                    width: 170,
-                    child: Text(vacuna.tipoVacuna),
-                  )),
-                  DataCell(Container(
-                    width: 170,
-                    child: Text(vacuna.veterinarioResp),
-                  )),
-                ]),
-              ],
-            ),
-            const Divider(color: Colors.transparent)
           ],
         ),
         //subtitle: Text('${horario}'),

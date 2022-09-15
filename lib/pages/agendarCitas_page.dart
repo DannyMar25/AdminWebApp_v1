@@ -140,19 +140,32 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
   _selectDate(BuildContext context) async {
     DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
+      initialDate: DateTime.now().add(const Duration(days: 1)),
+      firstDate: DateTime.now().add(const Duration(days: 1)),
       lastDate: DateTime.now().add(const Duration(days: 7)),
       locale: const Locale('es', 'ES'),
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: Colors.green, // <-- SEE HERE
+              onPrimary: Colors.white, // <-- SEE HERE
+              onSurface: Colors.green, // <-- SEE HERE
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                primary: Colors.green, // button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
     );
 
     if (picked != null) {
       setState(() {
-        _fechaCompleta = picked.year.toString() +
-            '-' +
-            picked.month.toString() +
-            '-' +
-            picked.day.toString();
+        _fechaCompleta = '${picked.year}-${picked.month}-${picked.day}';
         //_fechaCompleta = picked.toString();
         _fecha = picked.weekday.toString();
         if (_fecha == '1') {

@@ -122,69 +122,129 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
     return ListTile(
         title: Column(
           children: [
-            const Divider(color: Colors.transparent),
-            DataTable(
-              columnSpacing: 25,
-              headingRowColor: MaterialStateColor.resolveWith(
-                (states) => const Color.fromARGB(255, 120, 110, 148),
+            SizedBox(
+              height: 245.0,
+              width: 620.0,
+              child: Card(
+                color: const Color.fromARGB(255, 143, 233, 148),
+                elevation: 8,
+                shadowColor: Colors.green,
+                margin: const EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    const Padding(padding: EdgeInsets.all(1.0)),
+                    ColoredBox(
+                      color: const Color.fromARGB(255, 33, 168, 39),
+                      child: Row(
+                        children: const [
+                          Padding(padding: EdgeInsets.only(top: 15)),
+                          SizedBox(
+                              height: 50.0,
+                              width: 140.0,
+                              child: Center(
+                                child: Text(
+                                  'Fecha consulta',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )),
+                          SizedBox(
+                              height: 50.0,
+                              width: 180.0,
+                              child: Center(
+                                child: Text(
+                                  'Producto',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ))
+                        ],
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 50.0,
+                          width: 140.0,
+                          child: Center(
+                            child: Text(
+                              desparasitacion.fecha,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                            height: 50.0,
+                            width: 180.0,
+                            child: Center(
+                              child: Text(
+                                desparasitacion.nombreProducto,
+                                textAlign: TextAlign.center,
+                              ),
+                            )),
+                      ],
+                    ),
+                    ColoredBox(
+                      color: const Color.fromARGB(255, 33, 168, 39),
+                      child: Row(
+                        children: const [
+                          SizedBox(
+                              height: 50.0,
+                              width: 130.0,
+                              child: Center(
+                                child: Text(
+                                  'Peso (Kg.)',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )),
+                          SizedBox(
+                              height: 50.0,
+                              width: 190.0,
+                              child: Center(
+                                child: Text(
+                                  'Próxima desparacitación',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ))
+                        ],
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                            height: 50.0,
+                            width: 130.0,
+                            child: Center(
+                              child: Text(
+                                desparasitacion.pesoActual.toString(),
+                                textAlign: TextAlign.center,
+                              ),
+                            )),
+                        SizedBox(
+                            height: 50.0,
+                            width: 190.0,
+                            child: Center(
+                              child: Text(
+                                desparasitacion.fechaProxDesparasitacion,
+                                textAlign: TextAlign.center,
+                              ),
+                            ))
+                      ],
+                    )
+                  ],
+                ),
               ),
-              dataRowColor: MaterialStateColor.resolveWith(
-                  (states) => const Color.fromARGB(255, 146, 155, 185)),
-              decoration: BoxDecoration(
-                color: Colors.blueGrey,
-                border: Border.all(width: 1, color: Colors.white),
-              ),
-              sortColumnIndex: 1,
-              sortAscending: false,
-              columns: const [
-                DataColumn(label: Text("Fecha consulta")),
-                DataColumn(label: Text("Producto")),
-              ],
-              rows: [
-                DataRow(selected: true, cells: [
-                  DataCell(Container(
-                    width: 137,
-                    child: Text(desparasitacion.fecha),
-                  )),
-                  DataCell(Container(
-                    width: 137,
-                    child: Text(desparasitacion.nombreProducto),
-                  )),
-                ]),
-              ],
             ),
-            DataTable(
-              //columnSpacing: 50,
-              headingRowColor: MaterialStateColor.resolveWith(
-                (states) => const Color.fromARGB(255, 120, 111, 143),
-              ),
-              dataRowColor: MaterialStateColor.resolveWith(
-                  (states) => const Color.fromARGB(255, 146, 155, 185)),
-              decoration: BoxDecoration(
-                color: Colors.blueGrey,
-                border: Border.all(width: 1, color: Colors.white),
-              ),
-              //sortColumnIndex: 1,
-              //sortAscending: false,
-              columns: const [
-                //DataColumn(label: Text("Peso(Kg)"), numeric: true),
-                DataColumn(label: Text("Peso(Kg)")),
-                DataColumn(label: Text("Proxima desparacitación")),
-              ],
-              rows: [
-                DataRow(selected: true, cells: [
-                  DataCell(Container(
-                    width: 85,
-                    child: Text('${desparasitacion.pesoActual}'),
-                  )),
-                  DataCell(Container(
-                    width: 90,
-                    child: Text('${desparasitacion.fechaProxDesparasitacion}'),
-                  )),
-                ]),
-              ],
-            ),
-            const Divider(color: Colors.transparent)
           ],
         ),
         onTap: () async {});
