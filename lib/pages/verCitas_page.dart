@@ -171,8 +171,8 @@ class _VerCitasPageState extends State<VerCitasPage> {
     DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(2020),
-      lastDate: DateTime(2025),
+      firstDate: DateTime.now(),
+      lastDate: DateTime.now().add(const Duration(days: 7)),
       locale: const Locale('es', 'ES'),
       builder: (context, child) {
         return Theme(
@@ -195,11 +195,7 @@ class _VerCitasPageState extends State<VerCitasPage> {
 
     if (picked != null) {
       setState(() {
-        _fecha = picked.year.toString() +
-            '-' +
-            picked.month.toString() +
-            '-' +
-            picked.day.toString();
+        _fecha = '${picked.year}-${picked.month}-${picked.day}';
         //_fechaCompleta = picked.toString();
 
         //_fecha = DateFormat('EEEE').format(picked);

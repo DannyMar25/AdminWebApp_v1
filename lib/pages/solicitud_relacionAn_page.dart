@@ -128,7 +128,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                       const Divider(color: Colors.transparent),
 
                       const Text(
-                        '¿Dónde está ahora? Si fallecio, perdió o esta en otro lugar, indique la causa.',
+                        '¿Dónde está ahora? Si falleció, perdió o está en otro lugar, indique la causa.',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -139,7 +139,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                       const Divider(color: Colors.transparent),
 
                       const Text(
-                        '¿Por qué desea adptar una mascota?',
+                        '¿Por qué desea adoptar una mascota?',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -239,7 +239,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                       _mostrarPromedioVida(),
                       const Divider(color: Colors.transparent),
                       const Text(
-                        'Si su mascota se enferma usted:',
+                        'Si su mascota se enferma, usted:',
                         style: TextStyle(
                             fontSize: 16,
                             color: Colors.black,
@@ -314,7 +314,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                       _mostrarBeneficios(),
                       const Divider(color: Colors.transparent),
                       const Text(
-                        '¿Según usted que es tenecia responsable?',
+                        '¿Según usted que es tenencia responsable?',
                         style: TextStyle(
                             fontSize: 16,
                             color: Colors.black,
@@ -345,7 +345,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                       _mostrarAdopcionFam(),
                       const Divider(color: Colors.transparent),
                       const Text(
-                        'Su familia esta:',
+                        'Su familia está:',
                         style: TextStyle(
                             fontSize: 16,
                             color: Colors.black,
