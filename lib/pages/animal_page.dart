@@ -5,6 +5,7 @@ import 'package:admin_web_v1/models/animales_model.dart';
 import 'package:admin_web_v1/providers/animales_provider.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
 import 'package:admin_web_v1/utils/utils.dart' as utils;
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:image_picker/image_picker.dart';
@@ -24,6 +25,7 @@ class _AnimalPageState extends State<AnimalPage> {
   final userProvider = UsuarioProvider();
 
   AnimalModel animal = AnimalModel();
+  FirebaseStorage storage = FirebaseStorage.instance;
   // bool _guardando = false;
   File? foto;
   late XFile image;
@@ -486,7 +488,7 @@ class _AnimalPageState extends State<AnimalPage> {
       autofocus: true,
       //onPressed: (_guardando) ? null : _submit,
       onPressed: () {
-        if (formKey.currentState!.validate() && foto != null) {
+        if (formKey.currentState!.validate()) {
           // Si el formulario es válido, queremos mostrar un Snackbar
           const SnackBar(
             content: Text('Información ingresada correctamente'),
@@ -520,13 +522,47 @@ class _AnimalPageState extends State<AnimalPage> {
   void _submit() async {
     if (animal.id == "") {
       animal.estado = "En Adopción";
-      animalProvider.crearAnimal1(animal, fotoUrl!);
+      animalProvider.crearAnimal1(animal, webImage);
       utils.mostrarAlertaOk(context, 'Registro guardado con éxito', 'home');
       //mostrarSnackbar('Registro guardado');
     } else {
-      animalProvider.editarAnimal(animal, fotoUrl!);
-      //utils.mostrarMensaje(context, 'Registro actualizado');
-      utils.mostrarAlertaOk(context, 'Registro actualizado con éxito', 'home');
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Row(
+                children: const [
+                  Icon(
+                    Icons.check_circle,
+                    color: Colors.green,
+                    size: 50,
+                  ),
+                  Text('Información correcta'),
+                ],
+              ),
+              content: const Text('Desea actualizar la foto de la mascota?'),
+              actions: [
+                TextButton(
+                    child: const Text('Si'),
+                    onPressed: () {
+                      animalProvider.editarAnimal(animal, webImage);
+                      utils.mostrarAlertaOk(
+                          context, 'Registro actualizado con éxito', 'home');
+                    }),
+                TextButton(
+                    child: const Text('No'),
+                    onPressed: () {
+                      animalProvider.editarAnimalSinFoto(
+                          animal, animal.fotoUrl);
+                      utils.mostrarAlertaOk(
+                          context, 'Registro actualizado con éxito', 'home');
+                    }),
+              ],
+            );
+          });
+      // animalProvider.editarAnimal(animal, webImage);
+      // //utils.mostrarMensaje(context, 'Registro actualizado');
+      // utils.mostrarAlertaOk(context, 'Registro actualizado con éxito', 'home');
     }
   }
 
@@ -548,14 +584,18 @@ class _AnimalPageState extends State<AnimalPage> {
         fit: BoxFit.contain,
       );
     } else {
-      if (webImage.isNotEmpty) {
+      if (webImage.length == 8) {
+        return Image.asset(
+          'assets/no-image.png',
+          height: 300,
+        );
+      } else {
         return Image.memory(
           webImage,
           fit: BoxFit.cover,
           height: 300,
         );
       }
-      return Image.asset('assets/no-image.png');
     }
   }
 

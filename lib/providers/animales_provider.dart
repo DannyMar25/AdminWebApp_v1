@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:html' as h;
+import 'dart:typed_data';
 import 'package:admin_web_v1/models/animales_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -13,24 +14,88 @@ class AnimalesProvider {
       'https://flutter-varios-1637a-default-rtdb.firebaseio.com';
   FirebaseStorage storage = FirebaseStorage.instance;
 
-  Future<bool> crearAnimal1(AnimalModel animal, String url) async {
+  // Future<bool> crearAnimal1(AnimalModel animal, String url) async {
+  //   try {
+  //     // print("este esadkjljdkjadkjskadjlkjsdljasdljasdj");
+  //     var animalAdd = await refAn.add(animal.toJson());
+  //     await refAn
+  //         .doc(animalAdd.id)
+  //         .update({"fotoUrl": url, "id": animalAdd.id});
+  //     return true;
+  //   } catch (e) {
+  //     return false;
+  //   }
+  // }
+
+  Future<bool> crearAnimal1(AnimalModel animal, Uint8List foto) async {
     try {
       // print("este esadkjljdkjadkjskadjlkjsdljasdljasdj");
       var animalAdd = await refAn.add(animal.toJson());
-      await refAn
-          .doc(animalAdd.id)
-          .update({"fotoUrl": url, "id": animalAdd.id});
+      String url;
+      String path;
+      String fec = DateTime.now().toString();
+      path = '/animales/${animalAdd.id}/${animalAdd.id + fec}.jpg';
+      //Reference ref = storage.ref().child(path + DateTime.now().toString());
+      Reference ref = storage.ref().child(path);
+      UploadTask uploadTask = ref.putData(foto);
+      uploadTask.whenComplete(() async {
+        url = await ref.getDownloadURL();
+        //guardarBase(url);
+        //actualizarCampoUrl(url, animal);
+        await refAn
+            .doc(animalAdd.id)
+            .update({"fotoUrl": url, "id": animalAdd.id});
+        return url;
+      }).catchError((onError) {
+        print(onError);
+      });
       return true;
     } catch (e) {
       return false;
     }
   }
 
-  Future<bool> editarAnimal(AnimalModel animal, String url) async {
+  // Future<bool> editarAnimal(AnimalModel animal, String url) async {
+  //   try {
+  //     await refAn.doc(animal.id).update(animal.toJson());
+  //     await refAn.doc(animal.id).update({"fotoUrl": url});
+
+  //     return true;
+  //   } catch (e) {
+  //     return false;
+  //   }
+  // }
+  Future<bool> editarAnimal(AnimalModel animal, Uint8List foto) async {
     try {
       await refAn.doc(animal.id).update(animal.toJson());
-      await refAn.doc(animal.id).update({"fotoUrl": url});
+      String url;
+      String path;
+      String fec = DateTime.now().toString();
+      path = '/animales/${animal.id}/${animal.id! + fec}.jpg';
+      //Reference ref = storage.ref().child(path + DateTime.now().toString());
+      Reference ref = storage.ref().child(path);
+      UploadTask uploadTask = ref.putData(foto);
+      uploadTask.whenComplete(() async {
+        url = await ref.getDownloadURL();
+        //guardarBase(url);
+        //actualizarCampoUrl(url, animal);
+        await refAn.doc(animal.id).update({"fotoUrl": url});
+        return url;
+      }).catchError((onError) {
+        print(onError);
+      });
 
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> editarAnimalSinFoto(AnimalModel animal, String fotourl) async {
+    try {
+      await refAn.doc(animal.id).update(animal.toJson());
+      //var animalUp = await refAn.doc(animal.id).update(animal.toJson());
+      await refAn.doc(animal.id).update({"fotoUrl": fotourl});
       return true;
     } catch (e) {
       return false;
