@@ -1,4 +1,5 @@
 import 'package:admin_web_v1/providers/animales_provider.dart';
+import 'package:admin_web_v1/providers/donaciones_provider.dart';
 import 'package:flutter/material.dart';
 
 bool isNumeric(String s) {
@@ -126,6 +127,36 @@ void mostrarAlertaBorrar(BuildContext context, String mensaje, String id) {
               child: const Text('Ok'),
               onPressed: () {
                 animalProvider.borrarAnimal(id);
+                mostrarAlertaOk(
+                    context, 'El registro a sido eliminado.', 'home');
+                //Navigator.pushNamed(context, 'home');
+              },
+              //onPressed: () => Navigator.of(context).pop(),
+            ),
+            TextButton(
+              child: const Text('Cancel'),
+              //onPressed: () {},
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
+        );
+      });
+}
+
+void mostrarAlertaBorrarDonacion(
+    BuildContext context, String mensaje, String id) {
+  final donacionesProvider = DonacionesProvider();
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Esta seguro de borrar el registro'),
+          content: Text(mensaje),
+          actions: [
+            TextButton(
+              child: const Text('Ok'),
+              onPressed: () {
+                donacionesProvider.borrarDonacion(id);
                 mostrarAlertaOk(
                     context, 'El registro a sido eliminado.', 'home');
                 //Navigator.pushNamed(context, 'home');

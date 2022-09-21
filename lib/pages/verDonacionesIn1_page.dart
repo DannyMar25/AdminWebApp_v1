@@ -378,9 +378,11 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       icon: const Icon(Icons.delete),
       autofocus: true,
       onPressed: () {
-        donacionesProvider.borrarDonacion(donaciones.id);
-        mostrarAlertaOk(
-            context, 'Registro eliminado con éxito', 'verDonacionesInAdd');
+        mostrarAlertaBorrarDonacion(context,
+            'Estas seguro de borrar el registro.', donaciones.id.toString());
+        // donacionesProvider.borrarDonacion(donaciones.id);
+        // mostrarAlertaOk(
+        //     context, 'Registro eliminado con éxito', 'verDonacionesInAdd');
       },
     );
   }
