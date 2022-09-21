@@ -94,7 +94,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
                       _mostrarDisponibilidad(),
                       const Divider(),
                       Text(
-                        'Cambiar disponibilidad de la donación',
+                        'Cambiar disponibilidad de la donación.',
                         style: TextStyle(
                           fontSize: 18,
                           foreground: Paint()
@@ -361,7 +361,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
     //onacionesProvider.editarDisponibilidad(donaciones, disponibilidad);
     donacionesProvider.editarDonacion(donaciones);
     mostrarAlertaOk(
-        context, 'Registro actualizado con éxito', 'verDonacionesInAdd');
+        context, 'Registro actualizado con éxito.', 'verDonacionesInAdd');
     //mostrarSnackbar('Registro guardado');
     //Navigator.pushNamed(context, 'verDonacionesInAdd');
   }

@@ -322,12 +322,12 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
           if (formKey.currentState!.validate()) {
             // Si el formulario es válido, queremos mostrar un Snackbar
             const SnackBar(
-              content: Text('Información ingresada correctamente'),
+              content: Text('Información ingresada correctamente.'),
             );
             _submit();
           } else {
             mostrarAlerta(
-                context, 'Asegurate de que todos los campos esten llenos.');
+                context, 'Asegúrate de que todos los campos estén llenos.');
           }
         });
   }

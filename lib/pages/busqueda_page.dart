@@ -93,7 +93,7 @@ class _BusquedaPageState extends State<BusquedaPage> {
                             )),
                         const Padding(padding: EdgeInsets.only(bottom: 10.0)),
                         const Text(
-                          'Selecciona la o las categorías de tu gusto y te mostraremos los resultados',
+                          'Selecciona la o las categorías de tu gusto y te mostraremos los resultados.',
                           textAlign: TextAlign.justify,
                           style: TextStyle(fontSize: 15),
                         ),
@@ -451,13 +451,13 @@ class _BusquedaPageState extends State<BusquedaPage> {
       onPressed: () {
         if (formKey.currentState!.validate()) {
           const SnackBar(
-            content: Text('Por favor selecciona una opción'),
+            content: Text('Por favor selecciona una opción.'),
           );
           //_submit();
           buildChild1();
         } else {
           mostrarAlerta(context,
-              'Todos los campos deben ser seleccionados. Asegurate de haber completado todos');
+              'Todos los campos deben ser seleccionados. Asegúrate de haber completado todos.');
         }
         //_submit();
       },

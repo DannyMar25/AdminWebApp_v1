@@ -270,13 +270,13 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
           '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}';
       donacionesProvider.crearDonacion(donaciones);
       mostrarAlertaOk(
-          context, 'Registro guardado con éxito', 'verDonacionesInAdd');
+          context, 'Registro guardado con éxito.', 'verDonacionesInAdd');
     } else {
       donaciones.estadoDonacion = 'Entrante';
       donacionesProvider.editarDisponibilidad(donaciones, disponibilidad);
       donacionesProvider.editarDonacion(donaciones);
       mostrarAlertaOk(
-          context, 'Registro actualizado con éxito', 'verDonacionesInAdd');
+          context, 'Registro actualizado con éxito.', 'verDonacionesInAdd');
     }
     //mostrarSnackbar('Registro guardado');
     // Navigator.pushNamed(context, 'verDonacionesInAdd');
