@@ -17,13 +17,13 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
   final List<String> _items = [
     'Lunes',
     'Martes',
-    'Miercoles',
+    'Miércoles',
     'Jueves',
     'Viernes',
-    'Sabado',
+    'Sábado',
     'Domingo'
   ].toList();
-  String? _selection;
+  String? _selection = "Lunes";
   @override
   void initState() {
     // _selection = _items.last;
@@ -89,16 +89,24 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
           'Seleccione el día:         ',
           style: TextStyle(fontSize: 16, color: Colors.black),
         ),
-        DropdownButton<String>(
-            //hint: Text(horarios.dia.toString()),
-            value: _selection,
-            items: dropdownMenuOptions,
-            onChanged: (s) {
-              setState(() {
-                _selection = s;
-                // horarios.dia = s!;
-              });
-            }),
+        DecoratedBox(
+          decoration: BoxDecoration(
+              border: Border.all(color: Colors.green),
+              borderRadius: BorderRadius.circular(10.0)),
+          child: SizedBox(
+            //width: 200.0,
+            child: DropdownButton<String>(
+                //hint: Text(horarios.dia.toString()),
+                value: _selection,
+                items: dropdownMenuOptions,
+                onChanged: (s) {
+                  setState(() {
+                    _selection = s;
+                    // horarios.dia = s!;
+                  });
+                }),
+          ),
+        ),
       ],
     );
   }
@@ -139,36 +147,42 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
 
   Widget _buildChild(HorariosModel horario, BuildContext context) {
     if (horario.disponible == "Disponible") {
-      return Card(
-        color: Colors.lightGreen[200],
-        shadowColor: Colors.green,
-        child: Column(key: UniqueKey(), children: [
-          ListTile(
-            title: Text('${horario.dia} - ${horario.hora}'),
-            subtitle: Text(
-              horario.disponible,
-              style: const TextStyle(color: Colors.black),
-            ),
-            onTap: () =>
-                Navigator.pushNamed(context, 'citasAdd', arguments: horario),
-          )
-        ]),
+      return SizedBox(
+        width: 100.0,
+        child: Card(
+          color: Colors.lightGreen[200],
+          shadowColor: Colors.green,
+          child: Column(key: UniqueKey(), children: [
+            ListTile(
+              title: Text('${horario.dia} - ${horario.hora}'),
+              subtitle: Text(
+                horario.disponible,
+                style: const TextStyle(color: Colors.black),
+              ),
+              onTap: () =>
+                  Navigator.pushNamed(context, 'citasAdd', arguments: horario),
+            )
+          ]),
+        ),
       );
     } else {
-      return Card(
-        color: Colors.orangeAccent[200],
-        shadowColor: Colors.green,
-        child: Column(key: UniqueKey(), children: [
-          ListTile(
-            title: Text('${horario.dia} - ${horario.hora}'),
-            subtitle: Text(
-              horario.disponible,
-              style: const TextStyle(color: Colors.black),
-            ),
-            onTap: () =>
-                Navigator.pushNamed(context, 'citasAdd', arguments: horario),
-          )
-        ]),
+      return SizedBox(
+        width: 100.0,
+        child: Card(
+          color: Colors.orangeAccent[200],
+          shadowColor: Colors.green,
+          child: Column(key: UniqueKey(), children: [
+            ListTile(
+              title: Text('${horario.dia} - ${horario.hora}'),
+              subtitle: Text(
+                horario.disponible,
+                style: const TextStyle(color: Colors.black),
+              ),
+              onTap: () =>
+                  Navigator.pushNamed(context, 'citasAdd', arguments: horario),
+            )
+          ]),
+        ),
       );
     }
   }

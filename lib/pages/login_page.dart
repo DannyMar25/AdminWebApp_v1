@@ -7,11 +7,24 @@ import 'package:admin_web_v1/providers/usuario_provider.dart';
 import 'package:admin_web_v1/utils/utils.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   //const LoginPage({Key? key}) : super(key: key);
   final usuarioProvider = UsuarioProvider();
+  late bool _passwordVisible;
 
-  LoginPage({Key? key}) : super(key: key);
+  @override
+  void initState() {
+    _passwordVisible = false;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,13 +125,24 @@ class LoginPage extends StatelessWidget {
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: TextField(
-            obscureText: true,
-            //keyboardType: TextInputType.emailAddress,
+            //obscureText: true,
+            obscureText: !_passwordVisible,
             decoration: InputDecoration(
               icon: const Icon(Icons.lock_outline, color: Colors.green),
-              //hintText: 'ejemplo@correo.com',
               labelText: 'Contraseña',
-              //counterText: snapshot.data,
+              suffixIcon: IconButton(
+                icon: Icon(
+                  // Based on passwordVisible state choose the icon
+                  _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                  color: Colors.green,
+                ),
+                onPressed: () {
+                  // Update the state i.e. toogle the state of passwordVisible variable
+                  setState(() {
+                    _passwordVisible = !_passwordVisible;
+                  });
+                },
+              ),
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
             ),

@@ -150,25 +150,29 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
   }
 
   Widget _crearFecha(BuildContext context) {
-    return TextFormField(
-        controller: _inputFieldDateController,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          labelText: 'Fecha de la cita',
-          //helperText: 'Solo es el nombre',
-          suffixIcon:
-              const Icon(Icons.perm_contact_calendar, color: Colors.green),
-          icon: const Icon(
-            Icons.calendar_today,
-            color: Colors.green,
+    return SizedBox(
+      width: 800.0,
+      child: TextFormField(
+          controller: _inputFieldDateController,
+          decoration: InputDecoration(
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+            labelText: 'Fecha de la cita',
+            //helperText: 'Solo es el nombre',
+            suffixIcon:
+                const Icon(Icons.perm_contact_calendar, color: Colors.green),
+            icon: const Icon(
+              Icons.calendar_today,
+              color: Colors.green,
+            ),
           ),
-        ),
-        onTap: () {
-          FocusScope.of(context).requestFocus(FocusNode());
-          setState(() {
-            _selectDate(context);
-          });
-        });
+          onTap: () {
+            FocusScope.of(context).requestFocus(FocusNode());
+            setState(() {
+              _selectDate(context);
+            });
+          }),
+    );
   }
 
   _selectDate(BuildContext context) async {

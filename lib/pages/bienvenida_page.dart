@@ -1,5 +1,6 @@
 import 'package:accordion/accordion.dart';
 import 'package:accordion/controllers.dart';
+import 'package:admin_web_v1/pages/login_page.dart';
 import 'package:admin_web_v1/preferencias_usuario/preferencias_usuario.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
@@ -82,7 +83,8 @@ class _BienvenidaPageState extends State<BienvenidaPage> {
                 //   height: 130,
                 // ),
                 SizedBox(
-                  height: 500,
+                  height: 500.0,
+                  // width: 100.0,
                   child: Accordion(
                     maxOpenSections: 1,
                     headerBackgroundColorOpened: Colors.black54,
@@ -478,7 +480,10 @@ class _BienvenidaPageState extends State<BienvenidaPage> {
         break;
       case 1:
         userProvider.signOut();
-        Navigator.pushNamed(context, 'login');
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => const LoginPage()),
+            (Route<dynamic> route) => false);
+      //Navigator.pushNamed(context, 'login');
     }
   }
 }

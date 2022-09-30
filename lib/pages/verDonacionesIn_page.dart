@@ -87,25 +87,21 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
       mainAxisAlignment: MainAxisAlignment.start,
       //mainAxisSize: MainAxisSize.max,
       children: [
-        const Expanded(
-          child: Text(
-            'Seleccione el tipo de donación:',
-            style: TextStyle(fontSize: 16, color: Colors.black),
-          ),
+        const Text(
+          'Seleccione el tipo de donación:  ',
+          style: TextStyle(fontSize: 16, color: Colors.black),
         ),
-        Expanded(
-          child: DropdownButton<String>(
-              hint: Text(donaciones.tipo.toString()),
-              value: _selection,
-              items: dropdownMenuOptions,
-              onChanged: (s) {
-                setState(() {
-                  _selection = s;
-                  showCitas();
-                  // horarios.dia = s!;
-                });
-              }),
-        ),
+        DropdownButton<String>(
+            hint: Text(donaciones.tipo.toString()),
+            value: _selection,
+            items: dropdownMenuOptions,
+            onChanged: (s) {
+              setState(() {
+                _selection = s;
+                showCitas();
+                // horarios.dia = s!;
+              });
+            }),
       ],
     );
   }
@@ -129,7 +125,7 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
     return Column(
       children: [
         SizedBox(
-            height: 600,
+            height: 480,
             child: ListView.builder(
                 itemCount: donacionA.length,
                 itemBuilder: (context, i) =>

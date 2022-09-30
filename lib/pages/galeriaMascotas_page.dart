@@ -99,29 +99,33 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
   }
 
   Widget _busqueda() {
-    return TextField(
-      controller: _textController,
-      autocorrect: false,
-      onChanged: (s) {
-        setState(() {
-          nombre = s;
-          nombreBusqueda = nombre![0].toUpperCase() + s.substring(1);
-          busqueda = true;
-          //print(nombreBusqueda);
-        });
-      },
-      decoration: InputDecoration(
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.green, width: 2.0),
+    return SizedBox(
+      width: 1100.0,
+      child: TextField(
+        controller: _textController,
+        autocorrect: false,
+        onChanged: (s) {
+          setState(() {
+            nombre = s;
+            nombreBusqueda = nombre![0].toUpperCase() + s.substring(1);
+            busqueda = true;
+            //print(nombreBusqueda);
+          });
+        },
+        decoration: InputDecoration(
+          enabledBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.green, width: 2.0),
+            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+          ),
+          prefixIcon: const Icon(Icons.search),
+          suffixIcon: GestureDetector(
+            onTap: _onClearTapped,
+            child: const Icon(Icons.clear),
+          ),
+          border: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.elliptical(10, 10))),
+          hintText: 'Ingresa el nombre de la mascota',
         ),
-        prefixIcon: const Icon(Icons.search),
-        suffixIcon: GestureDetector(
-          onTap: _onClearTapped,
-          child: const Icon(Icons.clear),
-        ),
-        border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.elliptical(10, 10))),
-        hintText: 'Ingresa el nombre de la mascota',
       ),
     );
   }

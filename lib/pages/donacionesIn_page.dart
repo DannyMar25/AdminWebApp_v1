@@ -82,9 +82,9 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
                         ),
                         textAlign: TextAlign.center,
                       ),
-                      const Divider(),
 
                       const Divider(),
+                      const Padding(padding: EdgeInsets.only(bottom: 15.0)),
                       _crearTipoDonacion(),
                       const Divider(),
                       _crearUnidades(),

@@ -45,6 +45,7 @@ class _AnimalPageState extends State<AnimalPage> {
   String? _selection4;
   int? edadN;
   bool isDisable = false;
+  bool editFoto = false;
   String campoVacio = 'Por favor, llena este campo';
   @override
   void initState() {
@@ -149,7 +150,8 @@ class _AnimalPageState extends State<AnimalPage> {
           width: 150.0,
           child: DropdownButtonFormField<String>(
               hint: Text(animal.especie.toString()),
-              value: _selection3,
+              //value: _selection3,
+              value: seleccionEspecie(),
               items: dropdownMenuOptions,
               validator: (value) =>
                   value == null ? 'Selecciona una opción' : null,
@@ -162,6 +164,14 @@ class _AnimalPageState extends State<AnimalPage> {
         ),
       ],
     );
+  }
+
+  seleccionEspecie() {
+    if (animal.id == '') {
+      return _selection;
+    } else {
+      return animal.especie.toString();
+    }
   }
 
   Widget _crearNombre() {
@@ -206,7 +216,8 @@ class _AnimalPageState extends State<AnimalPage> {
           width: 150.0,
           child: DropdownButtonFormField<String>(
               hint: Text(animal.sexo.toString()),
-              value: _selection1,
+              //value: _selection1,
+              value: seleccionSexo(),
               items: dropdownMenuOptions,
               validator: (value) =>
                   value == null ? 'Selecciona una opción' : null,
@@ -219,6 +230,14 @@ class _AnimalPageState extends State<AnimalPage> {
         ),
       ],
     );
+  }
+
+  seleccionSexo() {
+    if (animal.id == '') {
+      return _selection;
+    } else {
+      return animal.sexo.toString();
+    }
   }
 
   Widget _crearEdad() {
@@ -235,7 +254,8 @@ class _AnimalPageState extends State<AnimalPage> {
           width: 150.0,
           child: DropdownButtonFormField<String>(
               hint: Text(animal.etapaVida.toString()),
-              value: _selection2,
+              //value: _selection2,
+              value: seleccionEtapa(),
               items: dropdownMenuOptions,
               validator: (value) =>
                   value == null ? 'Selecciona una opción' : null,
@@ -248,6 +268,14 @@ class _AnimalPageState extends State<AnimalPage> {
         ),
       ],
     );
+  }
+
+  seleccionEtapa() {
+    if (animal.id == '') {
+      return _selection;
+    } else {
+      return animal.etapaVida.toString();
+    }
   }
 
   Widget infoEtapa() {
@@ -350,7 +378,8 @@ class _AnimalPageState extends State<AnimalPage> {
           width: 150.0,
           child: DropdownButtonFormField<String>(
               hint: Text(animal.tamanio.toString()),
-              value: _selection,
+              //value: _selection,
+              value: seleccionTam(),
               items: dropdownMenuOptions,
               validator: (value) =>
                   value == null ? 'Selecciona una opción' : null,
@@ -363,6 +392,14 @@ class _AnimalPageState extends State<AnimalPage> {
         ),
       ],
     );
+  }
+
+  seleccionTam() {
+    if (animal.id == '') {
+      return _selection;
+    } else {
+      return animal.tamanio.toString();
+    }
   }
 
   Widget _crearColor() {
@@ -433,7 +470,8 @@ class _AnimalPageState extends State<AnimalPage> {
           width: 150.0,
           child: DropdownButtonFormField<String>(
               hint: Text(animal.esterilizado.toString()),
-              value: _selection4,
+              //value: _selection4,
+              value: seleccionEst(),
               items: dropdownMenuOptions,
               validator: (value) =>
                   value == null ? 'Selecciona una opción' : null,
@@ -446,6 +484,14 @@ class _AnimalPageState extends State<AnimalPage> {
         ),
       ],
     );
+  }
+
+  seleccionEst() {
+    if (animal.id == '') {
+      return _selection;
+    } else {
+      return animal.esterilizado.toString();
+    }
   }
 
   Widget _crearCaracteristicas() {
@@ -488,15 +534,34 @@ class _AnimalPageState extends State<AnimalPage> {
       autofocus: true,
       //onPressed: (_guardando) ? null : _submit,
       onPressed: () {
-        if (formKey.currentState!.validate()) {
-          // Si el formulario es válido, queremos mostrar un Snackbar
-          const SnackBar(
-            content: Text('Información ingresada correctamente.'),
-          );
-          _submit();
+        if (editFoto == false) {
+          if (formKey.currentState!.validate()) {
+            // Si el formulario es válido, queremos mostrar un Snackbar
+            SnackBar(
+              content: Text('Información ingresada correctamente'),
+            );
+            _submit();
+          } else {
+            utils.mostrarAlerta(
+                context, 'Asegúrate de que todos los campos estén llenos.');
+            // utils.mostrarAlerta(context,
+            //     'Asegurate de que todos los campos estan llenos y de haber escogido una foto de tu mascota.');
+          }
         } else {
-          utils.mostrarAlerta(
-              context, 'Asegúrate de que todos los campos estén llenos.');
+          if (formKey.currentState!.validate()) {
+            // Si el formulario es válido, queremos mostrar un Snackbar
+            SnackBar(
+              content: Text('Información ingresada correctamente'),
+            );
+            animalProvider.editarAnimal(animal, webImage);
+            utils.mostrarAlertaOk(
+                context, 'Registro actualizado con éxito.', 'home');
+          } else {
+            utils.mostrarAlerta(
+                context, 'Asegúrate de que todos los campos estén llenos.');
+            // utils.mostrarAlerta(context,
+            //     'Asegurate de que todos los campos estan llenos y de haber escogido una foto de tu mascota.');
+          }
         }
       },
     );
@@ -544,10 +609,12 @@ class _AnimalPageState extends State<AnimalPage> {
               actions: [
                 TextButton(
                     child: const Text('Si'),
+                    onLongPress: () {
+                      editFoto = true;
+                    },
                     onPressed: () {
-                      animalProvider.editarAnimal(animal, webImage);
-                      utils.mostrarAlertaOk(
-                          context, 'Registro actualizado con éxito.', 'home');
+                      editFoto = true;
+                      Navigator.pop(context);
                     }),
                 TextButton(
                     child: const Text('No'),
@@ -605,12 +672,24 @@ class _AnimalPageState extends State<AnimalPage> {
 
   _procesarImagen(ImageSource origen) async {
     final ImagePicker picker = ImagePicker();
-    image = (await picker.pickImage(source: origen))!;
-    if (image != null) {
-      var f = await image.readAsBytes();
-      setState(() {
-        webImage = f;
-      });
+    if (animal.id == "") {
+      editFoto = false;
+      image = (await picker.pickImage(source: origen))!;
+      if (image != null) {
+        var f = await image.readAsBytes();
+        setState(() {
+          webImage = f;
+        });
+      }
+    } else {
+      editFoto = true;
+      image = (await picker.pickImage(source: origen))!;
+      if (image != null) {
+        var f = await image.readAsBytes();
+        setState(() {
+          webImage = f;
+        });
+      }
     }
   }
 

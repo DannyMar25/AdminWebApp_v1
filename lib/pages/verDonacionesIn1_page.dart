@@ -160,33 +160,30 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       mainAxisAlignment: MainAxisAlignment.start,
       //mainAxisSize: MainAxisSize.max,
       children: [
-        const Expanded(
-          child: Text(
-            'Seleccione el tipo de donación:  ',
-            style: TextStyle(fontSize: 16, color: Colors.black),
-          ),
+        const Text(
+          'Seleccione el tipo de donación:  ',
+          style: TextStyle(fontSize: 16, color: Colors.black),
         ),
-        Expanded(
-          child: DropdownButton<String>(
-            hint: Text(donaciones.tipo.toString()),
-            value: _selection,
-            items: dropdownMenuOptions,
-            onChanged: (s) {
-              setState(() {
-                _selection = s;
+        DropdownButton<String>(
+          hint: Text(donaciones.tipo.toString()),
+          value: _selection,
+          items: dropdownMenuOptions,
+          onChanged: null,
+          // onChanged: (s) {
+          //   setState(() {
+          //     _selection = s;
 
-                donaciones.tipo = s!;
-                //animal.tamanio = s!;
-              });
-            },
-          ),
+          //     donaciones.tipo = s!;
+          //     //animal.tamanio = s!;
+          //   });
+          // },
         ),
       ],
     );
   }
 
   Widget _buildChild() {
-    if (_selection == 'Alimento') {
+    if (donaciones.tipo == 'Alimento') {
       return _crearPeso();
     } //else {
     //   if (_selection == 'Otros') {

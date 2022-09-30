@@ -112,59 +112,53 @@ class _VerCitasPageState extends State<VerCitasPage> {
 
   Widget _crearItem(BuildContext context, CitasModel cita) {
     String fecha = cita.horario!.dia;
-    // DateTime fecha1 = DateTime.parse(fecha);
-    // String fecha2 = fecha1.year.toString() +
-    //     "-" +
-    //     fecha1.month.toString() +
-    //     "-" +
-    //     fecha1.day.toString();
     String hora = cita.horario!.hora;
     return Card(
       color: Colors.lightGreen[200],
       shadowColor: Colors.green,
-      child: Column(key: UniqueKey(),
-          // background: Container(
-          //   color: Colors.red,
-          // ),
-          children: [
-            ListTile(
-              title: Column(
-                children: [
-                  Text("Fecha:${cita.fechaCita}"),
-                  Text("Nombre del cliente: ${cita.nombreClient}"),
-                  // Text("Posible a doptante para: " '${cita.animal!.nombre}'),
-                  Text("Día de la cita: $fecha"),
-                  Text("Hora de la cita: $hora"),
-                ],
-              ),
-              //subtitle: Text('${horario}'),
-              onTap: () =>
-                  Navigator.pushNamed(context, 'verCitasR', arguments: cita),
-            )
-          ]),
+      child: Column(key: UniqueKey(), children: [
+        ListTile(
+          title: Column(
+            children: [
+              Text("Fecha:${cita.fechaCita}"),
+              Text("Nombre del cliente: ${cita.nombreClient}"),
+              // Text("Posible a doptante para: " '${cita.animal!.nombre}'),
+              Text("Día de la cita: $fecha"),
+              Text("Hora de la cita: $hora"),
+            ],
+          ),
+          //subtitle: Text('${horario}'),
+          onTap: () =>
+              Navigator.pushNamed(context, 'verCitasR', arguments: cita),
+        )
+      ]),
     );
   }
 
   Widget _crearFecha(BuildContext context) {
-    return TextFormField(
-        controller: _inputFieldDateController,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          labelText: 'Fecha de la cita',
-          //helperText: 'Solo es el nombre',
-          suffixIcon:
-              const Icon(Icons.perm_contact_calendar, color: Colors.green),
-          icon: const Icon(
-            Icons.calendar_today,
-            color: Colors.green,
+    return SizedBox(
+      width: 800.0,
+      child: TextFormField(
+          controller: _inputFieldDateController,
+          decoration: InputDecoration(
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+            labelText: 'Fecha de la cita',
+            //helperText: 'Solo es el nombre',
+            suffixIcon:
+                const Icon(Icons.perm_contact_calendar, color: Colors.green),
+            icon: const Icon(
+              Icons.calendar_today,
+              color: Colors.green,
+            ),
           ),
-        ),
-        onTap: () {
-          FocusScope.of(context).requestFocus(FocusNode());
-          setState(() {
-            _selectDate(context);
-          });
-        });
+          onTap: () {
+            FocusScope.of(context).requestFocus(FocusNode());
+            setState(() {
+              _selectDate(context);
+            });
+          }),
+    );
   }
 
   _selectDate(BuildContext context) async {

@@ -130,11 +130,15 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
                     image: NetworkImage(evidencia.fotoUrl),
                     placeholder: const AssetImage('assets/jar-loading.gif'),
                     height: 300.0,
-                    width: double.infinity,
+                    width: 300.0,
+                    //width: double.infinity,
                     fit: BoxFit.cover,
                   ),
             ListTile(
-              title: Text(evidencia.fecha),
+              title: Text(
+                evidencia.fecha,
+                textAlign: TextAlign.center,
+              ),
             ),
           ]),
           onTap: () async {

@@ -16,11 +16,12 @@ class _VerFotoEvidenciaPageState extends State<VerFotoEvidenciaPage> {
     final Object? evidenciaData = ModalRoute.of(context)!.settings.arguments;
     if (evidenciaData != null) {
       evidenciaF = evidenciaData as EvidenciasModel;
-      print(evidenciaF.id);
+      //print(evidenciaF.id);
     }
-    return Container(
+    return SizedBox(
       child: PhotoView(
         imageProvider: NetworkImage(evidenciaF.fotoUrl),
+        //maxScale: 200.0,
       ),
     );
   }

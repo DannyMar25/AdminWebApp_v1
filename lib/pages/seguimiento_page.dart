@@ -130,72 +130,75 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
         title: Column(
           children: [
             //Divider(color: Colors.purple),
-            Card(
-              elevation: 8,
-              margin: const EdgeInsets.all(10),
-              child: Container(
-                height: 100,
-                color: Colors.white,
-                child: Row(
-                  children: [
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Expanded(
-                          flex: 2,
-                          child: Image.asset("assets/pet.jpg"),
+            SizedBox(
+              width: 700.0,
+              child: Card(
+                elevation: 8,
+                margin: const EdgeInsets.all(10),
+                child: Container(
+                  height: 100,
+                  color: Colors.white,
+                  child: Row(
+                    children: [
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Expanded(
+                            flex: 2,
+                            child: Image.asset("assets/pet.jpg"),
+                          ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      flex: 8,
-                      child: Container(
-                        alignment: Alignment.topLeft,
-                        child: Column(
-                          children: [
-                            Expanded(
-                              flex: 5,
-                              child: ListTile(
-                                title: Text(formulario.animal!.nombre),
-                                subtitle: Text(
-                                    "Adoptante: ${formulario.nombreClient}"),
+                      Expanded(
+                        flex: 8,
+                        child: Container(
+                          alignment: Alignment.topLeft,
+                          child: Column(
+                            children: [
+                              Expanded(
+                                flex: 5,
+                                child: ListTile(
+                                  title: Text(formulario.animal!.nombre),
+                                  subtitle: Text(
+                                      "Adoptante: ${formulario.nombreClient}"),
+                                ),
                               ),
-                            ),
-                            Expanded(
-                              flex: 5,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  TextButton(
-                                    child: const Text("REALIZAR SEGUIMIENTO"),
-                                    onPressed: () async {
-                                      datosC =
-                                          await formulariosProvider.cargarDPId(
-                                              formulario.id,
-                                              formulario.idDatosPersonales);
-                                      animal = await animalesProvider
-                                          .cargarAnimalId(formulario.idAnimal);
+                              Expanded(
+                                flex: 5,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    TextButton(
+                                      child: const Text("REALIZAR SEGUIMIENTO"),
+                                      onPressed: () async {
+                                        datosC = await formulariosProvider
+                                            .cargarDPId(formulario.id,
+                                                formulario.idDatosPersonales);
+                                        animal = await animalesProvider
+                                            .cargarAnimalId(
+                                                formulario.idAnimal);
 
-                                      Navigator.pushNamed(
-                                          context, 'seguimientoInfo',
-                                          arguments: {
-                                            'datosper': datosC,
-                                            'formulario': formulario,
-                                            'animal': animal
-                                          });
-                                    },
-                                  ),
-                                  const SizedBox(
-                                    width: 8,
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
+                                        Navigator.pushNamed(
+                                            context, 'seguimientoInfo',
+                                            arguments: {
+                                              'datosper': datosC,
+                                              'formulario': formulario,
+                                              'animal': animal
+                                            });
+                                      },
+                                    ),
+                                    const SizedBox(
+                                      width: 8,
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

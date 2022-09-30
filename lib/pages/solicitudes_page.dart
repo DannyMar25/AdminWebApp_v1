@@ -113,73 +113,76 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
       title: Column(
         children: [
           //Divider(color: Colors.purple),
-          Card(
-            elevation: 8,
-            margin: const EdgeInsets.all(10),
-            child: Container(
-              height: 170,
-              color: Colors.white,
-              child: Row(
-                children: [
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 0.1),
-                      child: Expanded(
-                        flex: 5,
-                        child: Image.asset(
-                          "assets/pet.jpg",
-                          height: 130,
+          SizedBox(
+            width: 700.0,
+            child: Card(
+              elevation: 8,
+              margin: const EdgeInsets.all(10),
+              child: Container(
+                height: 170,
+                color: Colors.white,
+                child: Row(
+                  children: [
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 0.1),
+                        child: Expanded(
+                          flex: 5,
+                          child: Image.asset(
+                            "assets/pet.jpg",
+                            height: 130,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    flex: 8,
-                    child: Container(
-                      alignment: Alignment.topLeft,
-                      child: Column(
-                        children: [
-                          Expanded(
-                            flex: 20,
-                            child: ListTile(
-                              title:
-                                  Text("Cliente: ${formulario.nombreClient}"),
-                              subtitle: Column(
-                                children: [
-                                  Text("Fecha de solicitud:"
-                                      '${formulario.fechaIngreso}'),
+                    Expanded(
+                      flex: 8,
+                      child: Container(
+                        alignment: Alignment.topLeft,
+                        child: Column(
+                          children: [
+                            Expanded(
+                              flex: 20,
+                              child: ListTile(
+                                title:
+                                    Text("Cliente: ${formulario.nombreClient}"),
+                                subtitle: Column(
+                                  children: [
+                                    Text("Fecha de solicitud:"
+                                        '${formulario.fechaIngreso}'),
 
-                                  // Text("Identificacion: " +
-                                  //     '${formulario.identificacion}'),
-                                  Text("Posible adoptante para: "
-                                      '${formulario.animal!.nombre}'),
-                                ],
+                                    // Text("Identificacion: " +
+                                    //     '${formulario.identificacion}'),
+                                    Text("Posible adoptante para: "
+                                        '${formulario.animal!.nombre}'),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          Expanded(
-                            flex: 5,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                TextButton(
-                                  child: const Text("VER INFO"),
-                                  onPressed: () => Navigator.pushNamed(
-                                      context, 'verSolicitudesMain',
-                                      arguments: formulario),
-                                  //
-                                ),
-                                const SizedBox(
-                                  width: 5, //8
-                                )
-                              ],
-                            ),
-                          )
-                        ],
+                            Expanded(
+                              flex: 5,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  TextButton(
+                                    child: const Text("VER INFO"),
+                                    onPressed: () => Navigator.pushNamed(
+                                        context, 'verSolicitudesMain',
+                                        arguments: formulario),
+                                    //
+                                  ),
+                                  const SizedBox(
+                                    width: 5, //8
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
