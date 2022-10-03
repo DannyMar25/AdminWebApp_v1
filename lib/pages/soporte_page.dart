@@ -52,29 +52,32 @@ class _SoportePageState extends State<SoportePage> {
       ),
       drawer: email != '' ? const MenuWidget() : const SizedBox(),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(15.0),
-          child: Form(
-            key: formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  "Contactarse con soporte",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                ),
-                const Padding(padding: EdgeInsets.only(top: 40.0)),
-                _crearNombre(),
-                _crearCorreo(),
-                _crearAsunto(),
-                _crearMensaje(),
-                const Divider(
-                  color: Colors.transparent,
-                ),
-                _crearBoton(),
-                const Padding(padding: EdgeInsets.only(bottom: 210.0))
-                // buildAbout(),
-              ],
+        child: Center(
+          child: Container(
+            width: 850,
+            padding: const EdgeInsets.all(15.0),
+            child: Form(
+              key: formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Contactarse con soporte",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                  ),
+                  const Padding(padding: EdgeInsets.only(top: 40.0)),
+                  _crearNombre(),
+                  _crearCorreo(),
+                  _crearAsunto(),
+                  _crearMensaje(),
+                  const Divider(
+                    color: Colors.transparent,
+                  ),
+                  _crearBoton(),
+                  const Padding(padding: EdgeInsets.only(bottom: 210.0))
+                  // buildAbout(),
+                ],
+              ),
             ),
           ),
         ),

@@ -65,38 +65,41 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
         children: [
           //Background(),
           SingleChildScrollView(
-            child: Container(
-              padding: const EdgeInsets.all(15.0),
-              child: Form(
-                  key: formKey,
-                  child: Column(
-                    children: [
-                      Text(
-                        'Donaciones',
-                        style: TextStyle(
-                          fontSize: 33,
-                          foreground: Paint()
-                            ..style = PaintingStyle.stroke
-                            ..strokeWidth = 3
-                            ..color = Colors.blueGrey[300]!,
+            child: Center(
+              child: Container(
+                width: 850,
+                padding: const EdgeInsets.all(15.0),
+                child: Form(
+                    key: formKey,
+                    child: Column(
+                      children: [
+                        Text(
+                          'Donaciones',
+                          style: TextStyle(
+                            fontSize: 33,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = 3
+                              ..color = Colors.blueGrey[300]!,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
 
-                      const Divider(),
-                      const Padding(padding: EdgeInsets.only(bottom: 15.0)),
-                      _crearTipoDonacion(),
-                      const Divider(),
-                      _crearUnidades(),
-                      const Divider(),
-                      _buildChild(),
-                      const Divider(),
-                      _crearDescripcion(),
-                      const Divider(),
-                      _crearBoton(),
-                      // _crearCantidad(),
-                    ],
-                  )),
+                        const Divider(),
+                        const Padding(padding: EdgeInsets.only(bottom: 15.0)),
+                        _crearTipoDonacion(),
+                        const Divider(),
+                        _crearUnidades(),
+                        const Divider(),
+                        _buildChild(),
+                        const Divider(),
+                        _crearDescripcion(),
+                        const Divider(),
+                        _crearBoton(),
+                        // _crearCantidad(),
+                      ],
+                    )),
+              ),
             ),
           ),
         ],

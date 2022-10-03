@@ -80,92 +80,95 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
         SingleChildScrollView(
           child: Flexible(
             fit: FlexFit.loose,
-            child: Container(
-              padding: const EdgeInsets.all(15.0),
-              child: Form(
-                key: formKey,
-                child: Column(
-                  children: [
-                    Text(
-                      'Mencione las personas con las que vive',
-                      style: TextStyle(
-                        fontSize: 24,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 2
-                          ..color = Colors.blueGrey,
+            child: Center(
+              child: Container(
+                width: 850,
+                padding: const EdgeInsets.all(15.0),
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      Text(
+                        'Mencione las personas con las que vive',
+                        style: TextStyle(
+                          fontSize: 24,
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 2
+                            ..color = Colors.blueGrey,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const Divider(),
-                    DataTable(
-                      sortColumnIndex: 2,
-                      sortAscending: false,
-                      columnSpacing: 30,
-                      columns: const [
-                        DataColumn(label: Text("Nombre")),
-                        DataColumn(label: Text("Edad ")),
-                        DataColumn(label: Text("Parentesco")),
-                      ],
-                      rows: [
-                        DataRow(selected: true, cells: [
-                          DataCell(_mostrarNombreF1()),
-                          DataCell(_mostrarEdadF1()),
-                          DataCell(_mostrarParentesco1()),
-                        ]),
-                        DataRow(cells: [
-                          DataCell(_mostrarNombreF2()),
-                          DataCell(_mostrarEdadF2()),
-                          DataCell(_mostrarParentesco2()),
-                        ]),
-                        DataRow(cells: [
-                          DataCell(_mostrarNombreF3()),
-                          DataCell(_mostrarEdadF3()),
-                          DataCell(_mostrarParentesco3()),
-                        ]),
-                        DataRow(cells: [
-                          DataCell(_mostrarNombreF4()),
-                          DataCell(_mostrarEdadF4()),
-                          DataCell(_mostrarParentesco4()),
-                        ])
-                      ],
-                    ),
-                    const Divider(),
-                    Text(
-                      '¿Algún familiar espera un bebé?',
-                      style: TextStyle(
-                        fontSize: 24,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 2
-                          ..color = Colors.blueGrey,
+                      const Divider(),
+                      DataTable(
+                        sortColumnIndex: 2,
+                        sortAscending: false,
+                        columnSpacing: 30,
+                        columns: const [
+                          DataColumn(label: Text("Nombre")),
+                          DataColumn(label: Text("Edad ")),
+                          DataColumn(label: Text("Parentesco")),
+                        ],
+                        rows: [
+                          DataRow(selected: true, cells: [
+                            DataCell(_mostrarNombreF1()),
+                            DataCell(_mostrarEdadF1()),
+                            DataCell(_mostrarParentesco1()),
+                          ]),
+                          DataRow(cells: [
+                            DataCell(_mostrarNombreF2()),
+                            DataCell(_mostrarEdadF2()),
+                            DataCell(_mostrarParentesco2()),
+                          ]),
+                          DataRow(cells: [
+                            DataCell(_mostrarNombreF3()),
+                            DataCell(_mostrarEdadF3()),
+                            DataCell(_mostrarParentesco3()),
+                          ]),
+                          DataRow(cells: [
+                            DataCell(_mostrarNombreF4()),
+                            DataCell(_mostrarEdadF4()),
+                            DataCell(_mostrarParentesco4()),
+                          ])
+                        ],
                       ),
-                    ),
-                    const Divider(),
-                    _mostrarEsperabebe(),
-                    Text(
-                      '¿Alguien que viva con usted es alérgico a los animales o sufre de asma?',
-                      style: TextStyle(
-                        fontSize: 24,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 2
-                          ..color = Colors.blueGrey,
+                      const Divider(),
+                      Text(
+                        '¿Algún familiar espera un bebé?',
+                        style: TextStyle(
+                          fontSize: 24,
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 2
+                            ..color = Colors.blueGrey,
+                        ),
                       ),
-                    ),
-                    const Divider(),
-                    _mostrarAlergia(),
-                    const Divider(
-                      color: Colors.transparent,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _botonAtras(),
-                        _botonSiguiente(),
-                      ],
-                    )
-                  ],
+                      const Divider(),
+                      _mostrarEsperabebe(),
+                      Text(
+                        '¿Alguien que viva con usted es alérgico a los animales o sufre de asma?',
+                        style: TextStyle(
+                          fontSize: 24,
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 2
+                            ..color = Colors.blueGrey,
+                        ),
+                      ),
+                      const Divider(),
+                      _mostrarAlergia(),
+                      const Divider(
+                        color: Colors.transparent,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _botonAtras(),
+                          _botonSiguiente(),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

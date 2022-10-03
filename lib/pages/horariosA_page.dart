@@ -53,22 +53,25 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(15.0),
-          child: Form(
-            //key: formKey,
-            child: Column(
-              children: [
-                const Text(
-                  'Horarios registrados esta semana',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                _crearDia(),
-                const Divider(),
-                _verListado(),
-                const Divider(),
-              ],
+        child: Center(
+          child: Container(
+            width: 850,
+            padding: const EdgeInsets.all(15.0),
+            child: Form(
+              //key: formKey,
+              child: Column(
+                children: [
+                  const Text(
+                    'Horarios registrados esta semana',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  _crearDia(),
+                  const Divider(),
+                  _verListado(),
+                  const Divider(),
+                ],
+              ),
             ),
           ),
         ),
@@ -89,23 +92,18 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
           'Seleccione el día:         ',
           style: TextStyle(fontSize: 16, color: Colors.black),
         ),
-        DecoratedBox(
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.green),
-              borderRadius: BorderRadius.circular(10.0)),
-          child: SizedBox(
-            //width: 200.0,
-            child: DropdownButton<String>(
-                //hint: Text(horarios.dia.toString()),
-                value: _selection,
-                items: dropdownMenuOptions,
-                onChanged: (s) {
-                  setState(() {
-                    _selection = s;
-                    // horarios.dia = s!;
-                  });
-                }),
-          ),
+        SizedBox(
+          //width: 200.0,
+          child: DropdownButton<String>(
+              //hint: Text(horarios.dia.toString()),
+              value: _selection,
+              items: dropdownMenuOptions,
+              onChanged: (s) {
+                setState(() {
+                  _selection = s;
+                  // horarios.dia = s!;
+                });
+              }),
         ),
       ],
     );

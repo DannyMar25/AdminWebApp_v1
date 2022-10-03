@@ -83,22 +83,25 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
       ),
       drawer: const MenuWidget(),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(15.0),
-          child: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                _crearNombre(),
-                _crearTelefono(),
-                _crearCorreo(),
-                const Divider(),
-                _crearFecha(context),
-                const Divider(),
-                const Divider(),
-                _verListado(),
-                _crearBoton(),
-              ],
+        child: Center(
+          child: Container(
+            width: 850,
+            padding: const EdgeInsets.all(15.0),
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  _crearNombre(),
+                  _crearTelefono(),
+                  _crearCorreo(),
+                  const Divider(),
+                  _crearFecha(context),
+                  const Divider(),
+                  const Divider(),
+                  _verListado(),
+                  _crearBoton(),
+                ],
+              ),
             ),
           ),
         ),
@@ -219,6 +222,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
             final horarios = snapshot.data;
             return SizedBox(
                 height: 300,
+                width: 650,
                 child: ListView.builder(
                   itemCount: horarios!.length,
                   itemBuilder: (context, i) => _crearItem(context, horarios[i]),

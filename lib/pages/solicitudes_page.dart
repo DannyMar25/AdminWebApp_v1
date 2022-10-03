@@ -55,15 +55,18 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
       ),
       drawer: const MenuWidget(),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(15.0),
-          child: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                _verListado(),
-                // _crearBoton(),
-              ],
+        child: Center(
+          child: Container(
+            width: 850,
+            padding: const EdgeInsets.all(15.0),
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  _verListado(),
+                  // _crearBoton(),
+                ],
+              ),
             ),
           ),
         ),
@@ -114,7 +117,7 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
         children: [
           //Divider(color: Colors.purple),
           SizedBox(
-            width: 700.0,
+            width: 500.0,
             child: Card(
               elevation: 8,
               margin: const EdgeInsets.all(10),
@@ -149,11 +152,9 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
                                 subtitle: Column(
                                   children: [
                                     Text("Fecha de solicitud:"
-                                        '${formulario.fechaIngreso}'),
-
-                                    // Text("Identificacion: " +
-                                    //     '${formulario.identificacion}'),
-                                    Text("Posible adoptante para: "
+                                        '${formulario.fechaIngreso}'
+                                        '\n'
+                                        "Posible adoptante para: "
                                         '${formulario.animal!.nombre}'),
                                   ],
                                 ),

@@ -61,16 +61,19 @@ class _SolicitudesRechazadasPageState extends State<SolicitudesRechazadasPage> {
       ),
       drawer: const MenuWidget(),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(15.0),
-          child: Form(
-            key: formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Padding(padding: EdgeInsets.only(bottom: 12.0)),
-                _verListado()
-              ],
+        child: Center(
+          child: Container(
+            width: 850,
+            padding: const EdgeInsets.all(15.0),
+            child: Form(
+              key: formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Padding(padding: EdgeInsets.only(bottom: 12.0)),
+                  _verListado()
+                ],
+              ),
             ),
           ),
         ),

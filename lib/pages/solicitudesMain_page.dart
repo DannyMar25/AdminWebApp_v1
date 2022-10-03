@@ -58,104 +58,101 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
       ),
       drawer: const MenuWidget(),
       body: SingleChildScrollView(
-        child: Container(
-          // decoration: BoxDecoration(
-          //   image: DecorationImage(
-          //     image: AssetImage("assets/fondoanimales.jpg"),
-          //     fit: BoxFit.cover,
-          //   ),
-          //),
-          padding: const EdgeInsets.all(15.0),
-          child: Form(
-            key: formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  "Posible adoptante para:",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                const Padding(padding: EdgeInsets.only(bottom: 12.0)),
-                //Divider(),
-                _mostrarFoto(),
-                // Divider(),
-                _mostrarNombreAn(),
-                const Divider(
-                  color: Colors.transparent,
-                ),
+        child: Center(
+          child: Container(
+            width: 850,
+            padding: const EdgeInsets.all(15.0),
+            child: Form(
+              key: formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Posible adoptante para:",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  const Padding(padding: EdgeInsets.only(bottom: 12.0)),
+                  //Divider(),
+                  _mostrarFoto(),
+                  // Divider(),
+                  _mostrarNombreAn(),
+                  const Divider(
+                    color: Colors.transparent,
+                  ),
 
-                _mostrarFecha(),
-                const Divider(
-                  color: Colors.transparent,
-                ),
-                // _crearEstadoCita(),
-                //Text("Cita Atendida"),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(12.0),
-                              child: _botonDatosPer(),
-                            ),
-                            const Text('Datos personales'),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(12.0),
-                              child: _botonSituacionFam(),
-                            ),
-                            const Text('Situacion familiar')
-                          ],
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(12.0),
-                              child: _botonDomicilio(),
-                            ),
-                            const Text('Domicilio')
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(12.0),
-                              child: _botonRelacionAnim(),
-                            ),
-                            const Text('Relacion con animales')
-                          ],
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-                //_botonPDF(),
-                const Divider(
-                  color: Colors.transparent,
-                ),
-                const Padding(padding: EdgeInsets.only(bottom: 12.0)),
+                  _mostrarFecha(),
+                  const Divider(
+                    color: Colors.transparent,
+                  ),
+                  // _crearEstadoCita(),
+                  //Text("Cita Atendida"),
+                  Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Column(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(12.0),
+                                child: _botonDatosPer(),
+                              ),
+                              const Text('Datos personales'),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(12.0),
+                                child: _botonSituacionFam(),
+                              ),
+                              const Text('Situacion familiar')
+                            ],
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Column(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(12.0),
+                                child: _botonDomicilio(),
+                              ),
+                              const Text('Domicilio')
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(12.0),
+                                child: _botonRelacionAnim(),
+                              ),
+                              const Text('Relacion con animales')
+                            ],
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                  //_botonPDF(),
+                  const Divider(
+                    color: Colors.transparent,
+                  ),
+                  const Padding(padding: EdgeInsets.only(bottom: 12.0)),
 
-                _crearBotonPDF(),
-                const Divider(
-                  color: Colors.transparent,
-                ),
-                const Padding(padding: EdgeInsets.only(bottom: 12.0)),
-                _crearBotonObservaciones()
-                //_crearBoton(),
+                  _crearBotonPDF(),
+                  const Divider(
+                    color: Colors.transparent,
+                  ),
+                  const Padding(padding: EdgeInsets.only(bottom: 12.0)),
+                  _crearBotonObservaciones()
+                  //_crearBoton(),
 
-                // _crearDisponible(),
-              ],
+                  // _crearDisponible(),
+                ],
+              ),
             ),
           ),
         ),

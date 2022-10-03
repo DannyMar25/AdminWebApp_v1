@@ -65,39 +65,49 @@ class _IngresoDonacionesOutAddPageState
         children: [
           //Background(),
           SingleChildScrollView(
-            child: Container(
-              padding: const EdgeInsets.all(15.0),
-              child: Form(
-                  key: formKey,
-                  child: Column(
-                    children: [
-                      Text(
-                        'Donaciones',
-                        style: TextStyle(
-                          fontSize: 33,
-                          foreground: Paint()
-                            ..style = PaintingStyle.stroke
-                            ..strokeWidth = 3
-                            ..color = Colors.blueGrey[300]!,
+            child: Center(
+              child: Container(
+                width: 850,
+                padding: const EdgeInsets.all(15.0),
+                child: Form(
+                    key: formKey,
+                    child: Column(
+                      children: [
+                        Text(
+                          'Donaciones',
+                          style: TextStyle(
+                            fontSize: 33,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = 3
+                              ..color = Colors.blueGrey[300]!,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                      const Divider(),
+                        const Divider(),
 
-                      const Divider(),
-                      _crearTipoDonacion(),
-                      const Divider(),
-                      _crearUnidades(),
-                      const Divider(),
-                      _crearCantidadDonar(),
-                      //_buildChild(),
-                      const Divider(),
-                      _crearDescripcion(),
-                      const Divider(),
-                      _crearBoton(),
-                      // _crearCantidad(),
-                    ],
-                  )),
+                        const Divider(),
+                        _crearTipoDonacion(),
+                        const Divider(),
+                        _crearUnidades(),
+                        const Divider(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('Cantidad por retirar: \n(unidades)'),
+                            _crearCantidadDonar()
+                          ],
+                        ),
+                        //_crearCantidadDonar(),
+                        //_buildChild(),
+                        const Divider(),
+                        _crearDescripcion(),
+                        const Divider(),
+                        _crearBoton(),
+                        // _crearCantidad(),
+                      ],
+                    )),
+              ),
             ),
           ),
         ],
@@ -167,22 +177,26 @@ class _IngresoDonacionesOutAddPageState
   }
 
   Widget _crearCantidadDonar() {
-    return NumberInputPrefabbed.squaredButtons(
-      controller: cantidadOut,
-      min: 1,
-      max: donaciones.cantidad,
-      initialValue: 1,
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'Ingresa una cantidad valida';
-        } else if (int.parse(value) < 1 ||
-            int.parse(value) > donaciones.cantidad) {
-          return 'Ingrese cantidad dentro del rango';
-        } else {
-          return null;
-        }
-      },
-      //onChanged: ,
+    return SizedBox(
+      width: 300,
+      child: NumberInputPrefabbed.squaredButtons(
+        style: const TextStyle(fontSize: 18),
+        controller: cantidadOut,
+        min: 1,
+        max: donaciones.cantidad,
+        initialValue: 1,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'Ingresa una cantidad valida';
+          } else if (int.parse(value) < 1 ||
+              int.parse(value) > donaciones.cantidad) {
+            return 'Ingrese cantidad dentro del rango';
+          } else {
+            return null;
+          }
+        },
+        //onChanged: ,
+      ),
     );
   }
 

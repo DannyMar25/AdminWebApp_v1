@@ -50,17 +50,20 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
                   ]),
         ],
       ),
-      body: Container(
-        padding: const EdgeInsets.all(15.0),
-        child: Form(
-          child: Column(
-            children: [
-              _crearTipoDonacion(),
-              const Divider(),
-              _verListado(),
-              const Divider(),
-              // _mostrarTotal()
-            ],
+      body: Center(
+        child: Container(
+          width: 850,
+          padding: const EdgeInsets.all(15.0),
+          child: Form(
+            child: Column(
+              children: [
+                _crearTipoDonacion(),
+                const Divider(),
+                _verListado(),
+                const Divider(),
+                // _mostrarTotal()
+              ],
+            ),
           ),
         ),
       ),

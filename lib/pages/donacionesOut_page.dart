@@ -72,30 +72,33 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
         children: [
           //Background(),
           SingleChildScrollView(
-            child: Container(
-              padding: const EdgeInsets.all(15.0),
-              child: Form(
-                  key: formKey,
-                  child: Column(
-                    children: [
-                      Text(
-                        'Donaciones Out',
-                        style: TextStyle(
-                          fontSize: 33,
-                          foreground: Paint()
-                            ..style = PaintingStyle.stroke
-                            ..strokeWidth = 3
-                            ..color = Colors.blueGrey[300]!,
+            child: Center(
+              child: Container(
+                width: 850,
+                padding: const EdgeInsets.all(15.0),
+                child: Form(
+                    key: formKey,
+                    child: Column(
+                      children: [
+                        Text(
+                          'Donaciones Out',
+                          style: TextStyle(
+                            fontSize: 33,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = 3
+                              ..color = Colors.blueGrey[300]!,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                      const Divider(),
-                      _crearTipoDonacion(),
-                      const Divider(),
-                      _verListado(),
-                      const Divider(),
-                    ],
-                  )),
+                        const Divider(),
+                        _crearTipoDonacion(),
+                        const Divider(),
+                        _verListado(),
+                        const Divider(),
+                      ],
+                    )),
+              ),
             ),
           ),
         ],

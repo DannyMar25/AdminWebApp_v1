@@ -60,29 +60,33 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
       ),
       drawer: const MenuWidget(),
       body: SingleChildScrollView(
-        child: Container(
-          // decoration: BoxDecoration(
-          //   image: DecorationImage(
-          //     image: AssetImage("assets/fondoanimales.jpg"),
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
-          padding: const EdgeInsets.all(15.0),
-          child: Form(
-            key: formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  "SEGUIMIENTO DE ADOPCIONES",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.blueGrey),
-                ),
-                const Padding(padding: EdgeInsets.only(bottom: 12.0)),
-                _verListado()
-              ],
+        child: Center(
+          child: Container(
+            width: 850,
+
+            // decoration: BoxDecoration(
+            //   image: DecorationImage(
+            //     image: AssetImage("assets/fondoanimales.jpg"),
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
+            padding: const EdgeInsets.all(15.0),
+            child: Form(
+              key: formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "SEGUIMIENTO DE ADOPCIONES",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.blueGrey),
+                  ),
+                  const Padding(padding: EdgeInsets.only(bottom: 12.0)),
+                  _verListado()
+                ],
+              ),
             ),
           ),
         ),

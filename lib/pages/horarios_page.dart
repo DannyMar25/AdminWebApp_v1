@@ -85,22 +85,25 @@ class _HorariosPageState extends State<HorariosPage> {
         ],
       ),
       drawer: const MenuWidget(),
-      body: Container(
-        padding: const EdgeInsets.all(15.0),
-        child: Form(
-          child: Column(
-            children: [
-              _crearDia(),
-              const Divider(),
-              _crearHoraDia(),
-              const Divider(),
-              _crearDisponible(),
-              const Divider(),
-              // _buildChild(),
-              // Divider(),
-              _crearBoton(),
-              // Divider(),
-            ],
+      body: Center(
+        child: Container(
+          width: 850,
+          padding: const EdgeInsets.all(15.0),
+          child: Form(
+            child: Column(
+              children: [
+                _crearDia(),
+                const Divider(),
+                _crearHoraDia(),
+                const Divider(),
+                _crearDisponible(),
+                const Divider(),
+                // _buildChild(),
+                // Divider(),
+                _crearBoton(),
+                // Divider(),
+              ],
+            ),
           ),
         ),
       ),

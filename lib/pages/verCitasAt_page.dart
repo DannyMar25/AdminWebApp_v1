@@ -50,33 +50,24 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
                       child: Text("Cerrar Sesión"),
                     )
                   ]),
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
       ),
       drawer: const MenuWidget(),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(15.0),
-          child: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                _crearFecha(context),
-                const Divider(),
-                _verListado(),
-                // _crearBoton(),
-              ],
+        child: Center(
+          child: Container(
+            width: 850,
+            padding: const EdgeInsets.all(15.0),
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  _crearFecha(context),
+                  const Divider(),
+                  _verListado(),
+                  // _crearBoton(),
+                ],
+              ),
             ),
           ),
         ),

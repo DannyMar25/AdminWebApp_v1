@@ -63,77 +63,80 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
         children: [
           //Background(),
           SingleChildScrollView(
-            child: Container(
-              padding: const EdgeInsets.all(15.0),
-              child: Form(
-                  key: formKey,
-                  child: Column(
-                    children: [
-                      Text(
-                        'Donaciones',
-                        style: TextStyle(
-                          fontSize: 33,
-                          foreground: Paint()
-                            ..style = PaintingStyle.stroke
-                            ..strokeWidth = 3
-                            ..color = Colors.blueGrey[300]!,
+            child: Center(
+              child: Container(
+                width: 850,
+                padding: const EdgeInsets.all(15.0),
+                child: Form(
+                    key: formKey,
+                    child: Column(
+                      children: [
+                        Text(
+                          'Donaciones',
+                          style: TextStyle(
+                            fontSize: 33,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = 3
+                              ..color = Colors.blueGrey[300]!,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                      const Divider(),
+                        const Divider(),
 
-                      const Divider(),
-                      _crearTipoDonacion(),
-                      const Divider(),
-                      _crearUnidades(),
-                      const Divider(),
-                      _buildChild(),
-                      const Divider(),
-                      _crearDescripcion(),
-                      const Divider(),
-                      _mostrarDisponibilidad(),
-                      const Divider(),
-                      Text(
-                        'Cambiar disponibilidad de la donación.',
-                        style: TextStyle(
-                          fontSize: 18,
-                          foreground: Paint()
-                            ..style = PaintingStyle.stroke
-                            ..strokeWidth = 1.5
-                            ..color = Colors.orange,
+                        const Divider(),
+                        _crearTipoDonacion(),
+                        const Divider(),
+                        _crearUnidades(),
+                        const Divider(),
+                        _buildChild(),
+                        const Divider(),
+                        _crearDescripcion(),
+                        const Divider(),
+                        _mostrarDisponibilidad(),
+                        const Divider(),
+                        Text(
+                          'Cambiar disponibilidad de la donación.',
+                          style: TextStyle(
+                            fontSize: 18,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = 1.5
+                              ..color = Colors.orange,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                      Row(
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Row(
+                                children: [
+                                  const Text('Disponible'),
+                                  _crearCheckBox1()
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  const Text('No Disponible'),
+                                  _crearCheckBox2()
+                                ],
+                              ),
+                            ]),
+                        const Padding(padding: EdgeInsets.only(bottom: 15.0)),
+                        const Divider(),
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Row(
-                              children: [
-                                const Text('Disponible'),
-                                _crearCheckBox1()
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                const Text('No Disponible'),
-                                _crearCheckBox2()
-                              ],
-                            ),
-                          ]),
-                      const Padding(padding: EdgeInsets.only(bottom: 15.0)),
-                      const Divider(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          _crearBoton(),
-                          const Padding(padding: EdgeInsets.only(right: 10)),
-                          _crearBotonEliminar()
-                        ],
-                      )
-                      //_crearBoton(),
-                      // _crearCantidad(),
-                    ],
-                  )),
+                            _crearBoton(),
+                            const Padding(padding: EdgeInsets.only(right: 10)),
+                            _crearBotonEliminar()
+                          ],
+                        )
+                        //_crearBoton(),
+                        // _crearCantidad(),
+                      ],
+                    )),
+              ),
             ),
           ),
         ],
@@ -161,8 +164,9 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       //mainAxisSize: MainAxisSize.max,
       children: [
         const Text(
-          'Seleccione el tipo de donación:  ',
-          style: TextStyle(fontSize: 16, color: Colors.black),
+          'Seleccione el tipo de donación: ',
+          style: TextStyle(
+              fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
         ),
         DropdownButton<String>(
           hint: Text(donaciones.tipo.toString()),
@@ -201,7 +205,8 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       decoration: const InputDecoration(
         labelText: 'Ingrese Peso (Kg.):',
-        labelStyle: TextStyle(fontSize: 16, color: Colors.black),
+        labelStyle: TextStyle(
+            fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
       ),
       onChanged: (s) {
         setState(() {
@@ -218,7 +223,8 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
           labelText: 'Descripción:',
-          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+          labelStyle: TextStyle(
+              fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold)),
       onChanged: (s) {
         setState(() {
           donaciones.descripcion = s;
@@ -234,6 +240,8 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
         labelText: 'Dsiponibilidad de la donación:',
+        labelStyle: TextStyle(
+            fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
         //labelStyle: ,
         //border: BorderRadius(BorderRadius.circular(2.0)),
         icon: Icon(
@@ -326,7 +334,8 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       decoration: const InputDecoration(
           labelText: 'Ingrese la cantidad:',
-          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+          labelStyle: TextStyle(
+              fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold)),
       onChanged: (s) {
         setState(() {
           donaciones.cantidad = int.parse(s);

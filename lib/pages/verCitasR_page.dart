@@ -55,30 +55,33 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
       ),
       drawer: const MenuWidget(),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(15.0),
-          child: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                _crearNombreClient(),
-                _crearTelfClient(),
-                const Divider(),
-                const Text(
-                  "Posible adoptante para:",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                const Divider(),
-                _mostrarFoto(),
-                // Divider(),
-                _mostrarNombreAn(),
-                const Divider(),
-                _crearEstadoCita(),
-                const Text("Cita Atendida"),
-                _crearBoton(),
+        child: Center(
+          child: Container(
+            width: 850,
+            padding: const EdgeInsets.all(15.0),
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  _crearNombreClient(),
+                  _crearTelfClient(),
+                  const Divider(),
+                  const Text(
+                    "Posible adoptante para:",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  const Divider(),
+                  _mostrarFoto(),
+                  // Divider(),
+                  _mostrarNombreAn(),
+                  const Divider(),
+                  _crearEstadoCita(),
+                  const Text("Cita Atendida"),
+                  _crearBoton(),
 
-                // _crearDisponible(),
-              ],
+                  // _crearDisponible(),
+                ],
+              ),
             ),
           ),
         ),
@@ -199,11 +202,11 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
               context: context,
               builder: (context) {
                 return AlertDialog(
-                  title: Text('Información'),
-                  content: Text('La cita ha sido atendida.'),
+                  title: const Text('Información'),
+                  content: const Text('La cita ha sido atendida.'),
                   actions: [
                     TextButton(
-                        child: Text('Ok'),
+                        child: const Text('Ok'),
                         //onPressed: () => Navigator.of(context).pop()),
                         onPressed: () {
                           horariosProvider.editarDisponibleCita(citas.horario!);

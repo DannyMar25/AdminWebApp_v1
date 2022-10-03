@@ -68,47 +68,45 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       ),
       drawer: const MenuWidget(),
       body: SingleChildScrollView(
-        child: Container(
-          // decoration: BoxDecoration(
-          //   image: DecorationImage(
-          //     image: AssetImage("assets/fondoanimales.jpg"),
-          //     fit: BoxFit.cover,
-          //   ),
-          //),
-          padding: const EdgeInsets.all(20.0),
-          child: Form(
-            key: formKey,
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              _mostrarEstado(),
-              const Divider(),
-              Text(
-                'Cambiar estado de la solicitud revisada.',
-                style: TextStyle(
-                  fontSize: 18,
-                  foreground: Paint()
-                    ..style = PaintingStyle.stroke
-                    ..strokeWidth = 2
-                    ..color = Colors.blueGrey,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Row(
-                  children: [const Text('Aprobado'), _crearCheckBox1()],
-                ),
-                Row(
-                  children: [const Text('Negado'), _crearCheckBox2()],
-                ),
-              ]),
-              const Padding(padding: EdgeInsets.only(bottom: 15.0)),
-              _crearObservacion(),
-              const Padding(padding: EdgeInsets.only(bottom: 30.0)),
-              _crearFechaResp(),
-              const Padding(padding: EdgeInsets.only(bottom: 15.0)),
-              _crearBoton(),
-              const Padding(padding: EdgeInsets.only(bottom: 515.0)),
-            ]),
+        child: Center(
+          child: Container(
+            width: 850,
+            padding: const EdgeInsets.all(20.0),
+            child: Form(
+              key: formKey,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _mostrarEstado(),
+                    const Divider(),
+                    Text(
+                      'Cambiar estado de la solicitud revisada.',
+                      style: TextStyle(
+                        fontSize: 18,
+                        foreground: Paint()
+                          ..style = PaintingStyle.stroke
+                          ..strokeWidth = 2
+                          ..color = Colors.blueGrey,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      Row(
+                        children: [const Text('Aprobado'), _crearCheckBox1()],
+                      ),
+                      Row(
+                        children: [const Text('Negado'), _crearCheckBox2()],
+                      ),
+                    ]),
+                    const Padding(padding: EdgeInsets.only(bottom: 15.0)),
+                    _crearObservacion(),
+                    const Padding(padding: EdgeInsets.only(bottom: 30.0)),
+                    _crearFechaResp(),
+                    const Padding(padding: EdgeInsets.only(bottom: 15.0)),
+                    _crearBoton(),
+                    const Padding(padding: EdgeInsets.only(bottom: 515.0)),
+                  ]),
+            ),
           ),
         ),
       ),

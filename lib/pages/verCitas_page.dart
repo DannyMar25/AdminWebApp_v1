@@ -56,16 +56,19 @@ class _VerCitasPageState extends State<VerCitasPage> {
       ),
       drawer: const MenuWidget(),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(15.0),
-          child: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                _crearFecha(context),
-                const Divider(),
-                _verListado(),
-              ],
+        child: Center(
+          child: Container(
+            width: 850,
+            padding: const EdgeInsets.all(15.0),
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  _crearFecha(context),
+                  const Divider(),
+                  _verListado(),
+                ],
+              ),
             ),
           ),
         ),

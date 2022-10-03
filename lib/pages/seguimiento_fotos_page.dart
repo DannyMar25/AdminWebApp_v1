@@ -58,28 +58,31 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
           children: [
             //Background(),
             SingleChildScrollView(
-                child: Container(
-                    //color: Colors.lightGreenAccent,
-                    padding: const EdgeInsets.only(top: 10.0),
-                    child: Form(
-                        key: formKey,
-                        child: Column(
-                          // mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Fotos enviadas como evidencia',
-                              style: TextStyle(
-                                fontSize: 28,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 3
-                                  ..color = Colors.blueGrey,
-                              ),
-                              textAlign: TextAlign.start,
+                child: Center(
+              child: Container(
+                  width: 850,
+                  //color: Colors.lightGreenAccent,
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Form(
+                      key: formKey,
+                      child: Column(
+                        // mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Fotos enviadas como evidencia',
+                            style: TextStyle(
+                              fontSize: 28,
+                              foreground: Paint()
+                                ..style = PaintingStyle.stroke
+                                ..strokeWidth = 3
+                                ..color = Colors.blueGrey,
                             ),
-                            _crearListado()
-                          ],
-                        ))))
+                            textAlign: TextAlign.start,
+                          ),
+                          _crearListado()
+                        ],
+                      ))),
+            ))
           ],
         ));
   }

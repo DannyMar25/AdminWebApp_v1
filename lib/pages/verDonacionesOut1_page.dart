@@ -59,38 +59,46 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
         children: [
           //Background(),
           SingleChildScrollView(
-            child: Container(
-              padding: const EdgeInsets.all(15.0),
-              child: Form(
-                  key: formKey,
-                  child: Column(
-                    children: [
-                      Text(
-                        'Donaciones',
-                        style: TextStyle(
-                          fontSize: 33,
-                          foreground: Paint()
-                            ..style = PaintingStyle.stroke
-                            ..strokeWidth = 3
-                            ..color = Colors.blueGrey[300]!,
+            child: Center(
+              child: Container(
+                width: 850,
+                height: 500,
+                padding: const EdgeInsets.all(15.0),
+                child: Form(
+                    key: formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Donaciones',
+                          style: TextStyle(
+                            fontSize: 33,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = 3
+                              ..color = Colors.blueGrey[300]!,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                      const Divider(),
+                        const Divider(),
 
-                      const Divider(),
-                      _crearTipoDonacion(),
-                      const Divider(),
-                      _crearUnidades(),
-                      const Divider(),
-                      _buildChild(),
-                      const Divider(),
-                      _crearDescripcion(),
-                      const Divider(),
-                      //_crearBoton(),
-                      // _crearCantidad(),
-                    ],
-                  )),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
+                        _crearTipoDonacion(),
+                        const Divider(),
+                        _crearUnidades(),
+                        const Divider(),
+                        _buildChild(),
+                        const Divider(),
+                        _crearDescripcion(),
+                        const Divider(),
+                        _crearFecha(),
+                        //_crearBoton(),
+                        // _crearCantidad(),
+                      ],
+                    )),
+              ),
             ),
           ),
         ],
@@ -113,10 +121,12 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
     return TextFormField(
       initialValue: donaciones.tipo,
       readOnly: true,
+      enabled: false,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
           labelText: 'Tipo de Donación:',
-          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+          labelStyle: TextStyle(
+              fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold)),
     );
   }
 
@@ -132,11 +142,13 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
     return TextFormField(
       initialValue: donaciones.peso.toString(),
       readOnly: true,
+      enabled: false,
       textCapitalization: TextCapitalization.sentences,
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       decoration: const InputDecoration(
         labelText: 'Ingrese Peso (Kg.):',
-        labelStyle: TextStyle(fontSize: 16, color: Colors.black),
+        labelStyle: TextStyle(
+            fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
       ),
     );
     //}
@@ -144,11 +156,13 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
 
   Widget _crearDescripcion() {
     return TextFormField(
+      enabled: false,
       initialValue: donaciones.descripcion,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
           labelText: 'Descripción:',
-          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+          labelStyle: TextStyle(
+              fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold)),
       onChanged: (s) {
         setState(() {
           donaciones.descripcion = s;
@@ -161,14 +175,33 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
     return TextFormField(
       initialValue: donaciones.cantidad.toString(),
       //readOnly: false,
+      enabled: false,
       textCapitalization: TextCapitalization.sentences,
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       decoration: const InputDecoration(
           labelText: 'Ingrese la cantidad:',
-          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+          labelStyle: TextStyle(
+              fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold)),
       onChanged: (s) {
         setState(() {
           donaciones.cantidad = int.parse(s);
+        });
+      },
+    );
+  }
+
+  Widget _crearFecha() {
+    return TextFormField(
+      enabled: false,
+      initialValue: donaciones.fechaIngreso,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: const InputDecoration(
+          labelText: 'Fecha de registro:',
+          labelStyle: TextStyle(
+              fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold)),
+      onChanged: (s) {
+        setState(() {
+          donaciones.descripcion = s;
         });
       },
     );

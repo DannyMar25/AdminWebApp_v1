@@ -79,75 +79,78 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
         children: [
           //Background(),
           SingleChildScrollView(
-            child: Container(
-              padding: const EdgeInsets.all(15.0),
-              child: Form(
-                key: formKey,
-                child: Column(
-                  children: [
-                    Text('Datos personales',
-                        style: TextStyle(
-                          fontSize: 33,
-                          foreground: Paint()
-                            ..style = PaintingStyle.stroke
-                            ..strokeWidth = 2
-                            ..color = Colors.blueGrey,
-                        )),
-                    const Divider(),
-                    _mostrarNombreCom(),
-                    _mostrarCI(),
-                    _mostrarDireccion(),
-                    _mostrarFechaNacimiento(),
-                    _mostrarOcupacion(),
-                    _mostrarEmail(),
-                    const Divider(),
-                    Text('Instrucción',
-                        style: TextStyle(
-                          fontSize: 33,
-                          foreground: Paint()
-                            ..style = PaintingStyle.stroke
-                            ..strokeWidth = 2
-                            ..color = Colors.blueGrey,
-                        )),
-                    const Divider(),
-                    _mostrarNivelInstruccion(),
-                    const Divider(),
-                    Text('Teléfonos de contacto',
-                        style: TextStyle(
-                          fontSize: 33,
-                          foreground: Paint()
-                            ..style = PaintingStyle.stroke
-                            ..strokeWidth = 2
-                            ..color = Colors.blueGrey,
-                        )),
-                    const Divider(),
-                    _mostrarTelfCel(),
-                    _mostrarTelfDom(),
-                    _mostrarTelfTrab(),
-                    const Divider(),
-                    Text('Referencias personales',
-                        style: TextStyle(
-                          fontSize: 33,
-                          foreground: Paint()
-                            ..style = PaintingStyle.stroke
-                            ..strokeWidth = 2
-                            ..color = Colors.blueGrey,
-                        )),
-                    const Divider(),
-                    _mostrarNombreRef(),
-                    _mostrarParentesco(),
-                    _mostrarTelfRef(),
-                    const Divider(
-                      color: Colors.transparent,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _botonAtras(),
-                        _botonSiguiente(),
-                      ],
-                    )
-                  ],
+            child: Center(
+              child: Container(
+                width: 850,
+                padding: const EdgeInsets.all(15.0),
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      Text('Datos personales',
+                          style: TextStyle(
+                            fontSize: 33,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = 2
+                              ..color = Colors.blueGrey,
+                          )),
+                      const Divider(),
+                      _mostrarNombreCom(),
+                      _mostrarCI(),
+                      _mostrarDireccion(),
+                      _mostrarFechaNacimiento(),
+                      _mostrarOcupacion(),
+                      _mostrarEmail(),
+                      const Divider(),
+                      Text('Instrucción',
+                          style: TextStyle(
+                            fontSize: 33,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = 2
+                              ..color = Colors.blueGrey,
+                          )),
+                      const Divider(),
+                      _mostrarNivelInstruccion(),
+                      const Divider(),
+                      Text('Teléfonos de contacto',
+                          style: TextStyle(
+                            fontSize: 33,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = 2
+                              ..color = Colors.blueGrey,
+                          )),
+                      const Divider(),
+                      _mostrarTelfCel(),
+                      _mostrarTelfDom(),
+                      _mostrarTelfTrab(),
+                      const Divider(),
+                      Text('Referencias personales',
+                          style: TextStyle(
+                            fontSize: 33,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = 2
+                              ..color = Colors.blueGrey,
+                          )),
+                      const Divider(),
+                      _mostrarNombreRef(),
+                      _mostrarParentesco(),
+                      _mostrarTelfRef(),
+                      const Divider(
+                        color: Colors.transparent,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _botonAtras(),
+                          _botonSiguiente(),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

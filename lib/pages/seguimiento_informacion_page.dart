@@ -62,199 +62,208 @@ class _InformacionSeguimientoPageState
           alignment: Alignment.center,
           children: [
             SingleChildScrollView(
-              child: Container(
-                child: Form(
-                  key: formKey,
-                  child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            'Información de la mascota adoptada',
-                            style: TextStyle(
-                              fontSize: 28,
-                              foreground: Paint()
-                                ..style = PaintingStyle.stroke
-                                ..strokeWidth = 3
-                                ..color = Colors.blueAccent,
+              child: Center(
+                child: Container(
+                  width: 850,
+                  child: Form(
+                    key: formKey,
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              'Información de la mascota adoptada',
+                              style: TextStyle(
+                                fontSize: 28,
+                                foreground: Paint()
+                                  ..style = PaintingStyle.stroke
+                                  ..strokeWidth = 3
+                                  ..color = Colors.blueAccent,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
-                          ),
-                          const Divider(),
-                          _mostrarFoto(),
-                          const Divider(
-                            color: Colors.white,
-                          ),
-                          Row(
-                            children: [
-                              const Expanded(
-                                child: Text(
+                            const Divider(),
+                            _mostrarFoto(),
+                            const Divider(
+                              color: Colors.white,
+                            ),
+                            Row(
+                              children: [
+                                const Expanded(
+                                  child: Text(
+                                    'Nombre: ',
+                                    textAlign: TextAlign.left,
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    '${animal.nombre}                                ',
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                                const Expanded(
+                                  child: Text(
+                                    'Etapa de vida: ',
+                                    textAlign: TextAlign.left,
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    '${animal.etapaVida}      ',
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                                const Expanded(
+                                  child: Text(
+                                    'Raza: ',
+                                    textAlign: TextAlign.left,
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    animal.raza,
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Divider(),
+                            Row(
+                              //crossAxisAlignment: CrossAxisAlignment.end,
+                              //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                const Expanded(
+                                  child: Text(
+                                    'Color: ',
+                                    textAlign: TextAlign.left,
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    '${animal.color}               ',
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                                const Expanded(
+                                  child: Text(
+                                    'Tamaño: ',
+                                    textAlign: TextAlign.left,
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    '${animal.tamanio}      ',
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                                const Expanded(
+                                  child: Text(
+                                    'Sexo: ',
+                                    textAlign: TextAlign.left,
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    animal.sexo,
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Divider(),
+                            const Divider(
+                              color: Colors.white,
+                            ),
+                            Text(
+                              'Información del adoptante',
+                              style: TextStyle(
+                                fontSize: 28,
+                                foreground: Paint()
+                                  ..style = PaintingStyle.stroke
+                                  ..strokeWidth = 3
+                                  ..color = Colors.blueAccent,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            const Divider(),
+                            const Divider(
+                              color: Colors.white,
+                            ),
+                            Row(
+                              children: [
+                                const Text(
                                   'Nombre: ',
-                                  textAlign: TextAlign.left,
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  '${animal.nombre}                                ',
-                                  textAlign: TextAlign.left,
+                                Text(
+                                  '${datosA.nombreCom}  ',
+                                  textAlign: TextAlign.center,
                                 ),
-                              ),
-                              const Expanded(
-                                child: Text(
-                                  'Etapa de vida: ',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  '${animal.etapaVida}      ',
-                                  textAlign: TextAlign.left,
-                                ),
-                              ),
-                              const Expanded(
-                                child: Text(
-                                  'Raza: ',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  animal.raza,
-                                  textAlign: TextAlign.left,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const Divider(),
-                          Row(
-                            //crossAxisAlignment: CrossAxisAlignment.end,
-                            //mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              const Expanded(
-                                child: Text(
-                                  'Color: ',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  '${animal.color}               ',
-                                  textAlign: TextAlign.left,
-                                ),
-                              ),
-                              const Expanded(
-                                child: Text(
-                                  'Tamaño: ',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  '${animal.tamanio}      ',
-                                  textAlign: TextAlign.left,
-                                ),
-                              ),
-                              const Expanded(
-                                child: Text(
-                                  'Sexo: ',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  animal.sexo,
-                                  textAlign: TextAlign.left,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const Divider(),
-                          const Divider(
-                            color: Colors.white,
-                          ),
-                          Text(
-                            'Información del adoptante',
-                            style: TextStyle(
-                              fontSize: 28,
-                              foreground: Paint()
-                                ..style = PaintingStyle.stroke
-                                ..strokeWidth = 3
-                                ..color = Colors.blueAccent,
+                              ],
                             ),
-                            textAlign: TextAlign.center,
-                          ),
-                          const Divider(),
-                          const Divider(
-                            color: Colors.white,
-                          ),
-                          Row(
-                            children: [
-                              const Text(
-                                'Nombre: ',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                '${datosA.nombreCom}  ',
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                          const Divider(),
-                          Row(
-                            children: [
-                              const Text(
-                                'Dirección: ',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                datosA.direccion,
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                          const Divider(),
-                          Row(
-                            children: [
-                              const Text(
-                                'Teléfono: ',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                datosA.telfCel,
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                          const Divider(),
-                          Row(
-                            children: [
-                              const Text(
-                                'Correo: ',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                datosA.email,
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                          const Divider(),
-                        ],
-                      ),
-                      _crearBoton(context),
-                    ],
+                            const Divider(),
+                            Row(
+                              children: [
+                                const Text(
+                                  'Dirección: ',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  datosA.direccion,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                            const Divider(),
+                            Row(
+                              children: [
+                                const Text(
+                                  'Teléfono: ',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  datosA.telfCel,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                            const Divider(),
+                            Row(
+                              children: [
+                                const Text(
+                                  'Correo: ',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  datosA.email,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                            const Divider(),
+                          ],
+                        ),
+                        _crearBoton(context),
+                      ],
+                    ),
                   ),
                 ),
               ),
