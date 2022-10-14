@@ -215,7 +215,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
 
   Widget _verListado() {
     return FutureBuilder(
-        future: horariosProvider.cargarHorariosDia(_fecha),
+        future: horariosProvider.cargarHorariosDia1(_fecha),
         builder: (BuildContext context,
             AsyncSnapshot<List<HorariosModel>> snapshot) {
           if (snapshot.hasData) {
