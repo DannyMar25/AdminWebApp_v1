@@ -1,3 +1,4 @@
+import 'package:admin_web_v1/pages/forgotPassword_page.dart';
 import 'package:admin_web_v1/preferencias_usuario/preferencias_usuario.dart';
 import 'package:flutter/material.dart';
 
@@ -36,15 +37,6 @@ class _MenuWidgetState extends State<MenuWidget> {
             children: [
               ListTile(
                 leading: const Icon(
-                  Icons.pages,
-                  color: Colors.green,
-                ),
-                title: const Text('Ver mascotas registradas'),
-                onTap: () => Navigator.pushNamed(context, 'home'),
-              ),
-              const Divider(),
-              ListTile(
-                leading: const Icon(
                   Icons.app_registration,
                   color: Colors.green,
                 ),
@@ -53,6 +45,15 @@ class _MenuWidgetState extends State<MenuWidget> {
                   //Navigator.pop(context);
                   Navigator.pushNamed(context, 'animal');
                 },
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(
+                  Icons.pages,
+                  color: Colors.green,
+                ),
+                title: const Text('Ver mascotas registradas'),
+                onTap: () => Navigator.pushNamed(context, 'home'),
               ),
             ],
           ),
@@ -234,6 +235,19 @@ class _MenuWidgetState extends State<MenuWidget> {
                   onTap: () {
                     //Navigator.pop(context);
                     Navigator.pushNamed(context, 'registro');
+                  },
+                )
+              : const SizedBox(),
+          rol == 'Administrador'
+              ? ListTile(
+                  leading: const Icon(
+                    Icons.app_registration,
+                    color: Colors.green,
+                  ),
+                  title: const Text('Restablecer contraseña'),
+                  onTap: () {
+                    //Navigator.pop(context);
+                    Navigator.pushNamed(context, ForgotPassword.id);
                   },
                 )
               : const SizedBox(),
