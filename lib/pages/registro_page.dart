@@ -5,6 +5,7 @@ import 'package:admin_web_v1/providers/usuario_provider.dart';
 import 'package:admin_web_v1/utils/constants.dart';
 import 'package:admin_web_v1/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class RegistroPage extends StatefulWidget {
   const RegistroPage({Key? key}) : super(key: key);
@@ -147,6 +148,9 @@ class _RegistroPageState extends State<RegistroPage> {
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: TextField(
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
+            ],
             keyboardType: TextInputType.name,
             decoration: InputDecoration(
               icon: const Icon(Icons.alternate_email, color: Colors.green),

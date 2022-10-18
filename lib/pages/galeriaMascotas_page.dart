@@ -201,7 +201,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
                   : FadeInImage(
                       image: NetworkImage(animal.fotoUrl),
                       placeholder: const AssetImage('assets/cat_1.gif'),
-                      height: 250.0, //350
+                      height: 230.0, //250
                       //width: 250.0,
                       width: double.infinity,
                       fit: BoxFit.cover,
@@ -237,7 +237,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
             padding: EdgeInsets.symmetric(vertical: 2.0),
           ),
           Text(
-            'Busqueda personalizada',
+            'Búsqueda personalizada',
             style: TextStyle(color: Colors.green),
           ),
         ],

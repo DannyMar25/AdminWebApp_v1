@@ -10,6 +10,7 @@ import 'package:admin_web_v1/utils/utils.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class AgendarCitasPage extends StatefulWidget {
   const AgendarCitasPage({Key? key}) : super(key: key);
@@ -263,6 +264,9 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
     return TextFormField(
       //initialValue: animal.nombre,
       controller: nombre,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
+      ],
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
         labelText: 'Nombre',
@@ -287,7 +291,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
       keyboardType: TextInputType.phone,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: 'Teléfono',
+        labelText: 'Teléfono (Celular: 0998765432)',
       ),
       onSaved: (value) => telefono = value as TextEditingController,
       validator: (value) {
@@ -324,7 +328,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
             return Colors.green[700];
           }),
         ),
-        label: const Text('Guardar'),
+        label: const Text('Revisar'),
         icon: const Icon(Icons.save),
         autofocus: true,
         onPressed: () {
@@ -337,7 +341,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
                       'Nombre: ${nombre.text}\nTeléfono: ${telefono.text}\nCorreo: ${correo.text}\nFecha de la cita:$_fechaCompleta\nHora:$horaSeleccionada'),
                   actions: [
                     TextButton(
-                        child: const Text('Ok'),
+                        child: const Text('Guardar'),
                         //onPressed: () => Navigator.of(context).pop(),
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
@@ -352,7 +356,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
                           }
                         }),
                     TextButton(
-                        child: const Text('Revisar información'),
+                        child: const Text('Corregir información'),
                         //onPressed: () => Navigator.of(context).pop(),
                         onPressed: () => Navigator.of(context).pop()),
                   ],

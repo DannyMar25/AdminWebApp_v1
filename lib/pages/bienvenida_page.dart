@@ -85,7 +85,7 @@ class BienvenidaPage extends StatelessWidget {
                 shrinkWrap: true,
                 children: [
                   SizedBox(
-                    height: 530,
+                    height: 450, //530
                     child: Accordion(
                       maxOpenSections: 1,
                       headerBackgroundColorOpened: Colors.black54,
@@ -226,7 +226,7 @@ class BienvenidaPage extends StatelessWidget {
                                               vertical: 2.0),
                                         ),
                                         Text(
-                                          'Registrar nueva cita',
+                                          'Agendar cita',
                                           style: TextStyle(color: Colors.green),
                                         ),
                                       ],

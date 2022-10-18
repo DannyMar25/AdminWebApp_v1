@@ -80,7 +80,8 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
             _botonBusqueda(),
             const Padding(padding: EdgeInsets.only(bottom: 10.0)),
             Expanded(
-              child: buildChild(),
+              child: _crearListadoBusqueda(),
+              //child: buildChild(),
             )
             //_crearListado(),
           ],
@@ -112,11 +113,11 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
   Widget _crearListadoBusqueda() {
     return FutureBuilder(
         future: animalesProvider.cargarBusqueda(
-          especie!,
-          sexo!,
-          etapaVida!,
-          tamanio!,
-          estado!,
+          especie,
+          sexo,
+          etapaVida,
+          tamanio,
+          estado,
         ),
         builder:
             (BuildContext context, AsyncSnapshot<List<AnimalModel>> snapshot) {

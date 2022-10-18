@@ -174,7 +174,7 @@ class _AnimalPageState extends State<AnimalPage> {
 
   seleccionEspecie() {
     if (animal.id == '') {
-      return _selection;
+      return _selection3;
     } else {
       return animal.especie.toString();
     }
@@ -240,7 +240,7 @@ class _AnimalPageState extends State<AnimalPage> {
 
   seleccionSexo() {
     if (animal.id == '') {
-      return _selection;
+      return _selection1;
     } else {
       return animal.sexo.toString();
     }
@@ -278,7 +278,7 @@ class _AnimalPageState extends State<AnimalPage> {
 
   seleccionEtapa() {
     if (animal.id == '') {
-      return _selection;
+      return _selection2;
     } else {
       return animal.etapaVida.toString();
     }
@@ -494,7 +494,7 @@ class _AnimalPageState extends State<AnimalPage> {
 
   seleccionEst() {
     if (animal.id == '') {
-      return _selection;
+      return _selection4;
     } else {
       return animal.esterilizado.toString();
     }
@@ -586,7 +586,7 @@ class _AnimalPageState extends State<AnimalPage> {
         autofocus: true,
         onPressed: () {
           utils.mostrarAlertaBorrar(context,
-              'Estás seguro de borrar el registro.', animal.id.toString());
+              '¿Estás seguro de borrar el registro?', animal.id.toString());
         });
   }
 

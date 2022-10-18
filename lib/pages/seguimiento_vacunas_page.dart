@@ -37,7 +37,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
     formularios = arg['formulario'] as FormulariosModel;
     animal = arg['animal'] as AnimalModel;
     return Scaffold(
-        backgroundColor: const Color.fromARGB(223, 211, 212, 207),
+        backgroundColor: const Color.fromARGB(255, 236, 234, 219),
         appBar: AppBar(
           title: const Text('Registros'),
           backgroundColor: Colors.green,
@@ -71,14 +71,12 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
                     child: Column(
                       // mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'Registro de vacunas',
                           style: TextStyle(
+                            fontWeight: FontWeight.bold,
                             fontSize: 28,
-                            foreground: Paint()
-                              ..style = PaintingStyle.stroke
-                              ..strokeWidth = 2
-                              ..color = Colors.blueGrey,
+                            color: Color.fromARGB(255, 243, 165, 9),
                           ),
                           textAlign: TextAlign.start,
                         ),
@@ -133,15 +131,19 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
               height: 245.0,
               width: 650.0,
               child: Card(
-                color: const Color.fromARGB(255, 143, 233, 148),
+                clipBehavior: Clip.antiAlias,
+                shape: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Colors.white)),
+                color: const Color.fromARGB(255, 243, 243, 230),
                 elevation: 8,
-                shadowColor: Colors.green,
+                shadowColor: const Color.fromARGB(255, 19, 154, 156),
                 margin: const EdgeInsets.all(20),
                 child: Column(
                   children: [
                     const Padding(padding: EdgeInsets.all(1.0)),
                     ColoredBox(
-                      color: const Color.fromARGB(255, 33, 168, 39),
+                      color: const Color.fromARGB(255, 51, 178, 213),
                       child: Row(
                         children: const [
                           Padding(padding: EdgeInsets.only(top: 15)),
@@ -215,7 +217,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
                       ],
                     ),
                     ColoredBox(
-                      color: const Color.fromARGB(255, 33, 168, 39),
+                      color: const Color.fromARGB(255, 51, 178, 213),
                       child: Row(
                         children: const [
                           SizedBox(

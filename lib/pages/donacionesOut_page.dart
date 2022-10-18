@@ -81,7 +81,7 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
                     child: Column(
                       children: [
                         Text(
-                          'Donaciones Out',
+                          'Donaciones salientes',
                           style: TextStyle(
                             fontSize: 33,
                             foreground: Paint()

@@ -110,8 +110,9 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
   }
 
   Widget _crearItem(BuildContext context, FormulariosModel formulario) {
-    //String fecha = cita.horario!.dia;
-    //String hora = cita.horario!.hora;
+    DateTime fechaIngresoT = DateTime.parse(formulario.fechaIngreso);
+    String fechaIn =
+        '${fechaIngresoT.year}-${fechaIngresoT.month}-${fechaIngresoT.day}';
     return ListTile(
       title: Column(
         children: [
@@ -152,7 +153,7 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
                                 subtitle: Column(
                                   children: [
                                     Text("Fecha de solicitud:"
-                                        '${formulario.fechaIngreso}'
+                                        '$fechaIn'
                                         '\n'
                                         "Posible adoptante para: "
                                         '${formulario.animal!.nombre}'),

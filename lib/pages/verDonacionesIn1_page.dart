@@ -385,7 +385,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       autofocus: true,
       onPressed: () {
         mostrarAlertaBorrarDonacion(context,
-            'Estas seguro de borrar el registro.', donaciones.id.toString());
+            '¿Estás seguro de borrar el registro?', donaciones.id.toString());
         // donacionesProvider.borrarDonacion(donaciones.id);
         // mostrarAlertaOk(
         //     context, 'Registro eliminado con éxito', 'verDonacionesInAdd');

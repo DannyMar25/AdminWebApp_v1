@@ -73,7 +73,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                   Icons.app_registration,
                   color: Colors.green,
                 ),
-                title: const Text('Horarios registrados'),
+                title: const Text('Ver horarios registrados'),
                 onTap: () {
                   //Navigator.pop(context);
                   Navigator.pushNamed(context, 'horariosAdd');
@@ -84,7 +84,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                   Icons.list_alt,
                   color: Colors.green,
                 ),
-                title: const Text('Agendar citas'),
+                title: const Text('Agendar cita'),
                 onTap: () {
                   Navigator.pushNamed(context, 'agendarCita');
                 },

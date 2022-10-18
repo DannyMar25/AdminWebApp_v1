@@ -64,6 +64,13 @@ class _VerCitasPageState extends State<VerCitasPage> {
               key: formKey,
               child: Column(
                 children: [
+                  const Text(
+                    "Seleccione el día que desea ver la cita.",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    textAlign: TextAlign.center,
+                  ),
+                  const Divider(color: Colors.transparent),
+                  const Divider(color: Colors.transparent),
                   _crearFecha(context),
                   const Divider(),
                   _verListado(),
