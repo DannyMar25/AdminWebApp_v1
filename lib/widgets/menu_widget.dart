@@ -247,7 +247,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                   title: const Text('Restablecer contraseña'),
                   onTap: () {
                     //Navigator.pop(context);
-                    Navigator.pushNamed(context, ForgotPassword.id);
+                    Navigator.pushNamed(context, 'cambiarContrasena');
                   },
                 )
               : const SizedBox(),

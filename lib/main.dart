@@ -3,6 +3,7 @@ import 'package:admin_web_v1/pages/agendarCitas_page.dart';
 import 'package:admin_web_v1/pages/animal_page.dart';
 import 'package:admin_web_v1/pages/bienvenida_page.dart';
 import 'package:admin_web_v1/pages/busqueda_page.dart';
+import 'package:admin_web_v1/pages/cambiarPassword_page.dart';
 import 'package:admin_web_v1/pages/donacionesIn_page.dart';
 import 'package:admin_web_v1/pages/donacionesOutAdd_page.dart';
 import 'package:admin_web_v1/pages/donacionesOut_page.dart';
@@ -104,7 +105,7 @@ class MyApp extends StatelessWidget {
             'donacionesOutAdd': (_) => const IngresoDonacionesOutPage(),
             // //'enviarMail': (_) => EmailSender(),
             'enviarMail': (_) => const SoportePage(),
-            // 'perfilUser': (_) => PerfilUsuarioPage(),
+            'cambiarContrasena': (_) => const CambiarPasswordPage(),
             'DonacionesOutAdd1': (_) => const IngresoDonacionesOutAddPage(),
             'verDonacionesOutAdd': (_) => const VerDonacionesOutAddPage(),
             'verDonacionesOutAdd1': (_) => const VerDonacionesOut1Page(),
