@@ -39,7 +39,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 236, 234, 219),
         appBar: AppBar(
-          title: const Text('Registros'),
+          title: const Text('Vacunas'),
           backgroundColor: Colors.green,
           actions: [
             PopupMenuButton<int>(

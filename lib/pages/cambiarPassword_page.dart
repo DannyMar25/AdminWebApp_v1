@@ -200,7 +200,7 @@ class _CambiarPasswordPageState extends State<CambiarPasswordPage> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     fillColor: Colors.green,
-                    labelText: 'Nueva Contraseña',
+                    labelText: 'Nueva contraseña',
                     //lable style
                     labelStyle: const TextStyle(
                       color: Colors.black,
@@ -269,7 +269,7 @@ class _CambiarPasswordPageState extends State<CambiarPasswordPage> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     fillColor: Colors.green,
-                    labelText: 'Confirmar Contraseña',
+                    labelText: 'Confirmar contraseña',
                     //lable style
                     labelStyle: const TextStyle(
                       color: Colors.black,

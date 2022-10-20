@@ -33,7 +33,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 236, 234, 219),
         appBar: AppBar(
-          title: const Text('Registros de desparasitación'),
+          title: const Text('Desparasitaciones'),
           backgroundColor: Colors.green,
           actions: [
             PopupMenuButton<int>(
