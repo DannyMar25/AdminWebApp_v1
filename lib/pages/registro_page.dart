@@ -175,6 +175,10 @@ class _RegistroPageState extends State<RegistroPage> {
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: TextField(
             keyboardType: TextInputType.number,
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly,
+              LengthLimitingTextInputFormatter(10)
+            ],
             decoration: InputDecoration(
               icon: const Icon(Icons.numbers, color: Colors.green),
               //hintText: 'dany',

@@ -289,6 +289,10 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
       //initialValue: animal.nombre,
       controller: telefono,
       keyboardType: TextInputType.phone,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly,
+        LengthLimitingTextInputFormatter(10)
+      ],
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
         labelText: 'Teléfono (Celular: 0998765432)',

@@ -7,6 +7,7 @@ import 'package:admin_web_v1/providers/usuario_provider.dart';
 import 'package:admin_web_v1/utils/utils.dart' as utils;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:image_picker/image_picker.dart';
 //import 'package:firebase_core/firebase_core.dart';
@@ -183,6 +184,9 @@ class _AnimalPageState extends State<AnimalPage> {
   Widget _crearNombre() {
     return TextFormField(
       initialValue: animal.nombre,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
+      ],
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
         labelText: 'Nombre',
@@ -321,6 +325,9 @@ class _AnimalPageState extends State<AnimalPage> {
   Widget _crearTemperamento() {
     return TextFormField(
       initialValue: animal.temperamento,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
+      ],
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
         labelText: 'Temperamento',
@@ -348,6 +355,9 @@ class _AnimalPageState extends State<AnimalPage> {
     return TextFormField(
       initialValue: animal.peso.toString(),
       textCapitalization: TextCapitalization.sentences,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d{0,2}')),
+      ],
       decoration: const InputDecoration(
         labelText: 'Peso en Kg.',
         labelStyle: TextStyle(fontSize: 21, color: Colors.black),
@@ -412,6 +422,9 @@ class _AnimalPageState extends State<AnimalPage> {
     return TextFormField(
       initialValue: animal.color,
       textCapitalization: TextCapitalization.sentences,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
+      ],
       decoration: const InputDecoration(
         labelText: 'Color',
         labelStyle: TextStyle(fontSize: 16, color: Colors.black),
@@ -438,6 +451,9 @@ class _AnimalPageState extends State<AnimalPage> {
     return TextFormField(
       initialValue: animal.raza,
       textCapitalization: TextCapitalization.sentences,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
+      ],
       decoration: const InputDecoration(
         labelText: 'Raza',
         labelStyle: TextStyle(fontSize: 16, color: Colors.black),

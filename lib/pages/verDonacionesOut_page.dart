@@ -117,7 +117,7 @@ class _VerDonacionesOutAddPageState extends State<VerDonacionesOutAddPage> {
             return Column(
               children: [
                 SizedBox(
-                    height: 490,
+                    height: 430, //490
                     child: ListView.builder(
                         itemCount: donaciones!.length,
                         itemBuilder: (context, i) =>

@@ -4,6 +4,7 @@ import 'package:admin_web_v1/providers/usuario_provider.dart';
 import 'package:admin_web_v1/utils/utils.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class VerDonacionesIn1Page extends StatefulWidget {
   const VerDonacionesIn1Page({Key? key}) : super(key: key);
@@ -173,14 +174,6 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
           value: _selection,
           items: dropdownMenuOptions,
           onChanged: null,
-          // onChanged: (s) {
-          //   setState(() {
-          //     _selection = s;
-
-          //     donaciones.tipo = s!;
-          //     //animal.tamanio = s!;
-          //   });
-          // },
         ),
       ],
     );
@@ -189,18 +182,16 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
   Widget _buildChild() {
     if (donaciones.tipo == 'Alimento') {
       return _crearPeso();
-    } //else {
-    //   if (_selection == 'Otros') {
-    //     return _crearDonacion();
-    //   }
-    // }
+    }
     return const Text('');
   }
 
   Widget _crearPeso() {
-    //if (_selection == 'Alimento') {
     return TextFormField(
       initialValue: donaciones.peso.toString(),
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d{0,2}')),
+      ],
       textCapitalization: TextCapitalization.sentences,
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       decoration: const InputDecoration(
@@ -239,7 +230,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       initialValue: donaciones.disponibilidad,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-        labelText: 'Dsiponibilidad de la donación:',
+        labelText: 'Disponibilidad de la donación:',
         labelStyle: TextStyle(
             fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
         //labelStyle: ,
@@ -315,22 +306,13 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
     );
   }
 
-  // Widget _crearDonacion() {
-  //   return TextFormField(
-  //     // initialValue: ,
-  //     readOnly: false,
-  //     textCapitalization: TextCapitalization.sentences,
-  //     decoration: InputDecoration(
-  //         labelText: 'Ingrese el tipo de donación:',
-  //         labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
-  //   );
-  // }
-
   Widget _crearUnidades() {
     return TextFormField(
       initialValue: donaciones.cantidad.toString(),
-      //readOnly: false,
       textCapitalization: TextCapitalization.sentences,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       decoration: const InputDecoration(
           labelText: 'Ingrese la cantidad:',

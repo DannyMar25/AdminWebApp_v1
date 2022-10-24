@@ -4,6 +4,7 @@ import 'package:admin_web_v1/providers/usuario_provider.dart';
 import 'package:admin_web_v1/utils/utils.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class IngresoDonacionesInPage extends StatefulWidget {
   const IngresoDonacionesInPage({Key? key}) : super(key: key);
@@ -157,10 +158,11 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
   }
 
   Widget _crearPeso() {
-    //if (_selection == 'Alimento') {
     return TextFormField(
-      //initialValue: donaciones.peso.toString(),
       textCapitalization: TextCapitalization.sentences,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d{0,2}')),
+      ],
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       decoration: const InputDecoration(
         labelText: 'Ingrese Peso (Kg.):',
@@ -178,14 +180,6 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
           donaciones.peso = double.parse(s);
         });
       },
-      // onSaved: (value) => donaciones.peso = double.parse(value!),
-      // validator: (value) {
-      //   if (utils.isNumeric(value!)) {
-      //     return null;
-      //   } else {
-      //     return 'Solo numeros';
-      //   }
-      // },
     );
     //}
   }
@@ -216,9 +210,10 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
 
   Widget _crearUnidades() {
     return TextFormField(
-      //initialValue: donaciones.cantidad.toString(),
-      //readOnly: false,
       textCapitalization: TextCapitalization.sentences,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       decoration: const InputDecoration(
           labelText: 'Ingrese la cantidad (Unidades):',
