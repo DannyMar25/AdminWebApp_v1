@@ -185,7 +185,7 @@ class _AnimalPageState extends State<AnimalPage> {
     return TextFormField(
       initialValue: animal.nombre,
       inputFormatters: [
-        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
+        FilteringTextInputFormatter.deny(RegExp("[0-9\-=@,\.;]")),
       ],
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
@@ -326,7 +326,7 @@ class _AnimalPageState extends State<AnimalPage> {
     return TextFormField(
       initialValue: animal.temperamento,
       inputFormatters: [
-        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
+        FilteringTextInputFormatter.deny(RegExp("[0-9\-=@,\.;]")),
       ],
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
@@ -423,7 +423,7 @@ class _AnimalPageState extends State<AnimalPage> {
       initialValue: animal.color,
       textCapitalization: TextCapitalization.sentences,
       inputFormatters: [
-        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
+        FilteringTextInputFormatter.deny(RegExp("[0-9\-=@,\.;]")),
       ],
       decoration: const InputDecoration(
         labelText: 'Color',
@@ -452,7 +452,7 @@ class _AnimalPageState extends State<AnimalPage> {
       initialValue: animal.raza,
       textCapitalization: TextCapitalization.sentences,
       inputFormatters: [
-        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
+        FilteringTextInputFormatter.deny(RegExp("[0-9\-=@,\.;]")),
       ],
       decoration: const InputDecoration(
         labelText: 'Raza',

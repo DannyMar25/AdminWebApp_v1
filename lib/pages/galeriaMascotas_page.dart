@@ -3,6 +3,7 @@ import 'package:admin_web_v1/providers/animales_provider.dart';
 import 'package:admin_web_v1/providers/usuario_provider.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 //import 'package:formvalidation/src/bloc/provider.dart';
 
@@ -104,6 +105,9 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
       child: TextField(
         controller: _textController,
         autocorrect: false,
+        inputFormatters: [
+          FilteringTextInputFormatter.deny(RegExp("[0-9\-=@,\.;]")),
+        ],
         onChanged: (s) {
           setState(() {
             nombre = s;

@@ -5,6 +5,7 @@ import 'package:admin_web_v1/providers/usuario_provider.dart';
 import 'package:admin_web_v1/utils/utils.dart';
 import 'package:admin_web_v1/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SoportePage extends StatefulWidget {
   const SoportePage({Key? key}) : super(key: key);
@@ -101,6 +102,9 @@ class _SoportePageState extends State<SoportePage> {
       //initialValue: datoPersona.nombreCom,
       readOnly: false,
       textCapitalization: TextCapitalization.sentences,
+      inputFormatters: [
+        FilteringTextInputFormatter.deny(RegExp("[0-9\-=@,\.;]")),
+      ],
       decoration: const InputDecoration(
           icon: Icon(
             Icons.person,
@@ -149,6 +153,9 @@ class _SoportePageState extends State<SoportePage> {
       //initialValue: datoPersona.nombreCom,
       readOnly: false,
       textCapitalization: TextCapitalization.sentences,
+      inputFormatters: [
+        FilteringTextInputFormatter.deny(RegExp("[0-9\-=@,\.;]")),
+      ],
       decoration: const InputDecoration(
           icon: Icon(Icons.edit),
           labelText: 'Asunto:',
