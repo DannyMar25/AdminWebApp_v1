@@ -92,40 +92,78 @@ class _AnimalPageState extends State<AnimalPage> {
                   ]),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Container(
-            width: 850,
-            padding: const EdgeInsets.all(15.0),
-            child: Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  _mostrarFoto(),
-
-                  _crearEspecie(),
-                  _crearNombre(),
-                  _crearSexo(),
-                  Row(children: [_crearEdad(), infoEtapa()]),
-                  // _crearEdad(),
-                  _crearTemperamento(),
-                  _crearPeso(),
-                  _crearTamanio(),
-                  _crearColor(),
-                  _crearRaza(),
-                  _crearEsterilizado(),
-                  _crearCaracteristicas(),
-                  // _crearDisponible(),
-                  //_crearBoton(),
-                  const Divider(
-                    color: Colors.transparent,
+      body: GridView.count(
+        crossAxisCount: 2,
+        children: [
+          SingleChildScrollView(
+            child: Center(
+              child: Container(
+                // width: 850,
+                padding: const EdgeInsets.all(15.0),
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      _mostrarFoto(),
+                      _crearEspecie(),
+                      _crearNombre(),
+                      _crearSexo(),
+                      Row(children: [_crearEdad(), infoEtapa()]),
+                      // _crearEdad(),
+                      _crearTemperamento(),
+                      //   _crearPeso(),
+                      //   _crearTamanio(),
+                      //   _crearColor(),
+                      //   _crearRaza(),
+                      //   _crearEsterilizado(),
+                      //   _crearCaracteristicas(),
+                      //   // _crearDisponible(),
+                      //   //_crearBoton(),
+                      //   const Divider(
+                      //     color: Colors.transparent,
+                      //   ),
+                      //_buildChild()
+                    ],
                   ),
-                  _buildChild()
-                ],
+                ),
               ),
             ),
           ),
-        ),
+          SingleChildScrollView(
+            child: Center(
+              child: Container(
+                // width: 850,
+                padding: const EdgeInsets.all(15.0),
+                // child: Form(
+                //   key: formKey,
+                child: Column(
+                  children: [
+                    // _mostrarFoto(),
+                    // _crearEspecie(),
+                    // _crearNombre(),
+                    // _crearSexo(),
+                    // Row(children: [_crearEdad(), infoEtapa()]),
+                    // // _crearEdad(),
+                    // _crearTemperamento(),
+                    _crearPeso(),
+                    _crearTamanio(),
+                    _crearColor(),
+                    _crearRaza(),
+                    _crearEsterilizado(),
+                    _crearCaracteristicas(),
+                    // _crearDisponible(),
+                    //_crearBoton(),
+                    const Divider(
+                      color: Colors.transparent,
+                    ),
+                    _buildChild()
+                  ],
+                ),
+              ),
+            ),
+          ),
+          //),
+        ],
       ),
     );
   }
@@ -669,20 +707,20 @@ class _AnimalPageState extends State<AnimalPage> {
       return FadeInImage(
         image: NetworkImage(animal.fotoUrl),
         placeholder: const AssetImage('assets/jar-loading.gif'),
-        height: 300,
+        height: 230, //300
         fit: BoxFit.contain,
       );
     } else {
       if (webImage.length == 8) {
         return Image.asset(
           'assets/no-image.png',
-          height: 300,
+          height: 230, //300
         );
       } else {
         return Image.memory(
           webImage,
           fit: BoxFit.cover,
-          height: 300,
+          height: 230, //300
         );
       }
     }
