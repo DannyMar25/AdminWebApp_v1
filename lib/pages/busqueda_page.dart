@@ -65,134 +65,140 @@ class _BusquedaPageState extends State<BusquedaPage> {
         ],
         title: const Text('Búsqueda de mascotas'),
       ),
-      body: Stack(
-        children: [
-          //Background(),
-          SingleChildScrollView(
-            child: Flexible(
-              fit: FlexFit.loose,
-              child: Container(
-                //padding: EdgeInsets.all(15.0),
-                child: Form(
-                    key: formKey,
-                    child: Column(
+      body: SingleChildScrollView(
+        child: Flexible(
+          fit: FlexFit.loose,
+          child: Container(
+            //padding: EdgeInsets.all(15.0),
+            child: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 70, //170
+                      child: Image(
+                        image: AssetImage("assets/dog_an6.gif"),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    const Text('Buscador',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.green,
+                          fontSize: 30,
+                        )),
+                    const Padding(padding: EdgeInsets.only(bottom: 5.0)),
+                    const Text(
+                      'Selecciona la o las categorías de tu gusto y te mostraremos los resultados.',
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(fontSize: 15),
+                    ),
+                    //Divider(),
+                    //Text('Especie:'),
+                    const Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        //Padding(padding: EdgeInsets.only(top: 1.0)),
-                        const SizedBox(
-                          height: 170,
-                          child: Image(
-                            image: AssetImage("assets/dog_an6.gif"),
-                            fit: BoxFit.fill,
+                        SizedBox(
+                          width: 400,
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Wrap(
+                                    spacing: 10,
+                                    children: const [
+                                      Expanded(
+                                        child: SizedBox(
+                                            height: 60, //80
+                                            child: Image(
+                                                image: AssetImage(
+                                                    "assets/dog_an1.gif"))),
+                                      ),
+                                      Expanded(
+                                        child: SizedBox(
+                                            height: 60, //80
+                                            child: Image(
+                                                image: AssetImage(
+                                                    "assets/cat_im2.png"))),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                              const Padding(
+                                  padding: EdgeInsets.only(bottom: 5.0)),
+                              _seleccionarEspecie(),
+                              const Padding(
+                                  padding: EdgeInsets.only(bottom: 30.0)),
+                              _seleccionarEstadoAdopcion(),
+                              const Padding(
+                                  padding: EdgeInsets.only(bottom: 5.0)),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Wrap(
+                                    spacing: 20,
+                                    children: const [
+                                      Expanded(
+                                        child: SizedBox(
+                                            height: 30, //50
+                                            child: Image(
+                                                image: AssetImage(
+                                                    "assets/huella_azul3.png"))),
+                                      ),
+                                      Expanded(
+                                        child: SizedBox(
+                                            height: 30,
+                                            child: Image(
+                                                image: AssetImage(
+                                                    "assets/huella_rosa3.png"))),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                              const Padding(
+                                  padding: EdgeInsets.only(bottom: 5.0)),
+                              _seleccionarSexo(),
+                              const Padding(
+                                  padding: EdgeInsets.only(bottom: 10.0)),
+                            ],
                           ),
                         ),
-                        const Text('Buscador',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.green,
-                              fontSize: 30,
-                            )),
-                        const Padding(padding: EdgeInsets.only(bottom: 10.0)),
-                        const Text(
-                          'Selecciona la o las categorías de tu gusto y te mostraremos los resultados.',
-                          textAlign: TextAlign.justify,
-                          style: TextStyle(fontSize: 15),
-                        ),
-                        //Divider(),
-                        //Text('Especie:'),
-                        const Divider(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Wrap(
-                              spacing: 10,
+                        SizedBox(
+                          width: 400,
+                          child: Column(children: [
+                            const Padding(
+                                padding: EdgeInsets.only(bottom: 15.0)),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
                                 Expanded(
                                   child: SizedBox(
-                                      height: 80,
+                                      height: 120.0, //150
                                       child: Image(
-                                          image: AssetImage(
-                                              "assets/dog_an1.gif"))),
-                                ),
-                                Expanded(
-                                  child: SizedBox(
-                                      height: 80,
-                                      child: Image(
-                                          image: AssetImage(
-                                              "assets/cat_im2.png"))),
+                                          image:
+                                              AssetImage("assets/pets_4.png"))),
                                 ),
                               ],
-                            )
-                          ],
-                        ),
-                        const Padding(padding: EdgeInsets.only(bottom: 15.0)),
-                        _seleccionarEspecie(),
-
-                        const Padding(padding: EdgeInsets.only(bottom: 30.0)),
-                        _seleccionarEstadoAdopcion(),
-                        const Padding(padding: EdgeInsets.only(bottom: 15.0)),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Wrap(
-                              spacing: 20,
-                              children: const [
-                                Expanded(
-                                  child: SizedBox(
-                                      height: 50,
-                                      child: Image(
-                                          image: AssetImage(
-                                              "assets/huella_azul3.png"))),
-                                ),
-                                Expanded(
-                                  child: SizedBox(
-                                      height: 50,
-                                      child: Image(
-                                          image: AssetImage(
-                                              "assets/huella_rosa3.png"))),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                        const Padding(padding: EdgeInsets.only(bottom: 15.0)),
-                        _seleccionarSexo(),
-                        const Padding(padding: EdgeInsets.only(bottom: 25.0)),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Expanded(
-                              child: SizedBox(
-                                  height: 150.0,
-                                  child: Image(
-                                      image: AssetImage("assets/pets_4.png"))),
                             ),
-                          ],
+                            const Padding(
+                                padding: EdgeInsets.only(bottom: 5.0)),
+                            _seleccionarEtapaVida(),
+                            buildChild(),
+                            const Padding(
+                                padding: EdgeInsets.only(bottom: 40.0)),
+                            _crearBoton()
+                          ]),
                         ),
-                        const Padding(padding: EdgeInsets.only(bottom: 15.0)),
-                        _seleccionarEtapaVida(),
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   children: [
-                        //     //Padding(padding: EdgeInsets.only(left: 150.0)),
-                        //     Expanded(
-                        //       child: SizedBox(
-                        //           height: 200,
-                        //           child: Image(
-                        //               image: AssetImage("assets/pets_2.png"))),
-                        //     ),
-                        //   ],
-                        // ),
-                        //Padding(padding: EdgeInsets.only(bottom: 15.0)),
-                        // _seleccionarTamanio(),
-                        buildChild(),
-                        const Padding(padding: EdgeInsets.only(bottom: 40.0)),
-                        _crearBoton()
                       ],
-                    )),
-              ),
-            ),
+                    ),
+                  ],
+                )),
           ),
-        ],
+        ),
       ),
     );
   }
@@ -207,7 +213,7 @@ class _BusquedaPageState extends State<BusquedaPage> {
               //Padding(padding: EdgeInsets.only(left: 150.0)),
               Expanded(
                 child: SizedBox(
-                    height: 200,
+                    height: 150, //200
                     child: Image(image: AssetImage("assets/pets_2.png"))),
               ),
             ],
