@@ -153,7 +153,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
               ]);
             }
             return GridView.count(
-              childAspectRatio: 60 / 100,
+              childAspectRatio: 6 / 7,
               shrinkWrap: true,
               crossAxisCount: 5,
               children: List.generate(animales.length, (index) {
@@ -208,7 +208,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
               ]);
             }
             return GridView.count(
-              childAspectRatio: 60 / 100,
+              childAspectRatio: 6 / 7,
               shrinkWrap: true,
               crossAxisCount: 5,
               children: List.generate(animales.length, (index) {
@@ -227,9 +227,10 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
         height: 100.0,
         width: 200.0,
         child: Card(
+          clipBehavior: Clip.antiAlias,
           color: const Color.fromARGB(248, 202, 241, 170),
           elevation: 4.0,
-          margin: const EdgeInsets.only(bottom: 90.0, left: 5.0, right: 5.0),
+          //margin: const EdgeInsets.only(bottom: 90.0, left: 5.0, right: 5.0),
           child: Flexible(
             fit: FlexFit.loose,
             child: InkWell(
@@ -251,7 +252,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
                   //Padding(padding: EdgeInsets.only(bottom: 5.0)),
                   ListTile(
                     title: Text(animal.nombre),
-                    subtitle: Text('${animal.especie} - ${animal.sexo}'),
+                    subtitle: Text('${animal.etapaVida} - ${animal.sexo}'),
                     // onTap: () =>
                     //     Navigator.pushNamed(context, 'animal', arguments: animal),
                   ),
@@ -273,7 +274,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
       child: Column(
         children: const <Widget>[
           Icon(
-            Icons.search,
+            Icons.arrow_back,
             color: Colors.green,
           ),
           Padding(
