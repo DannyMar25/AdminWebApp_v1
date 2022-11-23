@@ -73,10 +73,18 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
         drawer: const MenuWidget(),
         body: Column(
           children: [
-            const Padding(padding: EdgeInsets.only(bottom: 10.0)),
-            _busqueda(),
-            const Padding(padding: EdgeInsets.only(bottom: 10.0)),
-            _botonBusqueda(context),
+            const SizedBox(height: 10),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              _busqueda(),
+              const SizedBox(
+                width: 10,
+              ),
+              _botonBusqueda(context)
+            ]),
+            //const Padding(padding: EdgeInsets.only(bottom: 10.0)),
+            //_busqueda(),
+            //const Padding(padding: EdgeInsets.only(bottom: 10.0)),
+            //_botonBusqueda(context),
             const Padding(padding: EdgeInsets.only(bottom: 10.0)),
             //Expanded(child: _crearListado())
             Expanded(child: _buildChildBusqueda(context))
@@ -149,7 +157,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
           if (snapshot.hasData) {
             final animales = snapshot.data;
             return GridView.count(
-              childAspectRatio: 6 / 7.5,
+              childAspectRatio: 6 / 7,
               shrinkWrap: true,
               crossAxisCount: 5,
               children: List.generate(animales!.length, (index) {
@@ -178,7 +186,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
           if (snapshot.hasData) {
             final animales = snapshot.data;
             return GridView.count(
-              childAspectRatio: 6 / 7.5,
+              childAspectRatio: 6 / 7,
               shrinkWrap: true,
               crossAxisCount: 5,
               children: List.generate(animales!.length, (index) {
@@ -219,6 +227,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
 
   _crearBoton(BuildContext context) {
     return FloatingActionButton(
+      tooltip: 'Agregar nuevo',
       backgroundColor: Colors.green,
       onPressed: () => Navigator.pushNamed(context, 'animal'),
       child: const Icon(Icons.add),
@@ -261,10 +270,6 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text(
-              'Color: ${animal.color}',
-              textAlign: TextAlign.start,
-            ),
-            Text(
               'Tamaño: ${animal.tamanio}',
             ),
             SizedBox(
@@ -296,10 +301,6 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text(
-              'Color: ${animal.color}',
-              textAlign: TextAlign.start,
-            ),
-            Text(
               'Tamaño: ${animal.tamanio}',
             ),
             SizedBox(
@@ -330,10 +331,6 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
         subtitle: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text(
-              'Color: ${animal.color}',
-              textAlign: TextAlign.start,
-            ),
             Text(
               'Tamaño: ${animal.tamanio}',
             ),
