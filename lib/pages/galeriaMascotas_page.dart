@@ -149,7 +149,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
           if (snapshot.hasData) {
             final animales = snapshot.data;
             return GridView.count(
-              childAspectRatio: 50 / 100,
+              childAspectRatio: 50 / 70,
               shrinkWrap: true,
               crossAxisCount: 5,
               children: List.generate(animales!.length, (index) {
@@ -178,7 +178,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
           if (snapshot.hasData) {
             final animales = snapshot.data;
             return GridView.count(
-              childAspectRatio: 60 / 100,
+              childAspectRatio: 6 / 7.5,
               shrinkWrap: true,
               crossAxisCount: 5,
               children: List.generate(animales!.length, (index) {
@@ -193,7 +193,8 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
 
   Widget _crearItem(BuildContext context, AnimalModel animal) {
     return Card(
-        margin: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 90.0),
+        clipBehavior: Clip.antiAlias,
+        //margin: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 90.0),
         child: InkWell(
           onTap: () =>
               Navigator.pushNamed(context, 'animal', arguments: animal),
