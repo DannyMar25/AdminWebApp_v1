@@ -151,7 +151,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
             return GridView.count(
               childAspectRatio: 50 / 100,
               shrinkWrap: true,
-              crossAxisCount: 2,
+              crossAxisCount: 5,
               children: List.generate(animales!.length, (index) {
                 return _crearItem(context, animales[index]);
               }),
