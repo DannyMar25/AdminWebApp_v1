@@ -36,6 +36,7 @@ class BienvenidaPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double heighScreen = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Página principal'),
@@ -70,13 +71,13 @@ class BienvenidaPage extends StatelessWidget {
               const Padding(padding: EdgeInsets.only(top: 15.0, bottom: 10.0)),
               Center(
                 child: Text(
-                  'BIENVENIDO',
+                  'B I E N V E N I D O',
                   style: TextStyle(
                     fontSize: 33,
                     foreground: Paint()
                       ..style = PaintingStyle.stroke
                       ..strokeWidth = 4
-                      ..color = const Color.fromARGB(204, 160, 236, 61),
+                      ..color = Colors.green,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -85,7 +86,7 @@ class BienvenidaPage extends StatelessWidget {
                 shrinkWrap: true,
                 children: [
                   SizedBox(
-                    height: 450, //530
+                    height: heighScreen - heighScreen * 0.2, //560, //530
                     child: Accordion(
                       maxOpenSections: 1,
                       headerBackgroundColorOpened: Colors.black54,
@@ -100,8 +101,10 @@ class BienvenidaPage extends StatelessWidget {
                           isOpen: true,
                           leftIcon: const Icon(Icons.pets, color: Colors.white),
                           headerBackgroundColor: Colors.green,
-                          headerBackgroundColorOpened: Colors.green,
+                          headerBackgroundColorOpened:
+                              Color.fromARGB(255, 49, 141, 52),
                           header: Text('¿Qué es PoliPet?', style: _headerStyle),
+                          contentBorderColor: Color.fromARGB(255, 90, 185, 81),
                           content: Text(_loremIpsum, style: _contentStyle),
                           contentHorizontalPadding: 20,
                           contentBorderWidth: 1,
@@ -114,7 +117,7 @@ class BienvenidaPage extends StatelessWidget {
                               color: Colors.white),
                           header:
                               Text('Mascotas registradas', style: _headerStyle),
-                          contentBorderColor: const Color(0xffffffff),
+                          contentBorderColor: Color.fromARGB(255, 153, 22, 131),
                           headerBackgroundColor:
                               const Color.fromARGB(251, 236, 122, 193),
                           headerBackgroundColorOpened: Colors.purple,
@@ -122,6 +125,7 @@ class BienvenidaPage extends StatelessWidget {
                             children: [
                               const Text(
                                   'Mira los registros de todas las mascotas o crea uno nuevo.'),
+                              const SizedBox(height: 10),
                               TextButton(
                                 style: flatButtonStyle,
                                 onPressed: () {
@@ -145,6 +149,7 @@ class BienvenidaPage extends StatelessWidget {
                                   ],
                                 ),
                               ),
+                              const SizedBox(height: 10),
                               TextButton(
                                 style: flatButtonStyle,
                                 onPressed: () {
@@ -177,10 +182,12 @@ class BienvenidaPage extends StatelessWidget {
                               const Icon(Icons.fact_check, color: Colors.white),
                           header: Text('Citas', style: _headerStyle),
                           headerBackgroundColor: Colors.blue,
+                          contentBorderColor: Color.fromARGB(255, 37, 165, 204),
                           content: Column(
                             children: [
                               const Text(
                                   "Revisa los horarios disponibles para agendamiento de citas.\nRegistra una nueva cita, revisa citas pendientes o atendidas."),
+                              const SizedBox(height: 10),
                               const Padding(
                                   padding: EdgeInsets.only(bottom: 10.0)),
                               Row(
@@ -206,6 +213,7 @@ class BienvenidaPage extends StatelessWidget {
                                           'Ver horarios registrados',
                                           style: TextStyle(color: Colors.green),
                                         ),
+                                        SizedBox(height: 10),
                                       ],
                                     ),
                                   ),
@@ -229,6 +237,7 @@ class BienvenidaPage extends StatelessWidget {
                                           'Agendar cita',
                                           style: TextStyle(color: Colors.green),
                                         ),
+                                        SizedBox(height: 10),
                                       ],
                                     ),
                                   ),
@@ -257,6 +266,7 @@ class BienvenidaPage extends StatelessWidget {
                                           'Ver citas pendientes',
                                           style: TextStyle(color: Colors.green),
                                         ),
+                                        SizedBox(height: 10),
                                       ],
                                     ),
                                   ),
@@ -296,12 +306,14 @@ class BienvenidaPage extends StatelessWidget {
                               style: _headerStyle),
                           headerBackgroundColor:
                               const Color.fromARGB(255, 170, 124, 248),
+                          contentBorderColor: Color.fromARGB(255, 160, 81, 143),
                           content: Column(
                             children: [
                               const Text(
                                 'Revisa las solicitudes de adopción que han sido enviadas, mira las solicitudes aprobadas y negadas.',
                                 textAlign: TextAlign.justify,
                               ),
+                              const SizedBox(height: 10),
                               TextButton(
                                 style: flatButtonStyle,
                                 onPressed: () {
@@ -321,6 +333,7 @@ class BienvenidaPage extends StatelessWidget {
                                       'Ver solicitudes pendientes',
                                       style: TextStyle(color: Colors.green),
                                     ),
+                                    SizedBox(height: 10),
                                   ],
                                 ),
                               ),
@@ -344,6 +357,7 @@ class BienvenidaPage extends StatelessWidget {
                                       'Ver solicitudes aprobadas',
                                       style: TextStyle(color: Colors.green),
                                     ),
+                                    SizedBox(height: 10),
                                   ],
                                 ),
                               ),
@@ -376,6 +390,7 @@ class BienvenidaPage extends StatelessWidget {
                         AccordionSection(
                           isOpen: false,
                           leftIcon: const Icon(Icons.pets, color: Colors.white),
+                          contentBorderColor: Color.fromARGB(255, 224, 191, 40),
                           header: Text('Seguimiento de mascotas',
                               style: _headerStyle),
                           content: Column(
@@ -384,6 +399,7 @@ class BienvenidaPage extends StatelessWidget {
                                 "Puedes realizar el seguimiento de las mascotas que han sido adoptadas.",
                                 textAlign: TextAlign.justify,
                               ),
+                              const SizedBox(height: 10),
                               TextButton(
                                 style: flatButtonStyle,
                                 onPressed: () {
@@ -416,12 +432,14 @@ class BienvenidaPage extends StatelessWidget {
                           isOpen: false,
                           leftIcon: const Icon(Icons.pets, color: Colors.white),
                           header: Text('Donaciones', style: _headerStyle),
+                          contentBorderColor: Color.fromARGB(255, 79, 156, 150),
                           content: Column(
                             children: [
                               const Text(
                                 "Registra las donaciones que han llegado o han salido de la fundación",
                                 textAlign: TextAlign.justify,
                               ),
+                              const SizedBox(height: 10),
                               TextButton(
                                 style: flatButtonStyle,
                                 onPressed: () {
@@ -442,6 +460,7 @@ class BienvenidaPage extends StatelessWidget {
                                       'Registrar donación recibida',
                                       style: TextStyle(color: Colors.green),
                                     ),
+                                    SizedBox(height: 10),
                                   ],
                                 ),
                               ),
