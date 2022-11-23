@@ -149,7 +149,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
           if (snapshot.hasData) {
             final animales = snapshot.data;
             return GridView.count(
-              childAspectRatio: 50 / 70,
+              childAspectRatio: 6 / 7.5,
               shrinkWrap: true,
               crossAxisCount: 5,
               children: List.generate(animales!.length, (index) {
