@@ -74,19 +74,24 @@ class _BusquedaPageState extends State<BusquedaPage> {
                 key: formKey,
                 child: Column(
                   children: [
-                    const SizedBox(
-                      height: 70, //170
-                      child: Image(
-                        image: AssetImage("assets/dog_an6.gif"),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    const Text('Buscador',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 30,
-                        )),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          SizedBox(
+                            height: 50, //170
+                            child: Image(
+                              image: AssetImage("assets/dog_an6.gif"),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                          Text('Buscador',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.green,
+                                fontSize: 30,
+                              )),
+                        ]),
+
                     const Padding(padding: EdgeInsets.only(bottom: 5.0)),
                     const Text(
                       'Selecciona la o las categorías de tu gusto y te mostraremos los resultados.',
@@ -189,7 +194,7 @@ class _BusquedaPageState extends State<BusquedaPage> {
                             _seleccionarEtapaVida(),
                             buildChild(),
                             const Padding(
-                                padding: EdgeInsets.only(bottom: 40.0)),
+                                padding: EdgeInsets.only(bottom: 10.0)),
                             _crearBoton()
                           ]),
                         ),
