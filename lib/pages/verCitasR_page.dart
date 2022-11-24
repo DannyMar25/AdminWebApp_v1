@@ -65,18 +65,22 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
                 children: [
                   _crearNombreClient(),
                   _crearTelfClient(),
-                  const Divider(),
+                  const SizedBox(height: 5),
                   const Text(
                     "Posible adoptante para:",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
-                  const Divider(),
+                  const SizedBox(height: 10),
                   _mostrarFoto(),
                   // Divider(),
                   _mostrarNombreAn(),
-                  const Divider(),
+                  const SizedBox(height: 10),
+
                   _crearEstadoCita(),
                   const Text("Cita Atendida"),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   _crearBoton(),
 
                   // _crearDisponible(),
@@ -156,7 +160,7 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
       return FadeInImage(
         image: NetworkImage(citas.animal!.fotoUrl),
         placeholder: const AssetImage('assets/jar-loading.gif'),
-        height: 300,
+        height: 200,
         fit: BoxFit.contain,
       );
     } else {
@@ -177,9 +181,9 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
       onChanged: (value) {
         setState(() {
           _checkbox = !_checkbox;
-          if (_checkbox == true) {
-            citasProvider.editarEstadoCita(citas);
-          }
+          //if (_checkbox == true) {
+          // citasProvider.editarEstadoCita(citas);
+          // }
         });
       },
     );
@@ -198,25 +202,29 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
         icon: const Icon(Icons.save),
         autofocus: true,
         onPressed: () {
-          showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  title: const Text('Información'),
-                  content: const Text('La cita ha sido atendida.'),
-                  actions: [
-                    TextButton(
-                        child: const Text('Ok'),
-                        //onPressed: () => Navigator.of(context).pop()),
-                        onPressed: () {
-                          horariosProvider.editarDisponibleCita(citas.horario!);
-                          Navigator.pushNamed(context, 'bienvenida');
-                        }),
-                  ],
-                );
-              });
-          // horariosProvider.editarDisponibleCita(citas.horario!);
-          // Navigator.pushNamed(context, 'bienvenida');
+          if (_checkbox) {
+            citasProvider.editarEstadoCita(citas);
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: const Text('Información'),
+                    content: const Text('La cita ha sido atendida.'),
+                    actions: [
+                      TextButton(
+                          child: const Text('Ok'),
+                          //onPressed: () => Navigator.of(context).pop()),
+                          onPressed: () {
+                            horariosProvider
+                                .editarDisponibleCita(citas.horario!);
+                            Navigator.pushNamed(context, 'bienvenida');
+                          }),
+                    ],
+                  );
+                });
+            // horariosProvider.editarDisponibleCita(citas.horario!);
+            // Navigator.pushNamed(context, 'bienvenida');
+          }
         }
         // onPressed: () {
         //   print(animal.id);
