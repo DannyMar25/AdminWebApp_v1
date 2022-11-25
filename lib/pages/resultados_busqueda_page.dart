@@ -153,7 +153,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
               ]);
             }
             return GridView.count(
-              childAspectRatio: 6 / 7,
+              childAspectRatio: 6 / 8,
               shrinkWrap: true,
               crossAxisCount: 5,
               children: List.generate(animales.length, (index) {
@@ -208,7 +208,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
               ]);
             }
             return GridView.count(
-              childAspectRatio: 6 / 7,
+              childAspectRatio: 6 / 8,
               shrinkWrap: true,
               crossAxisCount: 5,
               children: List.generate(animales.length, (index) {
