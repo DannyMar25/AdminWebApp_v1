@@ -86,7 +86,7 @@ class _InformacionSeguimientoPageState
                             ),
                             _mostrarFoto(),
                             const Divider(
-                              color: Colors.white,
+                              color: Colors.transparent,
                             ),
                             Row(
                               children: [
@@ -197,9 +197,8 @@ class _InformacionSeguimientoPageState
                               ),
                               textAlign: TextAlign.center,
                             ),
-                            const Divider(),
                             const Divider(
-                              color: Colors.white,
+                              color: Colors.transparent,
                             ),
                             Row(
                               children: [
