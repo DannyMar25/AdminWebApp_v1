@@ -76,15 +76,14 @@ class _InformacionSeguimientoPageState
                             Text(
                               'Información de la mascota adoptada',
                               style: TextStyle(
-                                fontSize: 28,
+                                fontSize: 20,
                                 foreground: Paint()
                                   ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 3
-                                  ..color = Colors.blueAccent,
+                                  ..strokeWidth = 2
+                                  ..color = Color.fromARGB(255, 15, 70, 114),
                               ),
                               textAlign: TextAlign.center,
                             ),
-                            const Divider(),
                             _mostrarFoto(),
                             const Divider(
                               color: Colors.white,
@@ -184,18 +183,17 @@ class _InformacionSeguimientoPageState
                                 ),
                               ],
                             ),
-                            const Divider(),
                             const Divider(
-                              color: Colors.white,
+                              color: Colors.transparent,
                             ),
                             Text(
                               'Información del adoptante',
                               style: TextStyle(
-                                fontSize: 28,
+                                fontSize: 20,
                                 foreground: Paint()
                                   ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 3
-                                  ..color = Colors.blueAccent,
+                                  ..strokeWidth = 2
+                                  ..color = Color.fromARGB(255, 15, 70, 114),
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -297,7 +295,7 @@ class _InformacionSeguimientoPageState
       return FadeInImage(
         image: NetworkImage(animal.fotoUrl),
         placeholder: const AssetImage('assets/jar-loading.gif'),
-        height: 300,
+        height: 250,
         fit: BoxFit.contain,
       );
     } else {
@@ -328,7 +326,7 @@ class _InformacionSeguimientoPageState
                 ),
                 label: const Text('Ver Vacunas'),
                 icon: const Icon(Icons.fact_check),
-                autofocus: true,
+                autofocus: false,
                 onPressed: () {
                   // Navigator.pushNamed(context, 'registroVacunas',
                   //     arguments: animal);
@@ -350,7 +348,7 @@ class _InformacionSeguimientoPageState
                   ),
                   label: const Text('Ver Desparasitaciones'),
                   icon: const Icon(Icons.fact_check),
-                  autofocus: true,
+                  autofocus: false,
                   onPressed: () {
                     Navigator.pushNamed(context, 'verRegistroDesp', arguments: {
                       'datosper': datosA,
@@ -359,50 +357,48 @@ class _InformacionSeguimientoPageState
                     });
                   }),
             ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ElevatedButton.icon(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.resolveWith(
+                        (Set<MaterialState> states) {
+                      return Colors.green;
+                    }),
+                  ),
+                  label: const Text('Ver fotos'),
+                  icon: const Icon(Icons.fact_check),
+                  autofocus: false,
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'verEvidenciaP1', arguments: {
+                      'datosper': datosA,
+                      'formulario': formularios,
+                      'animal': animal
+                    });
+                  }),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ElevatedButton.icon(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.resolveWith(
+                        (Set<MaterialState> states) {
+                      return Colors.green;
+                    }),
+                  ),
+                  label: const Text('Ver Archivos'),
+                  icon: const Icon(Icons.fact_check),
+                  autofocus: false,
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'verEvidenciaP2', arguments: {
+                      'datosper': datosA,
+                      'formulario': formularios,
+                      'animal': animal
+                    });
+                  }),
+            ),
           ],
         ),
-        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: ElevatedButton.icon(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.resolveWith(
-                      (Set<MaterialState> states) {
-                    return Colors.green;
-                  }),
-                ),
-                label: const Text('Ver fotos'),
-                icon: const Icon(Icons.fact_check),
-                autofocus: true,
-                onPressed: () {
-                  Navigator.pushNamed(context, 'verEvidenciaP1', arguments: {
-                    'datosper': datosA,
-                    'formulario': formularios,
-                    'animal': animal
-                  });
-                }),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: ElevatedButton.icon(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.resolveWith(
-                      (Set<MaterialState> states) {
-                    return Colors.green;
-                  }),
-                ),
-                label: const Text('Ver Archivos'),
-                icon: const Icon(Icons.fact_check),
-                autofocus: true,
-                onPressed: () {
-                  Navigator.pushNamed(context, 'verEvidenciaP2', arguments: {
-                    'datosper': datosA,
-                    'formulario': formularios,
-                    'animal': animal
-                  });
-                }),
-          ),
-        ]),
       ],
     );
   }
