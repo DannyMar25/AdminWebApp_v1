@@ -54,7 +54,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                     )
                   ]),
         ],
@@ -79,10 +79,6 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
                   _mostrarFoto(),
                   // Divider(),
                   _mostrarNombreAn(),
-                  const Divider(
-                    color: Colors.transparent,
-                  ),
-
                   _mostrarFecha(),
                   const Divider(
                     color: Colors.transparent,
@@ -109,14 +105,9 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
                                 padding: const EdgeInsets.all(12.0),
                                 child: _botonSituacionFam(),
                               ),
-                              const Text('Situacion familiar')
+                              const Text('Situación familiar')
                             ],
-                          )
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                          ),
                           Column(
                             children: [
                               Container(
@@ -132,7 +123,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
                                 padding: const EdgeInsets.all(12.0),
                                 child: _botonRelacionAnim(),
                               ),
-                              const Text('Relacion con animales')
+                              const Text('Relación con animales')
                             ],
                           )
                         ],
@@ -196,21 +187,25 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
     DateTime fechaIngresoT = DateTime.parse(formularios.fechaIngreso);
     String fechaIn =
         '${fechaIngresoT.year}-${fechaIngresoT.month}-${fechaIngresoT.day}';
-    return TextFormField(
-      readOnly: true,
-      initialValue: fechaIn,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: const InputDecoration(
-        labelText: 'Fecha de solicitud:',
-        //labelStyle: ,
-        //border: BorderRadius(BorderRadius.circular(2.0)),
-        icon: Icon(
-          Icons.date_range_outlined,
-          color: Colors.purple,
+    return SizedBox(
+      height: 50,
+      width: 200,
+      child: TextFormField(
+        readOnly: true,
+        initialValue: fechaIn,
+        textCapitalization: TextCapitalization.sentences,
+        decoration: const InputDecoration(
+          labelText: 'Fecha de solicitud:',
+          //labelStyle: ,
+          //border: BorderRadius(BorderRadius.circular(2.0)),
+          icon: Icon(
+            Icons.date_range_outlined,
+            color: Colors.purple,
+          ),
         ),
+        //onSaved: (value) => animal.nombre = value!,
+        //},
       ),
-      //onSaved: (value) => animal.nombre = value!,
-      //},
     );
   }
 

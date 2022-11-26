@@ -120,12 +120,16 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
           SizedBox(
             width: 500.0,
             child: Card(
+              clipBehavior: Clip.antiAlias,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16)),
               elevation: 8,
               margin: const EdgeInsets.all(10),
               child: Container(
-                height: 170,
+                height: 110,
                 color: Colors.white,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Center(
                       child: Padding(
@@ -134,7 +138,7 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
                           flex: 5,
                           child: Image.asset(
                             "assets/pet.jpg",
-                            height: 130,
+                            height: 90,
                           ),
                         ),
                       ),
@@ -145,13 +149,18 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
                         alignment: Alignment.topLeft,
                         child: Column(
                           children: [
+                            const SizedBox(
+                              height: 10,
+                            ),
                             Expanded(
                               flex: 20,
                               child: ListTile(
                                 title:
                                     Text("Cliente: ${formulario.nombreClient}"),
                                 subtitle: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
+                                    const SizedBox(height: 5),
                                     Text("Fecha de solicitud:"
                                         '$fechaIn'
                                         '\n'
@@ -174,10 +183,13 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
                                     //
                                   ),
                                   const SizedBox(
-                                    width: 5, //8
+                                    width: 8, //8
                                   )
                                 ],
                               ),
+                            ),
+                            const SizedBox(
+                              height: 10,
                             )
                           ],
                         ),
