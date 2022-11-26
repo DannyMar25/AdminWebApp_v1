@@ -79,11 +79,11 @@ class _SolicitudRechazadaMainPageState
                             Text(
                               'Información de la mascota',
                               style: TextStyle(
-                                fontSize: 28,
+                                fontSize: 20,
                                 foreground: Paint()
                                   ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 3
-                                  ..color = Colors.blueAccent,
+                                  ..strokeWidth = 2
+                                  ..color = Color.fromARGB(255, 38, 85, 165),
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -96,7 +96,6 @@ class _SolicitudRechazadaMainPageState
                               'Observación: ',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            const Divider(),
                             RichText(
                               textAlign: TextAlign.justify,
                               text: TextSpan(
@@ -206,15 +205,14 @@ class _SolicitudRechazadaMainPageState
                             Text(
                               'Información del posible adoptante',
                               style: TextStyle(
-                                fontSize: 28,
+                                fontSize: 20,
                                 foreground: Paint()
                                   ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 3
-                                  ..color = Colors.blueAccent,
+                                  ..strokeWidth = 2
+                                  ..color = Color.fromARGB(255, 38, 85, 165),
                               ),
                               textAlign: TextAlign.center,
                             ),
-                            const Divider(),
                             const Divider(
                               color: Colors.white,
                             ),
@@ -303,7 +301,7 @@ class _SolicitudRechazadaMainPageState
       return FadeInImage(
         image: NetworkImage(animal.fotoUrl),
         placeholder: const AssetImage('assets/jar-loading.gif'),
-        height: 300,
+        height: 250,
         fit: BoxFit.contain,
       );
     } else {

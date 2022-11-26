@@ -81,11 +81,11 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
                             Text(
                               'Información de la mascota adoptada',
                               style: TextStyle(
-                                fontSize: 28,
+                                fontSize: 20,
                                 foreground: Paint()
                                   ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 3
-                                  ..color = Colors.blueAccent,
+                                  ..strokeWidth = 2
+                                  ..color = Color.fromARGB(255, 37, 86, 172),
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -200,11 +200,11 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
                             Text(
                               'Información del adoptante',
                               style: TextStyle(
-                                fontSize: 28,
+                                fontSize: 20,
                                 foreground: Paint()
                                   ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 3
-                                  ..color = Colors.blueAccent,
+                                  ..strokeWidth = 2
+                                  ..color = Color.fromARGB(255, 37, 86, 172),
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -297,7 +297,7 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
       return FadeInImage(
         image: NetworkImage(animal.fotoUrl),
         placeholder: const AssetImage('assets/jar-loading.gif'),
-        height: 300,
+        height: 250,
         fit: BoxFit.contain,
       );
     } else {

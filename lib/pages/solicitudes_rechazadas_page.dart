@@ -124,6 +124,9 @@ class _SolicitudesRechazadasPageState extends State<SolicitudesRechazadasPage> {
           SizedBox(
             width: 700.0,
             child: Card(
+              clipBehavior: Clip.antiAlias,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16)),
               elevation: 8,
               margin: const EdgeInsets.all(10),
               child: Container(

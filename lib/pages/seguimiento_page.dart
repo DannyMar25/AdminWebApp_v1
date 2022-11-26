@@ -137,8 +137,11 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
             SizedBox(
               width: 700.0,
               child: Card(
+                clipBehavior: Clip.antiAlias,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16)),
                 elevation: 8,
-                margin: const EdgeInsets.all(10),
+                margin: const EdgeInsets.all(5),
                 child: Container(
                   height: 100,
                   color: Colors.white,
