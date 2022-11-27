@@ -70,7 +70,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                             'Registro de desparasitación',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 28,
+                              fontSize: 20,
                               color: Color.fromARGB(255, 243, 165, 9),
                             ),
                             textAlign: TextAlign.start,
@@ -141,8 +141,9 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                     ColoredBox(
                       color: const Color.fromARGB(255, 51, 178, 213),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: const [
-                          Padding(padding: EdgeInsets.only(top: 15)),
+                          //Padding(padding: EdgeInsets.only(top: 15)),
                           SizedBox(
                               height: 50.0,
                               width: 140.0,
@@ -171,6 +172,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                       ),
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         SizedBox(
                           height: 50.0,
@@ -196,6 +198,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                     ColoredBox(
                       color: const Color.fromARGB(255, 51, 178, 213),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: const [
                           SizedBox(
                               height: 50.0,
@@ -214,7 +217,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                               width: 190.0,
                               child: Center(
                                 child: Text(
-                                  'Próxima desparacitación',
+                                  'Próxima desparasitación',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Colors.black,
@@ -225,6 +228,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                       ),
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         SizedBox(
                             height: 50.0,

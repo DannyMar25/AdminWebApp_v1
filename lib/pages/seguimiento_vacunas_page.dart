@@ -75,7 +75,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
                           'Registro de vacunas',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 28,
+                            fontSize: 20,
                             color: Color.fromARGB(255, 243, 165, 9),
                           ),
                           textAlign: TextAlign.start,
@@ -145,14 +145,15 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
                     ColoredBox(
                       color: const Color.fromARGB(255, 51, 178, 213),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: const [
-                          Padding(padding: EdgeInsets.only(top: 15)),
+                          //Padding(padding: EdgeInsets.only(top: 15)),
                           SizedBox(
                               height: 50.0,
                               width: 125.0,
                               child: Center(
                                 child: Text(
-                                  'Fecha consulta',
+                                  'Fecha de consulta',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Colors.black,
@@ -187,16 +188,16 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
                       ),
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         SizedBox(
                             height: 50.0,
                             width: 125.0,
                             child: Center(
-                                child: Center(
-                                    child: Text(
+                                child: Text(
                               vacuna.fechaConsulta,
                               textAlign: TextAlign.center,
-                            )))),
+                            ))),
                         SizedBox(
                             height: 50.0,
                             width: 70.0,
@@ -219,6 +220,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
                     ColoredBox(
                       color: const Color.fromARGB(255, 51, 178, 213),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: const [
                           SizedBox(
                               height: 50.0,
@@ -248,6 +250,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
                       ),
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         SizedBox(
                             height: 50.0,
