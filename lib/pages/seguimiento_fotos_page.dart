@@ -105,50 +105,62 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
             AsyncSnapshot<List<EvidenciasModel>> snapshot) {
           if (snapshot.hasData) {
             final evidF = snapshot.data;
-            return Column(
-              children: [
-                SizedBox(
-                  height: 660,
-                  child: ListView.builder(
-                    itemCount: evidF!.length,
-                    itemBuilder: (context, i) => _crearItem(context, evidF[i]),
-                  ),
-                )
-              ],
+            return GridView.count(
+              childAspectRatio: 90 / 100,
+              shrinkWrap: true,
+              crossAxisCount: 2,
+              children: List.generate(evidF!.length, (index) {
+                return _crearItem(context, evidF[index]);
+              }),
+
+              /* ListView.builder(
+                itemCount: animales!.length,
+                itemBuilder: (context, i) => _crearItem(context, animales[i]),
+              ), */
             );
           } else {
-            return const Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator());
           }
         });
   }
 
   Widget _crearItem(BuildContext context, EvidenciasModel evidencia) {
-    return Card(
-      shadowColor: Colors.green,
-      child: ListTile(
-          title: Column(children: [
-            (evidencia.fotoUrl == "")
-                ? const Image(image: AssetImage('assets/no-image.png'))
-                : FadeInImage(
-                    image: NetworkImage(evidencia.fotoUrl),
-                    placeholder: const AssetImage('assets/jar-loading.gif'),
-                    height: 300.0,
-                    width: 300.0,
-                    //width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
-            ListTile(
-              title: Text(
-                evidencia.fecha,
-                textAlign: TextAlign.center,
+    DateTime fechaIngresoT = DateTime.parse(evidencia.fecha);
+    String fechaIn =
+        '${fechaIngresoT.year}-${fechaIngresoT.month}-${fechaIngresoT.day}';
+    return SizedBox(
+      height: 450.0,
+      child: Card(
+        shadowColor: Colors.green,
+        child: ListTile(
+            title: Column(children: [
+              (evidencia.fotoUrl == "")
+                  ? const Image(image: AssetImage('assets/no-image.png'))
+                  // ? const Visibility(
+                  //     visible: false,
+                  //     child: Text(""),
+                  //   )
+                  : FadeInImage(
+                      image: NetworkImage(evidencia.fotoUrl),
+                      placeholder: const AssetImage('assets/jar-loading.gif'),
+                      height: 300.0,
+                      width: 300.0,
+                      //width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+              ListTile(
+                title: Text(
+                  fechaIn,
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-          ]),
-          onTap: () async {
-            Navigator.pushNamed(context, 'verFotoEvidencia',
-                arguments: evidencia);
-          }),
-      //margin: EdgeInsets.all(20.0)
+            ]),
+            onTap: () async {
+              Navigator.pushNamed(context, 'verFotoEvidencia',
+                  arguments: evidencia);
+            }),
+        //margin: EdgeInsets.all(20.0)
+      ),
     );
   }
 
