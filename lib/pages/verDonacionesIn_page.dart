@@ -19,11 +19,12 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
   DonacionesModel donaciones = DonacionesModel();
   final List<String> _items =
       ['Alimento', 'Medicina', 'Insumos Higiénicos', 'Otros'].toList();
-  String? _selection;
+  String? _selection = "Alimento";
   int total1 = 0;
   int totalA = 0;
   @override
   void initState() {
+    showCitas();
     // _selection = _items.last;
     super.initState();
   }
@@ -121,7 +122,7 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
         total1 += don.cantidad;
       });
     }
-    //print(total1.toString());
+    print(total1.toString());
   }
 
   Widget _verListado() {
