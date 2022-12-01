@@ -15,7 +15,16 @@ void mostrarAlerta(BuildContext context, String mensaje) {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Información'),
+          title: Row(
+            children: const [
+              Icon(
+                Icons.warning_outlined,
+                color: Colors.yellow,
+                size: 50,
+              ),
+              Text('¡Atención!'),
+            ],
+          ),
           content: Text(mensaje),
           actions: [
             TextButton(
