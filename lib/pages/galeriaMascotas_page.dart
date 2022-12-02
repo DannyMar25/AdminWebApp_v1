@@ -109,7 +109,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
 
   Widget _busqueda() {
     return SizedBox(
-      width: 1100.0,
+      width: MediaQuery.of(context).size.width * 0.75, //1100.0,
       child: TextField(
         controller: _textController,
         autocorrect: false,
@@ -160,7 +160,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
               //childAspectRatio: MediaQuery.of(context).size.width /
               //    (MediaQuery.of(context).size.height / 1.4),
 
-              //childAspectRatio: 6 / 8,
+              childAspectRatio: 6 / 7,
               shrinkWrap: true,
               crossAxisCount: 5,
               children: List.generate(animales!.length, (index) {
@@ -189,7 +189,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
           if (snapshot.hasData) {
             final animales = snapshot.data;
             return GridView.count(
-              //childAspectRatio: 6 / 8,
+              childAspectRatio: 6 / 7,
               //childAspectRatio: MediaQuery.of(context).size.width /
               //    (MediaQuery.of(context).size.height / 1.4),
               shrinkWrap: true,
