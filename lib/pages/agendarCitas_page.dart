@@ -55,6 +55,12 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
   late String horaSeleccionada;
   late String idHorario;
   @override
+  void initState() {
+    idHorario = '';
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final email = prefs.email;
     final Object? animData = ModalRoute.of(context)!.settings.arguments;
@@ -86,7 +92,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
       body: SingleChildScrollView(
         child: Center(
           child: Container(
-            width: 850,
+            width: 750,
             padding: const EdgeInsets.all(15.0),
             child: Form(
               key: formKey,
@@ -95,11 +101,17 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
                   _crearNombre(),
                   _crearTelefono(),
                   _crearCorreo(),
-                  const Divider(),
+                  const Divider(
+                    color: Colors.transparent,
+                  ),
                   _crearFecha(context),
                   const Divider(),
-                  const Divider(),
-                  _verListado(),
+                  const Divider(
+                    color: Colors.transparent,
+                  ),
+                  _verListaHoras(),
+
+                  //_verListado(),
                   _crearBoton(),
                 ],
               ),
@@ -121,6 +133,23 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
             MaterialPageRoute(builder: (context) => const LoginPage()),
             (Route<dynamic> route) => false);
       // Navigator.pushNamed(context, 'login');
+    }
+  }
+
+  Widget _verListaHoras() {
+    if (_fecha != '') {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("Seleccione hora:"),
+          const Divider(
+            color: Colors.transparent,
+          ),
+          _verListado()
+        ],
+      );
+    } else {
+      return SizedBox();
     }
   }
 
@@ -152,6 +181,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
         onTap: () {
           FocusScope.of(context).requestFocus(FocusNode());
           _selectDate(context);
+          idHorario = '';
         });
   }
 
@@ -222,8 +252,8 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
           if (snapshot.hasData) {
             final horarios = snapshot.data;
             return SizedBox(
-                height: 300,
-                width: 650,
+                height: MediaQuery.of(context).size.height * 0.4,
+                width: 750,
                 child: ListView.builder(
                   itemCount: horarios!.length,
                   itemBuilder: (context, i) => _crearItem(context, horarios[i]),
@@ -251,7 +281,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
                   OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
               //labelText: 'Hora',
               suffixIcon: const Icon(Icons.add),
-              icon: const Icon(Icons.calendar_today)),
+              icon: const Icon(Icons.access_time_outlined)),
         ),
         const Divider(
           color: Colors.white,
@@ -336,36 +366,41 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
         icon: const Icon(Icons.save),
         autofocus: true,
         onPressed: () {
-          showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  title: const Text('Información'),
-                  content: Text(
-                      'Nombre: ${nombre.text}\nTeléfono: ${telefono.text}\nCorreo: ${correo.text}\nFecha de la cita:$_fechaCompleta\nHora:$horaSeleccionada'),
-                  actions: [
-                    TextButton(
-                        child: const Text('Guardar'),
-                        //onPressed: () => Navigator.of(context).pop(),
-                        onPressed: () {
-                          if (formKey.currentState!.validate()) {
-                            const SnackBar(
-                              content:
-                                  Text('Información ingresada correctamente.'),
-                            );
-                            _submit();
-                          } else {
-                            mostrarAlerta(context,
-                                'Asegúrate de que todos los campos estén llenos.');
-                          }
-                        }),
-                    TextButton(
-                        child: const Text('Corregir información'),
-                        //onPressed: () => Navigator.of(context).pop(),
-                        onPressed: () => Navigator.of(context).pop()),
-                  ],
-                );
-              });
+          if (formKey.currentState!.validate() && idHorario != '') {
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: const Text('Información'),
+                    content: Text(
+                        'Nombre: ${nombre.text}\nTeléfono: ${telefono.text}\nCorreo: ${correo.text}\nFecha de la cita: $_fechaCompleta\nHora: $horaSeleccionada'),
+                    actions: [
+                      TextButton(
+                          child: const Text('Guardar'),
+                          //onPressed: () => Navigator.of(context).pop(),
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              const SnackBar(
+                                content: Text(
+                                    'Información ingresada correctamente.'),
+                              );
+                              _submit();
+                            } else {
+                              mostrarAlerta(context,
+                                  'Asegúrate de que todos los campos estén llenos.');
+                            }
+                          }),
+                      TextButton(
+                          child: const Text('Corregir información'),
+                          //onPressed: () => Navigator.of(context).pop(),
+                          onPressed: () => Navigator.of(context).pop()),
+                    ],
+                  );
+                });
+          } else {
+            mostrarAlerta(context,
+                'Asegúrate de que todos los campos estén llenos. Recuerda que debes eleccionar una fecha y hora.');
+          }
         });
   }
 
