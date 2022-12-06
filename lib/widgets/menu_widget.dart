@@ -28,6 +28,17 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ),
           ),
+          ListTile(
+            leading: const Icon(
+              Icons.home,
+              color: Colors.green,
+            ),
+            title: const Text('Inicio'),
+            onTap: () {
+              //Navigator.pop(context);
+              Navigator.pushNamed(context, 'bienvenida');
+            },
+          ),
           ExpansionTile(
             title: const Text('Mascotas'),
             leading: const Icon(
@@ -167,13 +178,6 @@ class _MenuWidgetState extends State<MenuWidget> {
               Navigator.pushNamed(context, 'seguimientoPrincipal');
             },
           ),
-          //  ],
-          //   leading: Icon(
-          //     Icons.assignment,
-          //     color: Colors.green,
-          //   ),
-          // ),
-
           const Divider(),
           ExpansionTile(
             title: const Text('Donaciones'),
@@ -251,17 +255,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                   },
                 )
               : const SizedBox(),
-          ListTile(
-            leading: const Icon(
-              Icons.app_registration,
-              color: Colors.green,
-            ),
-            title: const Text('Inicio'),
-            onTap: () {
-              //Navigator.pop(context);
-              Navigator.pushNamed(context, 'bienvenida');
-            },
-          ),
+
           const Padding(padding: EdgeInsets.only(top: 30.0)),
           const Text(
             '2022 Versión: 0.0.1',

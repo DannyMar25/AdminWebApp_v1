@@ -39,12 +39,12 @@ class BienvenidaPage extends StatelessWidget {
     double heighScreen = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Página principal'),
+        title: const Text('Inicio'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),
-              icon: const Icon(Icons.manage_accounts),
+              icon: const Icon(Icons.account_circle),
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,

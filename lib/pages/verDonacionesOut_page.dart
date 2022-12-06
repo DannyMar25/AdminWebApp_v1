@@ -34,7 +34,7 @@ class _VerDonacionesOutAddPageState extends State<VerDonacionesOutAddPage> {
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),
-              icon: const Icon(Icons.manage_accounts),
+              icon: const Icon(Icons.account_circle),
               itemBuilder: (context) => [
                     const PopupMenuItem<int>(
                       value: 0,
