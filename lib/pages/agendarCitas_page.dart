@@ -213,6 +213,8 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
 
     if (picked != null) {
       setState(() {
+        idHorario = '';
+
         _fechaCompleta = '${picked.year}-${picked.month}-${picked.day}';
 
         // _fecha = picked.toString();
@@ -275,7 +277,9 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
 
             //print(horario.hora);
           },
-          initialValue: '${horario.hora}  -   ${horario.disponible}',
+          //initialValue: '${horario.hora}  -   ${horario.disponible}',
+          // ignore: prefer_interpolation_to_compose_strings
+          initialValue: horario.hora + ' - ' + horario.disponible,
           decoration: InputDecoration(
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -283,8 +287,8 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
               suffixIcon: const Icon(Icons.add),
               icon: const Icon(Icons.access_time_outlined)),
         ),
-        const Divider(
-          color: Colors.white,
+        const SizedBox(
+          height: 7,
         )
       ],
     );
@@ -393,7 +397,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
                       TextButton(
                           child: const Text('Corregir información'),
                           //onPressed: () => Navigator.of(context).pop(),
-                          onPressed: () => Navigator.of(context).pop()),
+                          onPressed: () => Navigator.pop(context)),
                     ],
                   );
                 });
