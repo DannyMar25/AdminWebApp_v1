@@ -136,10 +136,6 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
             title: Column(children: [
               (evidencia.fotoUrl == "")
                   ? const Image(image: AssetImage('assets/no-image.png'))
-                  // ? const Visibility(
-                  //     visible: false,
-                  //     child: Text(""),
-                  //   )
                   : FadeInImage(
                       image: NetworkImage(evidencia.fotoUrl),
                       placeholder: const AssetImage('assets/jar-loading.gif'),

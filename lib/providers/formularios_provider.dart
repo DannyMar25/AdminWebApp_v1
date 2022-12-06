@@ -356,7 +356,11 @@ class FormulariosProvider {
 
   Future<List<EvidenciasModel>> cargarEvidenciaF(String idForm) async {
     final List<EvidenciasModel> evidenciaF = <EvidenciasModel>[];
-    var documents = await refForm.doc(idForm).collection('evidencias').get();
+    var documents = await refForm
+        .doc(idForm)
+        .collection('evidencias')
+        .where('fotoUrl', isNotEqualTo: "")
+        .get();
     evidenciaF.addAll(documents.docs.map((e) {
       //var data = e.data() as Map<String, dynamic>;
       var evidencia = EvidenciasModel.fromJson({
