@@ -92,78 +92,63 @@ class _AnimalPageState extends State<AnimalPage> {
                   ]),
         ],
       ),
-      body: GridView.count(
-        crossAxisCount: 2,
-        children: [
-          SingleChildScrollView(
-            child: Center(
-              child: Container(
-                // width: 850,
-                padding: const EdgeInsets.all(15.0),
-                child: Form(
-                  key: formKey,
-                  child: Column(
+      body: SingleChildScrollView(
+        child: Flexible(
+          fit: FlexFit.loose,
+          child: Container(
+            // width: 850,
+            padding: const EdgeInsets.all(15.0),
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      _mostrarFoto(),
-                      _crearEspecie(),
-                      _crearNombre(),
-                      _crearSexo(),
-                      Row(children: [_crearEdad(), infoEtapa()]),
-                      // _crearEdad(),
-                      _crearTemperamento(),
-                      //   _crearPeso(),
-                      //   _crearTamanio(),
-                      //   _crearColor(),
-                      //   _crearRaza(),
-                      //   _crearEsterilizado(),
-                      //   _crearCaracteristicas(),
-                      //   // _crearDisponible(),
-                      //   //_crearBoton(),
-                      //   const Divider(
-                      //     color: Colors.transparent,
-                      //   ),
-                      //_buildChild()
+                      SizedBox(
+                        width: 400,
+                        child: Column(
+                          children: [
+                            _mostrarFoto(),
+                            _crearEspecie(),
+                            _crearNombre(),
+                            _crearSexo(),
+                            Row(children: [_crearEdad(), infoEtapa()]),
+                            // _crearEdad(),
+                            _crearTemperamento(),
+                          ],
+                        ),
+                      ),
+                      const Divider(
+                        color: Colors.transparent,
+                      ),
+                      const Padding(padding: EdgeInsets.only(right: 30.0)),
+                      SizedBox(
+                        width: 400,
+                        child: Column(
+                          children: [
+                            _crearPeso(),
+                            _crearTamanio(),
+                            _crearColor(),
+                            _crearRaza(),
+                            _crearEsterilizado(),
+                            _crearCaracteristicas(),
+                            // _crearDisponible(),
+                            //_crearBoton(),
+                            const Divider(
+                              color: Colors.transparent,
+                            ),
+                            _buildChild()
+                          ],
+                        ),
+                      )
                     ],
                   ),
-                ),
+                ],
               ),
             ),
           ),
-          SingleChildScrollView(
-            child: Center(
-              child: Container(
-                // width: 850,
-                padding: const EdgeInsets.all(15.0),
-                // child: Form(
-                //   key: formKey,
-                child: Column(
-                  children: [
-                    // _mostrarFoto(),
-                    // _crearEspecie(),
-                    // _crearNombre(),
-                    // _crearSexo(),
-                    // Row(children: [_crearEdad(), infoEtapa()]),
-                    // // _crearEdad(),
-                    // _crearTemperamento(),
-                    _crearPeso(),
-                    _crearTamanio(),
-                    _crearColor(),
-                    _crearRaza(),
-                    _crearEsterilizado(),
-                    _crearCaracteristicas(),
-                    // _crearDisponible(),
-                    //_crearBoton(),
-                    const Divider(
-                      color: Colors.transparent,
-                    ),
-                    _buildChild()
-                  ],
-                ),
-              ),
-            ),
-          ),
-          //),
-        ],
+        ),
       ),
     );
   }
@@ -646,9 +631,37 @@ class _AnimalPageState extends State<AnimalPage> {
 
   void _submit() async {
     if (animal.id == "") {
-      animal.estado = "En Adopción";
-      animalProvider.crearAnimal1(animal, webImage);
-      utils.mostrarAlertaOk(context, 'Registro guardado con éxito.', 'home');
+      if (webImage.length == 8) {
+        return showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Row(
+                  children: const [
+                    Icon(
+                      Icons.error,
+                      color: Colors.red,
+                      size: 50,
+                    ),
+                    Text('Información incorrecta'),
+                  ],
+                ),
+                content: const Text('Ingrese la foto de la mascota.'),
+                actions: [
+                  TextButton(
+                      child: const Text('Aceptar'),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }),
+                ],
+              );
+            });
+      } else {
+        animal.estado = "En Adopción";
+        animalProvider.crearAnimal1(animal, webImage);
+        utils.mostrarAlertaOk(context, 'Registro guardado con éxito.', 'home');
+      }
+
       //mostrarSnackbar('Registro guardado');
     } else {
       showDialog(
