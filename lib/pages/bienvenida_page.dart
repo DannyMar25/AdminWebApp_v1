@@ -116,7 +116,7 @@ class BienvenidaPage extends StatelessWidget {
                           leftIcon: const Icon(Icons.photo_library,
                               color: Colors.white),
                           header:
-                              Text('Mascotas registradas', style: _headerStyle),
+                              Text('Registro de animales', style: _headerStyle),
                           contentBorderColor: Color.fromARGB(255, 153, 22, 131),
                           headerBackgroundColor:
                               const Color.fromARGB(251, 236, 122, 193),
@@ -135,7 +135,7 @@ class BienvenidaPage extends StatelessWidget {
                                 child: Column(
                                   children: const <Widget>[
                                     Icon(
-                                      Icons.app_registration_outlined,
+                                      Icons.post_add,
                                       color: Colors.green,
                                     ),
                                     Padding(
@@ -143,7 +143,7 @@ class BienvenidaPage extends StatelessWidget {
                                           EdgeInsets.symmetric(vertical: 2.0),
                                     ),
                                     Text(
-                                      'Registrar nueva mascota',
+                                      'Agregar nuevo',
                                       style: TextStyle(color: Colors.green),
                                     ),
                                   ],
@@ -178,8 +178,8 @@ class BienvenidaPage extends StatelessWidget {
                         ),
                         AccordionSection(
                           isOpen: false,
-                          leftIcon:
-                              const Icon(Icons.fact_check, color: Colors.white),
+                          leftIcon: const Icon(Icons.calendar_month_outlined,
+                              color: Colors.white),
                           header: Text('Citas', style: _headerStyle),
                           headerBackgroundColor: Colors.blue,
                           contentBorderColor: Color.fromARGB(255, 37, 165, 204),
@@ -301,7 +301,7 @@ class BienvenidaPage extends StatelessWidget {
                         AccordionSection(
                           isOpen: false,
                           leftIcon:
-                              const Icon(Icons.list_alt, color: Colors.white),
+                              const Icon(Icons.assignment, color: Colors.white),
                           header: Text('Solicitudes de adopción',
                               style: _headerStyle),
                           headerBackgroundColor:
@@ -389,10 +389,10 @@ class BienvenidaPage extends StatelessWidget {
                         ),
                         AccordionSection(
                           isOpen: false,
-                          leftIcon: const Icon(Icons.pets, color: Colors.white),
+                          leftIcon: const Icon(Icons.manage_search_sharp,
+                              color: Colors.white),
                           contentBorderColor: Color.fromARGB(255, 224, 191, 40),
-                          header: Text('Seguimiento de mascotas',
-                              style: _headerStyle),
+                          header: Text('Seguimiento', style: _headerStyle),
                           content: Column(
                             children: [
                               const Text(
@@ -409,7 +409,7 @@ class BienvenidaPage extends StatelessWidget {
                                 child: Column(
                                   children: const <Widget>[
                                     Icon(
-                                      Icons.verified,
+                                      Icons.manage_search_sharp,
                                       color: Colors.green,
                                     ),
                                     Padding(
@@ -430,7 +430,8 @@ class BienvenidaPage extends StatelessWidget {
                         ),
                         AccordionSection(
                           isOpen: false,
-                          leftIcon: const Icon(Icons.pets, color: Colors.white),
+                          leftIcon:
+                              const Icon(Icons.favorite, color: Colors.white),
                           header: Text('Donaciones', style: _headerStyle),
                           contentBorderColor: Color.fromARGB(255, 79, 156, 150),
                           content: Column(
