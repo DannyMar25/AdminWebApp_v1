@@ -42,7 +42,7 @@ class _IngresoDonacionesOutAddPageState
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Anadir donación saliente'),
+        title: const Text('Agregar donación saliente'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -74,21 +74,27 @@ class _IngresoDonacionesOutAddPageState
                     child: Column(
                       children: [
                         Text(
-                          'Donaciones',
+                          'Datos de donación saliente',
                           style: TextStyle(
-                            fontSize: 33,
+                            fontSize: 30,
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
-                              ..strokeWidth = 3
+                              ..strokeWidth = 2
                               ..color = Colors.blueGrey[300]!,
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
 
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
                         _crearTipoDonacion(),
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
                         _crearUnidades(),
                         const Divider(),
                         Row(
@@ -132,7 +138,7 @@ class _IngresoDonacionesOutAddPageState
       readOnly: true,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-          labelText: 'Tipo de Donación:',
+          labelText: 'Tipo de Donación:  ',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
         s = donaciones.tipo;

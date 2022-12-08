@@ -41,7 +41,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Registro de donaciones'),
+        title: const Text('Registro de donación'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -73,29 +73,43 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
                     child: Column(
                       children: [
                         Text(
-                          'Donaciones',
+                          'Datos de donación recibida',
                           style: TextStyle(
-                            fontSize: 33,
+                            fontSize: 30,
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
-                              ..strokeWidth = 3
+                              ..strokeWidth = 2
                               ..color = Colors.blueGrey[300]!,
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
 
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
                         _crearTipoDonacion(),
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
                         _crearUnidades(),
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
                         _buildChild(),
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
                         _crearDescripcion(),
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
                         _mostrarDisponibilidad(),
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
                         Text(
                           'Cambiar disponibilidad de la donación.',
                           style: TextStyle(
@@ -165,7 +179,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       //mainAxisSize: MainAxisSize.max,
       children: [
         const Text(
-          'Seleccione el tipo de donación: ',
+          'Tipo de donación: ',
           style: TextStyle(
               fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
         ),

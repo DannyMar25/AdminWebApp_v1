@@ -37,7 +37,7 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Registro de donaciones salientes'),
+        title: const Text('Recursos disponibles para donación'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -81,21 +81,27 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
                     child: Column(
                       children: [
                         Text(
-                          'Donaciones salientes',
+                          'Registros',
                           style: TextStyle(
-                            fontSize: 33,
+                            fontSize: 30,
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
-                              ..strokeWidth = 3
+                              ..strokeWidth = 2
                               ..color = Colors.blueGrey[300]!,
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
                         _crearTipoDonacion(),
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
                         _verListado(),
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
                       ],
                     )),
               ),

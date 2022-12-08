@@ -43,7 +43,7 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Registro de donaciones'),
+        title: const Text('Agregar donación recibida '),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -75,27 +75,30 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
                     child: Column(
                       children: [
                         Text(
-                          'Donaciones',
+                          'Datos de donación recibida',
                           style: TextStyle(
-                            fontSize: 33,
+                            fontSize: 30,
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
-                              ..strokeWidth = 3
+                              ..strokeWidth = 2
                               ..color = Colors.blueGrey[300]!,
                           ),
                           textAlign: TextAlign.center,
                         ),
 
-                        const Divider(),
-                        const Padding(padding: EdgeInsets.only(bottom: 15.0)),
+                        const Divider(
+                          height: 50,
+                          color: Colors.transparent,
+                        ),
+                        const Padding(padding: EdgeInsets.only(bottom: 20.0)),
                         _crearTipoDonacion(),
-                        const Divider(),
+                        const Divider(color: Colors.transparent),
                         _crearUnidades(),
-                        const Divider(),
+                        const Divider(color: Colors.transparent),
                         _buildChild(),
-                        const Divider(),
+                        const Divider(color: Colors.transparent),
                         _crearDescripcion(),
-                        const Divider(),
+                        const Divider(color: Colors.transparent),
                         _crearBoton(),
                         // _crearCantidad(),
                       ],
@@ -128,7 +131,7 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
       //mainAxisSize: MainAxisSize.max,
       children: [
         const Text(
-          'Tipo de donación: ',
+          'Tipo de donación:  ',
           style: TextStyle(fontSize: 16, color: Colors.black),
         ),
         SizedBox(
@@ -217,7 +220,7 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       decoration: const InputDecoration(
           labelText: 'Ingrese la cantidad (Unidades):',
-          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+          labelStyle: TextStyle(fontSize: 20, color: Colors.black)),
       onChanged: (s) {
         setState(() {
           donaciones.cantidad = int.parse(s);

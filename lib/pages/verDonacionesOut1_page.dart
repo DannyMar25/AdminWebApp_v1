@@ -36,7 +36,7 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Registro de donaciones'),
+        title: const Text('Registro de donación'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -70,29 +70,39 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          'Donaciones',
+                          'Datos de donación saliente',
                           style: TextStyle(
-                            fontSize: 33,
+                            fontSize: 30,
                             foreground: Paint()
                               ..style = PaintingStyle.stroke
-                              ..strokeWidth = 3
+                              ..strokeWidth = 2
                               ..color = Colors.blueGrey[300]!,
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
 
                         const Divider(
                           color: Colors.transparent,
                         ),
                         _crearTipoDonacion(),
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
                         _crearUnidades(),
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
                         _buildChild(),
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
                         _crearDescripcion(),
-                        const Divider(),
+                        const Divider(
+                          color: Colors.transparent,
+                        ),
                         _crearFecha(),
                         //_crearBoton(),
                         // _crearCantidad(),
@@ -124,7 +134,7 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
       enabled: false,
       textCapitalization: TextCapitalization.sentences,
       decoration: const InputDecoration(
-          labelText: 'Tipo de Donación:',
+          labelText: 'Tipo de Donación:  ',
           labelStyle: TextStyle(
               fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold)),
     );

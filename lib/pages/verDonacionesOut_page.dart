@@ -29,7 +29,7 @@ class _VerDonacionesOutAddPageState extends State<VerDonacionesOutAddPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Donaciones salientes registradas'),
+        title: const Text('Donaciones salientes'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -55,6 +55,23 @@ class _VerDonacionesOutAddPageState extends State<VerDonacionesOutAddPage> {
           child: Form(
             child: Column(
               children: [
+                const SizedBox(
+                  height: 25,
+                ),
+                Text(
+                  'Lista de donaciones salientes',
+                  style: TextStyle(
+                    fontSize: 30,
+                    foreground: Paint()
+                      ..style = PaintingStyle.stroke
+                      ..strokeWidth = 2
+                      ..color = Colors.blueGrey[300]!,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
                 _crearTipoDonacion(),
                 const Divider(),
                 _verListado(),

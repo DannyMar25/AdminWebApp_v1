@@ -188,40 +188,40 @@ class _MenuWidgetState extends State<MenuWidget> {
             children: [
               ListTile(
                 leading: const Icon(
-                  Icons.add,
+                  Icons.add_circle_outline,
                   color: Colors.green,
                 ),
-                title: const Text('Registrar donaciones recibidas'),
+                title: const Text('Agregar donación recibida'),
                 onTap: () {
                   Navigator.pushNamed(context, 'donacionesInAdd');
                 },
               ),
               ListTile(
                 leading: const Icon(
-                  Icons.check,
+                  Icons.list_alt_rounded,
                   color: Colors.green,
                 ),
-                title: const Text('Ver donaciones recibidas'),
+                title: const Text('Donaciones recibidas'),
                 onTap: () {
                   Navigator.pushNamed(context, 'verDonacionesInAdd');
                 },
               ),
               ListTile(
                 leading: const Icon(
-                  Icons.add,
+                  Icons.add_circle_outline_sharp,
                   color: Colors.green,
                 ),
-                title: const Text('Registrar donaciones salientes'),
+                title: const Text('Agregar donación saliente'),
                 onTap: () {
                   Navigator.pushNamed(context, 'donacionesOutAdd');
                 },
               ),
               ListTile(
                 leading: const Icon(
-                  Icons.check,
+                  Icons.list_alt_rounded,
                   color: Colors.green,
                 ),
-                title: const Text('Ver donaciones salientes'),
+                title: const Text('Donaciones salientes'),
                 onTap: () {
                   Navigator.pushNamed(context, 'verDonacionesOutAdd');
                 },
