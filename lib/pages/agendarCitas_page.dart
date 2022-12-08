@@ -70,7 +70,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Registro de citas'),
+        title: const Text('Agendar cita'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -288,7 +288,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
               icon: const Icon(Icons.access_time_outlined)),
         ),
         const SizedBox(
-          height: 7,
+          height: 3,
         )
       ],
     );
@@ -367,7 +367,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
           }),
         ),
         label: const Text('Revisar'),
-        icon: const Icon(Icons.save),
+        icon: const Icon(Icons.check_circle_outline),
         autofocus: true,
         onPressed: () {
           if (formKey.currentState!.validate() && idHorario != '') {
