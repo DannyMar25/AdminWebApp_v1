@@ -33,7 +33,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 236, 234, 219),
         appBar: AppBar(
-          title: const Text('Desparasitaciones'),
+          title: const Text('Lista de desparasitaciones'),
           backgroundColor: Colors.green,
           actions: [
             PopupMenuButton<int>(
@@ -67,7 +67,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                         // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text(
-                            'Registro de desparasitación',
+                            'Registros',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
@@ -276,10 +276,29 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
           ),
           ListTile(
             leading: const Icon(
-              Icons.pages,
+              Icons.home,
               color: Colors.green,
             ),
-            title: const Text('Ir a Seguimiento Principal'),
+            title: const Text('Inicio'),
+            onTap: () {
+              //Navigator.pop(context);
+              Navigator.pushNamed(context, 'bienvenida');
+            },
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.list,
+              color: Colors.green,
+            ),
+            title: const Text('Lista de adopciones'),
+            onTap: () => Navigator.pushNamed(context, 'seguimientoPrincipal'),
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.manage_search_rounded,
+              color: Colors.green,
+            ),
+            title: const Text('Seguimiento de mascota'),
             onTap: () => Navigator.pushNamed(context, 'seguimientoInfo',
                 arguments: {
                   'datosper': datosA,
@@ -289,10 +308,10 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
           ),
           ListTile(
             leading: const Icon(
-              Icons.check,
+              Icons.vaccines,
               color: Colors.green,
             ),
-            title: const Text('Ver Registros Vacunas'),
+            title: const Text('Vacunas'),
             onTap: () => Navigator.pushNamed(context, 'verRegistroVacunas',
                 arguments: {
                   'datosper': datosA,
@@ -301,8 +320,9 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                 }),
           ),
           ListTile(
-            leading: const Icon(Icons.check, color: Colors.green),
-            title: const Text('Ver Registro Desparasitación'),
+            leading: const Icon(Icons.medication_liquid_outlined,
+                color: Colors.green),
+            title: const Text('Desparasitaciones'),
             onTap: () {
               //Navigator.pop(context);
               Navigator.pushNamed(context, 'verRegistroDesp', arguments: {
@@ -313,8 +333,8 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.check, color: Colors.green),
-            title: const Text('Ver Fotos'),
+            leading: const Icon(Icons.photo_sharp, color: Colors.green),
+            title: const Text('Fotos'),
             onTap: () {
               Navigator.pushNamed(context, 'verEvidenciaP1', arguments: {
                 'datosper': datosA,
@@ -324,8 +344,9 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.check, color: Colors.green),
-            title: const Text('Ver Archivos'),
+            leading:
+                const Icon(Icons.picture_as_pdf_outlined, color: Colors.green),
+            title: const Text('Documentos'),
             onTap: () {
               Navigator.pushNamed(context, 'verEvidenciaP2', arguments: {
                 'datosper': datosA,
@@ -338,4 +359,84 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
       ),
     );
   }
+
+  // Widget _menuWidget() {
+  //   return Drawer(
+  //     child: ListView(
+  //       padding: EdgeInsets.zero,
+  //       children: [
+  //         DrawerHeader(
+  //           child: Container(
+  //             decoration: const BoxDecoration(
+  //               image: DecorationImage(
+  //                 image: AssetImage('assets/pet-care.png'),
+  //                 fit: BoxFit.fitHeight,
+  //               ),
+  //             ),
+  //           ),
+  //         ),
+  //         ListTile(
+  //           leading: const Icon(
+  //             Icons.pages,
+  //             color: Colors.green,
+  //           ),
+  //           title: const Text('Ir a Seguimiento Principal'),
+  //           onTap: () => Navigator.pushNamed(context, 'seguimientoInfo',
+  //               arguments: {
+  //                 'datosper': datosA,
+  //                 'formulario': formularios,
+  //                 'animal': animal
+  //               }),
+  //         ),
+  //         ListTile(
+  //           leading: const Icon(
+  //             Icons.check,
+  //             color: Colors.green,
+  //           ),
+  //           title: const Text('Ver Registros Vacunas'),
+  //           onTap: () => Navigator.pushNamed(context, 'verRegistroVacunas',
+  //               arguments: {
+  //                 'datosper': datosA,
+  //                 'formulario': formularios,
+  //                 'animal': animal
+  //               }),
+  //         ),
+  //         ListTile(
+  //           leading: const Icon(Icons.check, color: Colors.green),
+  //           title: const Text('Ver Registro Desparasitación'),
+  //           onTap: () {
+  //             //Navigator.pop(context);
+  //             Navigator.pushNamed(context, 'verRegistroDesp', arguments: {
+  //               'datosper': datosA,
+  //               'formulario': formularios,
+  //               'animal': animal
+  //             });
+  //           },
+  //         ),
+  //         ListTile(
+  //           leading: const Icon(Icons.check, color: Colors.green),
+  //           title: const Text('Ver Fotos'),
+  //           onTap: () {
+  //             Navigator.pushNamed(context, 'verEvidenciaP1', arguments: {
+  //               'datosper': datosA,
+  //               'formulario': formularios,
+  //               'animal': animal
+  //             });
+  //           },
+  //         ),
+  //         ListTile(
+  //           leading: const Icon(Icons.check, color: Colors.green),
+  //           title: const Text('Ver Archivos'),
+  //           onTap: () {
+  //             Navigator.pushNamed(context, 'verEvidenciaP2', arguments: {
+  //               'datosper': datosA,
+  //               'formulario': formularios,
+  //               'animal': animal
+  //             });
+  //           },
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 }

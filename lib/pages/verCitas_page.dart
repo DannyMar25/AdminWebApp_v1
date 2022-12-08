@@ -155,8 +155,7 @@ class _VerCitasPageState extends State<VerCitasPage> {
                 OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
             labelText: 'Fecha de la cita',
             //helperText: 'Solo es el nombre',
-            suffixIcon:
-                const Icon(Icons.perm_contact_calendar, color: Colors.green),
+            suffixIcon: const Icon(Icons.search_sharp, color: Colors.green),
             icon: const Icon(
               Icons.calendar_today,
               color: Colors.green,

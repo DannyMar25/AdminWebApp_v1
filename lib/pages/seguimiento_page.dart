@@ -77,7 +77,7 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    "SEGUIMIENTO DE ADOPCIONES",
+                    "Seguimiento",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -139,8 +139,10 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
               child: Card(
                 clipBehavior: Clip.antiAlias,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16)),
-                elevation: 8,
+                    borderRadius: BorderRadius.circular(16),
+                    side: const BorderSide(
+                        color: Color.fromARGB(255, 170, 228, 172))),
+                elevation: 4,
                 margin: const EdgeInsets.all(5),
                 child: Container(
                   height: 100,
@@ -176,7 +178,11 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     TextButton(
-                                      child: const Text("REALIZAR SEGUIMIENTO"),
+                                      // ignore: prefer_const_constructors
+                                      child: Text("Realizar seguimiento",
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.blueGrey)),
                                       onPressed: () async {
                                         datosC = await formulariosProvider
                                             .cargarDPId(formulario.id,
@@ -185,6 +191,7 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
                                             .cargarAnimalId(
                                                 formulario.idAnimal);
 
+                                        // ignore: use_build_context_synchronously
                                         Navigator.pushNamed(
                                             context, 'seguimientoInfo',
                                             arguments: {

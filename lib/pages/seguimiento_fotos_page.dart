@@ -69,7 +69,7 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
                         // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Fotos enviadas como evidencia',
+                            'Fotos recibidas',
                             style: TextStyle(
                               fontSize: 28,
                               foreground: Paint()
@@ -177,10 +177,29 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
           ),
           ListTile(
             leading: const Icon(
-              Icons.pages,
+              Icons.home,
               color: Colors.green,
             ),
-            title: const Text('Ir a Seguimiento Principal'),
+            title: const Text('Inicio'),
+            onTap: () {
+              //Navigator.pop(context);
+              Navigator.pushNamed(context, 'bienvenida');
+            },
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.list,
+              color: Colors.green,
+            ),
+            title: const Text('Lista de adopciones'),
+            onTap: () => Navigator.pushNamed(context, 'seguimientoPrincipal'),
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.manage_search_rounded,
+              color: Colors.green,
+            ),
+            title: const Text('Seguimiento de mascota'),
             onTap: () => Navigator.pushNamed(context, 'seguimientoInfo',
                 arguments: {
                   'datosper': datosA,
@@ -190,10 +209,10 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
           ),
           ListTile(
             leading: const Icon(
-              Icons.check,
+              Icons.vaccines,
               color: Colors.green,
             ),
-            title: const Text('Ver Registros Vacunas'),
+            title: const Text('Vacunas'),
             onTap: () => Navigator.pushNamed(context, 'verRegistroVacunas',
                 arguments: {
                   'datosper': datosA,
@@ -202,8 +221,9 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
                 }),
           ),
           ListTile(
-            leading: const Icon(Icons.check, color: Colors.green),
-            title: const Text('Ver Registro Desparasitación'),
+            leading: const Icon(Icons.medication_liquid_outlined,
+                color: Colors.green),
+            title: const Text('Desparasitaciones'),
             onTap: () {
               //Navigator.pop(context);
               Navigator.pushNamed(context, 'verRegistroDesp', arguments: {
@@ -214,8 +234,8 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.check, color: Colors.green),
-            title: const Text('Ver Fotos'),
+            leading: const Icon(Icons.photo_sharp, color: Colors.green),
+            title: const Text('Fotos'),
             onTap: () {
               Navigator.pushNamed(context, 'verEvidenciaP1', arguments: {
                 'datosper': datosA,
@@ -225,8 +245,9 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.check, color: Colors.green),
-            title: const Text('Ver Archivos'),
+            leading:
+                const Icon(Icons.picture_as_pdf_outlined, color: Colors.green),
+            title: const Text('Documentos'),
             onTap: () {
               Navigator.pushNamed(context, 'verEvidenciaP2', arguments: {
                 'datosper': datosA,

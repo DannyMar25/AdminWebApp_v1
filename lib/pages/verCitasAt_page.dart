@@ -180,6 +180,24 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
       firstDate: DateTime(2020),
       lastDate: DateTime(2025),
       locale: const Locale('es', 'ES'),
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            // ignore: prefer_const_constructors
+            colorScheme: ColorScheme.light(
+              primary: Color.fromARGB(255, 47, 126, 50), // <-- SEE HERE
+              onPrimary: Colors.white, // <-- SEE HERE
+              onSurface: Color.fromARGB(255, 54, 137, 57), // <-- SEE HERE
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                primary: Color.fromARGB(255, 58, 138, 61), // button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
     );
 
     if (picked != null) {

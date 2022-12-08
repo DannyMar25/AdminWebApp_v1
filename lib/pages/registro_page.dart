@@ -56,7 +56,7 @@ class _RegistroPageState extends State<RegistroPage> {
           ),
           Container(
             width: 390.0,
-            height: 610.0, //540
+            height: 540.0, //540
             margin: const EdgeInsets.symmetric(vertical: 10.0),
             padding: const EdgeInsets.symmetric(vertical: 50.0),
             decoration: BoxDecoration(
@@ -73,7 +73,7 @@ class _RegistroPageState extends State<RegistroPage> {
               children: [
                 const Text(
                   'Crear cuenta',
-                  style: TextStyle(fontSize: 20.0),
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 8.0,
@@ -96,7 +96,7 @@ class _RegistroPageState extends State<RegistroPage> {
                 ),
                 create_password_confirm(bloc),
                 const SizedBox(
-                  height: 8.0,
+                  height: 50.0,
                 ),
                 _crearBoton(bloc),
               ],
@@ -153,7 +153,7 @@ class _RegistroPageState extends State<RegistroPage> {
             ],
             keyboardType: TextInputType.name,
             decoration: InputDecoration(
-              icon: const Icon(Icons.alternate_email, color: Colors.green),
+              icon: const Icon(Icons.person, color: Colors.green),
               //hintText: 'dany',
               labelText: 'Nombre de usuario',
               //counterText: snapshot.data,

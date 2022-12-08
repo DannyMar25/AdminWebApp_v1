@@ -39,7 +39,7 @@ class _InformacionSeguimientoPageState
     return Scaffold(
         backgroundColor: const Color.fromARGB(223, 245, 247, 240),
         appBar: AppBar(
-          title: const Text('Seguimiento de mascota adoptada'),
+          title: const Text('Seguimiento de mascota'),
           backgroundColor: Colors.green,
           actions: [
             PopupMenuButton<int>(
@@ -73,16 +73,8 @@ class _InformacionSeguimientoPageState
                         Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text(
-                              'Información de la mascota adoptada',
-                              style: TextStyle(
-                                fontSize: 20,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 2
-                                  ..color = Color.fromARGB(255, 15, 70, 114),
-                              ),
-                              textAlign: TextAlign.center,
+                            const SizedBox(
+                              height: 5,
                             ),
                             _mostrarFoto(),
                             const Divider(
@@ -184,17 +176,15 @@ class _InformacionSeguimientoPageState
                               ],
                             ),
                             const Divider(
+                              height: 15,
                               color: Colors.transparent,
                             ),
                             Text(
                               'Información del adoptante',
                               style: TextStyle(
-                                fontSize: 20,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 2
-                                  ..color = Color.fromARGB(255, 15, 70, 114),
-                              ),
+                                  fontSize: 25,
+                                  color: Colors.blueGrey[600],
+                                  fontWeight: FontWeight.bold),
                               textAlign: TextAlign.center,
                             ),
                             const Divider(
@@ -294,7 +284,7 @@ class _InformacionSeguimientoPageState
       return FadeInImage(
         image: NetworkImage(animal.fotoUrl),
         placeholder: const AssetImage('assets/jar-loading.gif'),
-        height: 250,
+        height: 300,
         fit: BoxFit.contain,
       );
     } else {
@@ -323,8 +313,8 @@ class _InformacionSeguimientoPageState
                     return Colors.green;
                   }),
                 ),
-                label: const Text('Ver Vacunas'),
-                icon: const Icon(Icons.fact_check),
+                label: const Text('Vacunas'),
+                icon: const Icon(Icons.vaccines),
                 autofocus: false,
                 onPressed: () {
                   // Navigator.pushNamed(context, 'registroVacunas',
@@ -345,8 +335,8 @@ class _InformacionSeguimientoPageState
                       return Colors.green;
                     }),
                   ),
-                  label: const Text('Ver Desparasitaciones'),
-                  icon: const Icon(Icons.fact_check),
+                  label: const Text('Desparasitaciones'),
+                  icon: const Icon(Icons.medication_liquid_outlined),
                   autofocus: false,
                   onPressed: () {
                     Navigator.pushNamed(context, 'verRegistroDesp', arguments: {
@@ -365,8 +355,8 @@ class _InformacionSeguimientoPageState
                       return Colors.green;
                     }),
                   ),
-                  label: const Text('Ver fotos'),
-                  icon: const Icon(Icons.fact_check),
+                  label: const Text('Fotos'),
+                  icon: const Icon(Icons.photo),
                   autofocus: false,
                   onPressed: () {
                     Navigator.pushNamed(context, 'verEvidenciaP1', arguments: {
@@ -385,8 +375,8 @@ class _InformacionSeguimientoPageState
                       return Colors.green;
                     }),
                   ),
-                  label: const Text('Ver Archivos'),
-                  icon: const Icon(Icons.fact_check),
+                  label: const Text('Documentos'),
+                  icon: const Icon(Icons.picture_as_pdf),
                   autofocus: false,
                   onPressed: () {
                     Navigator.pushNamed(context, 'verEvidenciaP2', arguments: {
@@ -419,10 +409,29 @@ class _InformacionSeguimientoPageState
           ),
           ListTile(
             leading: const Icon(
-              Icons.pages,
+              Icons.home,
               color: Colors.green,
             ),
-            title: const Text('Ir a Seguimiento Principal'),
+            title: const Text('Inicio'),
+            onTap: () {
+              //Navigator.pop(context);
+              Navigator.pushNamed(context, 'bienvenida');
+            },
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.list,
+              color: Colors.green,
+            ),
+            title: const Text('Lista de adopciones'),
+            onTap: () => Navigator.pushNamed(context, 'seguimientoPrincipal'),
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.manage_search_rounded,
+              color: Colors.green,
+            ),
+            title: const Text('Seguimiento de mascota'),
             onTap: () => Navigator.pushNamed(context, 'seguimientoInfo',
                 arguments: {
                   'datosper': datosA,
@@ -432,10 +441,10 @@ class _InformacionSeguimientoPageState
           ),
           ListTile(
             leading: const Icon(
-              Icons.check,
+              Icons.vaccines,
               color: Colors.green,
             ),
-            title: const Text('Ver Registros Vacunas'),
+            title: const Text('Vacunas'),
             onTap: () => Navigator.pushNamed(context, 'verRegistroVacunas',
                 arguments: {
                   'datosper': datosA,
@@ -444,8 +453,9 @@ class _InformacionSeguimientoPageState
                 }),
           ),
           ListTile(
-            leading: const Icon(Icons.check, color: Colors.green),
-            title: const Text('Ver Registro Desparasitación'),
+            leading: const Icon(Icons.medication_liquid_outlined,
+                color: Colors.green),
+            title: const Text('Desparasitaciones'),
             onTap: () {
               //Navigator.pop(context);
               Navigator.pushNamed(context, 'verRegistroDesp', arguments: {
@@ -456,8 +466,8 @@ class _InformacionSeguimientoPageState
             },
           ),
           ListTile(
-            leading: const Icon(Icons.check, color: Colors.green),
-            title: const Text('Ver Fotos'),
+            leading: const Icon(Icons.photo_sharp, color: Colors.green),
+            title: const Text('Fotos'),
             onTap: () {
               Navigator.pushNamed(context, 'verEvidenciaP1', arguments: {
                 'datosper': datosA,
@@ -467,8 +477,9 @@ class _InformacionSeguimientoPageState
             },
           ),
           ListTile(
-            leading: const Icon(Icons.check, color: Colors.green),
-            title: const Text('Ver Archivos'),
+            leading:
+                const Icon(Icons.picture_as_pdf_outlined, color: Colors.green),
+            title: const Text('Documentos'),
             onTap: () {
               Navigator.pushNamed(context, 'verEvidenciaP2', arguments: {
                 'datosper': datosA,
@@ -477,16 +488,96 @@ class _InformacionSeguimientoPageState
               });
             },
           ),
-          ListTile(
-            leading: const Icon(
-              Icons.pages,
-              color: Colors.green,
-            ),
-            title: const Text('Ir a Lista adopciones'),
-            onTap: () => Navigator.pushNamed(context, 'seguimientoPrincipal'),
-          ),
         ],
       ),
     );
   }
+
+  // Widget _menuWidget() {
+  //   return Drawer(
+  //     child: ListView(
+  //       padding: EdgeInsets.zero,
+  //       children: [
+  //         DrawerHeader(
+  //           child: Container(
+  //             decoration: const BoxDecoration(
+  //               image: DecorationImage(
+  //                 image: AssetImage('assets/pet-care.png'),
+  //                 fit: BoxFit.fitHeight,
+  //               ),
+  //             ),
+  //           ),
+  //         ),
+  //         ListTile(
+  //           leading: const Icon(
+  //             Icons.pages,
+  //             color: Colors.green,
+  //           ),
+  //           title: const Text('Ir a Seguimiento Principal'),
+  //           onTap: () => Navigator.pushNamed(context, 'seguimientoInfo',
+  //               arguments: {
+  //                 'datosper': datosA,
+  //                 'formulario': formularios,
+  //                 'animal': animal
+  //               }),
+  //         ),
+  //         ListTile(
+  //           leading: const Icon(
+  //             Icons.check,
+  //             color: Colors.green,
+  //           ),
+  //           title: const Text('Ver Registros Vacunas'),
+  //           onTap: () => Navigator.pushNamed(context, 'verRegistroVacunas',
+  //               arguments: {
+  //                 'datosper': datosA,
+  //                 'formulario': formularios,
+  //                 'animal': animal
+  //               }),
+  //         ),
+  //         ListTile(
+  //           leading: const Icon(Icons.check, color: Colors.green),
+  //           title: const Text('Ver Registro Desparasitación'),
+  //           onTap: () {
+  //             //Navigator.pop(context);
+  //             Navigator.pushNamed(context, 'verRegistroDesp', arguments: {
+  //               'datosper': datosA,
+  //               'formulario': formularios,
+  //               'animal': animal
+  //             });
+  //           },
+  //         ),
+  //         ListTile(
+  //           leading: const Icon(Icons.check, color: Colors.green),
+  //           title: const Text('Ver Fotos'),
+  //           onTap: () {
+  //             Navigator.pushNamed(context, 'verEvidenciaP1', arguments: {
+  //               'datosper': datosA,
+  //               'formulario': formularios,
+  //               'animal': animal
+  //             });
+  //           },
+  //         ),
+  //         ListTile(
+  //           leading: const Icon(Icons.check, color: Colors.green),
+  //           title: const Text('Ver Archivos'),
+  //           onTap: () {
+  //             Navigator.pushNamed(context, 'verEvidenciaP2', arguments: {
+  //               'datosper': datosA,
+  //               'formulario': formularios,
+  //               'animal': animal
+  //             });
+  //           },
+  //         ),
+  //         ListTile(
+  //           leading: const Icon(
+  //             Icons.pages,
+  //             color: Colors.green,
+  //           ),
+  //           title: const Text('Ir a Lista adopciones'),
+  //           onTap: () => Navigator.pushNamed(context, 'seguimientoPrincipal'),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 }
