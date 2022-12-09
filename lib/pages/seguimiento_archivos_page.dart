@@ -101,7 +101,7 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
 
   Widget _crearListado() {
     return FutureBuilder(
-        future: formulariosProvider.cargarEvidenciaF(formularios.id),
+        future: formulariosProvider.cargarEvidenciaA(formularios.id),
         builder: (BuildContext context,
             AsyncSnapshot<List<EvidenciasModel>> snapshot) {
           if (snapshot.hasData) {
