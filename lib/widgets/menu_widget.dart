@@ -242,19 +242,19 @@ class _MenuWidgetState extends State<MenuWidget> {
                   },
                 )
               : const SizedBox(),
-          rol == 'Administrador'
-              ? ListTile(
-                  leading: const Icon(
-                    Icons.app_registration,
-                    color: Colors.green,
-                  ),
-                  title: const Text('Restablecer contraseña'),
-                  onTap: () {
-                    //Navigator.pop(context);
-                    Navigator.pushNamed(context, 'cambiarContrasena');
-                  },
-                )
-              : const SizedBox(),
+          //rol == 'Administrador'
+          ListTile(
+            leading: const Icon(
+              Icons.app_registration,
+              color: Colors.green,
+            ),
+            title: const Text('Restablecer contraseña'),
+            onTap: () {
+              //Navigator.pop(context);
+              Navigator.pushNamed(context, 'cambiarContrasena');
+            },
+          ),
+          //: const SizedBox(),
 
           const Padding(padding: EdgeInsets.only(top: 30.0)),
           const Text(

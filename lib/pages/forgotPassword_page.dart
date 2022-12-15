@@ -59,7 +59,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             child: Column(
               children: [
                 const Text(
-                  'Recuperación de contraseña',
+                  'Restablece tu contraseña',
                   style: TextStyle(fontSize: 20.0),
                 ),
                 const SizedBox(
