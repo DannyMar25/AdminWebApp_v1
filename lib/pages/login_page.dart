@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
               textBaseline: TextBaseline.ideographic,
               children: [
                 const Text(
-                  'I N G R E S O',
+                  'Inicio de sesión',
                   style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
