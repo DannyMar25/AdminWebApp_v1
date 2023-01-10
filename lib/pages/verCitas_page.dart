@@ -72,7 +72,7 @@ class _VerCitasPageState extends State<VerCitasPage> {
                   const Divider(color: Colors.transparent),
                   const Divider(color: Colors.transparent),
                   _crearFecha(context),
-                  const Divider(),
+                  const Divider(color: Colors.transparent),
                   _verListado(),
                 ],
               ),
@@ -130,7 +130,7 @@ class _VerCitasPageState extends State<VerCitasPage> {
         ListTile(
           title: Column(
             children: [
-              Text("Fecha:${cita.fechaCita}"),
+              Text("Fecha: ${cita.fechaCita}"),
               Text("Nombre del cliente: ${cita.nombreClient}"),
               // Text("Posible a doptante para: " '${cita.animal!.nombre}'),
               Text("Día de la cita: $fecha"),

@@ -70,7 +70,7 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
                   const Divider(color: Colors.transparent),
                   const Divider(color: Colors.transparent),
                   _crearFecha(context),
-                  const Divider(),
+                  const Divider(color: Colors.transparent),
                   _verListado(),
                   // _crearBoton(),
                 ],
@@ -136,6 +136,7 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
                 children: [
                   Text("Nombre del cliente: ${cita.nombreClient}"),
                   // Text("Posible a doptante para: " '${cita.animal!.nombre}'),
+                  // ignore: prefer_interpolation_to_compose_strings
                   Text("Fecha de la cita: " + fecha + ' - ' + cita.fechaCita),
                   Text("Hora de la cita: $hora"),
                 ],
@@ -185,13 +186,14 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
           data: Theme.of(context).copyWith(
             // ignore: prefer_const_constructors
             colorScheme: ColorScheme.light(
-              primary: Color.fromARGB(255, 47, 126, 50), // <-- SEE HERE
+              primary: const Color.fromARGB(255, 47, 126, 50), // <-- SEE HERE
               onPrimary: Colors.white, // <-- SEE HERE
-              onSurface: Color.fromARGB(255, 54, 137, 57), // <-- SEE HERE
+              onSurface: const Color.fromARGB(255, 54, 137, 57), // <-- SEE HERE
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                primary: Color.fromARGB(255, 58, 138, 61), // button text color
+                primary:
+                    const Color.fromARGB(255, 58, 138, 61), // button text color
               ),
             ),
           ),

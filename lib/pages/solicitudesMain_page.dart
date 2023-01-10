@@ -39,7 +39,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
     }
     cargarInfo();
     return Scaffold(
-      backgroundColor: const Color.fromARGB(248, 234, 235, 233),
+      //backgroundColor: const Color.fromARGB(248, 234, 235, 233),
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: const Text("Datos de la solicitud"),

@@ -45,7 +45,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
     formularios = arg['formulario'] as FormulariosModel;
     //print(formularios.id);
     return Scaffold(
-      backgroundColor: const Color.fromARGB(223, 248, 248, 245),
+      //backgroundColor: const Color.fromARGB(223, 248, 248, 245),
       appBar: AppBar(
         title: const Text('Relación con los animales'),
         backgroundColor: Colors.green,
@@ -70,300 +70,297 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
         children: [
           //Background(),
           SingleChildScrollView(
-            child: Flexible(
-              fit: FlexFit.loose,
-              child: Center(
-                child: Container(
-                  width: 850,
-                  padding: const EdgeInsets.all(15.0),
-                  child: Form(
-                    key: formKey,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Align(
-                          alignment: Alignment.topCenter,
-                          child: Text(
-                            'Liste sus dos últimas mascotas',
-                            style: TextStyle(
-                              fontSize: 22,
-                              foreground: Paint()
-                                ..style = PaintingStyle.stroke
-                                ..strokeWidth = 2
-                                ..color = Colors.blueGrey,
-                            ),
-                            textAlign: TextAlign.center,
+            child: Center(
+              child: Container(
+                width: 850,
+                padding: const EdgeInsets.all(15.0),
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Text(
+                          'Liste sus dos últimas mascotas',
+                          style: TextStyle(
+                            fontSize: 22,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = 2
+                              ..color = Colors.blueGrey,
                           ),
+                          textAlign: TextAlign.center,
                         ),
+                      ),
 
-                        const Divider(),
-                        Align(
-                          alignment: Alignment.topCenter,
-                          child: DataTable(
-                            sortColumnIndex: 2,
-                            columnSpacing: 25,
-                            sortAscending: false,
-                            columns: const [
-                              DataColumn(label: Text("Tipo")),
-                              DataColumn(label: Text("Nombre")),
-                              DataColumn(label: Text("Sexo")),
-                              DataColumn(label: Text("Esterilizado")),
-                            ],
-                            rows: [
-                              DataRow(selected: true, cells: [
-                                DataCell(_mostrarTipo1()),
-                                DataCell(_mostrarNombre1()),
-                                DataCell(_mostrarSexo1()),
-                                DataCell(_mostrarEsteriliza1())
-                              ]),
-                              DataRow(cells: [
-                                DataCell(_mostrarTipo2()),
-                                DataCell(_mostrarNombre2()),
-                                DataCell(_mostrarSexo2()),
-                                DataCell(_mostrarEsteriliza2())
-                              ]),
-                            ],
-                          ),
-                        ),
-                        const Divider(),
-                        const Divider(color: Colors.transparent),
-
-                        const Text(
-                          '¿Dónde está ahora? Si falleció, perdió o está en otro lugar, indique la causa.',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarUbicMascota(),
-                        const Divider(color: Colors.transparent),
-
-                        const Text(
-                          '¿Por qué desea adoptar una mascota?',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarDeseaAdop(),
-                        const Divider(color: Colors.transparent),
-                        const Text(
-                          'Si por algún motivo tuviera que cambiar de domicilio, ¿Qué pasaría con su mascota?',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarCambioDomi(),
-                        const Divider(color: Colors.transparent),
-                        const Text(
-                          'Con relación a la anterior pregunta ¿Qué pasaría si los dueños de la nueva casa no aceptacen mascotas?',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarRelNuevaCasa(),
-                        const Divider(color: Colors.transparent),
-                        const Text(
-                          'Si Ud. debe salir de viaje más de un día, la mascota:',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarViajeMasc(),
-                        const Divider(color: Colors.transparent),
-                        const Text(
-                          '¿Cuánto tiempo en el día pasará sola la mascota?',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarTiempoSola(),
-                        const Divider(color: Colors.transparent),
-                        const Text(
-                          '¿Dónde pasará durante el día y la noche?',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarDiaNoche(),
-                        const Divider(color: Colors.transparent),
-                        const Text(
-                          '¿Dónde dormirá la mascota?',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarDondeDormir(),
-                        const Divider(color: Colors.transparent),
-                        const Text(
-                          '¿Dónde hará sus necesidades?',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarDondeNecesidad(),
-                        const Divider(color: Colors.transparent),
-                        const Text(
-                          '¿Qué comerá habitualmente la mascota?',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarComidaMas(),
-                        const Divider(color: Colors.transparent),
-                        const Text(
-                          '¿Cuántos años cree que vive un perro promedio?',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarPromedioVida(),
-                        const Divider(color: Colors.transparent),
-                        const Text(
-                          'Si su mascota se enferma, usted:',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarMascotaEnferma(),
-                        const Divider(color: Colors.transparent),
-                        const Text(
-                          '¿Quién será el responsable y se hará cargo de cubrir los gastos de la mascota?',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarResponsableMas(),
-                        const Divider(color: Colors.transparent),
-                        const Text(
-                          'Estime cuánto dinero podría gastar en su mascota mensualmente',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarDineroGasto(),
-                        const Divider(color: Colors.transparent),
-                        const Text(
-                          '¿Cuenta con los recursos para cubrir los gastos veterinarios del animal de compañía?',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarRecursosVet(),
-                        const Divider(color: Colors.transparent),
-                        const Divider(),
-                        const Text(
-                          '¿Está de acuerdo en que se haga una visita periódica a su domicilio para ver como se encuentra el adoptado?',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                          textAlign: TextAlign.justify,
-                        ),
-                        const Divider(),
-                        _mostrarVisitaDomicilio(),
-                        _mostrarJustificacion1(),
-                        const Divider(),
-                        const Text(
-                          '¿Está de acuerdo en que la  mascota sea esterilizada?',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                          textAlign: TextAlign.justify,
-                        ),
-                        const Divider(),
-                        _mostrarAcuerdoEst(),
-                        _mostrarJustificacion2(),
-                        const Divider(),
-                        const Text(
-                          '¿Conoce usted los beneficios de la esterilización?',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarBeneficios(),
-                        const Divider(color: Colors.transparent),
-                        const Text(
-                          '¿Según usted que es tenencia responsable?',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarTenencia(),
-                        const Divider(color: Colors.transparent),
-                        //pregunta de ordenanza
-                        const Text(
-                          '¿Está Ud. informado y conciente sobre la ordenanza municipal sobre la tenencia responsable de mascotas?',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarOrdenMuni(),
-                        const Divider(color: Colors.transparent),
-                        const Text(
-                          '¿La adopción fue compartida con su familia?',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarAdopcionFam(),
-                        const Divider(color: Colors.transparent),
-                        const Text(
-                          'Su familia está:',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.justify,
-                        ),
-                        _mostrarFamilia(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            _botonAtras(),
-                            _botonSiguiente(),
+                      const Divider(),
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: DataTable(
+                          sortColumnIndex: 2,
+                          columnSpacing: 25,
+                          sortAscending: false,
+                          columns: const [
+                            DataColumn(label: Text("Tipo")),
+                            DataColumn(label: Text("Nombre")),
+                            DataColumn(label: Text("Sexo")),
+                            DataColumn(label: Text("Esterilizado")),
                           ],
-                        )
-                      ],
-                    ),
+                          rows: [
+                            DataRow(selected: true, cells: [
+                              DataCell(_mostrarTipo1()),
+                              DataCell(_mostrarNombre1()),
+                              DataCell(_mostrarSexo1()),
+                              DataCell(_mostrarEsteriliza1())
+                            ]),
+                            DataRow(cells: [
+                              DataCell(_mostrarTipo2()),
+                              DataCell(_mostrarNombre2()),
+                              DataCell(_mostrarSexo2()),
+                              DataCell(_mostrarEsteriliza2())
+                            ]),
+                          ],
+                        ),
+                      ),
+                      const Divider(),
+                      const Divider(color: Colors.transparent),
+
+                      const Text(
+                        '¿Dónde está ahora? Si falleció, perdió o está en otro lugar, indique la causa.',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarUbicMascota(),
+                      const Divider(color: Colors.transparent),
+
+                      const Text(
+                        '¿Por qué desea adoptar una mascota?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarDeseaAdop(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        'Si por algún motivo tuviera que cambiar de domicilio, ¿Qué pasaría con su mascota?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarCambioDomi(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        'Con relación a la anterior pregunta ¿Qué pasaría si los dueños de la nueva casa no aceptacen mascotas?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarRelNuevaCasa(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        'Si Ud. debe salir de viaje más de un día, la mascota:',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarViajeMasc(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿Cuánto tiempo en el día pasará sola la mascota?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarTiempoSola(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿Dónde pasará durante el día y la noche?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarDiaNoche(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿Dónde dormirá la mascota?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarDondeDormir(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿Dónde hará sus necesidades?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarDondeNecesidad(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿Qué comerá habitualmente la mascota?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarComidaMas(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿Cuántos años cree que vive un perro promedio?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarPromedioVida(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        'Si su mascota se enferma, usted:',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarMascotaEnferma(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿Quién será el responsable y se hará cargo de cubrir los gastos de la mascota?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarResponsableMas(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        'Estime cuánto dinero podría gastar en su mascota mensualmente',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarDineroGasto(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿Cuenta con los recursos para cubrir los gastos veterinarios del animal de compañía?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarRecursosVet(),
+                      const Divider(color: Colors.transparent),
+                      const Divider(),
+                      const Text(
+                        '¿Está de acuerdo en que se haga una visita periódica a su domicilio para ver como se encuentra el adoptado?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        textAlign: TextAlign.justify,
+                      ),
+                      const Divider(),
+                      _mostrarVisitaDomicilio(),
+                      _mostrarJustificacion1(),
+                      const Divider(),
+                      const Text(
+                        '¿Está de acuerdo en que la  mascota sea esterilizada?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        textAlign: TextAlign.justify,
+                      ),
+                      const Divider(),
+                      _mostrarAcuerdoEst(),
+                      _mostrarJustificacion2(),
+                      const Divider(),
+                      const Text(
+                        '¿Conoce usted los beneficios de la esterilización?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarBeneficios(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿Según usted que es tenencia responsable?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarTenencia(),
+                      const Divider(color: Colors.transparent),
+                      //pregunta de ordenanza
+                      const Text(
+                        '¿Está Ud. informado y conciente sobre la ordenanza municipal sobre la tenencia responsable de mascotas?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarOrdenMuni(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        '¿La adopción fue compartida con su familia?',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarAdopcionFam(),
+                      const Divider(color: Colors.transparent),
+                      const Text(
+                        'Su familia está:',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.justify,
+                      ),
+                      _mostrarFamilia(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _botonAtras(),
+                          _botonSiguiente(),
+                        ],
+                      )
+                    ],
                   ),
                 ),
               ),

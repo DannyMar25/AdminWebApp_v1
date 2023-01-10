@@ -54,7 +54,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
 
     //var nombre1 = datosA.nombreCom;
     return Scaffold(
-      backgroundColor: const Color.fromARGB(223, 248, 248, 245),
+      //backgroundColor: const Color.fromARGB(223, 248, 248, 245),
       appBar: AppBar(
         title: const Text('Datos personales'),
         backgroundColor: Colors.green,

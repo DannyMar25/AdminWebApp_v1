@@ -46,7 +46,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       //print(formularios.id);
     }
     return Scaffold(
-      backgroundColor: const Color.fromARGB(223, 248, 248, 245),
+      //backgroundColor: const Color.fromARGB(223, 248, 248, 245),
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: const Text("Respuesta y observaciones"),

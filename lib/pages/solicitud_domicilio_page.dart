@@ -47,7 +47,7 @@ class _DomicilioPageState extends State<DomicilioPage> {
     //print(formularios.id);
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(223, 248, 248, 245),
+      //backgroundColor: const Color.fromARGB(223, 248, 248, 245),
       appBar: AppBar(
         title: const Text('Domicilio'),
         backgroundColor: Colors.green,
@@ -72,102 +72,99 @@ class _DomicilioPageState extends State<DomicilioPage> {
         children: [
           // Background(),
           SingleChildScrollView(
-            child: Flexible(
-              fit: FlexFit.loose,
-              child: Center(
-                child: Container(
-                  width: 850,
-                  padding: const EdgeInsets.all(15.0),
-                  child: Form(
-                    key: formKey,
-                    child: Column(
-                      children: [
-                        Text(
-                          '¿Qué tipo de inmueble posee?',
-                          style: TextStyle(
-                            fontSize: 26,
-                            foreground: Paint()
-                              ..style = PaintingStyle.stroke
-                              ..strokeWidth = 2
-                              ..color = Colors.blueGrey,
-                          ),
-                          textAlign: TextAlign.center,
+            child: Center(
+              child: Container(
+                width: 850,
+                padding: const EdgeInsets.all(15.0),
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      Text(
+                        '¿Qué tipo de inmueble posee?',
+                        style: TextStyle(
+                          fontSize: 26,
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 2
+                            ..color = Colors.blueGrey,
                         ),
-                        const Divider(),
-                        _mostrarTipoInmueble(),
-                        _mostrarM2(),
-                        const Divider(),
-                        _mostrarInmueble(),
-                        const Divider(),
-                        Text(
-                          '¿Planea mudarse próximamente?',
-                          style: TextStyle(
-                            fontSize: 26,
-                            foreground: Paint()
-                              ..style = PaintingStyle.stroke
-                              ..strokeWidth = 2
-                              ..color = Colors.blueGrey,
-                          ),
-                          textAlign: TextAlign.center,
+                        textAlign: TextAlign.center,
+                      ),
+                      const Divider(),
+                      _mostrarTipoInmueble(),
+                      _mostrarM2(),
+                      const Divider(),
+                      _mostrarInmueble(),
+                      const Divider(),
+                      Text(
+                        '¿Planea mudarse próximamente?',
+                        style: TextStyle(
+                          fontSize: 26,
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 2
+                            ..color = Colors.blueGrey,
                         ),
-                        const Divider(),
-                        _mostrarPlanMudanza(),
-                        const Divider(),
-                        Text(
-                          'El lugar donde pasará la mascota, ¿Tiene cerramiento?',
-                          style: TextStyle(
-                            fontSize: 26,
-                            foreground: Paint()
-                              ..style = PaintingStyle.stroke
-                              ..strokeWidth = 2
-                              ..color = Colors.blueGrey,
-                          ),
-                          textAlign: TextAlign.center,
+                        textAlign: TextAlign.center,
+                      ),
+                      const Divider(),
+                      _mostrarPlanMudanza(),
+                      const Divider(),
+                      Text(
+                        'El lugar donde pasará la mascota, ¿Tiene cerramiento?',
+                        style: TextStyle(
+                          fontSize: 26,
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 2
+                            ..color = Colors.blueGrey,
                         ),
-                        const Divider(),
-                        _mostrarCerramiento(),
-                        const Divider(),
-                        Text(
-                          '¿Cuál piensa que es la mascota más adecuada para Ud.?',
-                          style: TextStyle(
-                            fontSize: 26,
-                            foreground: Paint()
-                              ..style = PaintingStyle.stroke
-                              ..strokeWidth = 2
-                              ..color = Colors.blueGrey,
-                          ),
-                          textAlign: TextAlign.center,
+                        textAlign: TextAlign.center,
+                      ),
+                      const Divider(),
+                      _mostrarCerramiento(),
+                      const Divider(),
+                      Text(
+                        '¿Cuál piensa que es la mascota más adecuada para Ud.?',
+                        style: TextStyle(
+                          fontSize: 26,
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 2
+                            ..color = Colors.blueGrey,
                         ),
-                        const Divider(),
-                        DataTable(
-                          sortColumnIndex: 2,
-                          sortAscending: false,
-                          columnSpacing: 30,
-                          columns: const [
-                            DataColumn(label: Text("Especie")),
-                            DataColumn(label: Text("Sexo")),
-                            DataColumn(label: Text("Edad ")),
-                            DataColumn(label: Text("Tamaño")),
-                          ],
-                          rows: [
-                            DataRow(selected: true, cells: [
-                              DataCell(_mostrarEspecie()),
-                              DataCell(_mostrarSexo()),
-                              DataCell(_mostrarEdad()),
-                              DataCell(_mostrarTamano()),
-                            ]),
-                          ],
-                        ),
-                        const Divider(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            _botonAtras(),
-                            _botonSiguiente(),
-                          ],
-                        )
-                      ],
-                    ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const Divider(),
+                      DataTable(
+                        sortColumnIndex: 2,
+                        sortAscending: false,
+                        columnSpacing: 30,
+                        columns: const [
+                          DataColumn(label: Text("Especie")),
+                          DataColumn(label: Text("Sexo")),
+                          DataColumn(label: Text("Edad ")),
+                          DataColumn(label: Text("Tamaño")),
+                        ],
+                        rows: [
+                          DataRow(selected: true, cells: [
+                            DataCell(_mostrarEspecie()),
+                            DataCell(_mostrarSexo()),
+                            DataCell(_mostrarEdad()),
+                            DataCell(_mostrarTamano()),
+                          ]),
+                        ],
+                      ),
+                      const Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _botonAtras(),
+                          _botonSiguiente(),
+                        ],
+                      )
+                    ],
                   ),
                 ),
               ),

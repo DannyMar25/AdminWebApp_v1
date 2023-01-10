@@ -37,7 +37,7 @@ class _InformacionSeguimientoPageState
     animal = arg['animal'] as AnimalModel;
 
     return Scaffold(
-        backgroundColor: const Color.fromARGB(223, 245, 247, 240),
+        //backgroundColor: Color.fromARGB(223, 252, 252, 252),
         appBar: AppBar(
           title: const Text('Seguimiento de mascota'),
           backgroundColor: Colors.green,
