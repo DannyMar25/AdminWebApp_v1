@@ -205,39 +205,31 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
   }
 
   Widget _crearItem(BuildContext context, AnimalModel animal) {
-    return Expanded(
-      child: Container(
-        height: 100.0,
-        width: 200.0,
-        child: Card(
-            elevation: 4.0,
-            clipBehavior: Clip.antiAlias,
-            //margin: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 90.0),
-            child: Flexible(
-              fit: FlexFit.loose,
-              child: InkWell(
-                onTap: () =>
-                    Navigator.pushNamed(context, 'animal', arguments: animal),
-                child: Column(
-                  //estaba con Column
-                  children: [
-                    (animal.fotoUrl == "")
-                        ? const Image(image: AssetImage('assets/no-image.png'))
-                        : Expanded(
-                            child: FadeInImage(
-                              image: NetworkImage(animal.fotoUrl),
-                              placeholder: const AssetImage('assets/cat_1.gif'),
-                              height: 300.0, //250
-                              //width: 250.0,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                    _buildChild(animal, context)
-                  ],
-                ),
-              ),
-            )),
+    return Card(
+      elevation: 4.0,
+      clipBehavior: Clip.antiAlias,
+      //margin: const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 90.0),
+
+      child: InkWell(
+        onTap: () => Navigator.pushNamed(context, 'animal', arguments: animal),
+        child: Column(
+          //estaba con Column
+          children: [
+            (animal.fotoUrl == "")
+                ? const Image(image: AssetImage('assets/no-image.png'))
+                : FadeInImage(
+                    image: NetworkImage(animal.fotoUrl),
+                    placeholder: const AssetImage('assets/cat_1.gif'),
+                    //height: 300.0, //250
+                    height: MediaQuery.of(context).size.height * 0.33,
+                    //width: 250.0,
+                    //width: MediaQuery.of(context).size.width * 0.18,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+            _buildChild(animal, context)
+          ],
+        ),
       ),
     );
   }

@@ -82,47 +82,32 @@ class _InformacionSeguimientoPageState
                             ),
                             Row(
                               children: [
-                                const Expanded(
-                                  child: Text(
-                                    'Nombre: ',
-                                    textAlign: TextAlign.left,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
+                                const Text(
+                                  'Nombre: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                                Expanded(
-                                  child: Text(
-                                    '${animal.nombre}                                ',
-                                    textAlign: TextAlign.left,
-                                  ),
+                                Text(
+                                  '${animal.nombre}                                ',
+                                  textAlign: TextAlign.left,
                                 ),
-                                const Expanded(
-                                  child: Text(
-                                    'Etapa de vida: ',
-                                    textAlign: TextAlign.left,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
+                                const Text(
+                                  'Etapa de vida: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                                Expanded(
-                                  child: Text(
-                                    '${animal.etapaVida}      ',
-                                    textAlign: TextAlign.left,
-                                  ),
+                                Text(
+                                  '${animal.etapaVida}      ',
+                                  textAlign: TextAlign.left,
                                 ),
-                                const Expanded(
-                                  child: Text(
-                                    'Raza: ',
-                                    textAlign: TextAlign.left,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
+                                Text(
+                                  'Raza: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                                Expanded(
-                                  child: Text(
-                                    animal.raza,
-                                    textAlign: TextAlign.left,
-                                  ),
+                                Text(
+                                  animal.raza,
+                                  textAlign: TextAlign.left,
                                 ),
                               ],
                             ),
@@ -131,47 +116,32 @@ class _InformacionSeguimientoPageState
                               //crossAxisAlignment: CrossAxisAlignment.end,
                               //mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                const Expanded(
-                                  child: Text(
-                                    'Color: ',
-                                    textAlign: TextAlign.left,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
+                                const Text(
+                                  'Color: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                                Expanded(
-                                  child: Text(
-                                    '${animal.color}               ',
-                                    textAlign: TextAlign.left,
-                                  ),
+                                Text(
+                                  '${animal.color}               ',
+                                  textAlign: TextAlign.left,
                                 ),
-                                const Expanded(
-                                  child: Text(
-                                    'Tamaño: ',
-                                    textAlign: TextAlign.left,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
+                                const Text(
+                                  'Tamaño: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                                Expanded(
-                                  child: Text(
-                                    '${animal.tamanio}      ',
-                                    textAlign: TextAlign.left,
-                                  ),
+                                Text(
+                                  '${animal.tamanio}      ',
+                                  textAlign: TextAlign.left,
                                 ),
-                                const Expanded(
-                                  child: Text(
-                                    'Sexo: ',
-                                    textAlign: TextAlign.left,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
+                                const Text(
+                                  'Sexo: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                                Expanded(
-                                  child: Text(
-                                    animal.sexo,
-                                    textAlign: TextAlign.left,
-                                  ),
+                                Text(
+                                  animal.sexo,
+                                  textAlign: TextAlign.left,
                                 ),
                               ],
                             ),

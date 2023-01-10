@@ -118,7 +118,7 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
         children: [
           //Divider(color: Colors.purple),
           SizedBox(
-            width: 500.0,
+            width: 700.0,
             child: Card(
               clipBehavior: Clip.antiAlias,
               shape: RoundedRectangleBorder(
@@ -126,7 +126,7 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
               elevation: 8,
               margin: const EdgeInsets.all(10),
               child: Container(
-                height: 110,
+                height: 120,
                 color: Colors.white,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -134,12 +134,9 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
                     Center(
                       child: Padding(
                         padding: const EdgeInsets.only(right: 0.1),
-                        child: Expanded(
-                          flex: 5,
-                          child: Image.asset(
-                            "assets/pet.jpg",
-                            height: 90,
-                          ),
+                        child: Image.asset(
+                          "assets/pet.jpg",
+                          height: 90,
                         ),
                       ),
                     ),
@@ -152,41 +149,35 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
                             const SizedBox(
                               height: 10,
                             ),
-                            Expanded(
-                              flex: 20,
-                              child: ListTile(
-                                title:
-                                    Text("Cliente: ${formulario.nombreClient}"),
-                                subtitle: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const SizedBox(height: 5),
-                                    Text("Fecha de solicitud:"
-                                        '$fechaIn'
-                                        '\n'
-                                        "Posible adoptante para: "
-                                        '${formulario.animal!.nombre}'),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 5,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
+                            ListTile(
+                              title:
+                                  Text("Cliente: ${formulario.nombreClient}"),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  TextButton(
-                                    child: const Text("VER INFO"),
-                                    onPressed: () => Navigator.pushNamed(
-                                        context, 'verSolicitudesMain',
-                                        arguments: formulario),
-                                    //
-                                  ),
-                                  const SizedBox(
-                                    width: 8, //8
-                                  )
+                                  const SizedBox(height: 5),
+                                  Text("Fecha de solicitud:"
+                                      '$fechaIn'
+                                      '\n'
+                                      "Posible adoptante para: "
+                                      '${formulario.animal!.nombre}'),
                                 ],
                               ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                TextButton(
+                                  child: const Text("VER INFO"),
+                                  onPressed: () => Navigator.pushNamed(
+                                      context, 'verSolicitudesMain',
+                                      arguments: formulario),
+                                  //
+                                ),
+                                const SizedBox(
+                                  width: 8, //8
+                                )
+                              ],
                             ),
                             const SizedBox(
                               height: 10,

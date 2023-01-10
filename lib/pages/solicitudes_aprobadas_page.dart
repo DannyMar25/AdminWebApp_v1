@@ -136,10 +136,7 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
                     Center(
                       child: Padding(
                         padding: const EdgeInsets.all(10),
-                        child: Expanded(
-                          flex: 2,
-                          child: Image.asset("assets/pet.jpg"),
-                        ),
+                        child: Image.asset("assets/pet.jpg"),
                       ),
                     ),
                     Expanded(
@@ -148,43 +145,37 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
                         alignment: Alignment.topLeft,
                         child: Column(
                           children: [
-                            Expanded(
-                              flex: 5,
-                              child: ListTile(
-                                title: Text(formulario.animal!.nombre),
-                                subtitle: Text(
-                                    "Adoptante: ${formulario.nombreClient}"),
-                              ),
+                            ListTile(
+                              title: Text(formulario.animal!.nombre),
+                              subtitle:
+                                  Text("Adoptante: ${formulario.nombreClient}"),
                             ),
-                            Expanded(
-                              flex: 5,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  TextButton(
-                                    child: const Text("VER INFO"),
-                                    onPressed: () async {
-                                      datosC =
-                                          await formulariosProvider.cargarDPId(
-                                              formulario.id,
-                                              formulario.idDatosPersonales);
-                                      animal = await animalesProvider
-                                          .cargarAnimalId(formulario.idAnimal);
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                TextButton(
+                                  child: const Text("VER INFO"),
+                                  onPressed: () async {
+                                    datosC =
+                                        await formulariosProvider.cargarDPId(
+                                            formulario.id,
+                                            formulario.idDatosPersonales);
+                                    animal = await animalesProvider
+                                        .cargarAnimalId(formulario.idAnimal);
 
-                                      Navigator.pushNamed(
-                                          context, 'verSolicitudAprobada',
-                                          arguments: {
-                                            'datosper': datosC,
-                                            'formulario': formulario,
-                                            'animal': animal
-                                          });
-                                    },
-                                  ),
-                                  const SizedBox(
-                                    width: 8,
-                                  )
-                                ],
-                              ),
+                                    Navigator.pushNamed(
+                                        context, 'verSolicitudAprobada',
+                                        arguments: {
+                                          'datosper': datosC,
+                                          'formulario': formulario,
+                                          'animal': animal
+                                        });
+                                  },
+                                ),
+                                const SizedBox(
+                                  width: 8,
+                                )
+                              ],
                             )
                           ],
                         ),

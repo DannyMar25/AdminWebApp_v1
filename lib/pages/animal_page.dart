@@ -93,59 +93,56 @@ class _AnimalPageState extends State<AnimalPage> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Flexible(
-          fit: FlexFit.loose,
-          child: Container(
-            // width: 850,
-            padding: const EdgeInsets.all(15.0),
-            child: Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 400,
-                        child: Column(
-                          children: [
-                            _mostrarFoto(),
-                            _crearEspecie(),
-                            _crearNombre(),
-                            _crearSexo(),
-                            Row(children: [_crearEdad(), infoEtapa()]),
-                            // _crearEdad(),
-                            _crearTemperamento(),
-                          ],
-                        ),
+        child: Container(
+          // width: 850,
+          padding: const EdgeInsets.all(15.0),
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 400,
+                      child: Column(
+                        children: [
+                          _mostrarFoto(),
+                          _crearEspecie(),
+                          _crearNombre(),
+                          _crearSexo(),
+                          Row(children: [_crearEdad(), infoEtapa()]),
+                          // _crearEdad(),
+                          _crearTemperamento(),
+                        ],
                       ),
-                      const Divider(
-                        color: Colors.transparent,
+                    ),
+                    const Divider(
+                      color: Colors.transparent,
+                    ),
+                    const Padding(padding: EdgeInsets.only(right: 30.0)),
+                    SizedBox(
+                      width: 400,
+                      child: Column(
+                        children: [
+                          _crearPeso(),
+                          _crearTamanio(),
+                          _crearColor(),
+                          _crearRaza(),
+                          _crearEsterilizado(),
+                          _crearCaracteristicas(),
+                          // _crearDisponible(),
+                          //_crearBoton(),
+                          const Divider(
+                            color: Colors.transparent,
+                          ),
+                          _buildChild()
+                        ],
                       ),
-                      const Padding(padding: EdgeInsets.only(right: 30.0)),
-                      SizedBox(
-                        width: 400,
-                        child: Column(
-                          children: [
-                            _crearPeso(),
-                            _crearTamanio(),
-                            _crearColor(),
-                            _crearRaza(),
-                            _crearEsterilizado(),
-                            _crearCaracteristicas(),
-                            // _crearDisponible(),
-                            //_crearBoton(),
-                            const Divider(
-                              color: Colors.transparent,
-                            ),
-                            _buildChild()
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ],
-              ),
+                    )
+                  ],
+                ),
+              ],
             ),
           ),
         ),

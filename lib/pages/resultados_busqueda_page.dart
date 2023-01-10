@@ -79,10 +79,9 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
             const Padding(padding: EdgeInsets.only(bottom: 10.0)),
             _botonBusqueda(),
             const Padding(padding: EdgeInsets.only(bottom: 10.0)),
-            Expanded(
-              child: _crearListadoBusqueda(),
-              //child: buildChild(),
-            )
+            Expanded(child: _crearListadoBusqueda()),
+            //child: buildChild(),
+
             //_crearListado(),
           ],
         )
@@ -125,31 +124,28 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
             final animales = snapshot.data;
             if (animales!.length == 0) {
               return Column(children: [
-                Flexible(
-                  fit: FlexFit.loose,
-                  child: AlertDialog(
-                    title: Row(
-                      children: const [
-                        Icon(
-                          Icons.check_circle,
-                          color: Colors.green,
-                          size: 45,
-                        ),
-                        Text('Resultado de búsqueda'),
-                      ],
-                    ),
-                    content: const Text(
-                        'No se ha encotrado ninguna mascota con las caracteristicas que buscabas.'),
-                    actions: [
-                      TextButton(
-                          child: const Text('Ok'),
-                          //onPressed: () => Navigator.of(context).pop(),
-                          onPressed: () {
-                            Navigator.pushNamed(context, 'home');
-                          })
+                AlertDialog(
+                  title: Row(
+                    children: const [
+                      Icon(
+                        Icons.check_circle,
+                        color: Colors.green,
+                        size: 45,
+                      ),
+                      Text('Resultado de búsqueda'),
                     ],
                   ),
-                )
+                  content: const Text(
+                      'No se ha encotrado ninguna mascota con las caracteristicas que buscabas.'),
+                  actions: [
+                    TextButton(
+                        child: const Text('Ok'),
+                        //onPressed: () => Navigator.of(context).pop(),
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'home');
+                        })
+                  ],
+                ),
               ]);
             }
             return GridView.count(
@@ -180,30 +176,27 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
             final animales = snapshot.data;
             if (animales!.length == 0) {
               return Column(children: [
-                Flexible(
-                  fit: FlexFit.loose,
-                  child: AlertDialog(
-                    title: Row(
-                      children: const [
-                        Icon(
-                          Icons.check_circle,
-                          color: Colors.green,
-                          size: 45,
-                        ),
-                        Text('Resultado de búsqueda'),
-                      ],
-                    ),
-                    content: const Text(
-                        'No se ha encotrado ninguna mascota con las caracteristicas que buscabas.'),
-                    actions: [
-                      TextButton(
-                          child: const Text('Ok'),
-                          //onPressed: () => Navigator.of(context).pop(),
-                          onPressed: () {
-                            Navigator.pushNamed(context, 'home');
-                          })
+                AlertDialog(
+                  title: Row(
+                    children: const [
+                      Icon(
+                        Icons.check_circle,
+                        color: Colors.green,
+                        size: 45,
+                      ),
+                      Text('Resultado de búsqueda'),
                     ],
                   ),
+                  content: const Text(
+                      'No se ha encotrado ninguna mascota con las caracteristicas que buscabas.'),
+                  actions: [
+                    TextButton(
+                        child: const Text('Ok'),
+                        //onPressed: () => Navigator.of(context).pop(),
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'home');
+                        })
+                  ],
                 )
               ]);
             }
@@ -222,44 +215,36 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
   }
 
   Widget _crearItem1(BuildContext context, AnimalModel animal) {
-    return Expanded(
-      child: Container(
-        height: 100.0,
-        width: 200.0,
-        child: Card(
-          clipBehavior: Clip.antiAlias,
-          color: const Color.fromARGB(248, 202, 241, 170),
-          elevation: 4.0,
-          //margin: const EdgeInsets.only(bottom: 90.0, left: 5.0, right: 5.0),
-          child: Flexible(
-            fit: FlexFit.loose,
-            child: InkWell(
-              onTap: () =>
-                  Navigator.pushNamed(context, 'animal', arguments: animal),
-              child: Column(
-                children: [
-                  (animal.fotoUrl == "")
-                      ? const Image(image: AssetImage('assets/no-image.png'))
-                      : Expanded(
-                          child: FadeInImage(
-                            image: NetworkImage(animal.fotoUrl),
-                            placeholder: const AssetImage('assets/cat_1.gif'),
-                            height: 300.0,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                  //Padding(padding: EdgeInsets.only(bottom: 5.0)),
-                  ListTile(
-                    title: Text(animal.nombre),
-                    subtitle: Text('${animal.etapaVida} - ${animal.sexo}'),
-                    // onTap: () =>
-                    //     Navigator.pushNamed(context, 'animal', arguments: animal),
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      color: Color.fromARGB(248, 244, 246, 243),
+      elevation: 4.0,
+      //margin: const EdgeInsets.only(bottom: 90.0, left: 5.0, right: 5.0),
+      child: InkWell(
+        onTap: () => Navigator.pushNamed(context, 'animal', arguments: animal),
+        child: Column(
+          children: [
+            (animal.fotoUrl == "")
+                ? const Image(image: AssetImage('assets/no-image.png'))
+                : FadeInImage(
+                    image: NetworkImage(animal.fotoUrl),
+                    placeholder: const AssetImage('assets/cat_1.gif'),
+                    height: MediaQuery.of(context).size.height * 0.33,
+
+                    //height: 350.0,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
                   ),
-                ],
-              ),
+
+            //Padding(padding: EdgeInsets.only(bottom: 5.0)),
+            ListTile(
+              title: Text(animal.nombre,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+              subtitle: Text('${animal.etapaVida} - ${animal.sexo}'),
+              // onTap: () =>
+              //     Navigator.pushNamed(context, 'animal', arguments: animal),
             ),
-          ),
+          ],
         ),
       ),
     );

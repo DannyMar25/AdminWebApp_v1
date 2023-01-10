@@ -152,10 +152,7 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
                       Center(
                         child: Padding(
                           padding: const EdgeInsets.all(10),
-                          child: Expanded(
-                            flex: 2,
-                            child: Image.asset("assets/pet.jpg"),
-                          ),
+                          child: Image.asset("assets/pet.jpg"),
                         ),
                       ),
                       Expanded(
@@ -164,48 +161,42 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
                           alignment: Alignment.topLeft,
                           child: Column(
                             children: [
-                              Expanded(
-                                flex: 5,
-                                child: ListTile(
-                                  title: Text(formulario.animal!.nombre),
-                                  subtitle: Text(
-                                      "Adoptante: ${formulario.nombreClient}"),
-                                ),
+                              ListTile(
+                                title: Text(formulario.animal!.nombre),
+                                subtitle: Text(
+                                    "Adoptante: ${formulario.nombreClient}"),
                               ),
-                              Expanded(
-                                flex: 5,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    TextButton(
-                                      // ignore: prefer_const_constructors
-                                      child: Text("Realizar seguimiento",
-                                          style: const TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.blueGrey)),
-                                      onPressed: () async {
-                                        datosC = await formulariosProvider
-                                            .cargarDPId(formulario.id,
-                                                formulario.idDatosPersonales);
-                                        animal = await animalesProvider
-                                            .cargarAnimalId(
-                                                formulario.idAnimal);
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  TextButton(
+                                    // ignore: prefer_const_constructors
+                                    child: Text("Realizar seguimiento",
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.blueGrey)),
+                                    onPressed: () async {
+                                      datosC =
+                                          await formulariosProvider.cargarDPId(
+                                              formulario.id,
+                                              formulario.idDatosPersonales);
+                                      animal = await animalesProvider
+                                          .cargarAnimalId(formulario.idAnimal);
 
-                                        // ignore: use_build_context_synchronously
-                                        Navigator.pushNamed(
-                                            context, 'seguimientoInfo',
-                                            arguments: {
-                                              'datosper': datosC,
-                                              'formulario': formulario,
-                                              'animal': animal
-                                            });
-                                      },
-                                    ),
-                                    const SizedBox(
-                                      width: 8,
-                                    )
-                                  ],
-                                ),
+                                      // ignore: use_build_context_synchronously
+                                      Navigator.pushNamed(
+                                          context, 'seguimientoInfo',
+                                          arguments: {
+                                            'datosper': datosC,
+                                            'formulario': formulario,
+                                            'animal': animal
+                                          });
+                                    },
+                                  ),
+                                  const SizedBox(
+                                    width: 8,
+                                  )
+                                ],
                               )
                             ],
                           ),
