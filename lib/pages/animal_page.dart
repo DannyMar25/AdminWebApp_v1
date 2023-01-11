@@ -713,25 +713,33 @@ class _AnimalPageState extends State<AnimalPage> {
   }
 
   Widget _mostrarFoto() {
-    if (animal.fotoUrl != '') {
-      return FadeInImage(
-        image: NetworkImage(animal.fotoUrl),
-        placeholder: const AssetImage('assets/jar-loading.gif'),
+    if (editFoto == true) {
+      return Image.memory(
+        webImage,
+        fit: BoxFit.cover,
         height: 230, //300
-        fit: BoxFit.contain,
       );
     } else {
-      if (webImage.length == 8) {
-        return Image.asset(
-          'assets/no-image.png',
+      if (animal.fotoUrl != '') {
+        return FadeInImage(
+          image: NetworkImage(animal.fotoUrl),
+          placeholder: const AssetImage('assets/jar-loading.gif'),
           height: 230, //300
+          fit: BoxFit.contain,
         );
       } else {
-        return Image.memory(
-          webImage,
-          fit: BoxFit.cover,
-          height: 230, //300
-        );
+        if (webImage.length == 8) {
+          return Image.asset(
+            'assets/no-image.png',
+            height: 230, //300
+          );
+        } else {
+          return Image.memory(
+            webImage,
+            fit: BoxFit.cover,
+            height: 230, //300
+          );
+        }
       }
     }
   }
