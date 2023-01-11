@@ -52,7 +52,7 @@ class Validators {
           cedulaCorrecta = true;
           //print('La cedula es correcta');
           //print('La cédula:' + cedula + ' es correcta');
-          SnackBar(
+          const SnackBar(
             content: Text('Información ingresada correctamente'),
           );
           sink.add(cedula);
@@ -60,7 +60,7 @@ class Validators {
           cedulaCorrecta = true;
           //print('La cedula es correcta');
           //print('La cédula:' + cedula + ' es correcta');
-          SnackBar(
+          const SnackBar(
             content: Text('Información ingresada correctamente'),
           );
           sink.add(cedula);
