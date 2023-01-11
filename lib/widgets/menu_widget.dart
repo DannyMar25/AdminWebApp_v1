@@ -40,6 +40,7 @@ class _MenuWidgetState extends State<MenuWidget> {
             },
           ),
           ExpansionTile(
+            backgroundColor: const Color.fromARGB(255, 240, 235, 235),
             title: const Text('Registro de animales'),
             leading: const Icon(
               Icons.pets,
@@ -69,10 +70,10 @@ class _MenuWidgetState extends State<MenuWidget> {
             ],
           ),
 
-          const Divider(),
+          //const Divider(),
           //Creacion de un submenu dentro
           ExpansionTile(
-            //textColor: Colors.green,
+            backgroundColor: const Color.fromARGB(255, 240, 235, 235),
             title: const Text('Citas'),
             leading: const Icon(
               Icons.calendar_month,
@@ -123,8 +124,8 @@ class _MenuWidgetState extends State<MenuWidget> {
             ],
           ),
           //aqui termina el nuevo codigo
-          const Divider(),
           ExpansionTile(
+            backgroundColor: const Color.fromARGB(255, 240, 235, 235),
             title: const Text('Solicitudes de adopción'),
             leading: const Icon(
               Icons.assignment,
@@ -164,10 +165,6 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ],
           ),
-          const Divider(),
-          // ExpansionTile(
-          //   title: Text('Seguimiento'),
-          //   children: [
           ListTile(
             leading: const Icon(
               Icons.manage_search_sharp,
@@ -178,8 +175,8 @@ class _MenuWidgetState extends State<MenuWidget> {
               Navigator.pushNamed(context, 'seguimientoPrincipal');
             },
           ),
-          const Divider(),
           ExpansionTile(
+            backgroundColor: const Color.fromARGB(255, 240, 235, 235),
             title: const Text('Donaciones'),
             leading: const Icon(
               Icons.favorite,
@@ -228,7 +225,6 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ],
           ),
-          const Divider(),
           rol == 'SuperAdministrador'
               ? ListTile(
                   leading: const Icon(
