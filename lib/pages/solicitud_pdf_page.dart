@@ -445,10 +445,10 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
     PdfGridRow row25 = grid3.rows.add();
     row25.cells[0].value = '¿Algun familiar espera un bebe?';
     row25.cells[1].value = situacionF.esperaBebe;
-    PdfGridRow row26 = grid3.rows.add();
-    row26.cells[0].value =
-        'Si la respuesta es "SI", ingrese fecha aproximada de parto:';
-    row26.cells[1].value = 'fecha';
+    // PdfGridRow row26 = grid3.rows.add();
+    // row26.cells[0].value =
+    //     'Si la respuesta es "SI", ingrese fecha aproximada de parto:';
+    // row26.cells[1].value = 'fecha';
     PdfGridRow row27 = grid3.rows.add();
     row27.cells[0].value =
         '¿Alguien que viva con usted es alérgicco a los animales o sufre de asma?';
@@ -463,15 +463,15 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
     row25.cells[1].style = PdfGridCellStyle(
       cellPadding: PdfPaddings(left: 3, right: 0, top: 2, bottom: 0),
     );
-    row26.cells[0].style = PdfGridCellStyle(
-      backgroundBrush: PdfBrushes.lightSteelBlue,
-      cellPadding: PdfPaddings(left: 2, right: 0, top: 2, bottom: 0),
-      font: PdfStandardFont(PdfFontFamily.helvetica, 9),
-      textPen: PdfPens.black,
-    );
-    row26.cells[1].style = PdfGridCellStyle(
-      cellPadding: PdfPaddings(left: 3, right: 0, top: 2, bottom: 0),
-    );
+    // row26.cells[0].style = PdfGridCellStyle(
+    //   backgroundBrush: PdfBrushes.lightSteelBlue,
+    //   cellPadding: PdfPaddings(left: 2, right: 0, top: 2, bottom: 0),
+    //   font: PdfStandardFont(PdfFontFamily.helvetica, 9),
+    //   textPen: PdfPens.black,
+    // );
+    // row26.cells[1].style = PdfGridCellStyle(
+    //   cellPadding: PdfPaddings(left: 3, right: 0, top: 2, bottom: 0),
+    // );
     row27.cells[0].style = PdfGridCellStyle(
       backgroundBrush: PdfBrushes.lightSteelBlue,
       cellPadding: PdfPaddings(left: 2, right: 0, top: 2, bottom: 0),
