@@ -71,6 +71,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   style: TextStyle(fontSize: 18, color: Colors.black),
                 ),
                 TextFormField(
+                  keyboardType: TextInputType.emailAddress,
                   style: const TextStyle(color: Colors.black),
                   decoration: const InputDecoration(
                     //labelText: 'Email',
@@ -91,9 +92,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       borderSide: BorderSide(color: Colors.white),
                     ),
                   ),
-                  onChanged: (value) {
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Por favor, ingrese su correo electrónico';
+                    } else {
+                      return null;
+                    }
+                  },
+                  onChanged: (s) {
                     setState(() {
-                      _email = value;
+                      _email = s;
                     });
                   },
                 ),
@@ -110,6 +118,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     style: TextStyle(fontSize: 16),
                   ),
                   onPressed: () async {
+                    if (_email == '' || _email == null) {
+                      return mostrarAlerta(
+                          context, 'Por favor, ingrese su correo electrónico.');
+                    } else {}
                     final estadoUsuario =
                         await usuarioProvider.verificar(_email!);
                     if (estadoUsuario.isEmpty) {
