@@ -60,7 +60,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               children: [
                 const Text(
                   'Restablece tu contraseña',
-                  style: TextStyle(fontSize: 20.0),
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 60.0,
@@ -71,6 +71,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   style: TextStyle(fontSize: 18, color: Colors.black),
                 ),
                 TextFormField(
+                  autofocus: true,
                   keyboardType: TextInputType.emailAddress,
                   style: const TextStyle(color: Colors.black),
                   decoration: const InputDecoration(
