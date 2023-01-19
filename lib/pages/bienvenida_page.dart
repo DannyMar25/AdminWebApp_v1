@@ -38,7 +38,7 @@ class BienvenidaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double heighScreen = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.white12,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Inicio'),
         backgroundColor: Colors.green,

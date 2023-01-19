@@ -26,7 +26,7 @@ class _SoportePageState extends State<SoportePage> {
   Widget build(BuildContext context) {
     final email = prefs.email;
     return Scaffold(
-      backgroundColor: const Color.fromARGB(223, 221, 248, 153),
+      backgroundColor: Color.fromARGB(255, 227, 254, 160),
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: const Text("Soporte"),
