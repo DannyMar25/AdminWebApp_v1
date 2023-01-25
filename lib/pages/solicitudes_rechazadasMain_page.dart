@@ -38,7 +38,7 @@ class _SolicitudRechazadaMainPageState
     animal = arg['animal'] as AnimalModel;
     return Scaffold(
         //backgroundColor: Color.fromARGB(223, 221, 248, 153),
-        backgroundColor: const Color.fromARGB(223, 245, 247, 240),
+        backgroundColor: Color.fromARGB(255, 245, 247, 240),
         appBar: AppBar(
           title: const Text('Datos adoptante rechazado'),
           backgroundColor: Colors.green,
