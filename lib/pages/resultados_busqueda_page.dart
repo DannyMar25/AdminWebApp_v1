@@ -217,7 +217,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
   Widget _crearItem1(BuildContext context, AnimalModel animal) {
     return Card(
       clipBehavior: Clip.antiAlias,
-      color: Color.fromARGB(248, 244, 246, 243),
+      color: Color.fromARGB(255, 244, 246, 243),
       elevation: 4.0,
       //margin: const EdgeInsets.only(bottom: 90.0, left: 5.0, right: 5.0),
       child: InkWell(
